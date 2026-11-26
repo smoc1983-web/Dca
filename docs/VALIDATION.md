@@ -84,3 +84,6 @@
 
 ## 26.11.2026 — первый независимый офлайн-бэктест, DCA-20261126-23
 - d0fbd82334da86260f068639ea94bcb4aa8824a9, https://github.com/smoc1983-web/Dca/actions/runs/45857421120, job 140039335620: completed/success, 131 passed, 0 failed (8 новых); базовые тесты и синтаксис успешны. Только синтетический однопарный replay; реальные данные, OOS, портфель и рыночная доходность не проверены. Node punycode warning в cleanup. Production не изменён.
+
+## 26.11.2026 — импорт исторических архивов, DCA-20261126-24
+- 6d7523222bced5fa7ca30a38dcbb105254fbe416, https://github.com/smoc1983-web/Dca/actions/runs/45858209317, job 140042051323: completed/success, 138 passed, 0 failed (7 новых); baseline и синтаксис успешны. Синтетические ZIP проверены, реальные архивы не получены; месячный формат и 3h отдельно ещё не проверены. Python3 stdlib. Node punycode warning в cleanup. Production не изменён.
