@@ -126,3 +126,6 @@
 
 ## 26.11.2026 — длительное сравнение завершено, DCA-20261126-39
 - 0650380d0ef3b9880dd46bc82e1db84276789432, https://github.com/smoc1983-web/Dca/actions/runs/45875049345: completed/success, 31/31 jobs, 24 отчёта, 178/178 офлайн. Сводки research/long-universe-comparison-2026-11-26.md и summary.json. Не OOS, не production.
+
+## 26.11.2026 — маржинальный proxy, DCA-20261126-40
+- 19dbfd4b573dcdbfc0dbab3f7b8fad1e9f5156ac; https://github.com/smoc1983-web/Dca/actions/runs/45878093095: completed/success, 182/182 (178+4); https://github.com/smoc1983-web/Dca/actions/runs/45878093015: completed/success, 12/12 результатов на момент записи. Гипотетический isolated, spot path, не реальные futures, не production.
