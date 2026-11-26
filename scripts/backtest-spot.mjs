@@ -42,6 +42,11 @@ function dataset({candles,tf,source,window,params}){
  if(source.expectedSha256!==undefined&&source.expectedSha256!==dataSha256)throw Error('Candle checksum mismatch');
  return {rows,duration,warmupBars,manifest,dataSha256};
 }
+// Validate and pin the full dataset before slicing evaluation periods.
+export function inspectSpotDataset(input){
+ const p=parameters(input.params);
+ return dataset({...input,params:p});
+}
 export function backtestSpot(input){
  const p=parameters(input.params),{rows,duration,warmupBars,manifest,dataSha256}=dataset({...input,params:p});
  const s=newState(p),events=[],closed=[];
