@@ -114,3 +114,6 @@
 
 ## 26.11.2026 — состав 11 пар, DCA-20261126-35
 - ece04492685eb035d8eccb8e2d38b47c47c4701b, https://github.com/smoc1983-web/Dca/actions/runs/45872958357, job 140092784066: completed/success, 173 passed, 0 failed (5 новых), baseline 5/5, syntax 19 historical/11 enabled. Preview only; реальный сравнительный портфель и миграция не проверены. Production не изменён.
+
+## 26.11.2026 — сравнение 19/11, DCA-20261126-36
+- 7431bea24a3150c0056b8358b224554184d7fd23; https://github.com/smoc1983-web/Dca/actions/runs/45874218667, job 140097091325: success 175/175 (2 новых), baseline 5/5, syntax. https://github.com/smoc1983-web/Dca/actions/runs/45874218698, job 140097091075: success. https://github.com/smoc1983-web/Dca/actions/runs/45874218894, job 140097091853: success, 24 отчёта, artifact 15144566623. Не OOS; постоянные сводки research/universe-comparison-2025-01.md и summary.json. Production не изменён.
