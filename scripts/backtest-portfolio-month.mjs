@@ -8,7 +8,7 @@ const markets=JSON.parse(readFileSync(new URL('../strategy/markets.json',import.
 const pins=JSON.parse(readFileSync(new URL('./history-2025-01-pins.json',import.meta.url),'utf8'));
 const START=1735689600000, EVAL=START+7*86400000, END=START+31*86400000;
 const KEYS=['symbol','initialCapital','fee','slippageBps','tick','qtyStep','minQty','minNotional'];
-export function evaluatePortfolioMonth(datasets,{synthetic=false}={}){
+export function validatePortfolioMonth(datasets,{synthetic=false}={}){
  if(!Array.isArray(datasets)||datasets.length!==19||markets.length!==19)throw Error('All 19 markets required');
  const map=new Map(datasets.map(d=>[d?.params?.symbol,d]));
  if(map.size!==19)throw Error('Duplicate market');
@@ -24,6 +24,10 @@ export function evaluatePortfolioMonth(datasets,{synthetic=false}={}){
   }
   return d;
  });
+ return ordered;
+}
+export function evaluatePortfolioMonth(datasets,{synthetic=false}={}){
+ const ordered=validatePortfolioMonth(datasets,{synthetic});
  const reports=[];
  for(const maxCycles of [1,3,5])for(const slippageBps of [0,2,5,10]){
   const report=backtestPortfolio({datasets:ordered,capital:800,maxCycles,slippageBps});

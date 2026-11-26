@@ -1,0 +1,31 @@
+name: Public 19 vs 11 portfolio comparison
+on:
+  push:
+    branches: ['dev/dca800-foundation']
+    paths:
+      - 'scripts/compare-market-universes.mjs'
+      - '.github/workflows/public-universe-comparison.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Obtain verified public archives
+        run: python3 scripts/prepare-history-month.py "$RUNNER_TEMP/dca-universe"
+      - name: Compare identical portfolio scenarios
+        run: node scripts/compare-market-universes.mjs "$RUNNER_TEMP/dca-universe"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: universe-comparison-2025-01
+          path: ${{ runner.temp }}/dca-universe/universe-comparison.json
+          if-no-files-found: error
+          retention-days: 30
