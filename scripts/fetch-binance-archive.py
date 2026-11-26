@@ -10,7 +10,7 @@ import sys
 import urllib.request
 import urllib.error
 
-BASE = "https://data.binance.vision/data/spot/daily/klines/"
+BASE = "https://data.binance.vision/data/spot/"
 MAX_ZIP = 64 * 1024 * 1024
 class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
@@ -40,11 +40,20 @@ def fetch(symbol, tf, date, dest, download=get):
         raise ValueError("Invalid symbol")
     if tf not in {"1m","3m","5m","15m","30m","1h","2h","4h","6h","8h","12h","1d"}:
         raise ValueError("Unsupported native timeframe")
-    day=dt.date.fromisoformat(date)
-    if day.isoformat()!=date or day>=dt.datetime.now(dt.timezone.utc).date():
-        raise ValueError("Archive day must be completed UTC day")
+    today=dt.datetime.now(dt.timezone.utc).date()
+    if re.fullmatch(r"[0-9]{4}-[0-9]{2}",date):
+        day=dt.date.fromisoformat(date+"-01")
+        end=dt.date(day.year+(day.month==12),day.month%12+1,1)
+        if end>today:
+            raise ValueError("Archive month must be completed UTC month")
+        period="monthly"
+    else:
+        day=dt.date.fromisoformat(date)
+        if day.isoformat()!=date or day>=today:
+            raise ValueError("Archive day must be completed UTC day")
+        period="daily"
     name=f"{symbol}-{tf}-{date}.zip"
-    url=BASE+f"{symbol}/{tf}/{name}"
+    url=BASE+f"{period}/klines/{symbol}/{tf}/{name}"
     expected=checksum(download(url+".CHECKSUM",4096).decode("ascii"),name)
     raw=download(url,MAX_ZIP)
     if len(raw)>MAX_ZIP or hashlib.sha256(raw).hexdigest()!=expected:

@@ -48,3 +48,19 @@ test('network refusal and invalid symbol do not fall back',()=>check(` calls=[]
  else: raise AssertionError('invalid symbol accepted')
  assert len(calls)==1
 `));
+
+test('completed monthly archive uses monthly URL and verifies official checksum',()=>check(` monthly='BTCUSDT-5m-2025-01.zip'
+ calls=[]
+ def month(url,limit):
+  calls.append(url)
+  return (digest+'  '+monthly+'\\n').encode() if url.endswith('.CHECKSUM') else raw
+ r=fetch('BTCUSDT','5m','2025-01',dest,month)
+ assert r['file']==monthly and '/monthly/klines/' in r['archiveUrl']
+ assert len(calls)==2 and (dest/monthly).read_bytes()==raw
+`));
+test('current incomplete month rejected before download',()=>check(` import datetime as dt
+ current=dt.datetime.now(dt.timezone.utc).strftime('%Y-%m')
+ try: fetch('BTCUSDT','5m',current,dest,lambda *args: (_ for _ in ()).throw(AssertionError('network called')))
+ except ValueError as e: assert 'completed UTC month' in str(e)
+ else: raise AssertionError('incomplete month accepted')
+`));

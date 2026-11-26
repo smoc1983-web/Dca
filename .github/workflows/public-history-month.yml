@@ -1,0 +1,32 @@
+name: Public 19-market monthly comparison
+on:
+  push:
+    branches:
+      - 'dev/dca800-foundation'
+    paths:
+      - 'scripts/prepare-history-month.py'
+      - '.github/workflows/public-history-month.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-month:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Obtain and verify all 19 public monthly archives
+        run: python3 scripts/prepare-history-month.py "$RUNNER_TEMP/dca-month"
+      - name: Run fixed historical comparison
+        run: node scripts/backtest-month.mjs "$RUNNER_TEMP/dca-month"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: historical-month-2025-01
+          path: ${{ runner.temp }}/dca-month/month-report.json
+          if-no-files-found: error
+          retention-days: 30
