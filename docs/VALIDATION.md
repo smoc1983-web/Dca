@@ -90,3 +90,6 @@
 
 ## 26.11.2026 — матрица 19 пар, DCA-20261126-25
 - fa951e7b863322cb3eba5196e8defbd408de2cdb, https://github.com/smoc1983-web/Dca/actions/runs/45860081918, job 140048512153: completed/success, 146 passed, 0 failed (8 новых); baseline и синтаксис успешны. Синтетика, 228 расчётов; реальная история/OOS/портфель/production не проверены. Node punycode warning в cleanup.
+
+## 26.11.2026 — первый публичный архив, DCA-20261126-27
+- 431c80715d000692054997db284db149bb49e184; https://github.com/smoc1983-web/Dca/actions/runs/45860692469, job 140050616844: completed/success, 151 passed, 0 failed (5 новых). https://github.com/smoc1983-web/Dca/actions/runs/45860692497, job 140050617407: completed/success, BTCUSDT 5m 2025-01-01, официальный CHECKSUM проверен, 288 свечей (200 warmup/88 evaluation), 0 сделок, 800->800 USDT; selection-overlap. SHA256 и происхождение в JOURNAL. Не OOS, не реальный общий портфель, не production. Node punycode warning в cleanup.
