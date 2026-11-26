@@ -111,3 +111,6 @@
 
 ## 26.11.2026 — завершение повторного исследования, DCA-20261126-34
 - 20f094ab3daaacca8250194289816f7dd77a4575, https://github.com/smoc1983-web/Dca/actions/runs/45867985460: completed/success, 19/19 sweep jobs + aggregate 140077937524. 209 комбинаций, 532 ZIP, artifact 15140699303. 168/168 офлайн. Сводки research/timeframe-sweep-2026-11-26.md и summary.json. Не OOS, не точная реплика старого прогрева, не production.
+
+## 26.11.2026 — состав 11 пар, DCA-20261126-35
+- ece04492685eb035d8eccb8e2d38b47c47c4701b, https://github.com/smoc1983-web/Dca/actions/runs/45872958357, job 140092784066: completed/success, 173 passed, 0 failed (5 новых), baseline 5/5, syntax 19 historical/11 enabled. Preview only; реальный сравнительный портфель и миграция не проверены. Production не изменён.
