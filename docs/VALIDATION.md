@@ -102,3 +102,6 @@
 
 ## 26.11.2026 — реальный общий портфель, DCA-20261126-30
 - 591b411ac855db0ebb669ad0b9022698bb277c77; https://github.com/smoc1983-web/Dca/actions/runs/45867242895, job 140073116984: completed/success, 165 passed, 0 failed (2 новых); baseline и syntax успешны. https://github.com/smoc1983-web/Dca/actions/runs/45867243246, job 140073117996: completed/success, 19 закреплённых ZIP, 12 сценариев, artifact 15139599728. Постоянные сводки research/portfolio-2025-01.md и research/portfolio-2025-01-summary.json. Не OOS, не реальные ордера, не production.
+
+## 26.11.2026 — повтор старой матрицы, DCA-20261126-31
+- 20f094ab3daaacca8250194289816f7dd77a4575, https://github.com/smoc1983-web/Dca/actions/runs/45867985331: completed/success, 168/168 (165+3), job 140075690849; https://github.com/smoc1983-web/Dca/actions/runs/45867985460: queued/pending, jobs success 0/19. Исторический результат ещё не подтверждён. Сравнение на прежнем периоде с другим прогревом, не OOS; production не изменён.
