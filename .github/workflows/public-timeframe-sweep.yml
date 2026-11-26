@@ -1,0 +1,56 @@
+name: Public historical timeframe sweep
+on:
+  push:
+    branches: ['dev/dca800-foundation']
+    paths:
+      - 'scripts/backtest-timeframes.mjs'
+      - 'scripts/prepare-timeframe-history.py'
+      - '.github/workflows/public-timeframe-sweep.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        symbol: [BTCUSDT, SOLUSDT, UNIUSDT, ETHUSDT, XRPUSDT, ADAUSDT, ZECUSDT, LTCUSDT, LDOUSDT, BNBUSDT, DOGEUSDT, LINKUSDT, AVAXUSDT, DOTUSDT, ATOMUSDT, TRXUSDT, BCHUSDT, AAVEUSDT, SUIUSDT]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Obtain complete public monthly archives
+        run: python3 scripts/prepare-timeframe-history.py ${{ matrix.symbol }} "$RUNNER_TEMP/dca-sweep"
+      - name: Evaluate eleven timeframes
+        run: node scripts/backtest-timeframes.mjs "$RUNNER_TEMP/dca-sweep/input.json" "$RUNNER_TEMP/dca-sweep/${{ matrix.symbol }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sweep-${{ matrix.symbol }}
+          path: ${{ runner.temp }}/dca-sweep/${{ matrix.symbol }}.json
+          if-no-files-found: error
+          retention-days: 30
+  aggregate:
+    needs: sweep
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sweep-*
+          merge-multiple: true
+          path: sweep
+      - run: node scripts/aggregate-timeframe-sweep.mjs sweep sweep-report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: timeframe-sweep-report
+          path: sweep-report.json
+          retention-days: 30
