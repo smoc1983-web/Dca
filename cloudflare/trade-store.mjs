@@ -86,3 +86,6 @@ export class TradeLedgerStore{
     throw Error('Ledger contention: retry operation');
   }
 }
+
+// Reuse identical validation for atomic budget/ledger writes.
+export {operation as normalizeLedgerOperation};
