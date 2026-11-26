@@ -81,3 +81,6 @@
 
 ## 26.11.2026 — последовательный маржинальный стресс, DCA-20261126-22
 - 31767c5d453b9707a237a36d9f95585ff73776be, https://github.com/smoc1983-web/Dca/actions/runs/45856786680, job 140037153328: completed/success, 123 passed, 0 failed (9 новых); базовые тесты/синтаксис успешны. Node punycode warning в cleanup. Синтетические сценарии, частичный START, остановка до/после DCA. Реальные правила биржи, D1, авторизация и production не проверены.
+
+## 26.11.2026 — первый независимый офлайн-бэктест, DCA-20261126-23
+- d0fbd82334da86260f068639ea94bcb4aa8824a9, https://github.com/smoc1983-web/Dca/actions/runs/45857421120, job 140039335620: completed/success, 131 passed, 0 failed (8 новых); базовые тесты и синтаксис успешны. Только синтетический однопарный replay; реальные данные, OOS, портфель и рыночная доходность не проверены. Node punycode warning в cleanup. Production не изменён.
