@@ -120,3 +120,6 @@
 
 ## 26.11.2026 — длительное сравнение, DCA-20261126-37
 - 0650380d0ef3b9880dd46bc82e1db84276789432; https://github.com/smoc1983-web/Dca/actions/runs/45875049305: completed/success, 178/178 (175+3), job 140099903501; https://github.com/smoc1983-web/Dca/actions/runs/45875049345: queued/pending, {"queued":16,"in_progress":3}. 532 pinned ZIP и 19 pinned target hashes; результаты длительного CI пока не подтверждены. Не OOS, не production.
+
+## 26.11.2026 — промежуточное длительное сравнение, DCA-20261126-38
+- 0650380d0ef3b9880dd46bc82e1db84276789432, https://github.com/smoc1983-web/Dca/actions/runs/45875049345: 19/19 подготовок success, 3/12 парных сценария success, 3 выполняются, 6 в очереди, 0 ошибок. Частичная сводка research/long-universe-comparison-partial.json. Не полный результат, не OOS, не production.
