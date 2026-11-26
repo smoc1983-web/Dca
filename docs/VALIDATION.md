@@ -129,3 +129,6 @@
 
 ## 26.11.2026 — маржинальный proxy, DCA-20261126-40
 - 19dbfd4b573dcdbfc0dbab3f7b8fad1e9f5156ac; https://github.com/smoc1983-web/Dca/actions/runs/45878093095: completed/success, 182/182 (178+4); https://github.com/smoc1983-web/Dca/actions/runs/45878093015: completed/success, 12/12 результатов на момент записи. Гипотетический isolated, spot path, не реальные futures, не production.
+
+## 26.11.2026 — минимальный ордер, DCA-20261126-41
+- 23cf3dfc6edd6c3fff97849a32f5620c743400c1; https://github.com/smoc1983-web/Dca/actions/runs/45878743440: success 186/186; https://github.com/smoc1983-web/Dca/actions/runs/45878743635: success 11 пар, 33 статических LIMIT расчёта, artifact 15145822622. Снимок текущих публичных фильтров, не фактические сделки. Production не изменён.

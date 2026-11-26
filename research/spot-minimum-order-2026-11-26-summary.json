@@ -1,0 +1,567 @@
+{
+  "commit": "23cf3dfc6edd6c3fff97849a32f5620c743400c1",
+  "run": 45878743635,
+  "artifactId": 15145822622,
+  "capturedAt": 1795718875811,
+  "rows": [
+    {
+      "symbol": "ADAUSDT",
+      "price": "0.15070000",
+      "filters": {
+        "tickSize": "0.00010000",
+        "minPrice": "0.00010000",
+        "maxPrice": "1000.00000000",
+        "stepSize": "0.10000000",
+        "minQty": "0.10000000",
+        "maxQty": "900000.00000000",
+        "minNotional": "5",
+        "maxNotional": "9000000.00000000"
+      },
+      "scenarios": [
+        {
+          "budget": "5",
+          "roundedPrice": "0.1507",
+          "minimumQuantity": "33.2",
+          "minimumBudgetAtPrice": "5.00324",
+          "plannedQuantity": "33.1",
+          "plannedNotional": "4.98817",
+          "passesStaticLimitFilters": false,
+          "failures": [
+            "NOTIONAL"
+          ],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "10",
+          "roundedPrice": "0.1507",
+          "minimumQuantity": "33.2",
+          "minimumBudgetAtPrice": "5.00324",
+          "plannedQuantity": "66.3",
+          "plannedNotional": "9.99141",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "15",
+          "roundedPrice": "0.1507",
+          "minimumQuantity": "33.2",
+          "minimumBudgetAtPrice": "5.00324",
+          "plannedQuantity": "99.5",
+          "plannedNotional": "14.99465",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "price": "1.20900000",
+      "filters": {
+        "tickSize": "0.00100000",
+        "minPrice": "0.00100000",
+        "maxPrice": "10000.00000000",
+        "stepSize": "0.01000000",
+        "minQty": "0.01000000",
+        "maxQty": "90000.00000000",
+        "minNotional": "5",
+        "maxNotional": "9000000.00000000"
+      },
+      "scenarios": [
+        {
+          "budget": "5",
+          "roundedPrice": "1.209",
+          "minimumQuantity": "4.14",
+          "minimumBudgetAtPrice": "5.00526",
+          "plannedQuantity": "4.13",
+          "plannedNotional": "4.99317",
+          "passesStaticLimitFilters": false,
+          "failures": [
+            "NOTIONAL"
+          ],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "10",
+          "roundedPrice": "1.209",
+          "minimumQuantity": "4.14",
+          "minimumBudgetAtPrice": "5.00526",
+          "plannedQuantity": "8.27",
+          "plannedNotional": "9.99843",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "15",
+          "roundedPrice": "1.209",
+          "minimumQuantity": "4.14",
+          "minimumBudgetAtPrice": "5.00526",
+          "plannedQuantity": "12.4",
+          "plannedNotional": "14.9916",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "BTCUSDT",
+      "price": "60647.87000000",
+      "filters": {
+        "tickSize": "0.01000000",
+        "minPrice": "0.01000000",
+        "maxPrice": "1000000.00000000",
+        "stepSize": "0.00001000",
+        "minQty": "0.00001000",
+        "maxQty": "9000.00000000",
+        "minNotional": "5",
+        "maxNotional": "9000000.00000000"
+      },
+      "scenarios": [
+        {
+          "budget": "5",
+          "roundedPrice": "60647.87",
+          "minimumQuantity": "0.00009",
+          "minimumBudgetAtPrice": "5.4583083",
+          "plannedQuantity": "0.00008",
+          "plannedNotional": "4.8518296",
+          "passesStaticLimitFilters": false,
+          "failures": [
+            "NOTIONAL"
+          ],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "10",
+          "roundedPrice": "60647.87",
+          "minimumQuantity": "0.00009",
+          "minimumBudgetAtPrice": "5.4583083",
+          "plannedQuantity": "0.00016",
+          "plannedNotional": "9.7036592",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "15",
+          "roundedPrice": "60647.87",
+          "minimumQuantity": "0.00009",
+          "minimumBudgetAtPrice": "5.4583083",
+          "plannedQuantity": "0.00024",
+          "plannedNotional": "14.5554888",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "price": "0.05706000",
+      "filters": {
+        "tickSize": "0.00001000",
+        "minPrice": "0.00001000",
+        "maxPrice": "1000.00000000",
+        "stepSize": "1.00000000",
+        "minQty": "1.00000000",
+        "maxQty": "9000000.00000000",
+        "minNotional": "1",
+        "maxNotional": "9000000.00000000"
+      },
+      "scenarios": [
+        {
+          "budget": "5",
+          "roundedPrice": "0.05706",
+          "minimumQuantity": "18",
+          "minimumBudgetAtPrice": "1.02708",
+          "plannedQuantity": "87",
+          "plannedNotional": "4.96422",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "10",
+          "roundedPrice": "0.05706",
+          "minimumQuantity": "18",
+          "minimumBudgetAtPrice": "1.02708",
+          "plannedQuantity": "175",
+          "plannedNotional": "9.9855",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "15",
+          "roundedPrice": "0.05706",
+          "minimumQuantity": "18",
+          "minimumBudgetAtPrice": "1.02708",
+          "plannedQuantity": "262",
+          "plannedNotional": "14.94972",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "DOTUSDT",
+      "price": "0.67500000",
+      "filters": {
+        "tickSize": "0.00100000",
+        "minPrice": "0.00100000",
+        "maxPrice": "10000.00000000",
+        "stepSize": "0.01000000",
+        "minQty": "0.01000000",
+        "maxQty": "90000.00000000",
+        "minNotional": "5",
+        "maxNotional": "9000000.00000000"
+      },
+      "scenarios": [
+        {
+          "budget": "5",
+          "roundedPrice": "0.675",
+          "minimumQuantity": "7.41",
+          "minimumBudgetAtPrice": "5.00175",
+          "plannedQuantity": "7.4",
+          "plannedNotional": "4.995",
+          "passesStaticLimitFilters": false,
+          "failures": [
+            "NOTIONAL"
+          ],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "10",
+          "roundedPrice": "0.675",
+          "minimumQuantity": "7.41",
+          "minimumBudgetAtPrice": "5.00175",
+          "plannedQuantity": "14.81",
+          "plannedNotional": "9.99675",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "15",
+          "roundedPrice": "0.675",
+          "minimumQuantity": "7.41",
+          "minimumBudgetAtPrice": "5.00175",
+          "plannedQuantity": "22.22",
+          "plannedNotional": "14.9985",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "LDOUSDT",
+      "price": "0.23690000",
+      "filters": {
+        "tickSize": "0.00010000",
+        "minPrice": "0.00010000",
+        "maxPrice": "1000.00000000",
+        "stepSize": "0.01000000",
+        "minQty": "0.01000000",
+        "maxQty": "92141578.00000000",
+        "minNotional": "5",
+        "maxNotional": "9000000.00000000"
+      },
+      "scenarios": [
+        {
+          "budget": "5",
+          "roundedPrice": "0.2369",
+          "minimumQuantity": "21.11",
+          "minimumBudgetAtPrice": "5.000959",
+          "plannedQuantity": "21.1",
+          "plannedNotional": "4.99859",
+          "passesStaticLimitFilters": false,
+          "failures": [
+            "NOTIONAL"
+          ],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "10",
+          "roundedPrice": "0.2369",
+          "minimumQuantity": "21.11",
+          "minimumBudgetAtPrice": "5.000959",
+          "plannedQuantity": "42.21",
+          "plannedNotional": "9.999549",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "15",
+          "roundedPrice": "0.2369",
+          "minimumQuantity": "21.11",
+          "minimumBudgetAtPrice": "5.000959",
+          "plannedQuantity": "63.31",
+          "plannedNotional": "14.998139",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "LINKUSDT",
+      "price": "9.28100000",
+      "filters": {
+        "tickSize": "0.00100000",
+        "minPrice": "0.00100000",
+        "maxPrice": "10000.00000000",
+        "stepSize": "0.01000000",
+        "minQty": "0.01000000",
+        "maxQty": "90000.00000000",
+        "minNotional": "5",
+        "maxNotional": "9000000.00000000"
+      },
+      "scenarios": [
+        {
+          "budget": "5",
+          "roundedPrice": "9.281",
+          "minimumQuantity": "0.54",
+          "minimumBudgetAtPrice": "5.01174",
+          "plannedQuantity": "0.53",
+          "plannedNotional": "4.91893",
+          "passesStaticLimitFilters": false,
+          "failures": [
+            "NOTIONAL"
+          ],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "10",
+          "roundedPrice": "9.281",
+          "minimumQuantity": "0.54",
+          "minimumBudgetAtPrice": "5.01174",
+          "plannedQuantity": "1.07",
+          "plannedNotional": "9.93067",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "15",
+          "roundedPrice": "9.281",
+          "minimumQuantity": "0.54",
+          "minimumBudgetAtPrice": "5.01174",
+          "plannedQuantity": "1.61",
+          "plannedNotional": "14.94241",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "TRXUSDT",
+      "price": "0.30350000",
+      "filters": {
+        "tickSize": "0.00010000",
+        "minPrice": "0.00010000",
+        "maxPrice": "1000.00000000",
+        "stepSize": "0.10000000",
+        "minQty": "0.10000000",
+        "maxQty": "9000000.00000000",
+        "minNotional": "5",
+        "maxNotional": "9000000.00000000"
+      },
+      "scenarios": [
+        {
+          "budget": "5",
+          "roundedPrice": "0.3035",
+          "minimumQuantity": "16.5",
+          "minimumBudgetAtPrice": "5.00775",
+          "plannedQuantity": "16.4",
+          "plannedNotional": "4.9774",
+          "passesStaticLimitFilters": false,
+          "failures": [
+            "NOTIONAL"
+          ],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "10",
+          "roundedPrice": "0.3035",
+          "minimumQuantity": "16.5",
+          "minimumBudgetAtPrice": "5.00775",
+          "plannedQuantity": "32.9",
+          "plannedNotional": "9.98515",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "15",
+          "roundedPrice": "0.3035",
+          "minimumQuantity": "16.5",
+          "minimumBudgetAtPrice": "5.00775",
+          "plannedQuantity": "49.4",
+          "plannedNotional": "14.9929",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "UNIUSDT",
+      "price": "4.65900000",
+      "filters": {
+        "tickSize": "0.00100000",
+        "minPrice": "0.00100000",
+        "maxPrice": "10000.00000000",
+        "stepSize": "0.01000000",
+        "minQty": "0.01000000",
+        "maxQty": "90000.00000000",
+        "minNotional": "5",
+        "maxNotional": "9000000.00000000"
+      },
+      "scenarios": [
+        {
+          "budget": "5",
+          "roundedPrice": "4.659",
+          "minimumQuantity": "1.08",
+          "minimumBudgetAtPrice": "5.03172",
+          "plannedQuantity": "1.07",
+          "plannedNotional": "4.98513",
+          "passesStaticLimitFilters": false,
+          "failures": [
+            "NOTIONAL"
+          ],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "10",
+          "roundedPrice": "4.659",
+          "minimumQuantity": "1.08",
+          "minimumBudgetAtPrice": "5.03172",
+          "plannedQuantity": "2.14",
+          "plannedNotional": "9.97026",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "15",
+          "roundedPrice": "4.659",
+          "minimumQuantity": "1.08",
+          "minimumBudgetAtPrice": "5.03172",
+          "plannedQuantity": "3.21",
+          "plannedNotional": "14.95539",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "price": "0.95570000",
+      "filters": {
+        "tickSize": "0.00010000",
+        "minPrice": "0.00010000",
+        "maxPrice": "10000.00000000",
+        "stepSize": "0.10000000",
+        "minQty": "0.10000000",
+        "maxQty": "9222449.00000000",
+        "minNotional": "5",
+        "maxNotional": "9000000.00000000"
+      },
+      "scenarios": [
+        {
+          "budget": "5",
+          "roundedPrice": "0.9557",
+          "minimumQuantity": "5.3",
+          "minimumBudgetAtPrice": "5.06521",
+          "plannedQuantity": "5.2",
+          "plannedNotional": "4.96964",
+          "passesStaticLimitFilters": false,
+          "failures": [
+            "NOTIONAL"
+          ],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "10",
+          "roundedPrice": "0.9557",
+          "minimumQuantity": "5.3",
+          "minimumBudgetAtPrice": "5.06521",
+          "plannedQuantity": "10.4",
+          "plannedNotional": "9.93928",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "15",
+          "roundedPrice": "0.9557",
+          "minimumQuantity": "5.3",
+          "minimumBudgetAtPrice": "5.06521",
+          "plannedQuantity": "15.6",
+          "plannedNotional": "14.90892",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        }
+      ]
+    },
+    {
+      "symbol": "ZECUSDT",
+      "price": "716.47000000",
+      "filters": {
+        "tickSize": "0.01000000",
+        "minPrice": "0.01000000",
+        "maxPrice": "100000.00000000",
+        "stepSize": "0.00100000",
+        "minQty": "0.00100000",
+        "maxQty": "90000.00000000",
+        "minNotional": "5",
+        "maxNotional": "9000000.00000000"
+      },
+      "scenarios": [
+        {
+          "budget": "5",
+          "roundedPrice": "716.47",
+          "minimumQuantity": "0.007",
+          "minimumBudgetAtPrice": "5.01529",
+          "plannedQuantity": "0.006",
+          "plannedNotional": "4.29882",
+          "passesStaticLimitFilters": false,
+          "failures": [
+            "NOTIONAL"
+          ],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "10",
+          "roundedPrice": "716.47",
+          "minimumQuantity": "0.007",
+          "minimumBudgetAtPrice": "5.01529",
+          "plannedQuantity": "0.013",
+          "plannedNotional": "9.31411",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        },
+        {
+          "budget": "15",
+          "roundedPrice": "716.47",
+          "minimumQuantity": "0.007",
+          "minimumBudgetAtPrice": "5.01529",
+          "plannedQuantity": "0.02",
+          "plannedNotional": "14.3294",
+          "passesStaticLimitFilters": true,
+          "failures": [],
+          "recommendationAllowed": false
+        }
+      ]
+    }
+  ]
+}
