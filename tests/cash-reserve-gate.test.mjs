@@ -55,7 +55,7 @@ test('actual manual fill remains recordable even after cash observation goes sta
  assert.equal((await b.snapshot()).summary.cycles[0].averageEntry,'105');
 });
 test('cash guard cannot be disabled by settings change',async t=>{
- const {b,c}=await fixture(t);await b.apply(cmd('change','change',0,{settings:{cashGuardMaxAgeMs:null,capital:'1600'}}));
+ const {b,c}=await fixture(t);await b.apply(cmd('change','change',0,{settings:{cashGuardMaxAgeMs:null,capital:'900'}}));
  const state=(await b.snapshot()).state;assert.equal(state.cashGuardMaxAgeMs,100);
  assert.equal((await b.apply({...reserve,expectedRevision:1})).reason,'CASH_RECONCILIATION_REQUIRED');
 });
