@@ -4,13 +4,13 @@ import {marginStress} from './margin-stress.mjs';
 const txt=decimalString;
 function id(x,name){if(typeof x!=='string'||!x.trim()||x.length>128)throw Error('Invalid '+name);return x;}
 function amount(v,name,positive=false){const n=units(v);if(n<0n||(positive&&n===0n))throw Error('Invalid '+name);return n;}
-function normalize(raw){
+export function normalizeFuturesEvent(raw){
  if(raw?.confirmed!==true||raw.source!=='manual-futures'||raw.synthetic!==true)throw Error('Confirmed synthetic manual futures event required');
  const eventId=id(raw.id,'event ID'),cycleId=id(raw.cycleId,'cycle ID'),symbol=id(raw.symbol,'symbol');
  if(!/^[A-Z0-9]+USDT$/.test(symbol)||symbol==='USDT')throw Error('Invalid USDT symbol');
  if(!Number.isSafeInteger(raw.time)||raw.time<0)throw Error('Invalid time');
  if(!Number.isInteger(raw.leverage)||raw.leverage<1||raw.leverage>3)throw Error('Leverage must be integer 1–3');
- const base={id:eventId,cycleId,symbol,time:raw.time,leverage:raw.leverage,kind:raw.kind};
+ const base={id:eventId,cycleId,symbol,time:raw.time,leverage:raw.leverage,kind:raw.kind,source:'manual-futures',confirmed:true,synthetic:true};
  if(raw.kind==='funding'){
   // Signed USDT cash flow: positive received, negative paid.
   return {...base,amount:txt(units(raw.amount))};
@@ -21,13 +21,13 @@ function normalize(raw){
  const dca=raw.dca??null;
  if(raw.kind==='buy'&&(!Number.isInteger(dca)||dca<0||dca>5))throw Error('Explicit DCA step required');
  if(raw.kind==='sell'&&dca!==null)throw Error('Sell cannot have DCA step');
- return {...base,price:txt(price),quantity:txt(quantity),fee:txt(fee),dca};
+ return {...base,price:txt(price),quantity:txt(quantity),fee:txt(fee),feeAsset:'USDT',dca};
 }
 export function replayFutures(events){
  if(!Array.isArray(events))throw Error('Invalid futures history');
  const seen=new Map(),cycles=new Map();
  for(const raw of events){
-  const e=normalize(raw),encoded=JSON.stringify(e);
+  const e=normalizeFuturesEvent(raw),encoded=JSON.stringify(e);
   if(seen.has(e.id)){if(seen.get(e.id)!==encoded)throw Error('Conflicting futures event ID');continue;}
   let c=cycles.get(e.cycleId);
   if(!c){
