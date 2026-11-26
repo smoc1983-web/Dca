@@ -99,3 +99,6 @@
 
 ## 26.11.2026 — общий портфельный бэктест, DCA-20261126-29
 - b369cac275c9d15759401e55d4813c89cbd80e38; https://github.com/smoc1983-web/Dca/actions/runs/45866537778, job 140070685438: completed/success, 163 passed, 0 failed (8 новых). Baseline и синтаксис успешны. Синтетический shared cash, reserve, конкуренция, PnL и слоты; реальный общий портфель не проверен. Node punycode warning в cleanup. Production не изменён.
+
+## 26.11.2026 — реальный общий портфель, DCA-20261126-30
+- 591b411ac855db0ebb669ad0b9022698bb277c77; https://github.com/smoc1983-web/Dca/actions/runs/45867242895, job 140073116984: completed/success, 165 passed, 0 failed (2 новых); baseline и syntax успешны. https://github.com/smoc1983-web/Dca/actions/runs/45867243246, job 140073117996: completed/success, 19 закреплённых ZIP, 12 сценариев, artifact 15139599728. Постоянные сводки research/portfolio-2025-01.md и research/portfolio-2025-01-summary.json. Не OOS, не реальные ордера, не production.

@@ -1,0 +1,392 @@
+{
+  "commit": "591b411ac855db0ebb669ad0b9022698bb277c77",
+  "run": 45867243246,
+  "period": "2025-01-08/2025-01-31 UTC",
+  "synthetic": false,
+  "summaries": [
+    {
+      "maxCycles": 1,
+      "slippageBps": 0,
+      "cycleBudget": 800,
+      "initialCapital": 800,
+      "finalCash": 604.486039232,
+      "remainingReserve": 316.72265625,
+      "finalFreeCash": 287.76338298200005,
+      "finalMarkedEquity": 786.215111232,
+      "netMarkedPnl": -13.784888767999973,
+      "netMarkedReturnPercent": -1.7231110959999962,
+      "realizedClosedPnl": 7.805577654000103,
+      "openMarkedPnl": -21.59046642200005,
+      "fees": 0.698354768,
+      "maxCloseDrawdownPercent": 4.0165392098992845,
+      "peakExposure": 192.194044,
+      "peakReserved": 495.02578125,
+      "peakActive": 1,
+      "minFree": 279.96363314999996,
+      "closedCount": 6,
+      "rejectedCount": 1020,
+      "openCount": 1,
+      "openSymbols": [
+        "ZECUSDT"
+      ],
+      "rejectedReasons": {
+        "MAX_ACTIVE_CYCLES": 1020
+      },
+      "starts": 7
+    },
+    {
+      "maxCycles": 1,
+      "slippageBps": 2,
+      "cycleBudget": 800,
+      "initialCapital": 800,
+      "finalCash": 604.3840367471596,
+      "remainingReserve": 316.72265625,
+      "finalFreeCash": 287.6613804971596,
+      "finalMarkedEquity": 786.0785167471596,
+      "netMarkedPnl": -13.921483252840403,
+      "netMarkedReturnPercent": -1.7401854066050548,
+      "realizedClosedPnl": 7.705724907550348,
+      "openMarkedPnl": -21.62720816039075,
+      "fees": 0.6983079533003002,
+      "maxCloseDrawdownPercent": 4.018512096023836,
+      "peakExposure": 192.15746,
+      "peakReserved": 495.02578125,
+      "peakActive": 1,
+      "minFree": 279.95863103288,
+      "closedCount": 6,
+      "rejectedCount": 1020,
+      "openCount": 1,
+      "openSymbols": [
+        "ZECUSDT"
+      ],
+      "rejectedReasons": {
+        "MAX_ACTIVE_CYCLES": 1020
+      },
+      "starts": 7
+    },
+    {
+      "maxCycles": 1,
+      "slippageBps": 5,
+      "cycleBudget": 800,
+      "initialCapital": 800,
+      "finalCash": 604.2337856227496,
+      "remainingReserve": 316.72265625,
+      "finalFreeCash": 287.51112937274956,
+      "finalMarkedEquity": 785.8720536227495,
+      "netMarkedPnl": -14.12794637725051,
+      "netMarkedReturnPercent": -1.7659932971563097,
+      "realizedClosedPnl": 7.553618943853962,
+      "openMarkedPnl": -21.681565321104415,
+      "fees": 0.69817463800055,
+      "maxCloseDrawdownPercent": 4.021349502740056,
+      "peakExposure": 192.09801099999996,
+      "peakReserved": 495.02578125,
+      "peakActive": 1,
+      "minFree": 279.95112785719994,
+      "closedCount": 6,
+      "rejectedCount": 1020,
+      "openCount": 1,
+      "openSymbols": [
+        "ZECUSDT"
+      ],
+      "rejectedReasons": {
+        "MAX_ACTIVE_CYCLES": 1020
+      },
+      "starts": 7
+    },
+    {
+      "maxCycles": 1,
+      "slippageBps": 10,
+      "cycleBudget": 800,
+      "initialCapital": 800,
+      "finalCash": 603.9613389172304,
+      "remainingReserve": 316.72265625,
+      "finalFreeCash": 287.23868266723036,
+      "finalMarkedEquity": 783.7143429172304,
+      "netMarkedPnl": -16.285657082769603,
+      "netMarkedReturnPercent": -2.0357071353461986,
+      "realizedClosedPnl": 7.274686484560334,
+      "openMarkedPnl": -23.560343567329966,
+      "fees": 0.6978429629698,
+      "maxCloseDrawdownPercent": 4.108742256182295,
+      "peakExposure": 190.10418299999998,
+      "peakReserved": 495.02578125,
+      "peakActive": 1,
+      "minFree": 279.97774068343995,
+      "closedCount": 6,
+      "rejectedCount": 1020,
+      "openCount": 1,
+      "openSymbols": [
+        "ZECUSDT"
+      ],
+      "rejectedReasons": {
+        "MAX_ACTIVE_CYCLES": 1020
+      },
+      "starts": 7
+    },
+    {
+      "maxCycles": 3,
+      "slippageBps": 0,
+      "cycleBudget": 266.66666666,
+      "initialCapital": 800,
+      "finalCash": 733.6836805380001,
+      "remainingReserve": 435.59140613,
+      "finalFreeCash": 298.0922744080001,
+      "finalMarkedEquity": 809.7074757380001,
+      "netMarkedPnl": 9.707475738000085,
+      "netMarkedReturnPercent": 1.2134344672500186,
+      "realizedClosedPnl": 17.14369747829994,
+      "openMarkedPnl": -7.436221740299988,
+      "fees": 1.1260202620000002,
+      "maxCloseDrawdownPercent": 2.4676057374783635,
+      "peakExposure": 147.5695905,
+      "peakReserved": 495.0257811,
+      "peakActive": 3,
+      "minFree": 280.122670178,
+      "closedCount": 27,
+      "rejectedCount": 829,
+      "openCount": 3,
+      "openSymbols": [
+        "ATOMUSDT",
+        "BTCUSDT",
+        "ZECUSDT"
+      ],
+      "rejectedReasons": {
+        "MAX_ACTIVE_CYCLES": 829
+      },
+      "starts": 30
+    },
+    {
+      "maxCycles": 3,
+      "slippageBps": 2,
+      "cycleBudget": 266.66666666,
+      "initialCapital": 800,
+      "finalCash": 733.496915666639,
+      "remainingReserve": 435.59140613,
+      "finalFreeCash": 297.905509536639,
+      "finalMarkedEquity": 809.501496866639,
+      "netMarkedPnl": 9.501496866638945,
+      "netMarkedReturnPercent": 1.1876871083298601,
+      "realizedClosedPnl": 16.95273957415509,
+      "openMarkedPnl": -7.451242707515984,
+      "fees": 1.12590111620112,
+      "maxCloseDrawdownPercent": 2.470212958970769,
+      "peakExposure": 147.5404881,
+      "peakReserved": 495.0257811,
+      "peakActive": 3,
+      "minFree": 280.11948400701215,
+      "closedCount": 27,
+      "rejectedCount": 829,
+      "openCount": 3,
+      "openSymbols": [
+        "ATOMUSDT",
+        "BTCUSDT",
+        "ZECUSDT"
+      ],
+      "rejectedReasons": {
+        "MAX_ACTIVE_CYCLES": 829
+      },
+      "starts": 30
+    },
+    {
+      "maxCycles": 3,
+      "slippageBps": 5,
+      "cycleBudget": 266.66666666,
+      "initialCapital": 800,
+      "finalCash": 732.5285408488394,
+      "remainingReserve": 435.59140613,
+      "finalFreeCash": 296.9371347188394,
+      "finalMarkedEquity": 808.5158260488394,
+      "netMarkedPnl": 8.515826048839358,
+      "netMarkedReturnPercent": 1.064478256104917,
+      "realizedClosedPnl": 15.99029888414509,
+      "openMarkedPnl": -7.474472835305672,
+      "fees": 1.0845029415605998,
+      "maxCloseDrawdownPercent": 2.4835783072902484,
+      "peakExposure": 147.43497490000001,
+      "peakReserved": 495.0257811,
+      "peakActive": 3,
+      "minFree": 280.11381375142093,
+      "closedCount": 26,
+      "rejectedCount": 826,
+      "openCount": 3,
+      "openSymbols": [
+        "ATOMUSDT",
+        "BTCUSDT",
+        "ZECUSDT"
+      ],
+      "rejectedReasons": {
+        "MAX_ACTIVE_CYCLES": 826
+      },
+      "starts": 29
+    },
+    {
+      "maxCycles": 3,
+      "slippageBps": 10,
+      "cycleBudget": 266.66666666,
+      "initialCapital": 800,
+      "finalCash": 731.6227977941917,
+      "remainingReserve": 435.59140613,
+      "finalFreeCash": 296.0313916641917,
+      "finalMarkedEquity": 806.9768609941917,
+      "netMarkedPnl": 6.976860994191725,
+      "netMarkedReturnPercent": 0.8721076242739656,
+      "realizedClosedPnl": 15.085735915053363,
+      "openMarkedPnl": -8.10887492086221,
+      "fees": 1.0842297573088997,
+      "maxCloseDrawdownPercent": 2.522184691586898,
+      "peakExposure": 148.5373912,
+      "peakReserved": 495.0257811,
+      "peakActive": 3,
+      "minFree": 280.106746458188,
+      "closedCount": 26,
+      "rejectedCount": 826,
+      "openCount": 3,
+      "openSymbols": [
+        "ATOMUSDT",
+        "BTCUSDT",
+        "ZECUSDT"
+      ],
+      "rejectedReasons": {
+        "MAX_ACTIVE_CYCLES": 826
+      },
+      "starts": 29
+    },
+    {
+      "maxCycles": 5,
+      "slippageBps": 0,
+      "cycleBudget": 160,
+      "initialCapital": 800,
+      "finalCash": 758.8777254634012,
+      "remainingReserve": 459.36515625,
+      "finalFreeCash": 299.51256921340126,
+      "finalMarkedEquity": 813.9774596634013,
+      "netMarkedPnl": 13.977459663401305,
+      "netMarkedReturnPercent": 1.747182457925156,
+      "realizedClosedPnl": 18.518395152000153,
+      "openMarkedPnl": -4.540935488600007,
+      "fees": 1.2285035365999997,
+      "maxCloseDrawdownPercent": 1.6760268253766264,
+      "peakExposure": 135.0855434,
+      "peakReserved": 495.02578125,
+      "peakActive": 5,
+      "minFree": 280.1153647300001,
+      "closedCount": 51,
+      "rejectedCount": 622,
+      "openCount": 5,
+      "openSymbols": [
+        "ADAUSDT",
+        "ATOMUSDT",
+        "BTCUSDT",
+        "SUIUSDT",
+        "ZECUSDT"
+      ],
+      "rejectedReasons": {
+        "MAX_ACTIVE_CYCLES": 622
+      },
+      "starts": 56
+    },
+    {
+      "maxCycles": 5,
+      "slippageBps": 2,
+      "cycleBudget": 160,
+      "initialCapital": 800,
+      "finalCash": 758.6719013923312,
+      "remainingReserve": 459.36515625,
+      "finalFreeCash": 299.3067451423312,
+      "finalMarkedEquity": 813.7629875923312,
+      "netMarkedPnl": 13.762987592331228,
+      "netMarkedReturnPercent": 1.7203734490414124,
+      "realizedClosedPnl": 18.314791577730773,
+      "openMarkedPnl": -4.551803985398537,
+      "fees": 1.2284671681879198,
+      "maxCloseDrawdownPercent": 1.6800294736409285,
+      "peakExposure": 135.0671132,
+      "peakReserved": 495.02578125,
+      "peakActive": 5,
+      "minFree": 280.1103929591959,
+      "closedCount": 51,
+      "rejectedCount": 622,
+      "openCount": 5,
+      "openSymbols": [
+        "ADAUSDT",
+        "ATOMUSDT",
+        "BTCUSDT",
+        "SUIUSDT",
+        "ZECUSDT"
+      ],
+      "rejectedReasons": {
+        "MAX_ACTIVE_CYCLES": 622
+      },
+      "starts": 56
+    },
+    {
+      "maxCycles": 5,
+      "slippageBps": 5,
+      "cycleBudget": 160,
+      "initialCapital": 800,
+      "finalCash": 757.9651559430102,
+      "remainingReserve": 459.36515625,
+      "finalFreeCash": 298.59999969301026,
+      "finalMarkedEquity": 813.0372630430103,
+      "netMarkedPnl": 13.037263043010284,
+      "netMarkedReturnPercent": 1.6296578803762785,
+      "realizedClosedPnl": 17.606150274479518,
+      "openMarkedPnl": -4.568887231468572,
+      "fees": 1.2063838755391498,
+      "maxCloseDrawdownPercent": 1.6908601925401563,
+      "peakExposure": 135.00111260000003,
+      "peakReserved": 495.02578125,
+      "peakActive": 5,
+      "minFree": 280.12584162242604,
+      "closedCount": 49,
+      "rejectedCount": 623,
+      "openCount": 5,
+      "openSymbols": [
+        "ADAUSDT",
+        "ATOMUSDT",
+        "BTCUSDT",
+        "SUIUSDT",
+        "ZECUSDT"
+      ],
+      "rejectedReasons": {
+        "MAX_ACTIVE_CYCLES": 623
+      },
+      "starts": 54
+    },
+    {
+      "maxCycles": 5,
+      "slippageBps": 10,
+      "cycleBudget": 160,
+      "initialCapital": 800,
+      "finalCash": 757.1106110944472,
+      "remainingReserve": 459.36515625,
+      "finalFreeCash": 297.74545484444724,
+      "finalMarkedEquity": 811.8022061944472,
+      "netMarkedPnl": 11.802206194447194,
+      "netMarkedReturnPercent": 1.4752757743059064,
+      "realizedClosedPnl": 16.7558589927836,
+      "openMarkedPnl": -4.953652798336036,
+      "fees": 1.1758383716526997,
+      "maxCloseDrawdownPercent": 1.7327802126111143,
+      "peakExposure": 134.86598700000002,
+      "peakReserved": 495.02578125,
+      "peakActive": 5,
+      "minFree": 280.1543273276741,
+      "closedCount": 46,
+      "rejectedCount": 626,
+      "openCount": 5,
+      "openSymbols": [
+        "ADAUSDT",
+        "ATOMUSDT",
+        "BTCUSDT",
+        "SUIUSDT",
+        "ZECUSDT"
+      ],
+      "rejectedReasons": {
+        "MAX_ACTIVE_CYCLES": 626
+      },
+      "starts": 51
+    }
+  ]
+}
