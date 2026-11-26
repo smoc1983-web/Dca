@@ -93,3 +93,6 @@
 
 ## 26.11.2026 — первый публичный архив, DCA-20261126-27
 - 431c80715d000692054997db284db149bb49e184; https://github.com/smoc1983-web/Dca/actions/runs/45860692469, job 140050616844: completed/success, 151 passed, 0 failed (5 новых). https://github.com/smoc1983-web/Dca/actions/runs/45860692497, job 140050617407: completed/success, BTCUSDT 5m 2025-01-01, официальный CHECKSUM проверен, 288 свечей (200 warmup/88 evaluation), 0 сделок, 800->800 USDT; selection-overlap. SHA256 и происхождение в JOURNAL. Не OOS, не реальный общий портфель, не production. Node punycode warning в cleanup.
+
+## 26.11.2026 — месячная история 19 пар, DCA-20261126-28
+- aa4ba18d5701717e9798a0dcd87505dcc5647ff5; https://github.com/smoc1983-web/Dca/actions/runs/45861421643, job 140053142510: completed/success, 155 passed, 0 failed (4 новых). https://github.com/smoc1983-web/Dca/actions/runs/45861421591, job 140053142617: success. https://github.com/smoc1983-web/Dca/actions/runs/45861421771, job 140053143019: success, 19 официальных ZIP, 102176 свечей, 76 отчётов, artifact 15137942769. Историческая сводка research/monthly-2025-01.md. Не OOS, не единый депозит, не production.
