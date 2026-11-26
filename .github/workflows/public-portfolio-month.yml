@@ -1,0 +1,33 @@
+name: Public shared portfolio comparison
+on:
+  push:
+    branches:
+      - 'dev/dca800-foundation'
+    paths:
+      - 'scripts/backtest-portfolio-month.mjs'
+      - 'scripts/backtest-portfolio.mjs'
+      - '.github/workflows/public-portfolio-month.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-portfolio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify public archives
+        run: python3 scripts/prepare-history-month.py "$RUNNER_TEMP/dca-portfolio"
+      - name: Compare shared deposit scenarios
+        run: node scripts/backtest-portfolio-month.mjs "$RUNNER_TEMP/dca-portfolio"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shared-portfolio-2025-01
+          path: ${{ runner.temp }}/dca-portfolio/portfolio-report.json
+          if-no-files-found: error
+          retention-days: 30
