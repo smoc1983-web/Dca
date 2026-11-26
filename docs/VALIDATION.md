@@ -123,3 +123,6 @@
 
 ## 26.11.2026 — промежуточное длительное сравнение, DCA-20261126-38
 - 0650380d0ef3b9880dd46bc82e1db84276789432, https://github.com/smoc1983-web/Dca/actions/runs/45875049345: 19/19 подготовок success, 3/12 парных сценария success, 3 выполняются, 6 в очереди, 0 ошибок. Частичная сводка research/long-universe-comparison-partial.json. Не полный результат, не OOS, не production.
+
+## 26.11.2026 — длительное сравнение завершено, DCA-20261126-39
+- 0650380d0ef3b9880dd46bc82e1db84276789432, https://github.com/smoc1983-web/Dca/actions/runs/45875049345: completed/success, 31/31 jobs, 24 отчёта, 178/178 офлайн. Сводки research/long-universe-comparison-2026-11-26.md и summary.json. Не OOS, не production.
