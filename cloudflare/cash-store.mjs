@@ -3,6 +3,7 @@ import {cashFlow,reconcileCash,nonnegative,timestamp} from './cash-reconcile.mjs
 import {decimalString,units,add} from './ledger-decimal.mjs';
 import {TradeLedgerStore} from './trade-store.mjs';
 import {BudgetStore} from './budget-store.mjs';
+import {readCashAudit} from './cash-audit-read.mjs';
 const txt=decimalString;
 function id(v,name){if(typeof v!=='string'||!v.trim()||v.length>128)throw Error('Invalid '+name);return v;}
 function canonical(raw){
@@ -23,21 +24,7 @@ function canonical(raw){
 export class CashStore{
   constructor(db){this.db=db;this.ledger=new TradeLedgerStore(db);this.budget=new BudgetStore(db);}
   async rows(sql,...args){return (await this.db.prepare(sql).bind(...args).all()).results;}
-  async load(){
-    const rows=await this.rows('SELECT seq,op_id,payload FROM dev_cash_audit ORDER BY seq');
-    let opening=null,observation=null,revision=0;const flows=[],ops=new Map();
-    for(const row of rows){
-      const p=JSON.parse(row.payload);
-      if(p.request.opId!==row.op_id||row.seq<=revision||ops.has(row.op_id))throw Error('Corrupt cash audit');
-      if(p.request.kind==='opening'){if(opening)throw Error('Duplicate opening');opening=p.request.opening;}
-      else if(!opening)throw Error('Cash opening missing');
-      else if(p.request.kind==='flow'){flows.push(p.request.flow);observation=null;}
-      else if(p.request.kind==='observe')observation={...p.request.observation,ledgerRevision:p.ledgerRevision};
-      else throw Error('Corrupt cash operation');
-      ops.set(row.op_id,p.request);revision=row.seq;
-    }
-    return {opening,flows,observation,revision,ops};
-  }
+  async load(){return readCashAudit(this.db);}
   async write(raw){
     const request=canonical(raw);
     for(let i=0;i<8;i++){
