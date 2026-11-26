@@ -108,3 +108,6 @@
 
 ## 26.11.2026 — промежуточный sweep, DCA-20261126-32
 - 20f094ab3daaacca8250194289816f7dd77a4575; run 45867985460: 10/19 успешно, 3 выполняются, 6 ожидают, 0 ошибок. Частичные сырые сетки research/timeframe-sweep-2026-11-26-partial.json; общий итог не подтверждён. Production не изменён.
+
+## 26.11.2026 — завершение повторного исследования, DCA-20261126-34
+- 20f094ab3daaacca8250194289816f7dd77a4575, https://github.com/smoc1983-web/Dca/actions/runs/45867985460: completed/success, 19/19 sweep jobs + aggregate 140077937524. 209 комбинаций, 532 ZIP, artifact 15140699303. 168/168 офлайн. Сводки research/timeframe-sweep-2026-11-26.md и summary.json. Не OOS, не точная реплика старого прогрева, не production.
