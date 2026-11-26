@@ -87,3 +87,6 @@
 
 ## 26.11.2026 — импорт исторических архивов, DCA-20261126-24
 - 6d7523222bced5fa7ca30a38dcbb105254fbe416, https://github.com/smoc1983-web/Dca/actions/runs/45858209317, job 140042051323: completed/success, 138 passed, 0 failed (7 новых); baseline и синтаксис успешны. Синтетические ZIP проверены, реальные архивы не получены; месячный формат и 3h отдельно ещё не проверены. Python3 stdlib. Node punycode warning в cleanup. Production не изменён.
+
+## 26.11.2026 — матрица 19 пар, DCA-20261126-25
+- fa951e7b863322cb3eba5196e8defbd408de2cdb, https://github.com/smoc1983-web/Dca/actions/runs/45860081918, job 140048512153: completed/success, 146 passed, 0 failed (8 новых); baseline и синтаксис успешны. Синтетика, 228 расчётов; реальная история/OOS/портфель/production не проверены. Node punycode warning в cleanup.
