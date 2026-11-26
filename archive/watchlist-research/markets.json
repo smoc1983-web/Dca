@@ -1,0 +1,1422 @@
+[
+  {
+    "symbol": "BTCUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.01,
+      "qtyStep": 0.00001,
+      "symbol": "BTCUSDT",
+      "baseAsset": "BTC",
+      "quoteAsset": "USDT",
+      "minQty": 0.00001,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "5m",
+    "enabled": true,
+    "requested": true,
+    "metrics": {
+      "tf": "5m",
+      "warmupBars": 8928,
+      "full": {
+        "profitPct": 12.439733899038941,
+        "drawdownPct": 9.40639977019884,
+        "cycles": 47,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 105.70486109953704,
+        "orders": 135
+      },
+      "train": {
+        "profitPct": 3.9977490759712575,
+        "drawdownPct": 5.2175830696757926,
+        "cycles": 31,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 329.6875,
+        "longestCycleDays": 65.43402777777777,
+        "orders": 88
+      },
+      "validation": {
+        "profitPct": 4.887114808834725,
+        "drawdownPct": 10.113992396665024,
+        "cycles": 19,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 105.70486109953704,
+        "orders": 54
+      }
+    }
+  },
+  {
+    "symbol": "SOLUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.01,
+      "qtyStep": 0.001,
+      "symbol": "SOLUSDT",
+      "baseAsset": "SOL",
+      "quoteAsset": "USDT",
+      "minQty": 0.001,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "30m",
+    "enabled": true,
+    "requested": true,
+    "metrics": {
+      "tf": "30m",
+      "warmupBars": 1488,
+      "full": {
+        "profitPct": 17.12142155256837,
+        "drawdownPct": 23.68752181549139,
+        "cycles": 65,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 221.6666666550926,
+        "orders": 177
+      },
+      "train": {
+        "profitPct": 15.137232365396347,
+        "drawdownPct": 7.15512796258487,
+        "cycles": 54,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 329.6875,
+        "longestCycleDays": 22.499999988425927,
+        "orders": 147
+      },
+      "validation": {
+        "profitPct": 1.9119160047000427,
+        "drawdownPct": 27.29015943482938,
+        "cycles": 10,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 221.6666666550926,
+        "orders": 29
+      }
+    }
+  },
+  {
+    "symbol": "UNIUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.001,
+      "qtyStep": 0.01,
+      "symbol": "UNIUSDT",
+      "baseAsset": "UNI",
+      "quoteAsset": "USDT",
+      "minQty": 0.01,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "15m",
+    "enabled": true,
+    "requested": true,
+    "metrics": {
+      "tf": "15m",
+      "warmupBars": 2976,
+      "full": {
+        "profitPct": 27.506046513390192,
+        "drawdownPct": 24.67222566731336,
+        "cycles": 93,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 204.30208332175926,
+        "orders": 265
+      },
+      "train": {
+        "profitPct": 21.850339246482186,
+        "drawdownPct": 16.864031597880064,
+        "cycles": 70,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 31.41666665509259,
+        "orders": 199
+      },
+      "validation": {
+        "profitPct": 5.0866408529580465,
+        "drawdownPct": 30.182153679286778,
+        "cycles": 22,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 204.30208332175926,
+        "orders": 65
+      }
+    }
+  },
+  {
+    "symbol": "ETHUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.01,
+      "qtyStep": 0.0001,
+      "symbol": "ETHUSDT",
+      "baseAsset": "ETH",
+      "quoteAsset": "USDT",
+      "minQty": 0.0001,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "5m",
+    "enabled": true,
+    "requested": true,
+    "metrics": {
+      "tf": "5m",
+      "warmupBars": 8928,
+      "full": {
+        "profitPct": 17.11570755734215,
+        "drawdownPct": 21.529527684123664,
+        "cycles": 63,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 219.48958332175926,
+        "orders": 183
+      },
+      "train": {
+        "profitPct": 15.182601164390697,
+        "drawdownPct": 13.849121166995943,
+        "cycles": 53,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 54.92708332175926,
+        "orders": 154
+      },
+      "validation": {
+        "profitPct": 1.2352341852535975,
+        "drawdownPct": 24.92526087628098,
+        "cycles": 11,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 219.48958332175926,
+        "orders": 32
+      }
+    }
+  },
+  {
+    "symbol": "XRPUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.0001,
+      "qtyStep": 0.1,
+      "symbol": "XRPUSDT",
+      "baseAsset": "XRP",
+      "quoteAsset": "USDT",
+      "minQty": 0.1,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "45m",
+    "enabled": true,
+    "requested": true,
+    "metrics": {
+      "tf": "45m",
+      "warmupBars": 992,
+      "full": {
+        "profitPct": 24.327786165669085,
+        "drawdownPct": 11.033136624643927,
+        "cycles": 58,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 46.56249998842593,
+        "orders": 172
+      },
+      "train": {
+        "profitPct": 17.68591508286008,
+        "drawdownPct": 5.033008227178641,
+        "cycles": 36,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 329.6875,
+        "longestCycleDays": 46.56249998842593,
+        "orders": 107
+      },
+      "validation": {
+        "profitPct": 6.471005084094772,
+        "drawdownPct": 12.994921530232176,
+        "cycles": 21,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 35.15625,
+        "orders": 64
+      }
+    }
+  },
+  {
+    "symbol": "ADAUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.0001,
+      "qtyStep": 0.1,
+      "symbol": "ADAUSDT",
+      "baseAsset": "ADA",
+      "quoteAsset": "USDT",
+      "minQty": 0.1,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "5m",
+    "enabled": true,
+    "requested": true,
+    "metrics": {
+      "tf": "5m",
+      "warmupBars": 8928,
+      "full": {
+        "profitPct": 37.27760931316002,
+        "drawdownPct": 17.134150396037615,
+        "cycles": 96,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 102.5104166550926,
+        "orders": 285
+      },
+      "train": {
+        "profitPct": 23.345943295824867,
+        "drawdownPct": 17.134150396037615,
+        "cycles": 60,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 49.621527766203705,
+        "orders": 181
+      },
+      "validation": {
+        "profitPct": 7.5697918724318525,
+        "drawdownPct": 20.719208966880416,
+        "cycles": 36,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 102.5104166550926,
+        "orders": 105
+      }
+    }
+  },
+  {
+    "symbol": "NEARUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.001,
+      "qtyStep": 0.1,
+      "symbol": "NEARUSDT",
+      "baseAsset": "NEAR",
+      "quoteAsset": "USDT",
+      "minQty": 0.1,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "5m",
+    "enabled": true,
+    "requested": true,
+    "metrics": {
+      "tf": "5m",
+      "warmupBars": 8928,
+      "full": {
+        "profitPct": 46.12202676987778,
+        "drawdownPct": 19.007802008716773,
+        "cycles": 169,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 47.72916665509259,
+        "orders": 476
+      },
+      "train": {
+        "profitPct": 19.721317619527735,
+        "drawdownPct": 12.043943643561098,
+        "cycles": 87,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 41.41319444444444,
+        "orders": 258
+      },
+      "validation": {
+        "profitPct": 17.633555379300113,
+        "drawdownPct": 24.37849352382626,
+        "cycles": 84,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 47.72916665509259,
+        "orders": 223
+      }
+    }
+  },
+  {
+    "symbol": "ZECUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.01,
+      "qtyStep": 0.001,
+      "symbol": "ZECUSDT",
+      "baseAsset": "ZEC",
+      "quoteAsset": "USDT",
+      "minQty": 0.001,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "5m",
+    "enabled": true,
+    "requested": true,
+    "metrics": {
+      "tf": "5m",
+      "warmupBars": 8928,
+      "full": {
+        "profitPct": 67.53036297191957,
+        "drawdownPct": 15.955144823223833,
+        "cycles": 270,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 31.11458332175926,
+        "orders": 724
+      },
+      "train": {
+        "profitPct": 40.14777130506466,
+        "drawdownPct": 10.081813632505654,
+        "cycles": 167,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 26.20833332175926,
+        "orders": 441
+      },
+      "validation": {
+        "profitPct": 27.111267592524957,
+        "drawdownPct": 22.281750098382062,
+        "cycles": 102,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 31.11458332175926,
+        "orders": 282
+      }
+    }
+  },
+  {
+    "symbol": "LTCUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.01,
+      "qtyStep": 0.001,
+      "symbol": "LTCUSDT",
+      "baseAsset": "LTC",
+      "quoteAsset": "USDT",
+      "minQty": 0.001,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "15m",
+    "enabled": true,
+    "requested": true,
+    "metrics": {
+      "tf": "15m",
+      "warmupBars": 2976,
+      "full": {
+        "profitPct": 15.433641551713496,
+        "drawdownPct": 19.853201462608425,
+        "cycles": 65,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 256.92708332175926,
+        "orders": 176
+      },
+      "train": {
+        "profitPct": 11.23496520333973,
+        "drawdownPct": 16.663455750761756,
+        "cycles": 60,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 59.40624998842593,
+        "orders": 157
+      },
+      "validation": {
+        "profitPct": 0.3867254210677462,
+        "drawdownPct": 22.800736677078927,
+        "cycles": 4,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 256.92708332175926,
+        "orders": 18
+      }
+    }
+  },
+  {
+    "symbol": "LDOUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.0001,
+      "qtyStep": 0.01,
+      "symbol": "LDOUSDT",
+      "baseAsset": "LDO",
+      "quoteAsset": "USDT",
+      "minQty": 0.01,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "30m",
+    "enabled": true,
+    "requested": true,
+    "metrics": {
+      "tf": "30m",
+      "warmupBars": 1488,
+      "full": {
+        "profitPct": 31.29511785186885,
+        "drawdownPct": 20.011182160999258,
+        "cycles": 94,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 91.70833332175926,
+        "orders": 268
+      },
+      "train": {
+        "profitPct": 20.850574690928457,
+        "drawdownPct": 10.213562847755252,
+        "cycles": 62,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 20.27083332175926,
+        "orders": 180
+      },
+      "validation": {
+        "profitPct": 10.386418982101532,
+        "drawdownPct": 24.185935503351292,
+        "cycles": 31,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 91.70833332175926,
+        "orders": 87
+      }
+    }
+  },
+  {
+    "symbol": "BNBUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.01,
+      "qtyStep": 0.001,
+      "symbol": "BNBUSDT",
+      "baseAsset": "BNB",
+      "quoteAsset": "USDT",
+      "minQty": 0.001,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "15m",
+    "enabled": true,
+    "requested": false,
+    "metrics": {
+      "tf": "15m",
+      "warmupBars": 2976,
+      "full": {
+        "profitPct": 11.616368878512784,
+        "drawdownPct": 10.10338126998976,
+        "cycles": 42,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 136.2187499884259,
+        "orders": 119
+      },
+      "train": {
+        "profitPct": 2.251055287287018,
+        "drawdownPct": 8.654781461490765,
+        "cycles": 33,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 78.80208333333333,
+        "orders": 90
+      },
+      "validation": {
+        "profitPct": 3.6752734207605053,
+        "drawdownPct": 10.89748209978779,
+        "cycles": 11,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 136.2187499884259,
+        "orders": 34
+      }
+    }
+  },
+  {
+    "symbol": "DOGEUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.00001,
+      "qtyStep": 1,
+      "symbol": "DOGEUSDT",
+      "baseAsset": "DOGE",
+      "quoteAsset": "USDT",
+      "minQty": 1,
+      "minNotional": 1,
+      "slippageBps": 0
+    },
+    "tf": "15m",
+    "enabled": true,
+    "requested": false,
+    "metrics": {
+      "tf": "15m",
+      "warmupBars": 2976,
+      "full": {
+        "profitPct": 29.337247210930606,
+        "drawdownPct": 10.916537419008279,
+        "cycles": 89,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 98.6354166550926,
+        "orders": 263
+      },
+      "train": {
+        "profitPct": 20.92883983497231,
+        "drawdownPct": 9.373983402667111,
+        "cycles": 62,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 44.66666665509259,
+        "orders": 184
+      },
+      "validation": {
+        "profitPct": 6.3655763089012884,
+        "drawdownPct": 13.41107007667829,
+        "cycles": 26,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 98.6354166550926,
+        "orders": 78
+      }
+    }
+  },
+  {
+    "symbol": "LINKUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.001,
+      "qtyStep": 0.01,
+      "symbol": "LINKUSDT",
+      "baseAsset": "LINK",
+      "quoteAsset": "USDT",
+      "minQty": 0.01,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "5m",
+    "enabled": true,
+    "requested": false,
+    "metrics": {
+      "tf": "5m",
+      "warmupBars": 8928,
+      "full": {
+        "profitPct": 32.46003422676764,
+        "drawdownPct": 14.291158043427652,
+        "cycles": 109,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 114.28124998842593,
+        "orders": 315
+      },
+      "train": {
+        "profitPct": 25.660520392102605,
+        "drawdownPct": 9.368993282502542,
+        "cycles": 81,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 36.37499998842593,
+        "orders": 238
+      },
+      "validation": {
+        "profitPct": 5.036169653070055,
+        "drawdownPct": 18.183634978528136,
+        "cycles": 28,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 114.28124998842593,
+        "orders": 78
+      }
+    }
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.001,
+      "qtyStep": 0.01,
+      "symbol": "AVAXUSDT",
+      "baseAsset": "AVAX",
+      "quoteAsset": "USDT",
+      "minQty": 0.01,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "5m",
+    "enabled": true,
+    "requested": false,
+    "metrics": {
+      "tf": "5m",
+      "warmupBars": 8928,
+      "full": {
+        "profitPct": 43.25913950654196,
+        "drawdownPct": 28.159527695635134,
+        "cycles": 70,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 249.18055554398148,
+        "orders": 210
+      },
+      "train": {
+        "profitPct": 39.64221542369268,
+        "drawdownPct": 28.159527695635134,
+        "cycles": 57,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 99.95833332175926,
+        "orders": 168
+      },
+      "validation": {
+        "profitPct": 3.4916242892542693,
+        "drawdownPct": 30.684161046730086,
+        "cycles": 13,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 249.18055554398148,
+        "orders": 43
+      }
+    }
+  },
+  {
+    "symbol": "DOTUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.001,
+      "qtyStep": 0.01,
+      "symbol": "DOTUSDT",
+      "baseAsset": "DOT",
+      "quoteAsset": "USDT",
+      "minQty": 0.01,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "30m",
+    "enabled": true,
+    "requested": false,
+    "metrics": {
+      "tf": "30m",
+      "warmupBars": 1488,
+      "full": {
+        "profitPct": 23.702127958845054,
+        "drawdownPct": 13.559110066519237,
+        "cycles": 73,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 85.4791666550926,
+        "orders": 212
+      },
+      "train": {
+        "profitPct": 1.137283374078768,
+        "drawdownPct": 13.46177557575135,
+        "cycles": 45,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 49.354166666666664,
+        "orders": 131
+      },
+      "validation": {
+        "profitPct": 9.623517740391785,
+        "drawdownPct": 15.466361121789806,
+        "cycles": 27,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 85.4791666550926,
+        "orders": 80
+      }
+    }
+  },
+  {
+    "symbol": "ATOMUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.001,
+      "qtyStep": 0.01,
+      "symbol": "ATOMUSDT",
+      "baseAsset": "ATOM",
+      "quoteAsset": "USDT",
+      "minQty": 0.01,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "5m",
+    "enabled": true,
+    "requested": false,
+    "metrics": {
+      "tf": "5m",
+      "warmupBars": 8928,
+      "full": {
+        "profitPct": 30.70260170290533,
+        "drawdownPct": 19.006975092031908,
+        "cycles": 99,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 62.52083332175926,
+        "orders": 293
+      },
+      "train": {
+        "profitPct": 13.631419527580713,
+        "drawdownPct": 19.006975092031908,
+        "cycles": 53,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 48.548611099537034,
+        "orders": 163
+      },
+      "validation": {
+        "profitPct": 8.92945235702256,
+        "drawdownPct": 10.49854650421904,
+        "cycles": 45,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 62.52083332175926,
+        "orders": 129
+      }
+    }
+  },
+  {
+    "symbol": "TRXUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.0001,
+      "qtyStep": 0.1,
+      "symbol": "TRXUSDT",
+      "baseAsset": "TRX",
+      "quoteAsset": "USDT",
+      "minQty": 0.1,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "15m",
+    "enabled": true,
+    "requested": false,
+    "metrics": {
+      "tf": "15m",
+      "warmupBars": 2976,
+      "full": {
+        "profitPct": 7.61547241587448,
+        "drawdownPct": 3.09543153924725,
+        "cycles": 43,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 203.125,
+        "longestCycleDays": 155.33333332175926,
+        "orders": 109
+      },
+      "train": {
+        "profitPct": 3.222586024224716,
+        "drawdownPct": 3.09543153924725,
+        "cycles": 31,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 203.125,
+        "longestCycleDays": 109.33333333333333,
+        "orders": 80
+      },
+      "validation": {
+        "profitPct": 2.133342405701222,
+        "drawdownPct": 1.374879844222824,
+        "cycles": 16,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 118.75,
+        "longestCycleDays": 155.33333332175926,
+        "orders": 38
+      }
+    }
+  },
+  {
+    "symbol": "BCHUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.1,
+      "qtyStep": 0.001,
+      "symbol": "BCHUSDT",
+      "baseAsset": "BCH",
+      "quoteAsset": "USDT",
+      "minQty": 0.001,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "30m",
+    "enabled": true,
+    "requested": false,
+    "metrics": {
+      "tf": "30m",
+      "warmupBars": 1488,
+      "full": {
+        "profitPct": 19.238446240147567,
+        "drawdownPct": 24.944469007299695,
+        "cycles": 66,
+        "winRate": 100,
+        "openPosition": false,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 138.20833332175926,
+        "orders": 178
+      },
+      "train": {
+        "profitPct": 12.306235640347563,
+        "drawdownPct": 6.0248740826663,
+        "cycles": 51,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 329.6875,
+        "longestCycleDays": 28.89583332175926,
+        "orders": 132
+      },
+      "validation": {
+        "profitPct": 6.785811460485025,
+        "drawdownPct": 27.9493124812886,
+        "cycles": 14,
+        "winRate": 100,
+        "openPosition": false,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 138.20833332175926,
+        "orders": 45
+      }
+    }
+  },
+  {
+    "symbol": "AAVEUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.01,
+      "qtyStep": 0.001,
+      "symbol": "AAVEUSDT",
+      "baseAsset": "AAVE",
+      "quoteAsset": "USDT",
+      "minQty": 0.001,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "5m",
+    "enabled": true,
+    "requested": false,
+    "metrics": {
+      "tf": "5m",
+      "warmupBars": 8928,
+      "full": {
+        "profitPct": 36.448804335188356,
+        "drawdownPct": 27.961615262430506,
+        "cycles": 120,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 221.0937499884259,
+        "orders": 346
+      },
+      "train": {
+        "profitPct": 26.018787283638865,
+        "drawdownPct": 11.758487597823454,
+        "cycles": 101,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 28.670138877314816,
+        "orders": 289
+      },
+      "validation": {
+        "profitPct": 6.252815168832049,
+        "drawdownPct": 36.26428299288799,
+        "cycles": 23,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 221.0937499884259,
+        "orders": 67
+      }
+    }
+  },
+  {
+    "symbol": "SUIUSDT",
+    "params": {
+      "initialCapital": 800,
+      "baseCash": 25,
+      "multiplier": 1.5,
+      "maxUsage": 0.7,
+      "drops": [
+        0.05,
+        0.06,
+        0.08,
+        0.1,
+        0.12
+      ],
+      "tp": 0.03,
+      "rsiLength": 14,
+      "rsiLevel": 30,
+      "emaLength": 200,
+      "slopeBars": 5,
+      "maxSlopeDrop": 0.03,
+      "crashBars": 10,
+      "maxCrashDrop": 0.22,
+      "emergency": 0.4,
+      "fee": 0.001,
+      "tick": 0.0001,
+      "qtyStep": 0.1,
+      "symbol": "SUIUSDT",
+      "baseAsset": "SUI",
+      "quoteAsset": "USDT",
+      "minQty": 0.1,
+      "minNotional": 5,
+      "slippageBps": 0
+    },
+    "tf": "5m",
+    "enabled": true,
+    "requested": false,
+    "metrics": {
+      "tf": "5m",
+      "warmupBars": 8928,
+      "full": {
+        "profitPct": 42.983924928570815,
+        "drawdownPct": 17.636046316300277,
+        "cycles": 137,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 112.8402777662037,
+        "orders": 393
+      },
+      "train": {
+        "profitPct": 35.1553109902997,
+        "drawdownPct": 14.055984763997817,
+        "cycles": 104,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 22.513888877314816,
+        "orders": 298
+      },
+      "validation": {
+        "profitPct": 6.5182064543707785,
+        "drawdownPct": 23.985289141050778,
+        "cycles": 33,
+        "winRate": 100,
+        "openPosition": true,
+        "maxInvested": 519.53125,
+        "longestCycleDays": 112.8402777662037,
+        "orders": 96
+      }
+    }
+  }
+]

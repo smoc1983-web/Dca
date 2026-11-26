@@ -1,0 +1,306 @@
+{
+  "prepared": "2026-11-26",
+  "scope": "local source snapshot; production not verified",
+  "files": [
+    {
+      "path": ".gitignore",
+      "source": "authored for migration",
+      "sha256": "9e74906dfbb3da404ca5730081aa9218cd42c4dd72b68ef167ff35850ea1b2fd"
+    },
+    {
+      "path": "AGENTS.md",
+      "source": "authored for migration",
+      "sha256": "b3ac46f2616acd1726301185c87c5f7472f31157df2c2b76e5cdfc7dc1dee7e1"
+    },
+    {
+      "path": "archive/local-pc/activation.mjs",
+      "source": "outputs/local-pc/activation.mjs",
+      "sha256": "c79a460350b506474bebebfda60b37d25da9c0a32dd733db93d3dff77a748299"
+    },
+    {
+      "path": "archive/local-pc/all20-notifications.test.mjs",
+      "source": "outputs/local-pc/all20-notifications.test.mjs",
+      "sha256": "4614b554c300b30f20b689500cc84e7df646e0ec345a28ea46bfa3c0b91c2450"
+    },
+    {
+      "path": "archive/local-pc/bot.mjs",
+      "source": "outputs/local-pc/bot.mjs",
+      "sha256": "7dd21eeb21a9b37aa29df388a5849affb9e181b3945a0b6c8c92d1de29022952"
+    },
+    {
+      "path": "archive/local-pc/bridge.test.mjs",
+      "source": "outputs/local-pc/bridge.test.mjs",
+      "sha256": "46d0faed3de6f14863ef82fd16f3c7364aab431573d809bc4a58f54d948d0fc8"
+    },
+    {
+      "path": "archive/local-pc/chart-cycle-messages.test.mjs",
+      "source": "outputs/local-pc/chart-cycle-messages.test.mjs",
+      "sha256": "4506c480e63283d466b5e29e433c65f0ba4c1169b96fabdc7547c50b4f4b3c56"
+    },
+    {
+      "path": "archive/local-pc/continuous-cycles.test.mjs",
+      "source": "outputs/local-pc/continuous-cycles.test.mjs",
+      "sha256": "a6726211eb77b75b90fd7cf453bc8bf42c3b7d644b6275a2446e4dce4d1469bb"
+    },
+    {
+      "path": "archive/local-pc/history-reconcile.mjs",
+      "source": "outputs/local-pc/history-reconcile.mjs",
+      "sha256": "e5060150c9fbec66e3601a2805e235dbac906d06c4a08ec68ec3807d1e23b017"
+    },
+    {
+      "path": "archive/local-pc/history-reconcile.test.mjs",
+      "source": "outputs/local-pc/history-reconcile.test.mjs",
+      "sha256": "8e81bff8e2ea7252d5756d9b9a6d8d83648d556acbd335247c84af715e843497"
+    },
+    {
+      "path": "archive/local-pc/missed-signals.mjs",
+      "source": "outputs/local-pc/missed-signals.mjs",
+      "sha256": "aff8b014d95cb0c040281c82df8a2f126d9f64bfaa6f98fb4ebbb9227652ae0a"
+    },
+    {
+      "path": "archive/local-pc/missed-signals.test.mjs",
+      "source": "outputs/local-pc/missed-signals.test.mjs",
+      "sha256": "0aa6c841dc050fd61903d075725b8c4e54d8875a2e89aeb01dd0641656cc41de"
+    },
+    {
+      "path": "archive/local-pc/notification-flow.test.mjs",
+      "source": "outputs/local-pc/notification-flow.test.mjs",
+      "sha256": "6de28f99466b5b6fc2049ac0a759904eba303c26cb469b7ebdf8132f18349549"
+    },
+    {
+      "path": "archive/local-pc/reconcile-flat.mjs",
+      "source": "outputs/local-pc/reconcile-flat.mjs",
+      "sha256": "a956e7f4a4cfb813d854b19e5983157ff95ec546ac71902c02735c6e7051e914"
+    },
+    {
+      "path": "archive/local-pc/reconcile-flat.test.mjs",
+      "source": "outputs/local-pc/reconcile-flat.test.mjs",
+      "sha256": "8cae5c5659e4de6881db82ab68c03a4ca0e68f3fd9be1f8b7e1de96aa84a12ae"
+    },
+    {
+      "path": "archive/local-pc/resilient-bridge.mjs",
+      "source": "outputs/local-pc/resilient-bridge.mjs",
+      "sha256": "e65e4393e402c840cb1b147be0feab5871cb57ba870a80caabf8c12b2d0a96e3"
+    },
+    {
+      "path": "archive/local-pc/watchlist-engine.mjs",
+      "source": "outputs/local-pc/watchlist-engine.mjs",
+      "sha256": "305e87f869b6b4ff2277c0c426233dbf08c9e11229bc0956105c05f805ef7ed9"
+    },
+    {
+      "path": "archive/local-pc/watchlist-runtime.mjs",
+      "source": "outputs/local-pc/watchlist-runtime.mjs",
+      "sha256": "0c59b08ad0665e14bb8abfba88ac013afbd75a7148e40041417e3aa32078dc77"
+    },
+    {
+      "path": "archive/pine/DCA800-manual-alerts-v14.pine",
+      "source": "outputs/alerts-check/DCA800-manual-alerts-v14.pine",
+      "sha256": "1b2b6455ce5ed38eb14ad4cd1eaa054a9574c8b3e18d074620a9130823cc4b6e"
+    },
+    {
+      "path": "archive/pine/DCA800-original-v11.pine",
+      "source": "outputs/strategy-tests/DCA800-original-v11.pine",
+      "sha256": "9ea35790f2c0e348f0315e695923892efc7cce0a49f5e3d553d2b876a85b3997"
+    },
+    {
+      "path": "archive/pine/DCA800-research-v12.pine",
+      "source": "outputs/strategy-tests/DCA800-research-v12.pine",
+      "sha256": "5a38b3722ca5457afbb40cea1c86d500114aff7fb4dd294a4c09b2bc25e9f89e"
+    },
+    {
+      "path": "archive/pine/DCA800-research-v12b.pine",
+      "source": "outputs/strategy-tests/DCA800-research-v12b.pine",
+      "sha256": "3f77c71fc43671676daf83f668035386a4e4b78ddb188cacd27a5057c3ce528c"
+    },
+    {
+      "path": "archive/pine/DCA800-research-v13.pine",
+      "source": "outputs/strategy-tests/DCA800-research-v13.pine",
+      "sha256": "11e948c731d00cfe763d9f566b2d36475c22a8dc23aad99b57b205a15444b183"
+    },
+    {
+      "path": "archive/pine/Manual-alerts-report.md",
+      "source": "outputs/alerts-check/Manual-alerts-report.md",
+      "sha256": "7004e4d865ebeb9e87029645c44541e0a363b6e5f54cbd256a00ca258c8ea247"
+    },
+    {
+      "path": "archive/pine/Report.md",
+      "source": "outputs/strategy-tests/Report.md",
+      "sha256": "2a225a5bd3e436f947fd2292ed2c42bae1bac7487ea3b6ac1bf557ec7a6f7146"
+    },
+    {
+      "path": "archive/pine/results.json",
+      "source": "outputs/strategy-tests/results.json",
+      "sha256": "e4e612980e65e8ba2e1a6e6558e85fe8dc5a5a33e3628f60d872c3e1a910c0f4"
+    },
+    {
+      "path": "archive/rank-current-original.mjs",
+      "source": "outputs/codex-cloud-transfer/research/rank-current.mjs",
+      "sha256": "f4d294094953c5ea61fde237c800cbdead8d4169b2ad93a7387f22991d3fb511"
+    },
+    {
+      "path": "archive/README.md",
+      "source": "authored for migration",
+      "sha256": "1aa14eeb2cedee059bc692cfa1b47a870fa9cb5d4d1019a90a0c2049a93d7643"
+    },
+    {
+      "path": "archive/watchlist-research/acquire.mjs",
+      "source": "outputs/watchlist-suite/acquire.mjs",
+      "sha256": "d671be85551ab2f3164b686cbd9861e7dbd9f7ab9b0d62e6ca1c0c8827103693"
+    },
+    {
+      "path": "archive/watchlist-research/data-manifest.json",
+      "source": "outputs/watchlist-suite/data-manifest.json",
+      "sha256": "1865106f112f029133328d3c0ec7fb470cf95a3280aca13613d494cf9e7c80a3"
+    },
+    {
+      "path": "archive/watchlist-research/markets.json",
+      "source": "outputs/watchlist-suite/markets.json",
+      "sha256": "28e6b1d6d71ef34326d664919e79af95fb427f9ef780d4e5c926eee299c999c9"
+    },
+    {
+      "path": "archive/watchlist-research/portfolio-results.json",
+      "source": "outputs/watchlist-suite/portfolio-results.json",
+      "sha256": "6b334b839563a720dc8e300a0b93b267d8e41883b45b6be1ec68597ef378993f"
+    },
+    {
+      "path": "archive/watchlist-research/portfolio.mjs",
+      "source": "outputs/watchlist-suite/portfolio.mjs",
+      "sha256": "02f292cd43a34efbffc1bcc805a7409f1c7e01056cac2530f4be04d523e78d60"
+    },
+    {
+      "path": "archive/watchlist-research/reference-engine.mjs",
+      "source": "outputs/watchlist-suite/reference-engine.mjs",
+      "sha256": "ec60868a3094c6c04423ed75dd53471a935da0b08accb1839c8798f54e8d86b3"
+    },
+    {
+      "path": "archive/watchlist-research/research-results.json",
+      "source": "outputs/watchlist-suite/research-results.json",
+      "sha256": "505ef88a98d7621c5c7efe522a3998f99d1c83008b2366ca22fcef602dc8b096"
+    },
+    {
+      "path": "archive/watchlist-research/Research.md",
+      "source": "outputs/watchlist-suite/Research.md",
+      "sha256": "07438cc547c1481eb264c67dc711117bfe597951bca107efb67809dd04fdf765"
+    },
+    {
+      "path": "archive/watchlist-research/research.mjs",
+      "source": "outputs/watchlist-suite/research.mjs",
+      "sha256": "f8c1f59a693ec93a924fd0a4a0d88377af7589c004ff1cb2c02fbbb82feb1799"
+    },
+    {
+      "path": "archive/watchlist-research/suite.test.mjs",
+      "source": "outputs/watchlist-suite/suite.test.mjs",
+      "sha256": "347d2fe69d1a8a38ebe059937caffd52488b909c13b7a53cdae30df489734e28"
+    },
+    {
+      "path": "archive/watchlist-research/watchlist-engine.mjs",
+      "source": "outputs/watchlist-suite/watchlist-engine.mjs",
+      "sha256": "ea705568257f709b7eea09e2b41e2d3daefa475ea521d832d8e424c030e54738"
+    },
+    {
+      "path": "archive/watchlist-research/watchlist-runtime.mjs",
+      "source": "outputs/watchlist-suite/watchlist-runtime.mjs",
+      "sha256": "988f97d79c7f163e894585168d457e97dcdb8f22905afcc3662b2122de282cac"
+    },
+    {
+      "path": "cloudflare/daily.mjs",
+      "source": "outputs/cloudflare/daily.mjs",
+      "sha256": "b05c2c8baefcb29b94e8d28aeee8f74b6694a34dbcee3a70562a79c10c803cbc"
+    },
+    {
+      "path": "cloudflare/runtime.mjs",
+      "source": "outputs/cloudflare/runtime.mjs",
+      "sha256": "21193bcb8b076b7e4cb5d1fdfd0e3ccbec294c03be624b3fad5e502c9da48586"
+    },
+    {
+      "path": "cloudflare/schema.sql",
+      "source": "outputs/cloudflare/schema.sql",
+      "sha256": "1ba9c5612d901827543cdfab571991add452d7ba23c6faf3595db868beba05a8"
+    },
+    {
+      "path": "cloudflare/watchlist-engine.mjs",
+      "source": "outputs/cloudflare/watchlist-engine.mjs",
+      "sha256": "0630f48523cc2c50b494ea11aaeec0dea5efaf1127786617cc19d9d327b41254"
+    },
+    {
+      "path": "cloudflare/worker.mjs",
+      "source": "outputs/cloudflare/worker.mjs",
+      "sha256": "97d967850abadd4efb762f0686bb3550893eef551eb57fe17f8724fd9aaf3046"
+    },
+    {
+      "path": "cloudflare/wrangler.example.json",
+      "source": "outputs/codex-cloud-transfer/cloudflare/wrangler.example.json",
+      "sha256": "fa8769fe1b14b66eff579b256bd9928ab4d38cb8e5850997f0c51abe0d10f630"
+    },
+    {
+      "path": "docs/JOURNAL.md",
+      "source": "authored for migration",
+      "sha256": "9687f02e627246f892910f8503c2bf5fc95224aa9fe209f66fca8a5d434abb74"
+    },
+    {
+      "path": "docs/LIMITATIONS.md",
+      "source": "authored for migration",
+      "sha256": "82ea44f7609741e8c84f1f3180171cb8beef6dc7513499820740ed3f0438ab6f"
+    },
+    {
+      "path": "docs/OPERATIONS.md",
+      "source": "authored for migration",
+      "sha256": "1125bb5616a42345f7944af3d0733fc2b9f8d8c72e695464dad223c2a9df8fad"
+    },
+    {
+      "path": "docs/STRATEGY.md",
+      "source": "authored for migration",
+      "sha256": "2370a92266df02b1d823ddea6fc0aea84d182f3b5d51336a41142abfd6e7203c"
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "source": "authored for migration",
+      "sha256": "d4733cba8396e98d79bdbd141461a0fc02b23c7328e5a12461cd6a6ca6201d7c"
+    },
+    {
+      "path": "package.json",
+      "source": "authored for migration",
+      "sha256": "c3d37ca47de675539b000d872b9e9d5ee10a7c64c49f86e25dc4df5a435f0b1d"
+    },
+    {
+      "path": "README.md",
+      "source": "authored for migration",
+      "sha256": "3824f15c39dcac3114bcfeb776081205c310288c4be080e97f6bad07e700fb7b"
+    },
+    {
+      "path": "research/OVERZONE.md",
+      "source": "authored for migration",
+      "sha256": "a367a0ac3be2ae9be4d3d7957f622daeaca7b995f437de3171472d9ea2ea10cc"
+    },
+    {
+      "path": "research/Platforms-and-DCA800.md",
+      "source": "outputs/platform-research/Platforms-and-DCA800.md",
+      "sha256": "e4e39e07555e35223486315b37c4bb2fbc68c8018e14aadd1e20892bcc9b1a53"
+    },
+    {
+      "path": "research/ranking-2026-11-06.md",
+      "source": "outputs/codex-cloud-transfer/research/DCA800-рейтинг-19-пар-2026-11-06.md",
+      "sha256": "0a6024c53b8ab44052f483f14802388435ba3ddbfb60993ae0ec52269747d2f4"
+    },
+    {
+      "path": "research/ranking-params.json",
+      "source": "outputs/codex-cloud-transfer/research/ranking-params.json",
+      "sha256": "f567d1fedf3d6be623be20bceda615d807c66f4e8247c87848624ca57d542447"
+    },
+    {
+      "path": "scripts/check.mjs",
+      "source": "authored for migration",
+      "sha256": "4b4d7258ded559ab1053d16d04cbfe887587dae83c098dcb9f03210ef1b79bd5"
+    },
+    {
+      "path": "strategy/markets.json",
+      "source": "outputs/codex-cloud-transfer/strategy/markets.json",
+      "sha256": "b483b657c37b9e88e6f5567049c0b3f916f40c46be1cac0a0f15febf0d07238e"
+    },
+    {
+      "path": "tests/core.test.mjs",
+      "source": "authored for migration",
+      "sha256": "e9297401013dd9d063966b3105aa47fb9d1d52324b736e0057ddde5e39a7bc54"
+    }
+  ]
+}

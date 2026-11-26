@@ -1,0 +1,20 @@
+{
+  "name": "dca800-development-copy",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "vars": {
+    "DAILY_SUMMARY": "off"
+  },
+  "triggers": {
+    "crons": []
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "development-copy-only",
+      "database_id": "REPLACE_ONLY_FOR_EXPLICITLY_AUTHORIZED_DEPLOYMENT"
+    }
+  ]
+}

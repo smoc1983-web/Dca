@@ -1,0 +1,1132 @@
+{
+  "createdAt": "2026-11-01T16:35:17.110Z",
+  "periodStart": "2025-02-01T00:00:00Z",
+  "periodEndExclusive": "2026-11-01T00:00:00Z",
+  "sources": [
+    "https://data.binance.vision/",
+    "https://data-api.binance.vision/"
+  ],
+  "archiveChecksumsVerified": true,
+  "files": [
+    {
+      "name": "AAVEUSDT-5m.json",
+      "sha256": "790a40c7446504ecd1f3315c0123a6341084374be638df546a501273eab0b47c",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "AAVEUSDT-warm-12h.json",
+      "sha256": "9708e00b27cbd4404694474edf40d18fbef8feec1e06e28cfa0d2e922cceea79",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "AAVEUSDT-warm-1d.json",
+      "sha256": "17c182d2e8b6c4def49f7060a232219bd4923a077c27f2d22f8560be1ec07431",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "AAVEUSDT-warm-1h.json",
+      "sha256": "c0b458dd625f021ae24cfa3c8cb571a2f1ee4614e3c2d67aaacd6e4406b4b665",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "AAVEUSDT-warm-2h.json",
+      "sha256": "edc40c256af285ce8e11601172db2a2fc720319208555a0b3c636dc2491333dd",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "AAVEUSDT-warm-3h.json",
+      "sha256": "9d300d8b10e1d98b991f884dedddd5933b457082fab406e8ba7823ac599a7594",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "AAVEUSDT-warm-4h.json",
+      "sha256": "4105262ee2551cb115b34e0185db724023dfea9249e92b7bf685181e196cfa19",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "AAVEUSDT-warm-6h.json",
+      "sha256": "babbc55121b40b0244825c4c6723d68cf76dffa0e041bab049e23fbbb817bec1",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "ADAUSDT-5m.json",
+      "sha256": "09d0418221c6295a83900c0d43963a309f04baa785c861be6bb3b4bd9b5a049e",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "ADAUSDT-warm-12h.json",
+      "sha256": "1f40e86d3d7d5147d24e74dc17f07f5fc3a1d3fc14863c495f6cbdd710d40739",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "ADAUSDT-warm-1d.json",
+      "sha256": "e9ba60d3c3eda1d238ce5bb5a769fa10badb891fc8ee656c18fbb219f6d7307d",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "ADAUSDT-warm-1h.json",
+      "sha256": "7f69354309a56372489768f91543a90f0d2f0221d2e2e53f534583e43407d19f",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "ADAUSDT-warm-2h.json",
+      "sha256": "ad4865f0f6411e374fdd7b0c0b6301ba045f299de6826ac38e43ba561984ca1d",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "ADAUSDT-warm-3h.json",
+      "sha256": "492b91a981a895fc738b40390a29fd433a99f7a94660de2ec7b7288380177842",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "ADAUSDT-warm-4h.json",
+      "sha256": "aa6edf26cd7f0a9efebee65bcfa7b015f9b68eb6688e86dc24f0872528c58687",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "ADAUSDT-warm-6h.json",
+      "sha256": "9ac9aed26b9502af98842a10cb3cb52383cd4bb16802828ad7fcdc148aca0fbc",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "ATOMUSDT-5m.json",
+      "sha256": "f6292b16aea73b7a34650a91296e5a2f33dc124ec2f825a037f1e29a0ba45674",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "ATOMUSDT-warm-12h.json",
+      "sha256": "f9c5d611d4d7583101c6c9e9337b7a60bff686710e4b310da9d2f0b7d545313b",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "ATOMUSDT-warm-1d.json",
+      "sha256": "80f94d43ff3f5eb3f307b0d878b6ea7618d02aebf3e14dae58401dac892bb3d4",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "ATOMUSDT-warm-1h.json",
+      "sha256": "b864ba1672aa7fd68fb8372e5bc4e32e40031eaa74ca68a31f1b62aa1e04e789",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "ATOMUSDT-warm-2h.json",
+      "sha256": "91e3aa19264bc7ea25e6d335522a8e414cd54eca79b55e3fda6d70bf23f77665",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "ATOMUSDT-warm-3h.json",
+      "sha256": "af550dfe6a9577a3f3ae87af90dfcccf436654628fb0d29b24d0b8ff8624803b",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "ATOMUSDT-warm-4h.json",
+      "sha256": "f020a1b9dc7baf693ca58b932e09a1e92ad7008458c87ef18e4d0907a4f14f63",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "ATOMUSDT-warm-6h.json",
+      "sha256": "461b68d136b733d0bfb81ecba28ae9ef2916a1153e79677e3eb19326f89c2e29",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "AVAXUSDT-5m.json",
+      "sha256": "38cb5475b4987cf162626d4e2f4816f4ffcf2070696c1c5f29f4215119b5bda3",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "AVAXUSDT-warm-12h.json",
+      "sha256": "0d2970c8761ce172e4ecce40702caaaee918b6ce260e801c324e083fb06b35f8",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "AVAXUSDT-warm-1d.json",
+      "sha256": "d98d5b6fec695c2b5eb1287b37842bbb1f819d42ae5b20538bd670dd04e55e6a",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "AVAXUSDT-warm-1h.json",
+      "sha256": "7e292917e93269ff7774fa6d910bc6cf84f0da5d1830661084dc0cfcffd8c369",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "AVAXUSDT-warm-2h.json",
+      "sha256": "5abe0fb4501979b7ab08402981c0077e59df12ad665657204a792c0e838675b6",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "AVAXUSDT-warm-3h.json",
+      "sha256": "8fa3433625d5faee831c3d7a8f8f4a3649e56a2005eff632337880684bc565bd",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "AVAXUSDT-warm-4h.json",
+      "sha256": "ff47454f85e4eb5a6671c8b1bd735c600c7ea863962393936365f760780970f0",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "AVAXUSDT-warm-6h.json",
+      "sha256": "6b1cbc27a5d1a8707fa3e9a274c89a64809f726636c56c6f7da1064588ab7bb3",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "BCHUSDT-5m.json",
+      "sha256": "52c5c5a4cf67e7fb2187086bbe59bccb5092c92992e958a11d394f25f738cbdd",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "BCHUSDT-warm-12h.json",
+      "sha256": "35be2656ebcff6e5c901757079c2f024bd18bce2962b81a1677ff1eb61670870",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "BCHUSDT-warm-1d.json",
+      "sha256": "598848fe079e6abb9f737ed7233f3b2619c4dcc0db080075b43d1c64859b986a",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "BCHUSDT-warm-1h.json",
+      "sha256": "49b5ed569939373177db3e54ebd63246956edfc314e9dacb7462360b3457311d",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "BCHUSDT-warm-2h.json",
+      "sha256": "2a5b611899c5d7c84d7dd4f8cbbfce31893ab16f209bfefc683122b11d92f26a",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "BCHUSDT-warm-3h.json",
+      "sha256": "d635e509e4cc7322c04b12f86cd58a9977188b9e6de2a4e2cffca737c9362824",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "BCHUSDT-warm-4h.json",
+      "sha256": "2f794c89cf30dda652a7a3b15e564830cc2576ad1a5253227173825892a7d8bf",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "BCHUSDT-warm-6h.json",
+      "sha256": "32a0595e7bdf9e434520673ef92f983fe29c0671259997d547aaaf01d3ebfe5d",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "BNBUSDT-5m.json",
+      "sha256": "36306f7c4ab757d829ea281f2b779742fba481368f92be9c33459e25e395348d",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "BNBUSDT-warm-12h.json",
+      "sha256": "4e6f0aa642073a4fea7748cc9302871c26537372410e7e8899c597aaa847bed3",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "BNBUSDT-warm-1d.json",
+      "sha256": "021bf8265c68207acd06e43c34ed8ffa4ac0ed64a07aeee2241572dd0830d39c",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "BNBUSDT-warm-1h.json",
+      "sha256": "a244684b037ea69811576a00db3ba4a0130f9720d0887a799411e66d04d9f99a",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "BNBUSDT-warm-2h.json",
+      "sha256": "4b22c26d7acc84367c4a45fda480cc5ebf989ea93c230d3e27df21e756dffd1f",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "BNBUSDT-warm-3h.json",
+      "sha256": "4bc8fc88b40bbbcc48b2385134581b3943a39bdea5ce71ff1a49ef7d2da678ea",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "BNBUSDT-warm-4h.json",
+      "sha256": "981f2774ae9dffc0b48c344b371ce22f816b13b60defea0994372bad00ba85fb",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "BNBUSDT-warm-6h.json",
+      "sha256": "61a0d3ffc0b009af00af46d41aa7f18dc73b476f44d204bdea3286be944f9570",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "BTCUSDT-5m.json",
+      "sha256": "27e9b3bfc411ee8c13231a4ded7c4cddf219c2b412b3c7c96763de96a2b962c6",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "BTCUSDT-warm-12h.json",
+      "sha256": "65ebfe9e6890737e9191387016873196c902514d9cb88bb1b5b551e906218dd3",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "BTCUSDT-warm-1d.json",
+      "sha256": "4f7efe86ebe19bff11172b97232ad7ac18e682fe10b398388fea7e3e75d8397d",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "BTCUSDT-warm-1h.json",
+      "sha256": "31f87e7978df70dbb8736b8e8c8b709793558e889b134feb6aa77372f5924b12",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "BTCUSDT-warm-2h.json",
+      "sha256": "a09e763dfa5f17a26a2932d4c35365e93ba452abdddf3b1488fdbaa20b679c1f",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "BTCUSDT-warm-3h.json",
+      "sha256": "b23acca493648674d604a33a3866c27f1e0a24de7ce87384a153d08b0b8b6994",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "BTCUSDT-warm-4h.json",
+      "sha256": "9a0553a5fb3397be805404d6e2fd7a7c380e9a2f0f0790a6bdeea66216d96079",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "BTCUSDT-warm-6h.json",
+      "sha256": "bf0c6e4aefe71c30c616965b3f53ca28e5cc8621c8379bf97f5ce67ed7955453",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "DOGEUSDT-5m.json",
+      "sha256": "57d5faec40fba247ece57965301ec4d780e1c9a136cfb09eaa1839a52862d75d",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "DOGEUSDT-warm-12h.json",
+      "sha256": "e947bcc1b7ea344443af4c7cc2efc70f62979d59a4ffb5191c6837ce46d784ef",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "DOGEUSDT-warm-1d.json",
+      "sha256": "dba5fe15f4b08374fb05fcbaddf00be1eec155a615d593afcb2514d16bbbd496",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "DOGEUSDT-warm-1h.json",
+      "sha256": "30e456e36f36ab8020db1e5f373caae0d4b97c990fec838a4f81e2c7411fcc66",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "DOGEUSDT-warm-2h.json",
+      "sha256": "f666620cbdd7fbc6fa9d7ca1d9faed8485ed5c037ea87a8197a4ce190f6be909",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "DOGEUSDT-warm-3h.json",
+      "sha256": "e2c354f79031d082d1487d703cdc0939485cba24051f1f5b995691864bfe34b3",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "DOGEUSDT-warm-4h.json",
+      "sha256": "098bac5d1fb0ba5d075ab36cca071ba033249ccdd24db553303faf6341d0a0d5",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "DOGEUSDT-warm-6h.json",
+      "sha256": "3dd0731fa38f270066645b6ea0d5e40284a6438a5fa223caa89ecfc666b50c97",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "DOTUSDT-5m.json",
+      "sha256": "8f6091bf794932133da7739cad785ec62021725f057c05cd337c0c54876f5715",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "DOTUSDT-warm-12h.json",
+      "sha256": "1ac1f043ab84eb2bb70ad7d7dacce1c1c0f03e8965ab0e0f3745d9f6231347c0",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "DOTUSDT-warm-1d.json",
+      "sha256": "18f9244b70f7952077b85a4853523731ee763d8cfb6f183c7f3720b01d9d5c82",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "DOTUSDT-warm-1h.json",
+      "sha256": "0ebbb6e1fc39a8332b58f0538ba75f60d5f1bf9a0765f17260165b89f5c5ea43",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "DOTUSDT-warm-2h.json",
+      "sha256": "f74a62aac234396b3713a83286784889a871b8be2eff549f305041aa7ee354ee",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "DOTUSDT-warm-3h.json",
+      "sha256": "3832f6d4e9f6db93e58fd4ce5d82939913b1a2c3f54e4ac3eb637596f9bf189b",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "DOTUSDT-warm-4h.json",
+      "sha256": "e16db2ae4d1902f522f364570721db692aba7833f72a86c53d7946707d5bca39",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "DOTUSDT-warm-6h.json",
+      "sha256": "9bed463567c2f9645e324fd894f4f4a42d414bcb86253d895c2e4b41f30ac959",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "ETHUSDT-5m.json",
+      "sha256": "4f2bc60c3866ed4f4954982cfa03e170c224f6231bdd5358d38195192d9d2287",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "ETHUSDT-warm-12h.json",
+      "sha256": "f04fb6ead2c682926f575cc7fa2694a8146be1a8926f19bd22022a10a3bf1519",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "ETHUSDT-warm-1d.json",
+      "sha256": "3ee2f52d8cd14b85267b03767e1f185cfc47b4a2f545091802d13416f360f1f4",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "ETHUSDT-warm-1h.json",
+      "sha256": "c5601983e6f3a604183fd582c6b9a8a6de47507f5dd2afbf63baaf625a8a98c5",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "ETHUSDT-warm-2h.json",
+      "sha256": "34f09dbaf95dd0e28c3ea21874423d71a065b463454633bc0785df3625527ce0",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "ETHUSDT-warm-3h.json",
+      "sha256": "d40b7c4f558232bac00732bb27b14f62c69639e78269dc55b4e9aba4832d4654",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "ETHUSDT-warm-4h.json",
+      "sha256": "fe2c6044b6a1a3d7ce5d37f7cd15f7ed53597e52e27a7b9a6033d73ff420b3f2",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "ETHUSDT-warm-6h.json",
+      "sha256": "85f4ae729e8b912e68924926013fd770ded0fa640e63b1643b8119d351a80eb1",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "LDOUSDT-5m.json",
+      "sha256": "a0c38a0871d3c9bbfd23eb87fe78fa566e38e9c2cbc24d86e50f7a0bef224de4",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "LDOUSDT-warm-12h.json",
+      "sha256": "025f1825d7c3a411511d19ebe079cca194b78102a057eb645173337dcc84159d",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "LDOUSDT-warm-1d.json",
+      "sha256": "db4c751bf06fe6e0c5bb819daa7b9c81e8b8e8dd336be78b1cc45ae51a90cb39",
+      "rows": 968,
+      "first": "2022-05-09T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "LDOUSDT-warm-1h.json",
+      "sha256": "d3aabd2e9436063d6a47f469cb907662739bec8f3f6454f13a8cabc3cea1b682",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "LDOUSDT-warm-2h.json",
+      "sha256": "0e39164fb89d866e7c6351e2484435a428742cbb8d974c166894cc07d6e7dec0",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "LDOUSDT-warm-3h.json",
+      "sha256": "66649ee5482e213c00e27e7ba844d621823fd2930fc7b4c88c5e185e4f6e029b",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "LDOUSDT-warm-4h.json",
+      "sha256": "528922fd954240b5ce5771057190e41190f6718927f14e94816bde027d171f1d",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "LDOUSDT-warm-6h.json",
+      "sha256": "308d3a3ccf4ddb1d8e6704b6f5fbb1b4deb5973361a33880aa8eaa69a6ff1049",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "LINKUSDT-5m.json",
+      "sha256": "37f7fd155ed9a488a3d6d4e85b9c78d4a679b65d3f3b0e8c3bde7b7b489aa747",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "LINKUSDT-warm-12h.json",
+      "sha256": "0ae5552a07b8039038fc5e174b7ac8e95a173c0957e4500b26bb7430f8997033",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "LINKUSDT-warm-1d.json",
+      "sha256": "c90bc8e7b8b8999d10b6c93e2ec492ad8e99385cdd47c17ae393234eaa64f3c6",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "LINKUSDT-warm-1h.json",
+      "sha256": "b1abd1768f67ea33c9726c057720a1d4609480c53f57392e99e6538899b71e2c",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "LINKUSDT-warm-2h.json",
+      "sha256": "eb2968485f8b8988a594d439a8e355b634e6a8668c9d83eaacfd98e8a21b7923",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "LINKUSDT-warm-3h.json",
+      "sha256": "e88830e6a0161794c343bfc827033b1065d72815d8d2aeddc2d09cd22af908fe",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "LINKUSDT-warm-4h.json",
+      "sha256": "c43c3b07de058ae52cfca0473443054c5d337dc84a46da248116c0f87f5a864e",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "LINKUSDT-warm-6h.json",
+      "sha256": "bfb9544b866f2ef54284f80989360476c7b73f298251f05ea8bb5d8737c40cb6",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "LTCUSDT-5m.json",
+      "sha256": "7a77eb54367f68bbf4c835e02de0a657a0d598f581e1c01abcc1f604e3ed055c",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "LTCUSDT-warm-12h.json",
+      "sha256": "59255c871362d90f1456b8f3475dae88708d85ded481e61a396f2445f1cab2da",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "LTCUSDT-warm-1d.json",
+      "sha256": "fa04ca90ab2a4694735af3d2372ea1920d6a2228b49d134cd85b33021aafcca6",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "LTCUSDT-warm-1h.json",
+      "sha256": "66a9a62bc3bbdb5361cb850f1b06a865467018b39f32f05f08f1ab235108779c",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "LTCUSDT-warm-2h.json",
+      "sha256": "2fb9cb0fbb87374f486235e2a8aa5cdcb0303f17c5d27a4ac91f549e70629372",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "LTCUSDT-warm-3h.json",
+      "sha256": "ae8fbe8fdb2b2f9ffef9d36e88dd91eabce829e4e7de79b305f54041cb770486",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "LTCUSDT-warm-4h.json",
+      "sha256": "1cb5aba118a0b566062d38d4566d3e217b1f14f13873d46bf0f70e9ef753ee54",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "LTCUSDT-warm-6h.json",
+      "sha256": "7d887baa0c1d0beaffa6f44db1baa8fa9a7a1247e8f76b3d9a6287a1b29178a7",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "NEARUSDT-5m.json",
+      "sha256": "a08693eec9e0ba518d753185715e7b9228963d3067d13d8fa3243fbed6261543",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "NEARUSDT-warm-12h.json",
+      "sha256": "a3ed4faccd1e35205a042a3c5224904efb86f81d90fece1d58adfe91ecf10214",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "NEARUSDT-warm-1d.json",
+      "sha256": "09665e28d7f4c0961209ee55b7d14f04ef9d790344e3ac65bf9630ea0b56185d",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "NEARUSDT-warm-1h.json",
+      "sha256": "18fcbd67856cb34f5fdd23e0eb8c757a1e6cd1085b750e3dc6d4ffc7d52eed52",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "NEARUSDT-warm-2h.json",
+      "sha256": "6744a67ecd2b289ffb9aaabd5c526df444d53625a9a075cbe7dae26b4dedea56",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "NEARUSDT-warm-3h.json",
+      "sha256": "4bea4ab3f2483a197d0ff043ed6e0029354928dbc334bebb5eb9d1afda0f11fe",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "NEARUSDT-warm-4h.json",
+      "sha256": "0c133b3575440b19c6ce7a269988080bab3f4ba4bf7a522deff8f21bb25ec7eb",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "NEARUSDT-warm-6h.json",
+      "sha256": "1d7f37e600eace1bded71d2ae1a028a85e703e43e5e36fc80c7c92b9890cff02",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "SOLUSDT-5m.json",
+      "sha256": "96aa064b5b4a31f7c1f74fea5ccf38855ba82a81e144cbbbb2163ef2e1eb2d56",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "SOLUSDT-warm-12h.json",
+      "sha256": "86d860405ac2f91edf69f19a19ea9e9b3038733c5b36d574615439d1508f59e9",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "SOLUSDT-warm-1d.json",
+      "sha256": "8fe1ffb3852e0911fe7007af0612815585d1a9124e068443fcbf166d6fdfd627",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "SOLUSDT-warm-1h.json",
+      "sha256": "392897623fc2a0fe95811e4e95b33f140a1286746afd8ffddf957a96d2756b50",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "SOLUSDT-warm-2h.json",
+      "sha256": "775683e7ae609353592466f3634e4b8a0514097ea75a7450f418f7cdcb25cdbe",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "SOLUSDT-warm-3h.json",
+      "sha256": "36f4b5de68fdca9d763fbdccd8c7c069719ca42529fe7fee70101075a0b02d11",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "SOLUSDT-warm-4h.json",
+      "sha256": "a2c5f06b2b4b24cffb49505de3cfe599783e60e2b7db8e691e835d022d1cb881",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "SOLUSDT-warm-6h.json",
+      "sha256": "32613a1bc587a95cab6df0cbe1db5d2dd9c2459beb85957e0da91681c7d594ac",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "SUIUSDT-5m.json",
+      "sha256": "bd3117a24cfd5bd12bad78b67e442dc96650022e0f0b6c1eb38b64b0184dd3b5",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "SUIUSDT-warm-12h.json",
+      "sha256": "ea4bf6f85382a0649d577baf9cfec470b54dd54862c41364dbb194e62fd32775",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "SUIUSDT-warm-1d.json",
+      "sha256": "c774adb61199050f9769d0f42045cf6ce62070031b9f2cba58bb5ce68fe7af0b",
+      "rows": 609,
+      "first": "2023-05-03T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "SUIUSDT-warm-1h.json",
+      "sha256": "7202616da738c9841418cb0a344fd775a1ae29ea76b5d73cbdb2f1e19730f287",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "SUIUSDT-warm-2h.json",
+      "sha256": "832bd7210ad4935a22d4e08747a14f08b1a7401eed7fe3677f6f4bc11f66efba",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "SUIUSDT-warm-3h.json",
+      "sha256": "b606f5169d2b12d01e322d4986df98ef84532df41b9d7ea2592f6c9719249b14",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "SUIUSDT-warm-4h.json",
+      "sha256": "a2442d21c56a05fdcf8237024e2bd5dff922a66521195e3451a71b478caa6a9b",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "SUIUSDT-warm-6h.json",
+      "sha256": "7667e74554517fc1eb7c923fcf017c03952702c4b38f2bab0554cc51966b298d",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "TRXUSDT-5m.json",
+      "sha256": "5a33d4111eff06f76006445c561368fd0105a4f6f4680107dcbb1ba8dfe1c76a",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "TRXUSDT-warm-12h.json",
+      "sha256": "873c9986c70db1783c48b268089a8ea8512f4b93dd1111a35164665fd0c53d16",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "TRXUSDT-warm-1d.json",
+      "sha256": "401d9b673975a40e145ec5823742fe4e72bb730febb5f0e02f34a3e4aa65880b",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "TRXUSDT-warm-1h.json",
+      "sha256": "c5958b88ca009e7c8497d7e22b3b839df0da4d55c40e2593e1e7db210d5c4665",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "TRXUSDT-warm-2h.json",
+      "sha256": "d7b9dbf63dcd0b12659deab2d6ddf18f38b1fab10b34d983fdb789af7d8ceacd",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "TRXUSDT-warm-3h.json",
+      "sha256": "05549d10884ee270b51d58c97dd4f39087a6b291c12ababc401afab1da8d9bda",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "TRXUSDT-warm-4h.json",
+      "sha256": "ad03b70c24a0bf042b6a65c194f500a139fcaf66ff35568c49ccd41aeeb1d95a",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "TRXUSDT-warm-6h.json",
+      "sha256": "7404a2f78613be1f82dbf3d353f703b07838bfb0e3c7090240a1789616397dab",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "UNIUSDT-5m.json",
+      "sha256": "003a2cf8369c3acf1e5db1c1f6157399afceee481db4f3a66eaae2ec66536560",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "UNIUSDT-warm-12h.json",
+      "sha256": "116ef62e26b93c0263ab974d07a6e555c24fca7224e8cec202d65f8a4804e5ff",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "UNIUSDT-warm-1d.json",
+      "sha256": "31af4576c602de6b2faece9c43dafe141fc7b20c7ae31d6cb1cf1d4bd72cdea7",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "UNIUSDT-warm-1h.json",
+      "sha256": "cec38419b93f51d5ad77230a662e884fd001bb81478cac48d5dc155aafd487a4",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "UNIUSDT-warm-2h.json",
+      "sha256": "832b57018416c2b99fc431be146f5b0dba8921749f966c8b5b666f9ae62da55b",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "UNIUSDT-warm-3h.json",
+      "sha256": "67680dc81e93fc47e7858d394f913e869c62f3893e89e1430f655ff66d832c6c",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "UNIUSDT-warm-4h.json",
+      "sha256": "97c3321846eff1f0a7adeb4003f35bc2c6ad9985f0d576ec132dfec93ec4725e",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "UNIUSDT-warm-6h.json",
+      "sha256": "f7f94912d8b73c81ea3f27d8b20036b42642928f8a9e7f849458b48c96286c21",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "XRPUSDT-5m.json",
+      "sha256": "aad464d241438a4c3cf84c81832fb39eb0bc72c38d0dfbef39e38dde3be2519d",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "XRPUSDT-warm-12h.json",
+      "sha256": "d2f3f913094d52253cb4889f0316b4eb8328a2573a3ed7f5dce0a9778f719ca4",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "XRPUSDT-warm-1d.json",
+      "sha256": "02c05c75507478afef582f955bd6db2f0309b061607809339d50266e108b9a53",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "XRPUSDT-warm-1h.json",
+      "sha256": "d6df2d2ba67e39b78cfe27c4f7b090a054d6ee395707907523e8f8f3d610d821",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "XRPUSDT-warm-2h.json",
+      "sha256": "b54752925c0341c64882244b7f2e80f5ded8d1fcd3a65e8d36c46cdcca737b53",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "XRPUSDT-warm-3h.json",
+      "sha256": "8c89809fef7e4c8458eeb6dc4dc1c40d07cb3074110b9aaac6c8a8b28f27eef1",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "XRPUSDT-warm-4h.json",
+      "sha256": "74fa218d45d66db0a1d934084dc8c8cb9644b2a57ebed7439e11d8d112a0bdde",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "XRPUSDT-warm-6h.json",
+      "sha256": "a742b72050a7ee5e7d712778c3c503c61b45c47d969af4bef2df590c2aacb0c1",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    },
+    {
+      "name": "ZECUSDT-5m.json",
+      "sha256": "c7d537c813cee877594bdd98fdb596a3a4a4c164a7e58884a10432f5a5c5c63d",
+      "rows": 192672,
+      "first": "2025-01-01T00:00:00.000Z",
+      "last": "2026-10-31T23:55:00.000Z"
+    },
+    {
+      "name": "ZECUSDT-warm-12h.json",
+      "sha256": "f6a161cbe7f6a8821511651419561e10dd68a00e375bcf4d508485434dccfb17",
+      "rows": 1000,
+      "first": "2023-08-20T00:00:00.000Z",
+      "last": "2024-12-31T12:00:00.000Z"
+    },
+    {
+      "name": "ZECUSDT-warm-1d.json",
+      "sha256": "e0c31e59b3ef5bbc4a82c8919c85003524c1490fe33287e8949cc852a2551acd",
+      "rows": 1000,
+      "first": "2022-04-07T00:00:00.000Z",
+      "last": "2024-12-31T00:00:00.000Z"
+    },
+    {
+      "name": "ZECUSDT-warm-1h.json",
+      "sha256": "9cf7a6c8c4745d037f1ebb4217502dc8f40c13c98cd506ab6a49d2557828a96e",
+      "rows": 1000,
+      "first": "2024-11-20T08:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "ZECUSDT-warm-2h.json",
+      "sha256": "9da42044a0ea8d8ce866b994b3d7e3041e4dc5f037153dd686c4f4ab39d6d5ec",
+      "rows": 1000,
+      "first": "2024-10-09T16:00:00.000Z",
+      "last": "2024-12-31T22:00:00.000Z"
+    },
+    {
+      "name": "ZECUSDT-warm-3h.json",
+      "sha256": "0d75e8a55766b71368ec4443fb6dea086d9f82a49ea5339c77a0a501aa0c50b9",
+      "rows": 3000,
+      "first": "2024-08-29T00:00:00.000Z",
+      "last": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "name": "ZECUSDT-warm-4h.json",
+      "sha256": "494948610572ece92fc92a6713ffc70172264e7f81d1b2826b1997dfb27e2d6b",
+      "rows": 1000,
+      "first": "2024-07-18T08:00:00.000Z",
+      "last": "2024-12-31T20:00:00.000Z"
+    },
+    {
+      "name": "ZECUSDT-warm-6h.json",
+      "sha256": "4a9a6f8ef868caf6e543fccb1d501f9a5d12fedad23ea4caf04cd8619b72b103",
+      "rows": 1000,
+      "first": "2024-04-26T00:00:00.000Z",
+      "last": "2024-12-31T18:00:00.000Z"
+    }
+  ]
+}

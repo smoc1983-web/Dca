@@ -1,0 +1,78 @@
+[
+  {
+    "key": "BTCUSDT:5m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.01,\"qtyStep\":0.00001,\"symbol\":\"BTCUSDT\",\"baseAsset\":\"BTC\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.00001,\"exchangeQtyStep\":0.00001,\"exchangeMinQty\":0.00001,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "SOLUSDT:30m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.01,\"qtyStep\":0.001,\"symbol\":\"SOLUSDT\",\"baseAsset\":\"SOL\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.001,\"exchangeQtyStep\":0.001,\"exchangeMinQty\":0.001,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "UNIUSDT:15m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.001,\"qtyStep\":0.001,\"symbol\":\"UNIUSDT\",\"baseAsset\":\"UNI\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.001,\"exchangeQtyStep\":0.01,\"exchangeMinQty\":0.01,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "ETHUSDT:5m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.01,\"qtyStep\":0.0001,\"symbol\":\"ETHUSDT\",\"baseAsset\":\"ETH\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.0001,\"exchangeQtyStep\":0.0001,\"exchangeMinQty\":0.0001,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "XRPUSDT:45m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.0001,\"qtyStep\":1,\"symbol\":\"XRPUSDT\",\"baseAsset\":\"XRP\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":1,\"exchangeQtyStep\":0.1,\"exchangeMinQty\":0.1,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "ADAUSDT:5m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.0001,\"qtyStep\":1,\"symbol\":\"ADAUSDT\",\"baseAsset\":\"ADA\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":1,\"exchangeQtyStep\":0.1,\"exchangeMinQty\":0.1,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "ZECUSDT:5m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.01,\"qtyStep\":0.0001,\"symbol\":\"ZECUSDT\",\"baseAsset\":\"ZEC\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.0001,\"exchangeQtyStep\":0.001,\"exchangeMinQty\":0.001,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "LTCUSDT:15m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.01,\"qtyStep\":0.01,\"symbol\":\"LTCUSDT\",\"baseAsset\":\"LTC\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.01,\"exchangeQtyStep\":0.001,\"exchangeMinQty\":0.001,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "LDOUSDT:30m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.0001,\"qtyStep\":0.001,\"symbol\":\"LDOUSDT\",\"baseAsset\":\"LDO\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.001,\"exchangeQtyStep\":0.01,\"exchangeMinQty\":0.01,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "BNBUSDT:15m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.01,\"qtyStep\":0.001,\"symbol\":\"BNBUSDT\",\"baseAsset\":\"BNB\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.001,\"exchangeQtyStep\":0.001,\"exchangeMinQty\":0.001,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "DOGEUSDT:15m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.00001,\"qtyStep\":0.001,\"symbol\":\"DOGEUSDT\",\"baseAsset\":\"DOGE\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.001,\"exchangeQtyStep\":1,\"exchangeMinQty\":1,\"exchangeMinNotional\":1,\"signalOnly\":true}"
+  },
+  {
+    "key": "LINKUSDT:5m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.001,\"qtyStep\":0.001,\"symbol\":\"LINKUSDT\",\"baseAsset\":\"LINK\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.001,\"exchangeQtyStep\":0.01,\"exchangeMinQty\":0.01,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "AVAXUSDT:5m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.001,\"qtyStep\":0.001,\"symbol\":\"AVAXUSDT\",\"baseAsset\":\"AVAX\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.001,\"exchangeQtyStep\":0.01,\"exchangeMinQty\":0.01,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "DOTUSDT:30m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.001,\"qtyStep\":0.001,\"symbol\":\"DOTUSDT\",\"baseAsset\":\"DOT\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.001,\"exchangeQtyStep\":0.01,\"exchangeMinQty\":0.01,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "ATOMUSDT:5m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.001,\"qtyStep\":0.001,\"symbol\":\"ATOMUSDT\",\"baseAsset\":\"ATOM\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.001,\"exchangeQtyStep\":0.01,\"exchangeMinQty\":0.01,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "TRXUSDT:15m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.0001,\"qtyStep\":1,\"symbol\":\"TRXUSDT\",\"baseAsset\":\"TRX\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":1,\"exchangeQtyStep\":0.1,\"exchangeMinQty\":0.1,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "BCHUSDT:30m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.1,\"qtyStep\":0.0001,\"symbol\":\"BCHUSDT\",\"baseAsset\":\"BCH\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.0001,\"exchangeQtyStep\":0.001,\"exchangeMinQty\":0.001,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "AAVEUSDT:5m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.01,\"qtyStep\":0.001,\"symbol\":\"AAVEUSDT\",\"baseAsset\":\"AAVE\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.001,\"exchangeQtyStep\":0.001,\"exchangeMinQty\":0.001,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  },
+  {
+    "key": "SUIUSDT:5m",
+    "params": "{\"initialCapital\":800,\"baseCash\":25,\"multiplier\":1.5,\"maxUsage\":0.7,\"drops\":[0.05,0.06,0.08,0.1,0.12],\"tp\":0.03,\"rsiLength\":14,\"rsiLevel\":30,\"emaLength\":200,\"slopeBars\":5,\"maxSlopeDrop\":0.03,\"crashBars\":10,\"maxCrashDrop\":0.22,\"emergency\":0.4,\"fee\":0.001,\"tick\":0.0001,\"qtyStep\":0.001,\"symbol\":\"SUIUSDT\",\"baseAsset\":\"SUI\",\"quoteAsset\":\"USDT\",\"minQty\":0,\"minNotional\":0,\"slippageBps\":0,\"modelQtyStep\":0.001,\"exchangeQtyStep\":0.1,\"exchangeMinQty\":0.1,\"exchangeMinNotional\":5,\"signalOnly\":true}"
+  }
+]

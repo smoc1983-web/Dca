@@ -1,0 +1,212 @@
+//@version=6
+//@strategy_alert_message {"chat_id":"[CHAT_ID_REDACTED]","text":"{{ticker}} | {{strategy.order.alert_message}} | Цена: {{strategy.order.price}} | Количество: {{strategy.order.contracts}}"}
+strategy("DCA800 Survival RU v11", shorttitle="DCARU11", overlay=true, pyramiding=20, initial_capital=800, currency=currency.USD, commission_type=strategy.commission.percent, commission_value=0.10, process_orders_on_close=true, calc_on_every_tick=false, calc_on_order_fills=false, max_labels_count=500)
+// 1. ВХОД
+rsiLength = input.int(14, "Период RSI", minval=2, group="1. Вход")
+rsiOversold = input.int(30, "Перепроданность RSI", minval=5, maxval=50, group="1. Вход")
+// 2. КАПИТАЛ
+baseCash = input.float(25.0, "Стартовый ордер, USDT", minval=1.0, step=1.0, group="2. Капитал")
+dcaMultiplier = input.float(1.5, "Множитель DCA", minval=1.0, step=0.1, group="2. Капитал")
+maxCapitalUsagePct = input.float(70.0, "Максимум депозита в позиции, %", minval=20.0, maxval=100.0, step=1.0, group="2. Капитал")
+// 3. УСРЕДНЕНИЯ
+dca1Pct = input.float(5.0, "DCA1 шаг, %", minval=0.5, step=0.5, group="3. Усреднение") / 100.0
+dca2Pct = input.float(6.0, "DCA2 шаг, %", minval=0.5, step=0.5, group="3. Усреднение") / 100.0
+dca3Pct = input.float(8.0, "DCA3 шаг, %", minval=0.5, step=0.5, group="3. Усреднение") / 100.0
+dca4Pct = input.float(10.0, "DCA4 шаг, %", minval=0.5, step=0.5, group="3. Усреднение") / 100.0
+dca5Pct = input.float(12.0, "DCA5 шаг, %", minval=0.5, step=0.5, group="3. Усреднение") / 100.0
+// 4. ТЕЙК
+tpPct = input.float(3.0, "Тейк от средней цены, %", minval=0.1, step=0.1, group="4. Тейк") / 100.0
+// 5. ТРЕНД
+useTrendFilter = input.bool(true, "Фильтр тренда", group="5. Тренд")
+trendLength = input.int(200, "EMA тренда", minval=20, maxval=500, group="5. Тренд")
+trendSlopeBars = input.int(5, "Свечей для наклона EMA", minval=1, maxval=30, group="5. Тренд")
+maxNegativeSlopePct = input.float(3.0, "Допустимое падение EMA, %", minval=0.1, maxval=20.0, step=0.1, group="5. Тренд") / 100.0
+trendEMA = ta.ema(close, trendLength)
+oldTrendEMA = trendEMA[trendSlopeBars]
+trendSlopePct = oldTrendEMA > 0.0 ? (trendEMA - oldTrendEMA) / oldTrendEMA : 0.0
+trendOK = not useTrendFilter or trendSlopePct >= -maxNegativeSlopePct
+// 6. ЗАЩИТА ОТ ОБВАЛА
+useCrashFilter = input.bool(true, "Защита от обвала", group="6. Защита")
+crashLookback = input.int(10, "Период максимума", minval=2, maxval=100, group="6. Защита")
+maxDropFromHighPct = input.float(22.0, "Макс. падение от максимума, %", minval=1.0, maxval=60.0, step=0.5, group="6. Защита") / 100.0
+recentHigh = ta.highest(high, crashLookback)
+dropFromHigh = recentHigh > 0.0 ? (recentHigh - close) / recentHigh : 0.0
+crashOK = not useCrashFilter or dropFromHigh <= maxDropFromHighPct
+// 7. АВАРИЙНАЯ ЗАЩИТА
+useEmergencyStop = input.bool(true, "Аварийный выход", group="7. Защита")
+maxCycleDrawdownPct = input.float(40.0, "Макс. просадка цикла, %", minval=10.0, maxval=90.0, step=1.0, group="7. Защита") / 100.0
+// 8. ГРАФИК
+showEMA = input.bool(true, "Показывать EMA 200", group="8. График")
+showAverage = input.bool(true, "Показывать среднюю цену", group="8. График")
+showTakeProfit = input.bool(true, "Показывать тейк", group="8. График")
+showDcaLevels = input.bool(true, "Показывать уровни DCA", group="8. График")
+showDcaLabels = input.bool(true, "Показывать суммы на линиях DCA", group="8. График")
+showDashboard = input.bool(true, "Информационная таблица", group="8. График")
+labelShift = input.int(2, "Сдвиг подписи вправо, свечей", minval=0, maxval=20, group="8. График")
+// РАСЧЁТЫ
+rsi = ta.rsi(close, rsiLength)
+maxCapitalAllowed = strategy.initial_capital * maxCapitalUsagePct / 100.0
+// СОСТОЯНИЕ
+varip float cycleStartPrice = na
+varip float lastEntryPrice = na
+varip float investedCash = 0.0
+varip float cycleStartEquity = na
+varip int dcaCount = 0
+// СОБЫТИЯ
+bool startEvent = false
+bool dca1Event = false
+bool dca2Event = false
+bool dca3Event = false
+bool dca4Event = false
+bool dca5Event = false
+bool tpEvent = false
+bool stopEvent = false
+// ФУНКЦИИ
+cashToQty(float cashAmount) =>
+    close > 0.0 ? cashAmount / close : 0.0
+getDcaCash(int step) =>
+    baseCash * math.pow(dcaMultiplier, step)
+getDcaDrop(int step) =>
+    float result = dca5Pct
+    if step == 1
+        result := dca1Pct
+    else if step == 2
+        result := dca2Pct
+    else if step == 3
+        result := dca3Pct
+    else if step == 4
+        result := dca4Pct
+    else
+        result := dca5Pct
+    result
+// ТОРГОВЛЯ: ОДНА КОМАНДА НА ЗАКРЫТОЙ СВЕЧЕ
+varip int lastOrderBar = na
+initialSignal = ta.crossunder(rsi, rsiOversold)
+
+// Сбрасываем завершённый цикл ДО проверки нового входа.
+if strategy.position_size == 0 and not na(cycleStartPrice) and (na(lastOrderBar) or bar_index > lastOrderBar)
+    cycleStartPrice := na
+    lastEntryPrice := na
+    investedCash := 0.0
+    cycleStartEquity := na
+    dcaCount := 0
+
+avgPrice = strategy.position_avg_price
+float takeProfitPrice = strategy.position_size > 0 ? avgPrice * (1.0 + tpPct) : na
+float cycleDrawdown = 0.0
+if strategy.position_size > 0 and not na(cycleStartEquity) and cycleStartEquity > 0.0
+    cycleDrawdown := (cycleStartEquity - strategy.equity) / cycleStartEquity
+
+bool canAct = barstate.isconfirmed and (na(lastOrderBar) or bar_index != lastOrderBar)
+if strategy.closedtrades > 0
+    canAct := canAct and bar_index > strategy.closedtrades.exit_bar_index(strategy.closedtrades - 1)
+
+if canAct
+    if strategy.position_size > 0
+        // Выход имеет приоритет: нельзя усредняться и закрываться одновременно.
+        if useEmergencyStop and cycleDrawdown >= maxCycleDrawdownPct
+            lastOrderBar := bar_index
+            stopEvent := true
+            strategy.close_all(comment="STOP", alert_message="АВАРИЙНЫЙ ВЫХОД")
+        else if close >= takeProfitPrice
+            lastOrderBar := bar_index
+            tpEvent := true
+            strategy.close_all(comment="TP", alert_message="ТЕЙК: закрытие позиции")
+        else if dcaCount < 5 and not na(lastEntryPrice)
+            nextStep = dcaCount + 1
+            triggerPrice = lastEntryPrice * (1.0 - getDcaDrop(nextStep))
+            if close <= triggerPrice
+                remainingCash = math.max(0.0, maxCapitalAllowed - investedCash)
+                actualCash = math.min(getDcaCash(nextStep), remainingCash)
+                qty = cashToQty(actualCash)
+                if actualCash >= 1.0 and qty > 0.0
+                    lastOrderBar := bar_index
+                    dcaCount := nextStep
+                    strategy.entry("DCA" + str.tostring(dcaCount), strategy.long, qty=qty, alert_message="УСРЕДНЕНИЕ DCA" + str.tostring(dcaCount) + ": " + str.tostring(actualCash, "#.##") + " USDT")
+                    investedCash += actualCash
+                    lastEntryPrice := close
+                    dca1Event := dcaCount == 1
+                    dca2Event := dcaCount == 2
+                    dca3Event := dcaCount == 3
+                    dca4Event := dcaCount == 4
+                    dca5Event := dcaCount == 5
+    else if initialSignal and trendOK and crashOK
+        initialCash = math.min(baseCash, maxCapitalAllowed)
+        qty = cashToQty(initialCash)
+        if qty > 0.0
+            lastOrderBar := bar_index
+            strategy.entry("START", strategy.long, qty=qty, alert_message="СТАРТ: " + str.tostring(initialCash, "#.##") + " USDT")
+            cycleStartPrice := close
+            lastEntryPrice := close
+            investedCash := initialCash
+            cycleStartEquity := strategy.equity
+            dcaCount := 0
+            startEvent := true
+
+// УРОВНИ DCA
+float levelDca1 = na
+float levelDca2 = na
+float levelDca3 = na
+float levelDca4 = na
+float levelDca5 = na
+if not na(cycleStartPrice)
+    levelDca1 := cycleStartPrice * (1.0 - dca1Pct)
+    levelDca2 := levelDca1 * (1.0 - dca2Pct)
+    levelDca3 := levelDca2 * (1.0 - dca3Pct)
+    levelDca4 := levelDca3 * (1.0 - dca4Pct)
+    levelDca5 := levelDca4 * (1.0 - dca5Pct)
+// ПОСТОЯННЫЕ ПОДПИСИ DCA
+//
+// Создаются один раз при каждом новом START.
+// Поэтому остаются видны и на истории.
+if startEvent and showDcaLabels
+    label.new( bar_index + labelShift, levelDca1, "DCA1  $" + str.tostring(getDcaCash(1), "#.##"), xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_left, color=color.orange, textcolor=color.white, size=size.small )
+    label.new( bar_index + labelShift, levelDca2, "DCA2  $" + str.tostring(getDcaCash(2), "#.##"), xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_left, color=color.orange, textcolor=color.white, size=size.small )
+    label.new( bar_index + labelShift, levelDca3, "DCA3  $" + str.tostring(getDcaCash(3), "#.##"), xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_left, color=color.orange, textcolor=color.white, size=size.small )
+    label.new( bar_index + labelShift, levelDca4, "DCA4  $" + str.tostring(getDcaCash(4), "#.##"), xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_left, color=color.red, textcolor=color.white, size=size.small )
+    label.new( bar_index + labelShift, levelDca5, "DCA5  $" + str.tostring(getDcaCash(5), "#.##"), xloc=xloc.bar_index, yloc=yloc.price, style=label.style_label_left, color=color.red, textcolor=color.white, size=size.small )
+// ЛИНИИ НА ГРАФИКЕ
+plot( showEMA ? trendEMA : na, title="EMA 200", color=color.yellow, linewidth=2 )
+plot( showAverage and strategy.position_size > 0 ? avgPrice : na, title="Средняя цена", color=color.white, linewidth=2, style=plot.style_linebr )
+plot( showTakeProfit and strategy.position_size > 0 ? takeProfitPrice : na, title="Тейк", color=color.green, linewidth=2, style=plot.style_linebr )
+plot( showDcaLevels and strategy.position_size > 0 ? levelDca1 : na, title="DCA1", color=color.orange, linewidth=2, style=plot.style_linebr )
+plot( showDcaLevels and strategy.position_size > 0 ? levelDca2 : na, title="DCA2", color=color.orange, linewidth=2, style=plot.style_linebr )
+plot( showDcaLevels and strategy.position_size > 0 ? levelDca3 : na, title="DCA3", color=color.orange, linewidth=2, style=plot.style_linebr )
+plot( showDcaLevels and strategy.position_size > 0 ? levelDca4 : na, title="DCA4", color=color.red, linewidth=2, style=plot.style_linebr )
+plot( showDcaLevels and strategy.position_size > 0 ? levelDca5 : na, title="DCA5", color=color.red, linewidth=3, style=plot.style_linebr )
+// СЛЕДУЮЩИЙ DCA ДЛЯ ТАБЛИЦЫ
+float nextDcaPrice = na
+float nextDcaCash = na
+if strategy.position_size > 0 and dcaCount < 5
+    nextStepTable = dcaCount + 1
+    nextDcaCash := getDcaCash(nextStepTable)
+    nextDcaPrice := lastEntryPrice * (1.0 - getDcaDrop(nextStepTable))
+    nextDcaCash := math.min(nextDcaCash, math.max(0.0, maxCapitalAllowed - investedCash))
+// ТАБЛИЦА
+var table dash = table.new(position.top_right, 2, 10, bgcolor=color.white, frame_color=color.gray, frame_width=1, border_color=color.silver, border_width=1)
+if barstate.islastconfirmedhistory or barstate.islast
+    if showDashboard
+        table.cell(dash, 0, 0, "ДЕПОЗИТ", text_color=color.black, text_size=size.small)
+        table.cell(dash, 1, 0, "$" + str.tostring(strategy.initial_capital, "#.##"), text_color=color.black, text_size=size.small)
+        table.cell(dash, 0, 1, "RSI", text_color=color.black, text_size=size.small)
+        table.cell(dash, 1, 1, str.tostring(rsi, "#.0"), text_color=color.black, text_size=size.small)
+        table.cell(dash, 0, 2, "DCA", text_color=color.black, text_size=size.small)
+        table.cell(dash, 1, 2, str.tostring(dcaCount) + "/5", text_color=color.black, text_size=size.small)
+        table.cell(dash, 0, 3, "ВЛОЖЕНО", text_color=color.black, text_size=size.small)
+        table.cell(dash, 1, 3, "$" + str.tostring(investedCash, "#.##"), text_color=color.black, text_size=size.small)
+        table.cell(dash, 0, 4, "СВОБОДНО", text_color=color.black, text_size=size.small)
+        table.cell(dash, 1, 4, "$" + str.tostring(strategy.initial_capital - investedCash, "#.##"), text_color=color.black, text_size=size.small)
+        table.cell(dash, 0, 5, "СРЕДНЯЯ", text_color=color.black, text_size=size.small)
+        table.cell(dash, 1, 5, strategy.position_size > 0 ? str.tostring(avgPrice, "#.##") : "-", text_color=color.black, text_size=size.small)
+        table.cell(dash, 0, 6, "СЛЕД. DCA", text_color=color.black, text_size=size.small)
+        table.cell(dash, 1, 6, not na(nextDcaPrice) ? str.tostring(nextDcaPrice, "#.##") : "-", text_color=color.black, text_size=size.small)
+        table.cell(dash, 0, 7, "СУММА", text_color=color.black, text_size=size.small)
+        table.cell(dash, 1, 7, not na(nextDcaCash) ? "$" + str.tostring(nextDcaCash, "#.##") : "-", text_color=color.black, text_size=size.small)
+        table.cell(dash, 0, 8, "ТЕЙК", text_color=color.black, text_size=size.small)
+        table.cell(dash, 1, 8, not na(takeProfitPrice) ? str.tostring(takeProfitPrice, "#.##") : "-", text_color=color.black, text_size=size.small)
+        table.cell(dash, 0, 9, "ПРОСАДКА", text_color=color.black, text_size=size.small)
+        table.cell(dash, 1, 9, str.tostring(cycleDrawdown * 100.0, "#.0") + "%", text_color=color.black, text_size=size.small)
+    else
+        table.clear(dash, 0, 0, 1, 9)
+// Уведомления: при создании оповещения выбрать «Только исполнения заявок».
+// Текст JSON задан аннотацией в начале файла; alertcondition() для стратегии не используется.
