@@ -1,5 +1,6 @@
 // Isolated collateral accounting, synthetic manual observation only. Never transfers money.
 import {units,decimalString,add,sub} from './ledger-decimal.mjs';
+import {canonicalObservation,reconcileCollateral} from './isolated-collateral-reconcile.mjs';
 const txt=decimalString;
 const min=(a,b)=>a<b?a:b;
 const max=(a,b)=>a>b?a:b;
@@ -29,6 +30,10 @@ export function collateralSummary(s){
 }
 function canonical(raw){
  if(raw?.synthetic!==true||raw.manual!==true)throw Error('Synthetic manual operation required');
+ if(raw.kind==='reconcile'){
+  if(!Number.isSafeInteger(raw.maxAgeMs)||raw.maxAgeMs<=0)throw Error('Explicit positive observation age required');
+  return {opId:id(raw.opId,'operation'),venue:id(raw.venue,'venue'),accountId:id(raw.accountId,'account'),time:timestamp(raw.time),kind:'reconcile',maxAgeMs:raw.maxAgeMs,observation:canonicalObservation(raw.observation)};
+ }
  const e={opId:id(raw.opId,'operation'),requestId:id(raw.requestId,'request'),venue:id(raw.venue,'venue'),accountId:id(raw.accountId,'account'),cycleId:id(raw.cycleId,'cycle'),time:timestamp(raw.time),kind:raw.kind};
  if(!['request','settle','uncertain','cancel'].includes(e.kind))throw Error('Unsupported collateral operation');
  if(['request','settle'].includes(e.kind))e.amount=txt(amt(raw.amount,'amount',true));
@@ -43,7 +48,20 @@ export function recordCollateralOperation(state,raw){
  if(previous){if(JSON.stringify(previous)!==JSON.stringify(e))throw Error('Conflicting operation ID');return {status:'duplicate',state,summary:collateralSummary(state)};}
  if(raw.expectedRevision!==state.revision)throw Error('Stale collateral revision');
  if(e.time<state.lastTime)throw Error('Out-of-order collateral event');
- const s=structuredClone(state),p=s.positions.find(x=>x.cycleId===e.cycleId);
+ const s=structuredClone(state);
+ if(e.kind==='reconcile'){
+  const reconciliation=reconcileCollateral(s,e.observation,e.time,e.maxAgeMs);
+  s.audit.push(e);s.revision++;s.lastTime=e.time;
+  s.reconciliation={...reconciliation,revision:s.revision};
+  return {status:'recorded',state:s,summary:collateralSummary(s)};
+ }
+ // Historical synthetic requests replay unchanged until a reconciliation is recorded.
+ // Once activated, a fresh matching observation at the current revision is required.
+ if(e.kind==='request'&&s.reconciliation){
+  const r=s.reconciliation;
+  if(r.status!=='matched'||r.revision!==s.revision||e.time-r.observedAt>r.maxAgeMs)throw Error('Collateral reconciliation required');
+ }
+ const p=s.positions.find(x=>x.cycleId===e.cycleId);
  if(!p)throw Error('Unknown open cycle');
  let o=s.requests.find(x=>x.id===e.requestId);
  if(e.kind==='request'){

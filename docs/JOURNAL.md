@@ -313,3 +313,6 @@
 
 ## 2026-11-26 — DCA-20261126-45 — Постоянный журнал залога (разработка)
 - По «Ок» добавлены isolated-collateral-schema.sql, isolated-collateral-store.mjs, 8 SQLite тестов, документация. Scoped append-only, атомарный CAS, replay, защита от сброса, restart и независимые счета. CI ожидается. Production не изменён.
+
+## 2026-11-26 — DCA-20261126-46 — Сверка isolated collateral (dev)
+- По «Ок» добавлены canonical exact synthetic observations, persistent reconcile event, сверка площадки/счёта/свободного залога/полного списка позиций и давности. Расхождение или незавершённая операция блокируют новые requests после включения сверки; settlement/cancel остаются возможны. Старые синтетические операции без сверки сохраняют replay-совместимость; production guard не реализован. 8 новых тестов, CI ожидается. Не изменены production, позиции и Telegram. Следом CI, обязательный межжурнальный guard и ограниченный stress.
