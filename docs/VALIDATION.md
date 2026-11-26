@@ -117,3 +117,6 @@
 
 ## 26.11.2026 — сравнение 19/11, DCA-20261126-36
 - 7431bea24a3150c0056b8358b224554184d7fd23; https://github.com/smoc1983-web/Dca/actions/runs/45874218667, job 140097091325: success 175/175 (2 новых), baseline 5/5, syntax. https://github.com/smoc1983-web/Dca/actions/runs/45874218698, job 140097091075: success. https://github.com/smoc1983-web/Dca/actions/runs/45874218894, job 140097091853: success, 24 отчёта, artifact 15144566623. Не OOS; постоянные сводки research/universe-comparison-2025-01.md и summary.json. Production не изменён.
+
+## 26.11.2026 — длительное сравнение, DCA-20261126-37
+- 0650380d0ef3b9880dd46bc82e1db84276789432; https://github.com/smoc1983-web/Dca/actions/runs/45875049305: completed/success, 178/178 (175+3), job 140099903501; https://github.com/smoc1983-web/Dca/actions/runs/45875049345: queued/pending, {"queued":16,"in_progress":3}. 532 pinned ZIP и 19 pinned target hashes; результаты длительного CI пока не подтверждены. Не OOS, не production.
