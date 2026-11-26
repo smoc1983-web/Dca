@@ -135,3 +135,6 @@
 
 ## 26.11.2026 — 03.3 isolated collateral, DCA-20261126-44
 - 5c9eba91132c8e29210f9ec718899bc5bd6b3048, https://github.com/smoc1983-web/Dca/actions/runs/45880102689, job 140117002012: completed/success, 193/193 (186+7). 7 новых офлайн-тестов, synthetic only; D1/реальные позиции не проверены. Production не изменён.
+
+## 26.11.2026 — постоянный журнал залога, DCA-20261126-45
+- 3338bad4dcadfcb69e9fc45813a1189f0cd25706, https://github.com/smoc1983-web/Dca/actions/runs/45883888809, job 140129689552: completed/success, 201/201 (8 новых), baseline 5/5, syntax OK. SQLite restart, CAS, rollback, scope, append-only. Не production D1.
