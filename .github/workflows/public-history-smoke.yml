@@ -1,0 +1,49 @@
+name: Public historical archive smoke
+on:
+  push:
+    branches:
+      - 'dev/dca800-foundation'
+    paths:
+      - 'scripts/fetch-binance-archive.py'
+      - '.github/workflows/public-history-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch one public historical day (no fallback)
+        run: |
+          mkdir -p "$RUNNER_TEMP/dca-history"
+          python3 scripts/fetch-binance-archive.py BTCUSDT 5m 2025-01-01 "$RUNNER_TEMP/dca-history" > "$RUNNER_TEMP/dca-history/download.json"
+          cat "$RUNNER_TEMP/dca-history/download.json"
+      - name: Verify archive and run historical smoke
+        run: |
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          d=Path(os.environ['RUNNER_TEMP'])/'dca-history'
+          info=json.loads((d/'download.json').read_text())
+          start=1735689600000
+          params=json.loads(Path('strategy/markets.json').read_text())[0]['params']
+          keys=['symbol','initialCapital','fee','slippageBps','tick','qtyStep','minQty','minNotional']
+          assert params['symbol']=='BTCUSDT'
+          conf={'symbol':'BTCUSDT','tf':'5m','archives':[info],'window':{'warmupStart':start,'start':start+200*300000,'end':start+86400000},'retrievedAt':info['retrievedAt'],'selectionCutoff':1794355200000,'filterSource':'repository model snapshot; not historical exchange filters','params':{k:params[k] for k in keys}}
+          (d/'config.json').write_text(json.dumps(conf))
+          PY
+          python3 scripts/import-binance-spot.py "$RUNNER_TEMP/dca-history/config.json" > "$RUNNER_TEMP/dca-history/input.json"
+          node --input-type=module - <<'JS'
+          import {readFileSync} from 'node:fs';
+          import {backtestSpot} from './scripts/backtest-spot.mjs';
+          const input=JSON.parse(readFileSync(process.env.RUNNER_TEMP+'/dca-history/input.json','utf8'));
+          const result=backtestSpot(input);
+          console.log(JSON.stringify({symbol:input.params.symbol,archiveManifest:input.archiveManifest,dataSha256:result.dataSha256,dataStatus:result.dataStatus,warmupBars:result.warmupBars,evaluationBars:result.evaluationBars,metrics:result.metrics}));
+          JS
