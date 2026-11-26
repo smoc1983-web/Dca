@@ -36,9 +36,9 @@ test('partial DCA reserves unspent nominal and overrun flagged rather than delet
  assert.ok(r.flags.includes('ACTUAL_NOMINAL_EXCEEDS_PLAN'));assert.equal(r.cycles[0].stepNominals[1],'190');
  assert.equal(r.stress.current.accounts[0].futureDcaReserve,'437.97666669');
 });
-test('missing frozen plan or incomplete START blocks stress and closed cycle is not active',()=>{
+test('missing frozen plan blocks stress; partial START reserves all six remainders',()=>{
  assert.throws(()=>stress({plans:[]}),/Missing/);
- assert.throws(()=>stress({events:[buy({quantity:'1'})],plans:[{...plan,completedSteps:[]}]}),/partial START/);
+ const partial=stress({events:[buy({quantity:'1'})],plans:[{...plan,completedSteps:[]}]});assert.equal(partial.cycles[0].quantity,'1');assert.equal(partial.stress.current.accounts[0].futureDcaReserve,'536.60500002');
  const r=stress({events:[buy(),buy({id:'s',time:2,kind:'sell',quantity:'2',dca:null})]});
  assert.equal(r.stress,null);assert.equal(r.cycles[0].closed,true);
 });

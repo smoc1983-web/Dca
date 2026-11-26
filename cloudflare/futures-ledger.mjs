@@ -81,10 +81,7 @@ export function stressManualFutures({events,plans,risk,mode,collateralWallet,sce
    if(i>=complete.length&&i<c.lastDca)flags.push('UNCONFIRMED_PREVIOUS_DCA');
    if(i>=complete.length&&n>actual)remaining.push(txt(sub(n,actual)));
   }
-  // marginStress supports up to five future orders, including remaining partial START.
-  // Aggregate only when all six slots remain; preserve total plus conservative rounding
-  // by refusing rather than silently dropping one slot.
-  if(remaining.length>5)throw Error('Complete START or reconcile partial START before stress');
+  // Partial START may leave all six steps with unfilled nominal; reserve each separately.
   const {cycleId,...parameters}=r;
   return {...parameters,id:c.cycleId,symbol:c.symbol,leverage:c.leverage,quantity:c.quantity,averageEntry:c.averageEntry,futureOrderNominals:remaining};
  });

@@ -27,7 +27,7 @@ function position(p,mode){
  const exitRate=rate(p.exitFeeRate,'exitFeeRate'),fundingRate=rate(p.adverseFundingRate,'adverseFundingRate');
  const entryRate=rate(p.futureEntryFeeRate,'futureEntryFeeRate');
  if(!Number.isSafeInteger(p.fundingPeriods)||p.fundingPeriods<0||p.fundingPeriods>1000)throw Error('Invalid fundingPeriods');
- if(!Array.isArray(p.futureOrderNominals)||p.futureOrderNominals.length>5)throw Error('Explicit future orders required');
+ if(!Array.isArray(p.futureOrderNominals)||p.futureOrderNominals.length>6)throw Error('Explicit future orders required');
  const future=p.futureOrderNominals.map(v=>amount(v,'future nominal',true));
  const futureReserve=sum(future.map(n=>add(initialMargin(n,p.leverage),roundedCharge(n,entryRate))));
  const collateral=mode==='isolated'?amount(p.isolatedCollateral,'isolatedCollateral'):null;
