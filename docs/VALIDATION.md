@@ -105,3 +105,6 @@
 
 ## 26.11.2026 — повтор старой матрицы, DCA-20261126-31
 - 20f094ab3daaacca8250194289816f7dd77a4575, https://github.com/smoc1983-web/Dca/actions/runs/45867985331: completed/success, 168/168 (165+3), job 140075690849; https://github.com/smoc1983-web/Dca/actions/runs/45867985460: queued/pending, jobs success 0/19. Исторический результат ещё не подтверждён. Сравнение на прежнем периоде с другим прогревом, не OOS; production не изменён.
+
+## 26.11.2026 — промежуточный sweep, DCA-20261126-32
+- 20f094ab3daaacca8250194289816f7dd77a4575; run 45867985460: 10/19 успешно, 3 выполняются, 6 ожидают, 0 ошибок. Частичные сырые сетки research/timeframe-sweep-2026-11-26-partial.json; общий итог не подтверждён. Production не изменён.
