@@ -25,6 +25,8 @@ function projections(state,executions){
       continue;
     }
     const p=reconcileManualCycle({reservation:r,executions:fills,completedSteps:r.completedSteps??[],tickSize:r.tickSize,exitFeeRate:r.exitFeeRate});
+    if(r.correctionPending){flags.push('CORRECTION_RECONCILIATION_REQUIRED');p.nextDca=null;}
+    if(r.reopenedAfterCorrection){flags.push('REOPENED_AFTER_CORRECTION');p.nextDca=null;}
     const [cycle]=replayLedger(fills);
     // Do not automatically reuse proceeds or unspent portions until explicit reconciliation.
     const hold=max(units(r.plan.total),add(units(cycle?.exact.buyCost??0),units(p.remainingReserve)));
@@ -53,7 +55,7 @@ export class BudgetStore{
       const [prior]=await this.rows('SELECT request FROM dev_budget_audit WHERE op_id=?',opId);
       if(prior){if(prior.request!==request)throw Error('Conflicting budget operation ID');return {status:'duplicate',...(await this.snapshot())};}
       const cur=await this.load(),ledger=await this.ledger.snapshot(),fills=ledger.executions.map(x=>x.execution);
-      let next,ledgerOp=null,cashRevision=null;
+      let next,ledgerOp=null,cashRevision=null,projectedFills=fills;
       if(raw.kind==='init'){
         if(cur.state)throw Error('Budget already initialized');
         if(raw.expectedRevision!==null)throw Error('Initial revision must be null');
@@ -91,7 +93,7 @@ export class BudgetStore{
           next={...r.state,reservations:r.state.reservations.map(x=>x.id===raw.id?{...x,tickSize,exitFeeRate,completedSteps:[]}:x)};
         }else{
           const r=s.reservations.find(x=>x.id===raw.id);
-          if(!r||r.status!=='reserved')throw Error('Unknown active reservation');
+          if(!r||(r.status!=='reserved'&&!(r.status==='released'&&raw.kind==='correct')))throw Error('Unknown active reservation');
           const own=fills.filter(e=>e.source==='manual'&&e.cycleId===r.id);
           const patch=extra=>({...s,revision:s.revision+1,reservations:s.reservations.map(x=>x.id===r.id?{...x,...extra}:x)});
           if(raw.kind==='fill'){
@@ -104,25 +106,65 @@ export class BudgetStore{
             }
             // A confirmed real fill may exceed the plan: record truth, then flag it.
             replayLedger([...fills,e]);next=patch({});
-            projections(next,[...fills,e]);
+            projectedFills=[...fills,e];projections(next,projectedFills);
+          }else if(raw.kind==='correct'){
+            if(raw.confirmed!==true||raw.execution?.source!=='manual'||raw.execution.confirmed!==true||raw.execution.cycleId!==r.id||raw.execution.symbol!==r.symbol)throw Error('Confirmed linked correction required');
+            ledgerOp=normalizeLedgerOperation({kind:'correct',opId:'budget:'+opId,actor,recordedAt:raw.recordedAt,execution:raw.execution,expectedVersion:raw.expectedVersion,reason:raw.reason});
+            const e=ledgerOp.execution,previous=ledger.executions.find(x=>x.execution.source==='manual'&&x.execution.id===e.id);
+            if(!previous)throw Error('Unknown execution');
+            if(previous.version!==ledgerOp.expectedVersion)throw Error('Stale correction version');
+            for(const f of ['cycleId','symbol','tf','baseAsset','quoteAsset','side','dca']){
+              if(previous.execution[f]!==e[f])throw Error('Correction cannot change '+f);
+            }
+            // Replace in original append order; never append a second financial execution.
+            projectedFills=fills.map(x=>x.source==='manual'&&x.id===e.id?e:x);
+            replayLedger(projectedFills);
+            // Conservative policy: even a still-closed released cycle is re-held until review.
+            next=patch({status:'reserved',correctionPending:true,reopenedAfterCorrection:r.status==='released'||r.reopenedAfterCorrection===true});
+            projections(next,projectedFills);
+          }else if(raw.kind==='reviewCorrection'){
+            if(raw.confirmed!==true||raw.ordersReviewed!==true||r.correctionPending!==true)throw Error('Confirm correction and outstanding orders review');
+            // The user must acknowledge the exact effective journal revision.
+            if(raw.expectedLedgerRevision!==ledger.revision)throw Error('Stale ledger review');
+            if(s.cashGuardMaxAgeMs!==undefined){
+              const cash=await readCashAudit(this.db);cashRevision=cash.revision;
+              if(!cash.opening)throw Error('Cash reconciliation required');
+              const report=reconcileCash({opening:cash.opening,flows:cash.flows,executions:fills,
+                observation:cash.observation?{...cash.observation,revisionsMatch:cash.observation.ledgerRevision===ledger.revision}:null,
+                now:this.clock(),maxAgeMs:s.cashGuardMaxAgeMs});
+              if(!report.reconciled)throw Error('Cash reconciliation required: '+report.flags.join(','));
+            }
+            next=patch({correctionPending:false,reopenedAfterCorrection:false});
           }else if(raw.kind==='complete'){
+            if(r.correctionPending)throw Error('Correction review required');
             if(raw.confirmed!==true||raw.step!==r.completedSteps.length)throw Error('Explicit sequential step confirmation required');
             if(replayLedger(own)[0]?.closedAt!=null)throw Error('Cycle already closed');
             next=patch({completedSteps:[...r.completedSteps,raw.step]});projections(next,fills);
           }else if(raw.kind==='release'){
+            if(r.correctionPending)throw Error('Correction review required');
             if(raw.confirmed!==true||raw.ordersCancelled!==true)throw Error('Confirm cancellation of remaining orders');
             const c=replayLedger(own)[0];
             if(c&&c.closedAt===null)throw Error('Cannot release open position');
             // Releasing a filled cycle requires a newly reconciled pre-reservation pool.
             // No implicit credit of PnL; capital is not modified automatically.
             if(own.length&&raw.freeCash===undefined)throw Error('Reconciled freeCash required');
+            if(s.cashGuardMaxAgeMs!==undefined&&own.length){
+              const cash=await readCashAudit(this.db);cashRevision=cash.revision;
+              if(!cash.opening)throw Error('Cash reconciliation required');
+              const report=reconcileCash({opening:cash.opening,flows:cash.flows,executions:fills,
+                observation:cash.observation?{...cash.observation,revisionsMatch:cash.observation.ledgerRevision===ledger.revision}:null,
+                now:this.clock(),maxAgeMs:s.cashGuardMaxAgeMs});
+              if(!report.reconciled)throw Error('Cash reconciliation required: '+report.flags.join(','));
+              // The pre-reservation pool is not identical to cash when other positions exist.
+              // Never derive or inflate it from PnL; new reservations still require cash guard.
+            }
             next=releaseUnfilled(s,{id:r.id,expectedRevision:s.revision});
             if(raw.freeCash!==undefined)next={...changeBudget(next,{freeCash:raw.freeCash},next.revision),revision:s.revision+1};
             next={...next,reservations:next.reservations.map(x=>x.id===r.id?{...x,releaseFingerprint:json(own)}:x)};
           }else throw Error('Unknown budget operation');
         }
       }
-      projections(next,ledgerOp?[...fills,ledgerOp.execution]:fills);
+      projections(next,projectedFills);
       const guard=cashRevision===null?'':' AND COALESCE((SELECT MAX(seq) FROM dev_cash_audit),0)=?';
       const args=[opId,request,JSON.stringify(next),ledgerOp?JSON.stringify(ledgerOp):null,cur.seq,ledger.revision];
       if(cashRevision!==null)args.push(cashRevision);
