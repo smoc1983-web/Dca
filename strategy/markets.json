@@ -115,7 +115,7 @@
       "signalOnly": true
     },
     "tf": "30m",
-    "enabled": true,
+    "enabled": false,
     "requested": true,
     "metrics": {
       "tf": "30m",
@@ -269,7 +269,7 @@
       "signalOnly": true
     },
     "tf": "5m",
-    "enabled": true,
+    "enabled": false,
     "requested": true,
     "metrics": {
       "tf": "5m",
@@ -577,7 +577,7 @@
       "signalOnly": true
     },
     "tf": "15m",
-    "enabled": true,
+    "enabled": false,
     "requested": true,
     "metrics": {
       "tf": "15m",
@@ -731,7 +731,7 @@
       "signalOnly": true
     },
     "tf": "15m",
-    "enabled": true,
+    "enabled": false,
     "requested": false,
     "metrics": {
       "tf": "15m",
@@ -962,7 +962,7 @@
       "signalOnly": true
     },
     "tf": "5m",
-    "enabled": true,
+    "enabled": false,
     "requested": false,
     "metrics": {
       "tf": "5m",
@@ -1270,7 +1270,7 @@
       "signalOnly": true
     },
     "tf": "30m",
-    "enabled": true,
+    "enabled": false,
     "requested": false,
     "metrics": {
       "tf": "30m",
@@ -1347,7 +1347,7 @@
       "signalOnly": true
     },
     "tf": "5m",
-    "enabled": true,
+    "enabled": false,
     "requested": false,
     "metrics": {
       "tf": "5m",
@@ -1424,7 +1424,7 @@
       "signalOnly": true
     },
     "tf": "5m",
-    "enabled": true,
+    "enabled": false,
     "requested": false,
     "metrics": {
       "tf": "5m",
