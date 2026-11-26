@@ -1,0 +1,78 @@
+{
+  "ZECUSDT": {
+    "tf": "5m",
+    "sha256": "805e4cc8e1646b8f50950edf3b6099701b220e0111d207a4528081f77c8bfdd4"
+  },
+  "AVAXUSDT": {
+    "tf": "5m",
+    "sha256": "93dd10252944917e4c4c8ecdaa118311950785cf6dd273ecba82497c13c2b504"
+  },
+  "ADAUSDT": {
+    "tf": "5m",
+    "sha256": "6815422724238b20dceee05c4fcc3d5c7978d0d68e130f8e3157703a2f8cfab5"
+  },
+  "AAVEUSDT": {
+    "tf": "5m",
+    "sha256": "3baba8dd3eb1029ae0a81014038ec86331f90913f72d47407ad4957261e6bd31"
+  },
+  "LINKUSDT": {
+    "tf": "5m",
+    "sha256": "b637202516f9cd13267591d5490965aa050df665105c6061fb167543947d6e94"
+  },
+  "LDOUSDT": {
+    "tf": "30m",
+    "sha256": "578a8623050292b1d14c832337313fbf12dc56c86bfd9a634afe8c85cceaee02"
+  },
+  "ATOMUSDT": {
+    "tf": "5m",
+    "sha256": "8d0bb4e848d555073b93d7c30c6d7731708cbca6892e7ff1efb743541731b7c0"
+  },
+  "DOGEUSDT": {
+    "tf": "15m",
+    "sha256": "91298c20ded3ab4e707eaa79d3f8ae21551aad2749a9b09f0bae3f9d2cd6f29a"
+  },
+  "UNIUSDT": {
+    "tf": "15m",
+    "sha256": "55e78f93ed55299418de5399467c9875d0129470d30af6647b5158d8b92c78ff"
+  },
+  "DOTUSDT": {
+    "tf": "30m",
+    "sha256": "bb61c9c9b5f7b4d65a77ef29c886ca781efba2b4e9dc0ed11afd3f39d1db5bf5"
+  },
+  "XRPUSDT": {
+    "tf": "45m",
+    "sha256": "a7dd514ec9a51b34a7955cde10db1b34dcc0b92e6a5dcae9e823d2b40d55cea4"
+  },
+  "BCHUSDT": {
+    "tf": "30m",
+    "sha256": "967925c1e8a4cf287da4e25e5193dba4dbcac77d27dce14d4a05775840570c4d"
+  },
+  "SOLUSDT": {
+    "tf": "30m",
+    "sha256": "1cb8e71caaaff56c4d80a0b6ada0db4ef7af041cee9998c3f8bdddd9befb977c"
+  },
+  "ETHUSDT": {
+    "tf": "5m",
+    "sha256": "02f72fe1409cbed33f74b1555f44e4a2591dcdb4b8c8795566e11432333df28d"
+  },
+  "LTCUSDT": {
+    "tf": "15m",
+    "sha256": "95d754200991c1a5712b46a185d5e8565ccb47d817d68e7dc60f5bb5ad9c11cb"
+  },
+  "BTCUSDT": {
+    "tf": "5m",
+    "sha256": "2cb05afcfc3320b37ae67d440db7630d0915b95497923866792deb44162b6550"
+  },
+  "BNBUSDT": {
+    "tf": "15m",
+    "sha256": "69700b35de8e27ac2595eb2aed84d1e1f0837f6e213ff7050ff3077127f96fb6"
+  },
+  "TRXUSDT": {
+    "tf": "15m",
+    "sha256": "a27144ffb1408247790f53a743569f82d73b21e7662e1012dbd8d60b2503fae7"
+  },
+  "SUIUSDT": {
+    "tf": "5m",
+    "sha256": "22754ead97372dd23322d2240e85371b9e4dc5660959b7d4e2d8a1d2520b8c05"
+  }
+}

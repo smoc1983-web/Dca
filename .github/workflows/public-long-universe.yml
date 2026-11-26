@@ -1,0 +1,64 @@
+name: Public long 19 vs 11 portfolio comparison
+on:
+  push:
+    branches: ['dev/dca800-foundation']
+    paths:
+      - 'scripts/compare-long-universes.mjs'
+      - 'scripts/prepare-long-target.mjs'
+      - '.github/workflows/public-long-universe.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        symbol: [BTCUSDT, SOLUSDT, UNIUSDT, ETHUSDT, XRPUSDT, ADAUSDT, ZECUSDT, LTCUSDT, LDOUSDT, BNBUSDT, DOGEUSDT, LINKUSDT, AVAXUSDT, DOTUSDT, ATOMUSDT, TRXUSDT, BCHUSDT, AAVEUSDT, SUIUSDT]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 scripts/prepare-timeframe-history.py ${{ matrix.symbol }} "$RUNNER_TEMP/dca-long"
+      - run: node scripts/prepare-long-target.mjs "$RUNNER_TEMP/dca-long/input.json" "$RUNNER_TEMP/dca-long/${{ matrix.symbol }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: long-data-${{ matrix.symbol }}
+          path: ${{ runner.temp }}/dca-long/${{ matrix.symbol }}.json
+          retention-days: 3
+          if-no-files-found: error
+  compare:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        slots: [1, 3, 5]
+        bps: [0, 2, 5, 10]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: long-data-*
+          merge-multiple: true
+          path: long-data
+      - run: node --max-old-space-size=5120 scripts/compare-long-universes.mjs long-data ${{ matrix.slots }} ${{ matrix.bps }} report-${{ matrix.slots }}-${{ matrix.bps }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: long-report-${{ matrix.slots }}-${{ matrix.bps }}
+          path: report-${{ matrix.slots }}-${{ matrix.bps }}.json
+          retention-days: 30
+          if-no-files-found: error
