@@ -13,3 +13,8 @@
 - node --check cloudflare/trade-ledger.mjs успешно; node --test tests/trade-ledger.test.mjs: 6 passed, 0 failed.
 - GitHub Actions https://github.com/smoc1983-web/Dca/actions/runs/45841081405 (job 139982579924): completed/success, шаги Baseline core tests, Syntax and watchlist, All offline tests успешны. В наборе исходные 5 + новые 6 тестов; проверка синтаксиса и списка пар успешна.
 - Не проверены реальная D1/Telegram, production, исторический бэктест, расчёт плеча, денежная точность за пределами тестов и персистентное хранение. Нет изменений production.
+
+## 26.11.2026 — постоянное хранилище, DCA-20261126-05
+- Ветка dev/dca800-foundation, коммит 2f1af07a0d5053deb8035623d5dedc55f1e336d4.
+- GitHub Actions https://github.com/smoc1983-web/Dca/actions/runs/45842108512, job 139986197864, completed/success: baseline core, syntax/watchlist, all offline tests прошли. Всего 18 тестов, в том числе 7 новых SQLite-интеграционных. Проверка закрытия/повторного открытия БД, идемпотентность, аудит, конкуренция и отказ невалидных операций успешны.
+- Локальный node:sqlite доступен (Node 22.16.0); данный полный прогон подтверждён CI, локально новый набор отдельно не запускался. Реальный D1, production, точность decimal и интеграция Worker не проверены.
