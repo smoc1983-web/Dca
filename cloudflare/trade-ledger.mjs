@@ -1,8 +1,10 @@
 // Offline long-only spot execution ledger. No exchange, Telegram or DB side effects.
 // Model fills and confirmed manual fills are separate streams.
-import {units,add,sub,mul,div,portion,decimalString,number,SCALE} from './ledger-decimal.mjs';
+import {units,add,sub,mul,div,portion,decimalString,number,SCALE,canonicalDecimal} from './ledger-decimal.mjs';
 const positive=(v,name)=>{if(typeof v!=='number'||!Number.isFinite(v)||v<=0)throw Error('Invalid '+name);return v;};
 const nonnegative=(v,name)=>{if(typeof v!=='number'||!Number.isFinite(v)||v<0)throw Error('Invalid '+name);return v;};
+const money=(v,name,zero=false)=>{let u;try{u=units(v);}catch(e){throw Error('Invalid '+name+': '+e.message);}
+  if(zero?u<0n:u<=0n)throw Error('Invalid '+name);return canonicalDecimal(v);};
 const str=(v,name)=>{if(typeof v!=='string'||!v.trim())throw Error('Invalid '+name);return v;};
 const finite=(v,name)=>{if(!Number.isFinite(v))throw Error('Overflow '+name);return v;};
 const key=(...parts)=>JSON.stringify(parts);
@@ -17,15 +19,18 @@ export function normalizeExecution(raw){
   if(baseAsset===quoteAsset||quoteAsset!=='USDT'||symbol!==baseAsset+quoteAsset)throw Error('Unsupported spot pair');
   const time=nonnegative(raw.time,'time');
   if(!Number.isSafeInteger(time))throw Error('Invalid time');
-  const price=positive(raw.price,'price'),quantity=positive(raw.quantity,'quantity');
-  const notional=positive(number(mul(units(price),units(quantity))),'notional');
-  const fee=nonnegative(raw.fee??0,'fee'),feeAsset=fee?str(raw.feeAsset,'feeAsset'):quoteAsset;
+  const price=money(raw.price,'price'),quantity=money(raw.quantity,'quantity');
+  const notionalUnits=mul(units(price),units(quantity));
+  if(notionalUnits<=0n)throw Error('Invalid notional');
+  const notional=number(notionalUnits);
+  const fee=money(raw.fee??0,'fee',true),feeAsset=units(fee)!==0n?str(raw.feeAsset,'feeAsset'):quoteAsset;
   // A third-asset fee needs an explicit contemporaneous quote conversion.
-  const rate=fee===0?1:feeAsset===quoteAsset?1:feeAsset===baseAsset?price:positive(raw.feeQuoteRate,'feeQuoteRate');
-  const feeQuote=finite(number(mul(units(fee),units(rate))),'feeQuote');
+  const rate=units(fee)===0n?1:feeAsset===quoteAsset?1:feeAsset===baseAsset?price:money(raw.feeQuoteRate,'feeQuoteRate');
+  const feeQuoteUnits=mul(units(fee),units(rate)),feeQuote=number(feeQuoteUnits);
+  const exact={price:decimalString(units(price)),quantity:decimalString(units(quantity)),notional:decimalString(notionalUnits),fee:decimalString(units(fee)),feeQuote:decimalString(feeQuoteUnits),feeQuoteRate:decimalString(units(rate))};
   const dca=raw.dca??null;
   if(dca!==null&&(!Number.isInteger(dca)||dca<0||dca>5))throw Error('Invalid DCA');
-  return {source,id,cycleId,symbol,tf,baseAsset,quoteAsset,time,side,price,quantity,notional,fee,feeAsset,feeQuote,dca};
+  return {source,id,cycleId,symbol,tf,baseAsset,quoteAsset,time,side,price,quantity,notional,fee,feeAsset,feeQuote,dca,exact};
 }
 function empty(e){return {source:e.source,cycleId:e.cycleId,symbol:e.symbol,tf:e.tf,baseAsset:e.baseAsset,quoteAsset:e.quoteAsset,
   startedAt:e.time,lastTime:e.time,closedAt:null,quantity:0n,cost:0n,priceCost:0n,buyCost:0n,realized:0n,realizedBasis:0n,
@@ -35,7 +40,7 @@ function apply(c,e,raw){
   if(c.closedAt!==null)throw Error('Cycle already closed');
   if(e.time<c.lastTime)throw Error('Out-of-order execution');
   const qty=units(e.quantity),price=units(e.price),fee=units(e.fee),notional=mul(qty,price);
-  const feeQuote=mul(fee,units(e.fee===0||e.feeAsset===e.quoteAsset?1:e.feeAsset===e.baseAsset?e.price:raw.feeQuoteRate));
+  const feeQuote=units(e.exact.feeQuote);
   const baseFee=e.feeAsset===e.baseAsset?fee:0n;
   const otherFee=e.feeAsset===e.baseAsset?0n:feeQuote;
   if(e.side==='buy'){
@@ -66,9 +71,9 @@ const monetary=['quantity','cost','priceCost','buyCost','realized','realizedBasi
 function report(c){
   const exact=Object.fromEntries(monetary.map(k=>[k,decimalString(c[k])]));
   const values=Object.fromEntries(monetary.map(k=>[k,number(c[k])]));
-  const averageEntry=c.quantity?number(div(c.priceCost,c.quantity)):null;
-  const averageCost=c.quantity?number(div(c.cost,c.quantity)):null;
-  const realizedPercent=c.realizedBasis?number(portion(c.realized,100n*SCALE,c.realizedBasis)):null;
+  const ae=c.quantity?div(c.priceCost,c.quantity):null,ac=c.quantity?div(c.cost,c.quantity):null,rp=c.realizedBasis?portion(c.realized,100n*SCALE,c.realizedBasis):null;
+  const averageEntry=ae===null?null:number(ae),averageCost=ac===null?null:number(ac),realizedPercent=rp===null?null:number(rp);
+  Object.assign(exact,{averageEntry:ae===null?null:decimalString(ae),averageCost:ac===null?null:decimalString(ac),realizedPercent:rp===null?null:decimalString(rp)});
   return {...c,...values,feesByAsset:Object.fromEntries(Object.entries(c.feesByAsset).map(([k,v])=>[k,number(v)])),
     exact,averageEntry,averageCost,realizedPercent,durationMs:c.closedAt===null?null:c.closedAt-c.startedAt};
 }
@@ -86,7 +91,7 @@ export function replayLedger(executions){
   return [...cycles.values()].map(report);
 }
 export function unrealizedPnl(c,markPrice,exitFeeRate=0){
-  positive(markPrice,'markPrice');nonnegative(exitFeeRate,'exitFeeRate');
-  if(exitFeeRate>=1)throw Error('Invalid exitFeeRate');
-  return number(sub(mul(mul(units(c.quantity),units(markPrice)),sub(SCALE,units(exitFeeRate))),units(c.cost)));
+  money(markPrice,'markPrice');money(exitFeeRate,'exitFeeRate',true);
+  if(units(exitFeeRate)>=SCALE)throw Error('Invalid exitFeeRate');
+  return number(sub(mul(mul(units(c.exact?.quantity??c.quantity),units(markPrice)),sub(SCALE,units(exitFeeRate))),units(c.exact?.cost??c.cost)));
 }

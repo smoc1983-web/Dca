@@ -1,4 +1,5 @@
 // D1-shaped storage port; local SQLite tests only. No Worker wiring or network.
+import {canonicalDecimal} from './ledger-decimal.mjs';
 import {normalizeExecution,replayLedger} from './trade-ledger.mjs';
 const key=e=>JSON.stringify([e.source,e.id]);
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
@@ -6,10 +7,10 @@ const required=(v,n)=>{if(typeof v!=='string'||!v.trim()||v.length>512)throw Err
 function canonical(raw){
   const e=normalizeExecution(raw);
   for(const a of [e.baseAsset,e.quoteAsset,e.feeAsset])if(!/^[A-Z0-9]{1,32}$/.test(a))throw Error('Invalid asset');
-  const {notional,feeQuote,...fields}=e;
+  const {notional,feeQuote,exact,...fields}=e;
   // Preserve the conversion rate rather than trying to normalize a derived fee twice.
   return {...fields,...(e.source==='manual'?{confirmed:true}:{}),
-    ...(e.fee&&e.feeAsset!==e.baseAsset&&e.feeAsset!==e.quoteAsset?{feeQuoteRate:raw.feeQuoteRate}:{})};
+    ...(e.fee&&e.feeAsset!==e.baseAsset&&e.feeAsset!==e.quoteAsset?{feeQuoteRate:canonicalDecimal(raw.feeQuoteRate)}:{})};
 }
 function operation(raw){
   if(!raw||!['fill','correct'].includes(raw.kind))throw Error('Invalid operation');

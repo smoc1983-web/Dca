@@ -10,14 +10,17 @@ export function quotient(n,d){
   return negative?-(q+(2n*r>=d?1n:0n)):q+(2n*r>=d?1n:0n);
 }
 export function units(value){
-  if(typeof value!=='number'||!Number.isFinite(value))throw Error('Invalid decimal number');
+  const isText=typeof value==='string';
+  if(isText){if(value.length>100||! /^-?\d+(?:\.\d+)?$/.test(value))throw Error('Invalid decimal string');}
+  else if(typeof value!=='number'||!Number.isFinite(value))throw Error('Invalid decimal number');
   const m=/^(-?)(\d+)(?:\.(\d+))?(?:e([+-]?\d+))?$/i.exec(String(value));
   if(!m)throw Error('Invalid decimal number');
   const digits=m[2]+(m[3]??'');
   const shift=24+Number(m[4]??0)-(m[3]?.length??0);
   const n=BigInt(digits)*(m[1]? -1n:1n);
+  if(isText&&shift<0&&n%10n**BigInt(-shift)!==0n)throw Error('Decimal exceeds supported precision');
   const result=checked(shift>=0?n*10n**BigInt(shift):quotient(n,10n**BigInt(-shift)));
-  if(value!==0&&result===0n)throw Error('Decimal below supported precision');
+  if(n!==0n&&result===0n)throw Error('Decimal below supported precision');
   return result;
 }
 export const add=(a,b)=>checked(a+b);
@@ -31,3 +34,10 @@ export function decimalString(n){
   return (neg?'-':'')+String(a/SCALE)+(fraction?'.'+fraction:'');
 }
 export const number=n=>Number(decimalString(n));
+
+// Preserve a legacy number only if conversion back to fixed point is lossless.
+export function canonicalDecimal(value){
+  const u=units(value),n=number(u);
+  try{if(units(n)===u)return n;}catch{}
+  return decimalString(u);
+}
