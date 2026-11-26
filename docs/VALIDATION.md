@@ -132,3 +132,6 @@
 
 ## 26.11.2026 — минимальный ордер, DCA-20261126-41
 - 23cf3dfc6edd6c3fff97849a32f5620c743400c1; https://github.com/smoc1983-web/Dca/actions/runs/45878743440: success 186/186; https://github.com/smoc1983-web/Dca/actions/runs/45878743635: success 11 пар, 33 статических LIMIT расчёта, artifact 15145822622. Снимок текущих публичных фильтров, не фактические сделки. Production не изменён.
+
+## 26.11.2026 — 03.3 isolated collateral, DCA-20261126-44
+- 5c9eba91132c8e29210f9ec718899bc5bd6b3048, https://github.com/smoc1983-web/Dca/actions/runs/45880102689, job 140117002012: completed/success, 193/193 (186+7). 7 новых офлайн-тестов, synthetic only; D1/реальные позиции не проверены. Production не изменён.
