@@ -96,3 +96,6 @@
 
 ## 26.11.2026 — месячная история 19 пар, DCA-20261126-28
 - aa4ba18d5701717e9798a0dcd87505dcc5647ff5; https://github.com/smoc1983-web/Dca/actions/runs/45861421643, job 140053142510: completed/success, 155 passed, 0 failed (4 новых). https://github.com/smoc1983-web/Dca/actions/runs/45861421591, job 140053142617: success. https://github.com/smoc1983-web/Dca/actions/runs/45861421771, job 140053143019: success, 19 официальных ZIP, 102176 свечей, 76 отчётов, artifact 15137942769. Историческая сводка research/monthly-2025-01.md. Не OOS, не единый депозит, не production.
+
+## 26.11.2026 — общий портфельный бэктест, DCA-20261126-29
+- b369cac275c9d15759401e55d4813c89cbd80e38; https://github.com/smoc1983-web/Dca/actions/runs/45866537778, job 140070685438: completed/success, 163 passed, 0 failed (8 новых). Baseline и синтаксис успешны. Синтетический shared cash, reserve, конкуренция, PnL и слоты; реальный общий портфель не проверен. Node punycode warning в cleanup. Production не изменён.
