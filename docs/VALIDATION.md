@@ -18,3 +18,8 @@
 - Ветка dev/dca800-foundation, коммит 2f1af07a0d5053deb8035623d5dedc55f1e336d4.
 - GitHub Actions https://github.com/smoc1983-web/Dca/actions/runs/45842108512, job 139986197864, completed/success: baseline core, syntax/watchlist, all offline tests прошли. Всего 18 тестов, в том числе 7 новых SQLite-интеграционных. Проверка закрытия/повторного открытия БД, идемпотентность, аудит, конкуренция и отказ невалидных операций успешны.
 - Локальный node:sqlite доступен (Node 22.16.0); данный полный прогон подтверждён CI, локально новый набор отдельно не запускался. Реальный D1, production, точность decimal и интеграция Worker не проверены.
+
+## 26.11.2026 — модельный адаптер и CSV, DCA-20261126-06
+- Ветка dev/dca800-foundation, коммит 05f9a1985eb7e433e6e69b84f9fc2c63107f90ee.
+- GitHub Actions https://github.com/smoc1983-web/Dca/actions/runs/45843967419, job 139992662919, completed/success. Все шаги baseline, syntax/watchlist и all offline tests пройдены. Всего 23 теста (5+6+7+5); полный модельный цикл TP/STOP на синтетических свечах с комиссией и проскальзыванием, сверка cash/qty/average/PnL, идемпотентность, отказ хранилища/неполная история и безопасное форматирование CSV.
+- Новый набор отдельно локально не запускался. Настоящий D1, точная денежная арифметика, атомарность Worker/outbox/ledger, production и исторический бэктест не проверены. Нет деплоя или отправки сообщений.
