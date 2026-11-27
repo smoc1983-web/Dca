@@ -18,7 +18,7 @@ test('only a valid token for the exact read-only synthetic route can reach an ac
   [req('/ledger?token='+token),env,404],
   [req('/ledger',null),env,401],
   [req('/ledger',other),env,401],
-  [req('/ledger',token,'POST'),env,405]
+  [req('/ledger',token,'POST'),env,403]
  ])assert.equal((await worker.fetch(request,settings)).status,status);
 });
 function envSafe(){return {...active,DEV_LEDGER_DB_A:forbiddenDb};}

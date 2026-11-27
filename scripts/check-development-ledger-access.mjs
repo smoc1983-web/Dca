@@ -11,6 +11,8 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 const [a,b,wrong]=['A','B','WRONG'].map(id=>({
  id:'account-'+id,token:randomBytes(32).toString('base64url'),binding:'DEV_LEDGER_DB_'+id
 }));
+a.canWrite=true;
+wrong.canWrite=true;
 let outbound=0;
 const mf=new Miniflare({
  host:'127.0.0.1',port:0,logRequests:false,modules:true,modulesRoot:root,
@@ -21,7 +23,9 @@ const mf=new Miniflare({
 });
 const auth=account=>({Authorization:'Bearer '+account.token});
 const request=(account,path='/ledger',options={})=>mf.dispatchFetch('http://ledger.fixture'+path,
- {method:options.method,headers:{...(account?auth(account):{}),...options.headers}});
+ {method:options.method,body:options.body,headers:{...(account?auth(account):{}),...options.headers}});
+
+const post=(account,body)=>request(account,'/ledger',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
 
 async function seed(account,price,{bind=true}={}){
  const db=await mf.getD1Database(account.binding);
@@ -60,7 +64,7 @@ try{
  assert.equal((await request(null)).status,401);
  assert.equal((await request(a,'/ledger/account-b')).status,404);
  assert.equal((await request(a,'/ledger?account=account-b')).status,404);
- assert.equal((await request(b,'/ledger',{method:'POST'})).status,405);
+ assert.equal((await request(b,'/ledger',{method:'POST'})).status,403);
  const misbound=await request(wrong);
  assert.equal(misbound.status,503);
  assert.deepEqual(await misbound.json(),{status:'unavailable'});
@@ -69,8 +73,38 @@ try{
  await assert.rejects(first.db.prepare("INSERT OR REPLACE INTO dev_ledger_account VALUES(1,'account-WRONG')").run(),/immutable/);
  const unassigned=await seed({id:'account-legacy',binding:'DEV_LEDGER_DB_UNASSIGNED'},'300',{bind:false});
  await assert.rejects(unassigned.db.prepare("INSERT INTO dev_ledger_account VALUES(1,'account-A')").run(),/Cannot assign existing ledger history/);
+ const entered={kind:'fill',opId:'manual-entry',execution:{...first.fill,id:'second-receipt',time:2,dca:1}};
+ assert.equal((await post(null,entered)).status,401);
+ assert.equal((await post(b,entered)).status,403);
+ assert.equal((await post(wrong,entered)).status,503);
+ assert.equal((await post(a,{...entered,actor:'account-B'})).status,400);
+ assert.equal((await post(a,{...entered,recordedAt:1})).status,400);
+ assert.equal((await post(a,{...entered,execution:{...entered.execution,source:'model'}})).status,400);
+ assert.equal((await post(a,{...entered,execution:{...entered.execution,confirmed:false}})).status,400);
+ assert.equal((await post(a,{...entered,execution:{...entered.execution,time:Date.now()+60_000}})).status,400);
+ assert.equal((await post(a,{...entered,padding:'x'.repeat(8192)})).status,400);
  assert.equal((await first.store.snapshot()).revision,2);
+
+ const startTime=Date.now();
+ assert.equal((await post(a,entered)).status,201);
+ assert.equal((await post(a,entered)).status,200);
+ const correction={kind:'correct',opId:'manual-correction',expectedVersion:1,reason:'Synthetic receipt correction',
+  execution:{...entered.execution,price:'103'}};
+ const results=await Promise.all([post(a,correction),post(a,correction)]);
+ assert.deepEqual(results.map(r=>r.status).sort(),[200,201]);
+ assert.equal((await post(a,{...correction,reason:'Conflicting reason'})).status,409);
+ assert.equal((await post(a,{...correction,opId:'stale-new-id'})).status,409);
+ const audit=await first.store.audit();
+ assert.equal(audit.length,4);
+ assert.equal(audit[2].actor,a.id);
+ assert.equal(audit[3].actor,a.id);
+ assert.equal(audit[3].reason,correction.reason);
+ assert.ok(audit[2].recordedAt>=startTime&&audit[2].recordedAt<=Date.now());
+ const view=await(await request(a)).json();
+ assert.equal(view.executions.find(x=>x.execution.id==='second-receipt').version,2);
+ assert.equal(view.executions.find(x=>x.execution.id==='second-receipt').execution.price,103);
+ assert.equal((await first.store.snapshot()).revision,4);
  assert.equal((await second.store.snapshot()).revision,1);
  assert.equal(outbound,0);
- console.log('Ledger access: separate accounts, wrong token and binding blocked, immutable owner marker, no writes or outbound requests');
+ console.log('Ledger access: separate accounts, immutable marker, write permission, audited fill and correction, idempotent retry and no outbound requests');
 }finally{await mf.dispose();}

@@ -45,6 +45,8 @@ function apply(state,op){
   return true;
 }
 const current=state=>[...state.values()].map(x=>x.current);
+export class LedgerWriteConflict extends Error{}
+export class LedgerWriteValidation extends Error{}
 export class TradeLedgerStore{
   constructor(db){this.db=db;}
   async read(){
@@ -63,18 +65,22 @@ export class TradeLedgerStore{
     return {revision:s.revision,executions:[...s.state.values()].map(x=>({version:x.version,execution:x.current})),cycles:s.cycles};
   }
   async audit(){return [...(await this.read()).ops.values()];}
-  async write(raw){
-    const op=operation(raw);
+  async write(raw,{serverTimestamp=false}={}){
+    let op;
+    try{op=operation(raw);}catch(error){throw new LedgerWriteValidation(error.message);}
+    // The HTTP boundary supplies recordedAt. A later retry must retain the original audit time.
+    const comparable=value=>serverTimestamp?{...value,recordedAt:0}:value;
     for(let attempt=0;attempt<8;attempt++){
       const s=await this.read();
       if(s.ops.has(op.opId)){
-        if(!same(s.ops.get(op.opId),op))throw Error('Conflicting operation ID');
+        if(!same(comparable(s.ops.get(op.opId)),comparable(op)))throw new LedgerWriteConflict('Conflicting operation ID');
         return {status:'duplicate',revision:s.revision};
       }
-      const changed=apply(s.state,op);
+      let changed;
+      try{changed=apply(s.state,op);}catch(error){throw new LedgerWriteConflict(error.message);}
       if(!changed)return {status:'duplicate',revision:s.revision};
       // Reject any correction or fill that would invalidate downstream executions.
-      replayLedger(current(s.state));
+      try{replayLedger(current(s.state));}catch(error){throw new LedgerWriteConflict(error.message);}
       // One atomic SQL statement compares the entire audit revision before append.
       // A competing writer must reread and revalidate; stale corrections fail explicitly.
       const r=await this.db.prepare(

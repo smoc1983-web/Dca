@@ -77,3 +77,16 @@ test('SQL audit rows cannot be updated or deleted',async t=>{
   assert.throws(()=>db.exec('DELETE FROM trade_ledger_audit'),/append-only/);
   assert.equal((await store.audit()).length,1);
 });
+
+test('server-timestamped retries preserve the committed audit time and reject changed payload',async t=>{
+ const {store}=fixture(t);
+ const e={source:'manual',confirmed:true,id:'fixture',cycleId:'c',symbol:'ADAUSDT',
+  baseAsset:'ADA',quoteAsset:'USDT',tf:'5m',time:1,side:'buy',price:'100',quantity:'1'};
+ const first={kind:'fill',opId:'http:fixture',actor:'account-a',recordedAt:10,execution:e};
+ const options={serverTimestamp:true};
+ await store.write(first,options);
+ assert.equal((await store.write({...first,recordedAt:20},options)).status,'duplicate');
+ assert.equal((await store.audit())[0].recordedAt,10);
+ await assert.rejects(store.write({...first,recordedAt:20,actor:'account-b'},options),/Conflicting operation/);
+ await assert.rejects(store.write({...first,recordedAt:20}),/Conflicting operation/);
+});
