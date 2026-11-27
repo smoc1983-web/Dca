@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import worker from '../cloudflare/worker.mjs';
-import diagnostics from '../cloudflare/development-diagnostics.mjs';
+import diagnostics, {developmentPolicy} from '../cloudflare/development-diagnostics.mjs';
 
 const token='A'.repeat(43);
 const configured={DEV_WORKER_MODE:'synthetic',DEV_DIAGNOSTICS_TOKEN:token};
@@ -41,4 +41,31 @@ test('synthetic tick refuses missing mock transport before reading or sending',a
  diagnostics.scheduled({}, {...configured,DEV_DB:{prepare(){assert.fail('DB accessed');}}},
   {waitUntil(promise){scheduled=promise;}});
  await assert.rejects(scheduled,/Missing isolated Worker bindings/);
+});
+
+test('local monitoring policy validates known thresholds and preserves defaults',()=>{
+ const policy=developmentPolicy({sourceWindowMs:15_000,incidentCooldownMs:100,candleGraceMs:0,dailyEnabled:true});
+ assert.equal(policy.sourceWindowMs,15_000);
+ assert.equal(policy.incidentCooldownMs,100);
+ assert.equal(policy.candleGraceMs,0);
+ assert.equal(policy.dailyEnabled,true);
+ assert.equal(policy.maxTickAgeMs,120_000);
+ assert.equal(developmentPolicy().dailyEnabled,false);
+});
+test('bad local thresholds reject unknown keys, strings, missing minima and oversized windows',()=>{
+ for(const overrides of [null,[],{unknownMs:100},{dailyEnabled:1},{sourceWindowMs:'2000'},
+  {sourceWindowMs:0},{sourceWindowMs:7*86_400_000+1},{candleGraceMs:-1},{dailyGraceMs:18*3_600_000},{incidentCooldownMs:0}]){
+  assert.throws(()=>developmentPolicy(overrides),/Invalid synthetic monitoring policy/);
+ }
+});
+test('invalid policy disables both the synthetic tick and authorised diagnostics without reading storage',async()=>{
+ let scheduled;
+ const env={...configured,DEV_MONITORING_POLICY:{sourceWindowMs:-1},
+  DEV_DB:{prepare(){assert.fail('DB accessed');},batch(){assert.fail('DB accessed');}},
+  DEV_MOCK_NETWORK:{fetch(){assert.fail('network accessed');}}};
+ const response=await diagnostics.fetch(request(),env);
+ assert.equal(response.status,503);
+ assert.deepEqual(await response.json(),{status:'configuration-unavailable'});
+ diagnostics.scheduled({},env,{waitUntil(promise){scheduled=promise;}});
+ await assert.rejects(scheduled,/Invalid synthetic monitoring policy/);
 });

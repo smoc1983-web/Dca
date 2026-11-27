@@ -10,7 +10,28 @@ const minute=60_000;
 const sourceHosts=new Map([
  ['data-api.binance.vision','binance-vision'],['api.binance.com','binance-primary'],['api-gcp.binance.com','binance-gcp']
 ]);
-const policy={maxTickAgeMs:2*minute,candleGraceMs:minute,pendingAgeMs:minute,dailyEnabled:false,dailyGraceMs:minute};
+const defaults=Object.freeze({
+ maxTickAgeMs:2*minute,candleGraceMs:minute,pendingAgeMs:minute,dailyEnabled:false,dailyGraceMs:minute,
+ sourceWindowMs:24*60*minute,incidentCooldownMs:minute
+});
+const maxWindowMs=7*24*60*minute;
+
+export function developmentPolicy(overrides={}){
+ function invalid(){throw Error('Invalid synthetic monitoring policy');}
+ if(!overrides||typeof overrides!=='object'||Array.isArray(overrides))invalid();
+ for(const [key,value] of Object.entries(overrides)){
+  if(!Object.hasOwn(defaults,key))invalid();
+  if(key==='dailyEnabled'){
+   if(typeof value!=='boolean')invalid();
+  }else{
+   const permitsZero=key==='candleGraceMs'||key==='dailyGraceMs';
+   // The existing daily check begins at 06:00 and expires at local midnight.
+   const maximum=key==='dailyGraceMs'?18*60*minute-1:maxWindowMs;
+   if(!Number.isSafeInteger(value)||value<(permitsZero?0:1)||value>maximum)invalid();
+  }
+ }
+ return {...defaults,...overrides};
+}
 const enabled=env=>env.DEV_WORKER_MODE==='synthetic';
 const authToken=/^[A-Za-z0-9_-]{43}$/;
 const encoder=new TextEncoder();
@@ -43,13 +64,15 @@ function observedRequest(env,metrics){
 
 async function runSyntheticTick(env){
  if(!env.DEV_DB||typeof env.DEV_MOCK_NETWORK?.fetch!=='function')throw Error('Missing isolated Worker bindings');
+ const policy=developmentPolicy(env.DEV_MONITORING_POLICY);
  const metrics=new SourceMetrics(env.DEV_DB);
  try{
-  await tick({DB:env.DEV_DB,BOT_TOKEN:mockBot,CHAT_ID:mockChat},{request:observedRequest(env,metrics)});
+  await tick({DB:env.DEV_DB,BOT_TOKEN:mockBot,CHAT_ID:mockChat,DAILY_SUMMARY:policy.dailyEnabled?'on':'off'},
+   {request:observedRequest(env,metrics)});
  }finally{
   const now=Date.now();
   const health=await readHealth(env.DEV_DB,{...policy,now});
-  await new HealthNotices(env.DEV_DB).claim({synthetic:true,health,now,cooldownMs:minute});
+  await new HealthNotices(env.DEV_DB).claim({synthetic:true,health,now,cooldownMs:policy.incidentCooldownMs});
  }
 }
 
@@ -65,10 +88,13 @@ export default {
   if(request.method!=='GET')return reply({status:'method-not-allowed'},405,{Allow:'GET'});
   if(!await authorized(request,env.DEV_DIAGNOSTICS_TOKEN))
    return reply({status:'unauthorized'},401,{'WWW-Authenticate':'Bearer'});
+  let policy;
+  try{policy=developmentPolicy(env.DEV_MONITORING_POLICY);}
+  catch{return reply({status:'configuration-unavailable'},503);}
   const now=Date.now();
   const [health,sources,notice]=await Promise.all([
    readHealth(env.DEV_DB,{...policy,now}),
-   new SourceMetrics(env.DEV_DB).read({now,windowMs:24*60*minute}),
+   new SourceMetrics(env.DEV_DB).read({now,windowMs:policy.sourceWindowMs}),
    new HealthNotices(env.DEV_DB).read()
   ]);
   return reply({observedAt:now,health,sources,notice},health.status==='unavailable'?503:200);

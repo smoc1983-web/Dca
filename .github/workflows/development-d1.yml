@@ -7,6 +7,8 @@ on:
       - 'scripts/check-development-d1.mjs'
       - 'scripts/check-development-worker.mjs'
       - 'scripts/check-development-diagnostics.mjs'
+      - 'scripts/check-monitoring-stand.mjs'
+      - 'tests/fixtures/monitoring-stand-network.mjs'
       - 'tests/fixtures/development-diagnostics-driver.mjs'
       - 'tests/fixtures/worker-observation.sql'
       - '.github/workflows/development-d1.yml'
@@ -27,3 +29,4 @@ jobs:
       - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-d1.mjs
       - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-worker.mjs
       - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-diagnostics.mjs
+      - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-monitoring-stand.mjs
