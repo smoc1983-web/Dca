@@ -1,0 +1,36 @@
+name: Public spot futures mark price audit
+on:
+  push:
+    branches: ['dev/dca800-foundation']
+    paths:
+      - 'scripts/price-series-audit.mjs'
+      - '.github/workflows/price-series-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45875049345
+          pattern: long-data-*
+          merge-multiple: true
+          path: long-data
+      - run: node --max-old-space-size=4096 scripts/price-series-audit.mjs long-data price-audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: price-series-audit
+          path: price-audit.json
+          if-no-files-found: error
+          retention-days: 30
