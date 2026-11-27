@@ -19,26 +19,55 @@ export function months(start=START,end=END){
  }
  return out;
 }
-export function parseMarkMonth(csv,start,end){
+export function parseMarkMonth(csv,start,end,{allowMissing=false}={}){
  if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start%dt||end%dt||end<=start)throw Error('Invalid mark window');
  const lines=csv.trim().split(/\r?\n/);
  if(/^(open_time|open time|opentime),/i.test(lines[0]))lines.shift();
- if(lines.length!==(end-start)/dt)throw Error('Incomplete mark coverage');
- return lines.map((line,i)=>{
-  const a=line.split(','),time=start+i*dt,closeTime=time+dt-1;
-  if(a.length!==12||Number(a[0])!==time||Number(a[6])!==closeTime)throw Error('Mark gap, duplicate or timestamp units');
+ if(!allowMissing&&lines.length!==(end-start)/dt)throw Error('Incomplete mark coverage: '+lines.length+' of '+(end-start)/dt);
+ let previous=start-dt;
+ return lines.map(line=>{
+  const a=line.split(','),time=Number(a[0]),closeTime=time+dt-1;
+  if(a.length!==12||!Number.isSafeInteger(time)||time<start||time>=end||time%dt||time<=previous||Number(a[6])!==closeTime||!allowMissing&&time!==previous+dt)throw Error('Mark gap, duplicate or timestamp units');
+  previous=time;
   const [open,high,low,close]=a.slice(1,5).map(Number);
   if([open,high,low,close].some(x=>!Number.isFinite(x)||x<=0)||low>Math.min(open,close)||high<Math.max(open,close)||low>high)throw Error('Invalid mark OHLC');
   return {time,closeTime,open,high,low,close,volume:0};
  });
 }
-function urlFor(symbol,month){return 'https://data.binance.vision/data/futures/um/monthly/markPriceKlines/'+symbol+'/5m/'+symbol+'-5m-'+month+'.zip';}
+const dayMs=86400000;
+function urlFor(symbol,period,daily=false){return 'https://data.binance.vision/data/futures/um/'+(daily?'daily':'monthly')+'/markPriceKlines/'+symbol+'/5m/'+symbol+'-5m-'+period+'.zip';}
+export function missingDays(rows,start,end){
+ const seen=new Set(rows.map(r=>r.time)),days=[];
+ for(let t=start;t<end;t+=dt)if(!seen.has(t)){
+  const day=new Date(t).toISOString().slice(0,10);
+  if(days.at(-1)!==day)days.push(day);
+ }
+ return days;
+}
+export function mergeMarkDay(map,rows,start,end){
+ if(rows.length!==(end-start)/dt)throw Error('Incomplete daily repair');
+ for(let i=0;i<rows.length;i++){
+  const r=rows[i],t=start+i*dt;
+  if(r.time!==t||r.closeTime!==t+dt-1)throw Error('Misaligned daily repair');
+  const prev=map.get(t);
+  if(prev&&['time','closeTime','open','high','low','close'].some(k=>prev[k]!==r[k]))throw Error('Monthly/daily mark conflict '+new Date(t).toISOString());
+ }
+ for(const r of rows)map.set(r.time,r);
+}
+function validArchive(a,m,symbol){
+ if(a.month!==m.month||a.url!==urlFor(symbol,m.month)||! /^[a-f0-9]{64}$/.test(a.sha256))return false;
+ if(a.missingRows===undefined)return a.dailyRepairs===undefined; // complete legacy manifest
+ if(!Number.isSafeInteger(a.missingRows)||a.missingRows<0||a.missingRows>(m.end-m.start)/dt||!Array.isArray(a.dailyRepairs))return false;
+ const days=a.dailyRepairs.map(x=>x.day);
+ if((a.missingRows===0)!==(days.length===0)||days.length>a.missingRows||a.missingRows>days.length*288||new Set(days).size!==days.length)return false;
+ return a.dailyRepairs.every((r,i)=>typeof r.day==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(r.day)&&Date.parse(r.day+'T00:00:00Z')>=m.start&&Date.parse(r.day+'T00:00:00Z')<m.end&&(!i||days[i-1]<r.day)&&r.url===urlFor(symbol,r.day,true)&&/^[a-f0-9]{64}$/.test(r.sha256));
+}
 export function validateMarkDataset(d,market,start=START,end=END){
  if(d?.version!=='binance-um-mark-v1'||d.symbol!==market.symbol||d.tf!==market.tf||d.start!==start||d.end!==end)throw Error('Unexpected mark identity/window');
  const step=Number(market.tf.slice(0,-1))*({m:60000,h:3600000,d:86400000}[market.tf.at(-1)]);
  if(!Number.isSafeInteger(step)||step<=0||step%dt||!Array.isArray(d.rows)||d.rows.length!==(end-start)/step)throw Error('Incomplete target mark coverage');
  const ms=months(start,end);
- if(!Array.isArray(d.archives)||d.archives.length!==ms.length||d.archives.some((a,i)=>a.month!==ms[i].month||a.url!==urlFor(market.symbol,ms[i].month)||! /^[a-f0-9]{64}$/.test(a.sha256)))throw Error('Incomplete mark provenance');
+ if(!Array.isArray(d.archives)||d.archives.length!==ms.length||d.archives.some((a,i)=>!validArchive(a,ms[i],market.symbol)))throw Error('Incomplete mark provenance');
  for(let i=0;i<d.rows.length;i++){
   const r=d.rows[i],t=start+i*step;
   if(r.time!==t||r.closeTime!==t+step-1||[r.open,r.high,r.low,r.close].some(x=>!Number.isFinite(x)||x<=0)||r.low>Math.min(r.open,r.close)||r.high<Math.max(r.open,r.close)||r.low>r.high||r.volume!==0)throw Error('Invalid target mark row');
@@ -54,16 +83,33 @@ async function bytes(url){
  }
  throw error;
 }
-async function loadMonth(symbol,m,dir){
- const url=urlFor(symbol,m.month),name=url.split('/').at(-1);
+async function loadArchive(url,dir){
+ const name=url.split('/').at(-1);
  const [zip,checksum]=await Promise.all([bytes(url),bytes(url+'.CHECKSUM')]);
  const sha256=createHash('sha256').update(zip).digest('hex'),expected=checksum.toString('utf8').trim().split(/\s+/)[0].toLowerCase();
  if(!/^[a-f0-9]{64}$/.test(expected)||expected!==sha256)throw Error('Mark ZIP checksum mismatch '+url);
  const path=join(dir,name);writeFileSync(path,zip);
  const csvName=name.replace(/\.zip$/,'.csv'),entries=execFileSync('unzip',['-Z1',path],{encoding:'utf8'}).trim().split(/\r?\n/);
  if(entries.length!==1||entries[0]!==csvName)throw Error('Unexpected mark ZIP contents');
- const rows=parseMarkMonth(execFileSync('unzip',['-p',path,csvName],{encoding:'utf8',maxBuffer:8*1024*1024}),m.start,m.end);
- return {rows,archive:{month:m.month,url,sha256}};
+ const csv=execFileSync('unzip',['-p',path,csvName],{encoding:'utf8',maxBuffer:8*1024*1024});
+ return {csv,url,sha256};
+}
+async function loadMonth(symbol,m,dir){
+ const a=await loadArchive(urlFor(symbol,m.month),dir);
+ const rows=parseMarkMonth(a.csv,m.start,m.end,{allowMissing:true});
+ const missingRows=(m.end-m.start)/dt-rows.length,days=missingDays(rows,m.start,m.end),dailyRepairs=[];
+ console.log('MARK_MONTH '+JSON.stringify({symbol,month:m.month,actual:rows.length,expected:(m.end-m.start)/dt,missingRows,days,sha256:a.sha256}));
+ if(missingRows){
+  const map=new Map(rows.map(r=>[r.time,r]));
+  for(const day of days){
+   const start=Date.parse(day+'T00:00:00Z'),d=await loadArchive(urlFor(symbol,day,true),dir);
+   try{mergeMarkDay(map,parseMarkMonth(d.csv,start,start+dayMs),start,start+dayMs);}
+   catch(e){throw Error('Daily repair failed '+symbol+' '+day+': '+e.message);}
+   dailyRepairs.push({day,url:d.url,sha256:d.sha256});
+  }
+  rows.length=0;for(let t=m.start;t<m.end;t+=dt){if(!map.has(t))throw Error('Unrepaired mark gap '+symbol+' '+new Date(t).toISOString());rows.push(map.get(t));}
+ }
+ return {rows,archive:{month:m.month,url:a.url,sha256:a.sha256,missingRows,dailyRepairs}};
 }
 async function main(){
  const symbol=process.argv[2],market=markets.find(m=>m.symbol===symbol);if(!market)throw Error('Unknown enabled market');
