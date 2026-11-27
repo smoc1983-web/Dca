@@ -4,7 +4,7 @@ import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {validateLongInput} from './prepare-long-target.mjs';
 const EPS=1e-7,FUNDING=8*3600000;
-export function replayProtectionProxy({datasets,report,leverage,policy,fundingRate,maintenanceRate=0.005,responseMode}){
+export function replayProtectionProxy({datasets,report,leverage,policy,fundingRate,maintenanceRate=0.005,responseMode,markDatasets}){
  if(!['none','next-close','two-closes','reject'].includes(responseMode))throw Error('Explicit response mode required');
  if(![1,2,3].includes(leverage)||!['fixed-notional','scaled-notional'].includes(policy)||![0,0.0001].includes(fundingRate)||maintenanceRate!==0.005)throw Error('Invalid proxy settings');
  const {capital,maxCycles,cycleBudget,slippageBps}=report.settings;
@@ -15,6 +15,19 @@ export function replayProtectionProxy({datasets,report,leverage,policy,fundingRa
  let pending=null,requested=0,confirmed=0,rejected=0,denied=0,cancelled=0,spent=0,peakHeld=0,peakPending=0;
  const entries=datasets.map(d=>({symbol:d.params.symbol,rows:d.candles,index:(d.window.start-d.window.warmupStart)/(d.candles[1].time-d.candles[0].time),p:null,mark:null}));
  const bySymbol=new Map(entries.map(e=>[e.symbol,e]));
+ // Explicit independent risk series. Never replace original spot rows or fixed fills.
+ if(markDatasets!==undefined){
+  if(!Array.isArray(markDatasets)||markDatasets.length!==entries.length||new Set(markDatasets.map(m=>m.symbol)).size!==entries.length)throw Error('Complete mark series required');
+  for(const e of entries){
+   const m=markDatasets.find(x=>x.symbol===e.symbol);
+   if(!m||!Array.isArray(m.rows)||m.rows.length!==e.rows.length-e.index)throw Error('Incomplete mark alignment');
+   for(let i=0;i<m.rows.length;i++){
+    const r=m.rows[i],c=e.rows[e.index+i];
+    if(r.time!==c.time||r.closeTime!==c.closeTime||!Number.isFinite(r.low)||!Number.isFinite(r.close)||r.low<=0||r.close<r.low)throw Error('Mark alignment mismatch');
+   }
+   e.markRows=m.rows;e.markOffset=e.index;
+  }
+ }
  if(bySymbol.size!==entries.length||!entries.length||entries.some(e=>!Number.isSafeInteger(e.index)||e.index<1))throw Error('Invalid proxy data');
  const events=report.events;
  if(events.some((e,i)=>!bySymbol.has(e.symbol)||i&&e.time<events[i-1].time))throw Error('Invalid fixed schedule');
@@ -75,7 +88,7 @@ export function replayProtectionProxy({datasets,report,leverage,policy,fundingRa
   // Low of each closed candle tests only the position held BEFORE the close fill.
   // Low is not an exact intrabar timestamp; no simultaneous cross-margin minima inferred.
   for(const e of due){
-   const c=e.rows[e.index++];e.mark=c.close;
+   const spot=e.rows[e.index],c=e.markRows?e.markRows[e.index-e.markOffset]:spot;e.index++;e.mark=c.close;e.spotClose=spot.close;
    if(e.p){assess(e,c.low,t,'pre-fill-candle-low');
     if(first)break;
     if((t+1)%FUNDING===0){const f=e.p.qty*c.close*fundingRate;e.p.collateral-=f;wallet-=f;funding+=f;}
@@ -88,7 +101,7 @@ export function replayProtectionProxy({datasets,report,leverage,policy,fundingRa
   const hadPending=!!pending;respond(t,due);
   while(processed<events.length&&events[processed].time===t){
    const f=events[processed],e=bySymbol.get(f.symbol);
-   if(!due.includes(e)||e.mark!==f.price)throw Error('Fixed fill/candle mismatch');
+   if(!due.includes(e)||e.spotClose!==f.price)throw Error('Fixed fill/candle mismatch');
    const qty=f.quantity*factor,n=qty*f.fillPrice,fee=n*feeRate;
    if(f.kind==='START'){
     if(e.p)throw Error('Overlapping fixed cycle');
@@ -115,7 +128,7 @@ export function replayProtectionProxy({datasets,report,leverage,policy,fundingRa
  }
  if(!first&&processed!==events.length)throw Error('Unprocessed fixed fills');
  if(Math.abs(wallet-(capital+realized-fees-funding))>EPS*Math.max(1,capital))throw Error('Proxy wallet reconciliation failed');
- return {leverage,policy,fundingRate,maintenanceRate,slotCollateral:baseSlot,responseMode,protectionPool:pool,cycleProtectionCap:cycleCap,targetHeadroom:target,adverseDropFraction:drop,requested,confirmed,rejected,denied,cancelled,cumulativeTopups:spent,peakProtectionHeld:peakHeld,peakPending,finalProtectionHeld:held(),pendingAmount:pending?.amount??0,quantityScale:factor,plannedStartNotional:5*factor,plannedLadderNotional:5*factor*Array.from({length:6},(_,i)=>1.5**i).reduce((a,b)=>a+b,0),
+ return {riskPriceSource:markDatasets===undefined?'spot':'binance-um-mark',leverage,policy,fundingRate,maintenanceRate,slotCollateral:baseSlot,responseMode,protectionPool:pool,cycleProtectionCap:cycleCap,targetHeadroom:target,adverseDropFraction:drop,requested,confirmed,rejected,denied,cancelled,cumulativeTopups:spent,peakProtectionHeld:peakHeld,peakPending,finalProtectionHeld:held(),pendingAmount:pending?.amount??0,quantityScale:factor,plannedStartNotional:5*factor,plannedLadderNotional:5*factor*Array.from({length:6},(_,i)=>1.5**i).reduce((a,b)=>a+b,0),
   status:first?'stopped-at-proxy-risk':'completed-fixed-schedule',firstRisk:first,lastTime,processedEvents:processed,totalEvents:events.length,closedCycles:closed,
   minMaintenanceHeadroom:Number.isFinite(minMaintenance)?minMaintenance:null,minReserveHeadroom:Number.isFinite(minReserve)?minReserve:null,minFreeCollateral:minFree,
   fees,funding,realizedGrossPnl:realized,openPnl:snap.upnl,observedCloseDrawdownPercent:100*dd,peakNotional,
