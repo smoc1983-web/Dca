@@ -65,7 +65,8 @@ export class AtomicModelStore{
         SELECT ?,?,?,?,?,? WHERE COALESCE((SELECT MAX(seq) FROM dev_model_steps WHERE model_id=?),0)=?
         AND COALESCE((SELECT MAX(seq) FROM trade_ledger_audit),0)=?`)
         .bind(modelId,candle.time,encoded,json(next.state),next.operation?JSON.stringify(next.operation):null,next.event?JSON.stringify(next.event):null,modelId,current.revision,snapshot.revision).run();
-      if(r.meta.changes===1)return {status:'stored',state:next.state,event:next.event,revision:Number(r.meta.last_row_id)};
+      // The conditional INSERT creates at most one step. D1 also counts its trigger writes.
+      if(Number.isSafeInteger(r.meta.changes)&&r.meta.changes>0)return {status:'stored',state:next.state,event:next.event,revision:Number(r.meta.last_row_id)};
       if(r.meta.changes!==0)throw Error('Unexpected model write result');
     }
     throw Error('Model contention: retry candle');

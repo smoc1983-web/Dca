@@ -5,6 +5,7 @@ on:
     paths:
       - 'cloudflare/**'
       - 'scripts/check-development-d1.mjs'
+      - 'scripts/check-development-ledger-migration.mjs'
       - 'scripts/check-development-worker.mjs'
       - 'scripts/check-development-diagnostics.mjs'
       - 'scripts/check-monitoring-stand.mjs'
@@ -30,3 +31,4 @@ jobs:
       - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-worker.mjs
       - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-diagnostics.mjs
       - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-monitoring-stand.mjs
+      - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-ledger-migration.mjs

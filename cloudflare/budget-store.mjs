@@ -171,7 +171,8 @@ export class BudgetStore{
       const out=await this.db.prepare(`INSERT INTO dev_budget_audit(op_id,request,state,ledger_op)
         SELECT ?,?,?,? WHERE COALESCE((SELECT MAX(seq) FROM dev_budget_audit),0)=?
         AND COALESCE((SELECT MAX(seq) FROM trade_ledger_audit),0)=?`+guard).bind(...args).run();
-      if(out.meta.changes===1)return {status:'stored',...(await this.snapshot())};
+      // The conditional INSERT creates at most one budget row. D1 also counts the ledger trigger.
+      if(Number.isSafeInteger(out.meta.changes)&&out.meta.changes>0)return {status:'stored',...(await this.snapshot())};
       if(out.meta.changes!==0)throw Error('Unexpected write result');
     }
     throw Error('Budget contention: retry');
