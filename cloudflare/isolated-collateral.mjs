@@ -13,7 +13,7 @@ export function createCollateralAccount(raw){
  const venue=id(raw.venue,'venue'),accountId=id(raw.accountId,'account'),at=timestamp(raw.observedAt);
  const free=amt(raw.freeCollateral,'free collateral'),dca=amt(raw.dcaReserve,'DCA reserve'),cap=amt(raw.protectionCap,'protection cap');
  if(dca>free)throw Error('Existing DCA reserve deficit');
- if(!Array.isArray(raw.positions)||!raw.positions.length||raw.positions.length>19)throw Error('Explicit open positions required');
+ if(!Array.isArray(raw.positions)||raw.positions.length>19)throw Error('Explicit position list required');
  const positions=raw.positions.map(p=>{
   if(!/^[A-Z0-9]+USDT$/.test(p.symbol)||!Number.isInteger(p.leverage)||p.leverage<1||p.leverage>3||!Number.isInteger(p.lastDca)||p.lastDca<0||p.lastDca>5)throw Error('Invalid position');
   return {cycleId:id(p.cycleId,'cycle'),symbol:p.symbol,leverage:p.leverage,lastDca:p.lastDca,quantity:txt(amt(p.quantity,'quantity',true)),averageEntry:txt(amt(p.averageEntry,'average',true)),tpPrice:txt(amt(p.tpPrice,'TP',true)),collateral:txt(amt(p.collateral,'collateral',true))};

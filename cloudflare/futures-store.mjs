@@ -2,6 +2,11 @@
 import {normalizeFuturesEvent,replayFutures,stressManualFutures} from './futures-ledger.mjs';
 function required(v,n){if(typeof v!=='string'||!v.trim()||v.length>128)throw Error('Invalid '+n);return v;}
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+function scope(raw){
+ if(raw?.synthetic!==true||raw.mode!=='isolated')throw Error('Synthetic isolated account required');
+ return {synthetic:true,mode:'isolated',venue:required(raw.venue,'venue'),accountId:required(raw.accountId,'account ID')};
+}
+
 function canonical(raw){
  if(!raw||!['append','correct'].includes(raw.kind)||raw.confirmed!==true)throw Error('Confirmed futures operation required');
  const opId=required(raw.opId,'opId'),actor=required(raw.actor,'actor');
@@ -9,6 +14,7 @@ function canonical(raw){
  const event=normalizeFuturesEvent(raw.event);
  if(event.time>raw.recordedAt)throw Error('Future event time');
  const op={opId,actor,recordedAt:raw.recordedAt,kind:raw.kind,confirmed:true,event};
+ if(raw.account!==undefined)op.account=scope(raw.account);
  if(raw.kind==='correct'){
   if(!Number.isSafeInteger(raw.expectedVersion)||raw.expectedVersion<1)throw Error('Invalid expectedVersion');
   Object.assign(op,{expectedVersion:raw.expectedVersion,reason:required(raw.reason,'reason')});
@@ -36,6 +42,29 @@ function apply(entries,op){
 const events=entries=>[...entries.values()].map(x=>x.event);
 export class FuturesStore{
  constructor(db){this.db=db;}
+ async accountBinding(){
+  const {results:[r]}=await this.db.prepare('SELECT venue,account_id FROM dev_futures_account WHERE singleton=1').all();
+  return r?scope({synthetic:true,mode:'isolated',venue:r.venue,accountId:r.account_id}):null;
+ }
+ async bindAccount(account){
+  const wanted=scope(account);
+  let existing=await this.accountBinding();
+  if(!existing){
+   await this.db.prepare(`INSERT INTO dev_futures_account(singleton,venue,account_id)
+    SELECT 1,?,? WHERE NOT EXISTS(SELECT 1 FROM dev_futures_audit)
+    AND NOT EXISTS(SELECT 1 FROM dev_futures_account)`).bind(wanted.venue,wanted.accountId).run();
+   existing=await this.accountBinding();
+  }
+  if(!existing)throw Error('Cannot bind existing futures history');
+  if(!same(existing,wanted))throw Error('Futures account binding mismatch');
+  return existing;
+ }
+ async boundSnapshot(account){
+  const wanted=scope(account);
+  if(!same(await this.accountBinding(),wanted))throw Error('Futures account binding mismatch');
+  return {...wanted,singleAccount:true,...await this.snapshot()};
+ }
+
  async read(){
   const result=await this.db.prepare('SELECT seq,op_id,payload FROM dev_futures_audit ORDER BY seq').all();
   const entries=new Map(),ops=new Map();let revision=0;
@@ -57,6 +86,8 @@ export class FuturesStore{
   const op=canonical(raw);
   if(!Number.isSafeInteger(raw.expectedRevision)||raw.expectedRevision<0)throw Error('Invalid expectedRevision');
   for(let attempt=0;attempt<8;attempt++){
+   const bound=await this.accountBinding();
+   if(!same(bound,op.account??null))throw Error('Futures account binding mismatch');
    const s=await this.read();
    if(s.ops.has(op.opId)){
     if(!same(s.ops.get(op.opId),op))throw Error('Conflicting futures operation ID');
@@ -70,8 +101,11 @@ export class FuturesStore{
    if(raw.expectedRevision!==s.revision)throw Error('Stale futures revision');
    if(!apply(s.entries,op))throw Error('Unexpected duplicate');
    replayFutures(events(s.entries));
-   const r=await this.db.prepare('INSERT INTO dev_futures_audit(op_id,payload) SELECT ?,? WHERE COALESCE((SELECT MAX(seq) FROM dev_futures_audit),0)=?')
-    .bind(op.opId,JSON.stringify(op),s.revision).run();
+   const r=await this.db.prepare(`INSERT INTO dev_futures_audit(op_id,payload) SELECT ?,?
+    WHERE COALESCE((SELECT MAX(seq) FROM dev_futures_audit),0)=?
+    AND ((? IS NULL AND NOT EXISTS(SELECT 1 FROM dev_futures_account))
+     OR EXISTS(SELECT 1 FROM dev_futures_account WHERE venue=? AND account_id=?))`)
+    .bind(op.opId,JSON.stringify(op),s.revision,bound?.venue??null,bound?.venue??null,bound?.accountId??null).run();
    if(r.meta.changes===1)return {status:'stored',revision:Number(r.meta.last_row_id)};
    if(r.meta.changes!==0)throw Error('Unexpected futures write result');
   }
