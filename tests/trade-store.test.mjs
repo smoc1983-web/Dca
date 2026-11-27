@@ -90,3 +90,34 @@ test('server-timestamped retries preserve the committed audit time and reject ch
  await assert.rejects(store.write({...first,recordedAt:20,actor:'account-b'},options),/Conflicting operation/);
  await assert.rejects(store.write({...first,recordedAt:20}),/Conflicting operation/);
 });
+
+test('execution pages pin versions and fill order while later writes continue',async t=>{
+ const {store}=fixture(t);
+ const first=fill({id:'first',cycleId:'first'}),recent=fill({id:'recent',cycleId:'recent'});
+ await store.write(op(first));
+ await store.write(op({...first,source:'model'}));
+ await store.write(op(recent));
+ const head=await store.pageExecutions({limit:1});
+ assert.equal(head.executions[0].execution.id,'recent');
+ assert.equal(head.revision,3);
+ assert.deepEqual(head.next,{before:3,revision:3});
+
+ await store.write(correction({...first,price:105}));
+ await store.write(op(fill({id:'new',cycleId:'new'})));
+ const rest=await store.pageExecutions({...head.next,limit:2});
+ assert.equal(rest.revision,3);
+ assert.equal(rest.next,null);
+ assert.deepEqual(rest.executions.map(x=>[x.execution.source,x.execution.id,x.execution.price,x.version]),
+  [['model','first',100,1],['manual','first',100,1]]);
+ const fresh=await store.pageExecutions();
+ assert.deepEqual(fresh.executions.map(x=>[x.execution.id,x.execution.price,x.version]),
+  [['new',100,1],['recent',100,1],['first',100,1],['first',105,2]]);
+});
+test('page bounds reject partial cursors, invalid limits and future revisions',async t=>{
+ const {store}=fixture(t);
+ assert.deepEqual(await store.pageExecutions(),{revision:0,executions:[],next:null});
+ for(const args of [{limit:0},{limit:101},{before:1},{revision:1},{before:0,revision:1},{before:2,revision:1}]){
+  await assert.rejects(store.pageExecutions(args),/Invalid ledger page/);
+ }
+ await assert.rejects(store.pageExecutions({before:1,revision:1}),/Unknown ledger revision/);
+});

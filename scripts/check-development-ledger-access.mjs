@@ -62,6 +62,14 @@ try{
    assert.ok(!raw.includes(value),'Ledger emitted data outside the authorised view');
  }
  assert.equal((await request(null)).status,401);
+ assert.equal((await request(null,'/ledger/executions')).status,401);
+ assert.equal((await request(wrong,'/ledger/executions')).status,503);
+ assert.equal((await request(b,'/ledger/executions',{method:'POST'})).status,405);
+ assert.equal((await request(b,'/ledger/executions?account=account-A')).status,400);
+ assert.equal((await request(b,'/ledger/executions?limit=1&limit=2')).status,400);
+ const page=await(await request(b,'/ledger/executions?limit=1',{headers:{'X-Account':a.id}})).json();
+ assert.equal(page.accountId,b.id);
+ assert.equal(page.executions[0].execution.price,200);
  assert.equal((await request(a,'/ledger/account-b')).status,404);
  assert.equal((await request(a,'/ledger?account=account-b')).status,404);
  assert.equal((await request(b,'/ledger',{method:'POST'})).status,403);

@@ -52,12 +52,24 @@ async function manualCommand(request,account,now){
  finally{reader.releaseLock();}
 }
 
+function executionPage(params){
+ const options={};
+ for(const [name,value] of params){
+  if(!['limit','before','revision'].includes(name)||Object.hasOwn(options,name)||!/^\d{1,16}$/.test(value))
+   throw new LedgerWriteValidation('Invalid ledger page');
+  options[name]=Number(value);
+ }
+ return options;
+}
+
 export default {
  async fetch(request,env){
   const url=new URL(request.url);
-  if(env.DEV_LEDGER_MODE!=='synthetic'||url.pathname!=='/ledger'||url.search)
+  const paged=url.pathname==='/ledger/executions';
+  if(env.DEV_LEDGER_MODE!=='synthetic'||(!paged&&(url.pathname!=='/ledger'||url.search)))
    return reply({status:'not-found'},404);
-  if(request.method!=='GET'&&request.method!=='POST')return reply({status:'method-not-allowed'},405,{Allow:'GET, POST'});
+  if(request.method!=='GET'&&(paged||request.method!=='POST'))
+   return reply({status:'method-not-allowed'},405,{Allow:paged?'GET':'GET, POST'});
   const accounts=accountDirectory(env.DEV_LEDGER_ACCOUNTS);
   if(!accounts)return unavailable();
   const candidate=readBearer(request);
@@ -74,6 +86,15 @@ export default {
     const command=await manualCommand(request,account,Date.now());
     const result=await store.write(command,{serverTimestamp:true});
     return reply(result,result.status==='stored'?201:200);
+   }
+   if(paged){
+    try{
+     const page=await store.pageExecutions(executionPage(url.searchParams));
+     return reply({status:'available',accountId:account.id,...page});
+    }catch(error){
+     if(error instanceof LedgerWriteValidation)return reply({status:'invalid-page'},400);
+     throw error;
+    }
    }
    const {revision,executions,cycles}=await store.snapshot();
    return reply({status:'available',accountId:account.id,revision,executions,cycles});

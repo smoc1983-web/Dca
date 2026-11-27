@@ -12,3 +12,9 @@ CREATE TRIGGER IF NOT EXISTS trade_ledger_no_delete
 BEFORE DELETE ON trade_ledger_audit BEGIN
   SELECT RAISE(ABORT, 'Ledger is append-only');
 END;
+
+CREATE INDEX IF NOT EXISTS trade_ledger_fill_order ON trade_ledger_audit(seq DESC)
+WHERE json_extract(payload,'$.kind')='fill';
+CREATE INDEX IF NOT EXISTS trade_ledger_execution_history ON trade_ledger_audit(
+ json_extract(payload,'$.execution.source'),json_extract(payload,'$.execution.id'),seq DESC
+);

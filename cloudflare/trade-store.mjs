@@ -64,6 +64,38 @@ export class TradeLedgerStore{
     const s=await this.read();
     return {revision:s.revision,executions:[...s.state.values()].map(x=>({version:x.version,execution:x.current})),cycles:s.cycles};
   }
+  async pageExecutions({limit=50,before=null,revision=null}={}){
+    if(!Number.isSafeInteger(limit)||limit<1||limit>100||(before===null)!==(revision===null)||
+      revision!==null&&(!Number.isSafeInteger(revision)||!Number.isSafeInteger(before)||before<1||before>revision))
+      throw new LedgerWriteValidation('Invalid ledger page');
+    const {results:[head]}=await this.db.prepare('SELECT COALESCE(MAX(seq),0) AS revision FROM trade_ledger_audit').all();
+    const pinned=revision??head.revision;
+    if(pinned>head.revision)throw new LedgerWriteValidation('Unknown ledger revision');
+    const atMost=before===null?pinned:before-1;
+    const {results}=await this.db.prepare(`WITH fills AS (
+      SELECT seq AS fill_seq, json_extract(payload,'$.execution.source') AS source,
+        json_extract(payload,'$.execution.id') AS execution_id
+      FROM trade_ledger_audit INDEXED BY trade_ledger_fill_order
+      WHERE json_extract(payload,'$.kind')='fill' AND seq<=?
+      ORDER BY seq DESC LIMIT ?
+    )
+    SELECT f.fill_seq,a.seq,a.op_id,a.payload
+    FROM fills f JOIN trade_ledger_audit a ON a.seq=(
+      SELECT h.seq FROM trade_ledger_audit h INDEXED BY trade_ledger_execution_history
+      WHERE json_extract(h.payload,'$.execution.source')=f.source
+        AND json_extract(h.payload,'$.execution.id')=f.execution_id AND h.seq<=?
+      ORDER BY h.seq DESC LIMIT 1
+    )
+    ORDER BY f.fill_seq DESC`).bind(atMost,limit+1,pinned).all();
+    const page=results.slice(0,limit);
+    const executions=page.map(row=>{
+      const op=operation(JSON.parse(row.payload));
+      if(op.opId!==row.op_id||row.seq<row.fill_seq||row.seq>pinned||
+        (op.kind==='fill')!==(row.seq===row.fill_seq))throw Error('Corrupt execution page');
+      return {version:op.kind==='correct'?op.expectedVersion+1:1,execution:op.execution};
+    });
+    return {revision:pinned,executions,next:results.length>limit?{before:page.at(-1).fill_seq,revision:pinned}:null};
+  }
   async audit(){return [...(await this.read()).ops.values()];}
   async write(raw,{serverTimestamp=false}={}){
     let op;
