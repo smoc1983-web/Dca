@@ -56,6 +56,40 @@ test('fresh reconciled observation required after correction in guarded mode',as
  await assert.rejects(b.apply(review(3,1)),/Stale ledger review/);
  const done=await b.apply(review(3,(await b.ledger.snapshot()).revision));assert.equal(done.state.reservations[0].correctionPending,false);
 });
+test('a review tied to a cash revision also requires its freshness policy and enough free cash',async t=>{
+ const unguarded=(await fixture(t)).b;
+ await unguarded.apply(fix(2));
+ await assert.rejects(unguarded.apply({...review(3,2),expectedCashRevision:0}),/policy required/);
+ const {b,c,db}=await fixture(t,true);
+ await b.apply(fix(2));
+ const observe=(id,revision,free,locked)=>c.write(cmd('observe',id,revision,{time:5,free,locked,completeHistory:true}));
+ await observe('locked',2,'100','679.98');
+ await assert.rejects(b.apply({...review(3,2),expectedCashRevision:3}),/RESERVE_CASH_DEFICIT/);
+ await observe('free',3,'779.98','0');
+ const pinned={...review(3,2),expectedCashRevision:4};
+ await assert.rejects(new BudgetStore(port(db),{clock:()=>106}).apply(pinned),/STALE_OBSERVATION/);
+ assert.equal((await b.apply(pinned)).state.reservations[0].correctionPending,false);
+});
+test('a new cash observation between review validation and commit invalidates the acknowledged revision',async t=>{
+ const {b,c,db}=await fixture(t,true);
+ await b.apply(fix(2));
+ const observe=(id,revision)=>c.write(cmd('observe',id,revision,{time:5,free:'779.98',locked:'0',completeHistory:true}));
+ await observe('initial',2);
+ const before=await b.snapshot(),base=port(db);
+ let raced=false;
+ const concurrent={prepare(sql){
+  const statement=base.prepare(sql);
+  if(!sql.startsWith('INSERT INTO dev_budget_audit'))return statement;
+  return {...statement,async run(){
+   if(!raced){raced=true;await observe('replacement',3);}
+   return statement.run();
+  }};
+ }};
+ await assert.rejects(new BudgetStore(concurrent,{clock:()=>10}).apply({...review(3,2),expectedCashRevision:3}),/Stale cash review/);
+ assert.ok(raced);
+ assert.deepEqual(await b.snapshot(),before);
+ assert.equal((await c.load()).revision,4);
+});
 test('guarded release needs fresh cash observation after sale',async t=>{
  const {b,c}=await fixture(t,true);await b.apply(cmd('fill','sell',2,{id:'c',execution:e({id:'s',time:2,side:'sell',price:'110',fee:'0.022',dca:null})}));
  const release=cmd('release','release',3,{id:'c',ordersCancelled:true,freeCash:'800'});

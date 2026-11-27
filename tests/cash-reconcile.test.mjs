@@ -68,11 +68,11 @@ test('concurrent commands with same cash revision only one commits',async t=>{
 });
 test('budget status distinguishes absent policy, stale observations and an uncovered history interval',async t=>{
  const noPolicy=(await fixture(t)).s;
- assert.deepEqual(await noPolicy.reconciliationStatus({now:10}),{budgetRevision:0,
+ assert.deepEqual(await noPolicy.reconciliationStatus({now:10}),{budgetRevision:0,ledgerRevision:0,cashRevision:1,
   reconciliation:{reconciled:false,flags:['CASH_RECONCILIATION_POLICY_MISSING']}});
  const {s}=await fixture(t,3);
  await s.write(command('observe','obs',1,{time:5,free:'800',locked:'0',completeHistory:true}));
- assert.deepEqual(await s.reconciliationStatus({now:8}),{budgetRevision:0,reconciliation:{reconciled:true,flags:[]}});
+ assert.deepEqual(await s.reconciliationStatus({now:8}),{budgetRevision:0,ledgerRevision:0,cashRevision:2,reconciliation:{reconciled:true,flags:[]}});
  assert.deepEqual((await s.reconciliationStatus({now:9})).reconciliation,{reconciled:false,flags:['STALE_OBSERVATION']});
  await s.ledger.write({kind:'fill',opId:'trade',actor:'test',recordedAt:12,execution:fill({time:12})});
  assert.deepEqual((await s.reconciliationStatus({now:10})).reconciliation,
@@ -93,6 +93,6 @@ test('budget status retries if the revision changes after reading the budget row
   }};
  }};
  assert.deepEqual(await new CashStore(concurrent).reconciliationStatus({now:10}),
-  {budgetRevision:1,reconciliation:{reconciled:true,flags:[]}});
+  {budgetRevision:1,ledgerRevision:0,cashRevision:2,reconciliation:{reconciled:true,flags:[]}});
  assert.equal(reads,2);
 });

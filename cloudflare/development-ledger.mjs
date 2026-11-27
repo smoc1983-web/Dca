@@ -26,9 +26,11 @@ function accountDirectory(accounts){
 }
 
 const writeKeys=new Set(['kind','opId','execution','expectedVersion','reason','expectedBudgetRevision']);
+const reviewKeys=new Set(['opId','cycleId','expectedBudgetRevision','expectedLedgerRevision','expectedCashRevision','ordersReviewed']);
 const maxBodyBytes=8192;
+const revision=value=>Number.isSafeInteger(value)&&value>=0;
 
-async function manualCommand(request,account,now){
+async function readCommand(request){
  if(request.headers.get('Content-Type')?.split(';')[0].trim().toLowerCase()!=='application/json'||!request.body)
   throw new LedgerWriteValidation('JSON required');
  const reader=request.body.getReader(),decoder=new TextDecoder('utf-8',{fatal:true});
@@ -43,8 +45,16 @@ async function manualCommand(request,account,now){
   }
   text+=decoder.decode();
   const body=JSON.parse(text);
-  if(!body||Array.isArray(body)||typeof body!=='object'||Object.keys(body).some(k=>!writeKeys.has(k))||
-     typeof body.opId!=='string'||!/^[A-Za-z0-9_-]{1,64}$/.test(body.opId)||
+  if(!body||Array.isArray(body)||typeof body!=='object'||typeof body.opId!=='string'||!/^[A-Za-z0-9_-]{1,64}$/.test(body.opId))
+   throw Error('Invalid command');
+  return body;
+ }catch{throw new LedgerWriteValidation('Invalid command');}
+ finally{reader.releaseLock();}
+}
+
+function manualCommand(body,account,now){
+ try{
+  if(Object.keys(body).some(k=>!writeKeys.has(k))||
      !['fill','correct'].includes(body.kind)||
      (body.kind==='fill'&&(Object.hasOwn(body,'expectedVersion')||Object.hasOwn(body,'reason')))||
      body.execution?.source!=='manual'||body.execution.confirmed!==true||
@@ -53,14 +63,22 @@ async function manualCommand(request,account,now){
   const {expectedBudgetRevision,...fields}=body;
   const command={...fields,opId:'http:'+body.opId,actor:account.id,recordedAt:now};
   if(account.budgeted===true){
-   if(!Number.isSafeInteger(expectedBudgetRevision)||expectedBudgetRevision<0)throw Error('Invalid budget revision');
+   if(!revision(expectedBudgetRevision))throw Error('Invalid budget revision');
    const normalized=normalizeLedgerOperation(command);
    return {...normalized,id:normalized.execution.cycleId,expectedRevision:expectedBudgetRevision,confirmed:true};
   }
   if(Object.hasOwn(body,'expectedBudgetRevision'))throw Error('Unexpected budget revision');
   return command;
  }catch{throw new LedgerWriteValidation('Invalid manual request');}
- finally{reader.releaseLock();}
+}
+
+function correctionReview(body,account,now){
+ const {opId,cycleId,expectedBudgetRevision,expectedLedgerRevision,expectedCashRevision,ordersReviewed}=body;
+ if(Object.keys(body).some(k=>!reviewKeys.has(k))||typeof cycleId!=='string'||!cycleId.trim()||cycleId.length>128||
+    ![expectedBudgetRevision,expectedLedgerRevision,expectedCashRevision].every(revision)||ordersReviewed!==true)
+  throw new LedgerWriteValidation('Invalid correction review');
+ return {kind:'reviewCorrection',id:cycleId,opId:'http:'+opId,actor:account.id,recordedAt:now,confirmed:true,ordersReviewed,
+  expectedRevision:expectedBudgetRevision,expectedLedgerRevision,expectedCashRevision};
 }
 
 function executionPage(params){
@@ -79,10 +97,11 @@ export default {
   const ledger=url.pathname==='/ledger';
   const paged=url.pathname==='/ledger/executions';
   const budget=url.pathname==='/ledger/budget';
-  if(env.DEV_LEDGER_MODE!=='synthetic'||(!ledger&&!paged&&!budget)||(!paged&&url.search))
+  const review=url.pathname==='/ledger/budget/review-correction';
+  if(env.DEV_LEDGER_MODE!=='synthetic'||(!ledger&&!paged&&!budget&&!review)||(!paged&&url.search))
    return reply({status:'not-found'},404);
-  if(request.method!=='GET'&&(!ledger||request.method!=='POST'))
-   return reply({status:'method-not-allowed'},405,{Allow:ledger?'GET, POST':'GET'});
+  const allowed=ledger?['GET','POST']:review?['POST']:['GET'];
+  if(!allowed.includes(request.method))return reply({status:'method-not-allowed'},405,{Allow:allowed.join(', ')});
   const accounts=accountDirectory(env.DEV_LEDGER_ACCOUNTS);
   if(!accounts)return unavailable();
   const candidate=readBearer(request);
@@ -90,7 +109,7 @@ export default {
   const account=accounts[matches.indexOf(true)];
   if(!account)return reply({status:'unauthorized'},401,{'WWW-Authenticate':'Bearer'});
   if(request.method==='POST'&&account.canWrite!==true)return reply({status:'forbidden'},403);
-  if(budget&&account.budgeted!==true)return reply({status:'not-found'},404);
+  if((budget||review)&&account.budgeted!==true)return reply({status:'not-found'},404);
   try{
    const db=env[account.binding];
    const marker=await db.prepare('SELECT account_id FROM dev_ledger_account WHERE singleton=1').first();
@@ -100,7 +119,8 @@ export default {
     return reply({status:'available',accountId:account.id,...status});
    }
    if(request.method==='POST'){
-    const command=await manualCommand(request,account,Date.now());
+    const body=await readCommand(request),now=Date.now();
+    const command=review?correctionReview(body,account,now):manualCommand(body,account,now);
     if(account.budgeted===true){
      const {status,state}=await new BudgetStore(db).apply(command,{serverTimestamp:true});
      return reply({status,budgetRevision:state.revision},status==='stored'?201:200);
@@ -122,7 +142,7 @@ export default {
    const {revision,executions,cycles}=await store.snapshot();
    return reply({status:'available',accountId:account.id,revision,executions,cycles});
   }catch(error){
-   if(error instanceof LedgerWriteValidation)return reply({status:'invalid-execution'},400);
+   if(error instanceof LedgerWriteValidation)return reply({status:review?'invalid-review':'invalid-execution'},400);
    if(error instanceof LedgerWriteConflict)return reply({status:'conflict'},409);
    return unavailable();
   }

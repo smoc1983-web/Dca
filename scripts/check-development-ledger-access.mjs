@@ -34,6 +34,9 @@ const request=(account,path='/ledger',options={})=>mf.dispatchFetch('http://ledg
 
 const post=(account,body)=>request(account,'/ledger',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
 const budgetPath='/ledger/budget';
+const reviewPath=budgetPath+'/review-correction';
+const confirm=(account,body,path=reviewPath)=>request(account,path,
+ {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
 async function budgetView(account){
  const response=await request(account,budgetPath);
  assert.equal(response.status,200);
@@ -146,7 +149,7 @@ try{
  assert.equal(disallowed.status,405);
  assert.equal(disallowed.headers.get('Allow'),'GET');
  const emptyBudget=await budgetView(b);
- assert.deepEqual(emptyBudget,{status:'available',accountId:b.id,budgetRevision:null,
+ assert.deepEqual(emptyBudget,{status:'available',accountId:b.id,budgetRevision:null,ledgerRevision:1,cashRevision:0,
   reconciliation:{reconciled:false,flags:['BUDGET_NOT_INITIALIZED','NO_CASH_OPENING']}});
  const budgetFill={kind:'fill',opId:'linked-fill',expectedBudgetRevision:1,
   execution:{...first.fill,id:'linked-receipt',cycleId:'linked-cycle'}};
@@ -156,7 +159,7 @@ try{
  const command=(kind,expectedRevision,extra)=>({kind,opId:kind,expectedRevision,actor:'synthetic-fixture',recordedAt:Date.now(),confirmed:true,...extra});
  await budget.apply(command('init',null,{cashGuardMaxAgeMs:3_600_000,
   settings:{policy:'equal-slots-v1',capital:'800',freeCash:'800',maxCycles:1,feeRate:'0.001'}}));
- assert.deepEqual(await budgetView(linked),{status:'available',accountId:linked.id,budgetRevision:0,
+ assert.deepEqual(await budgetView(linked),{status:'available',accountId:linked.id,budgetRevision:0,ledgerRevision:0,cashRevision:0,
   reconciliation:{reconciled:false,flags:['NO_CASH_OPENING']}});
  await cash.write(command('opening',0,{time:0,cash:'800',noOpeningPositions:true}));
  const observe=(revision,free)=>cash.write(command('observe',revision,
@@ -167,7 +170,8 @@ try{
   (SELECT COUNT(*) FROM trade_ledger_audit) AS executions,(SELECT MAX(seq) FROM dev_cash_audit) AS cash`).first();
  const before=await heads();
  const ready=await budgetView(linked);
- assert.deepEqual(ready,{status:'available',accountId:linked.id,budgetRevision:1,reconciliation:{reconciled:true,flags:[]}});
+ assert.deepEqual(ready,{status:'available',accountId:linked.id,budgetRevision:1,ledgerRevision:0,cashRevision:2,
+  reconciliation:{reconciled:true,flags:[]}});
  assert.deepEqual(await heads(),before);
  budgetFill.expectedBudgetRevision=ready.budgetRevision;
  assert.equal((await post(linked,{...budgetFill,expectedBudgetRevision:0})).status,409);
@@ -215,13 +219,52 @@ try{
  assert.ok(operations.every(op=>op.actor===linked.id));
  assert.equal((await first.store.snapshot()).revision,4);
  assert.equal((await second.store.snapshot()).revision,1);
+ const reviewFor=({budgetRevision,ledgerRevision,cashRevision})=>({opId:'linked-review',cycleId:budgetFill.execution.cycleId,
+  ordersReviewed:true,expectedBudgetRevision:budgetRevision,expectedLedgerRevision:ledgerRevision,expectedCashRevision:cashRevision});
+ const beforeObservation=await heads();
+ const stale=reviewFor(await budgetView(linked));
+ assert.equal((await confirm(linked,stale)).status,409);
+ assert.deepEqual(await heads(),beforeObservation);
  await observe(3,'778.98');
  const audited=await heads();
- assert.deepEqual(await budgetView(linked),{status:'available',accountId:linked.id,budgetRevision:3,
+ const pending=await budgetView(linked);
+ assert.deepEqual(pending,{status:'available',accountId:linked.id,budgetRevision:3,ledgerRevision:2,cashRevision:4,
   reconciliation:{reconciled:false,flags:['CORRECTION_RECONCILIATION_REQUIRED']}});
  assert.deepEqual(await budgetView(b),emptyBudget);
  assert.deepEqual(await heads(),audited);
+ const review=reviewFor(pending);
+ assert.equal((await request(linked,reviewPath)).status,405);
+ assert.equal((await confirm(null,review)).status,401);
+ assert.equal((await confirm(b,review)).status,403);
+ assert.equal((await confirm(a,review)).status,404);
+ assert.equal((await confirm(wrong,review)).status,503);
+ assert.equal((await confirm(linked,review,reviewPath+'?account='+b.id)).status,404);
+ for(const patch of [{ordersReviewed:false},{expectedCashRevision:null},{actor:b.id},{recordedAt:100}]){
+  const response=await confirm(linked,{...review,...patch});
+  assert.equal(response.status,400);
+  assert.deepEqual(await response.json(),{status:'invalid-review'});
+ }
+ for(const old of [stale,{...review,expectedBudgetRevision:2},{...review,expectedLedgerRevision:1}])
+  assert.equal((await confirm(linked,old)).status,409);
+ assert.deepEqual(await heads(),audited);
+ await db.prepare(`CREATE TRIGGER fail_http_review BEFORE INSERT ON dev_budget_audit
+  WHEN NEW.op_id='http:linked-review' BEGIN SELECT RAISE(ABORT,'synthetic review failure'); END`).run();
+ assert.equal((await confirm(linked,review)).status,503);
+ assert.deepEqual(await heads(),audited);
+ await db.prepare('DROP TRIGGER fail_http_review').run();
+ const confirmations=await Promise.all([confirm(linked,review),confirm(linked,review)]);
+ assert.deepEqual(confirmations.map(r=>r.status).sort(),[200,201]);
+ for(const response of confirmations)assert.equal((await response.json()).budgetRevision,4);
+ assert.equal((await confirm(linked,{...review,expectedCashRevision:3})).status,409);
+ assert.deepEqual(await budgetView(linked),{...pending,budgetRevision:4,reconciliation:{reconciled:true,flags:[]}});
+ assert.deepEqual(await budgetView(b),emptyBudget);
+ assert.deepEqual(await heads(),{...audited,budget:audited.budget+1});
+ const row=await db.prepare("SELECT request,ledger_op FROM dev_budget_audit WHERE op_id='http:linked-review'").first();
+ assert.equal(JSON.parse(row.request).actor,linked.id);
+ assert.equal(row.ledger_op,null);
+ assert.equal((await budget.snapshot()).state.reservations[0].status,'reserved');
  assert.equal(outbound,0);
  console.log('Budgeted ledger: protected fill and correction commit both audits atomically; D1 rollback, parallel retry, stale revisions and account isolation passed');
  console.log('Budget status: protected GET is read-only, returns current budget revision and changes with balance history and pending correction');
+ console.log('Correction review: protected confirmation pins all three revisions, detects stale balance, rolls back on failure and accepts one parallel confirmation');
 }finally{await mf.dispose();}

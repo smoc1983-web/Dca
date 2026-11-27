@@ -5,7 +5,7 @@ import {LedgerWriteConflict,TradeLedgerStore,normalizeLedgerOperation} from './t
 import {normalizeExecution,replayLedger} from './trade-ledger.mjs';
 import {units,decimalString,add} from './ledger-decimal.mjs';
 import {readCashAudit} from './cash-audit-read.mjs';
-import {reconcileCash} from './cash-reconcile.mjs';
+import {historyOutsideCashInterval,reconcileCash} from './cash-reconcile.mjs';
 const max=(a,b)=>a>b?a:b,min=(a,b)=>a<b?a:b;
 const txt=decimalString;
 function json(v){return JSON.stringify(v,(_,x)=>{
@@ -134,16 +134,22 @@ export class BudgetStore{
             // Conservative policy: even a still-closed released cycle is re-held until review.
             next=patch({status:'reserved',correctionPending:true,reopenedAfterCorrection:r.status==='released'||r.reopenedAfterCorrection===true});
           }else if(raw.kind==='reviewCorrection'){
-            if(raw.confirmed!==true||raw.ordersReviewed!==true||r.correctionPending!==true)throw Error('Confirm correction and outstanding orders review');
+            if(raw.confirmed!==true||raw.ordersReviewed!==true||r.correctionPending!==true)
+              throw new LedgerWriteConflict('Confirm correction and outstanding orders review');
             // The user must acknowledge the exact effective journal revision.
-            if(raw.expectedLedgerRevision!==ledger.revision)throw Error('Stale ledger review');
+            if(raw.expectedLedgerRevision!==ledger.revision)throw new LedgerWriteConflict('Stale ledger review');
+            const cashPinned=Object.hasOwn(raw,'expectedCashRevision');
+            if(cashPinned&&s.cashGuardMaxAgeMs===undefined)throw new LedgerWriteConflict('Cash reconciliation policy required');
             if(s.cashGuardMaxAgeMs!==undefined){
               const cash=await readCashAudit(this.db);cashRevision=cash.revision;
-              if(!cash.opening)throw Error('Cash reconciliation required');
+              if(cashPinned&&raw.expectedCashRevision!==cash.revision)throw new LedgerWriteConflict('Stale cash review');
+              const now=this.clock();
+              if(!cash.opening||historyOutsideCashInterval(cash,fills,now))throw new LedgerWriteConflict('Cash reconciliation required');
+              const remaining=cashPinned?summarizeBudget(s,fills).cycles.reduce((n,c)=>add(n,units(c.remainingReserve)),0n):0n;
               const report=reconcileCash({opening:cash.opening,flows:cash.flows,executions:fills,
                 observation:cash.observation?{...cash.observation,revisionsMatch:cash.observation.ledgerRevision===ledger.revision}:null,
-                now:this.clock(),maxAgeMs:s.cashGuardMaxAgeMs});
-              if(!report.reconciled)throw Error('Cash reconciliation required: '+report.flags.join(','));
+                now,maxAgeMs:s.cashGuardMaxAgeMs,remainingReserve:txt(remaining)});
+              if(!report.reconciled)throw new LedgerWriteConflict('Cash reconciliation required: '+report.flags.join(','));
             }
             next=patch({correctionPending:false,reopenedAfterCorrection:false});
           }else if(raw.kind==='complete'){

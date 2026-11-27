@@ -14,6 +14,12 @@ export function cashFlow(raw){
   if(typeof raw.id!=='string'||!raw.id.trim()||raw.id.length>128)throw Error('Invalid flow ID');
   return {id:raw.id,kind:raw.kind,time:timestamp(raw.time,'flow time'),amount:txt(nonnegative(raw.amount,'flow amount',true)),confirmed:true};
 }
+export function historyOutsideCashInterval(cash,executions,now){
+  const start=cash.opening.time;
+  const outside=event=>event.time<start||event.time>now;
+  return start>now||cash.observation?.time>now||cash.flows.some(outside)||
+    executions.some(execution=>execution.source==='manual'&&outside(execution));
+}
 export function reconcileCash({opening,flows,executions,observation=null,now,maxAgeMs,remainingReserve='0',budgetAvailable='0',budgetFlags=[]}){
   if(!opening||opening.confirmed!==true||opening.noOpeningPositions!==true)throw Error('Confirmed opening cash without positions required');
   const start=timestamp(opening.time,'opening time'),initial=nonnegative(opening.cash,'opening cash');

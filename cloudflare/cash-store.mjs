@@ -1,5 +1,5 @@
 // Test-only immutable cash event log. Reconciliation is advisory, not a reserve authorization.
-import {cashFlow,reconcileCash,nonnegative,timestamp} from './cash-reconcile.mjs';
+import {cashFlow,historyOutsideCashInterval,reconcileCash,nonnegative,timestamp} from './cash-reconcile.mjs';
 import {decimalString,units,add} from './ledger-decimal.mjs';
 import {TradeLedgerStore} from './trade-store.mjs';
 import {BudgetStore,summarizeBudget} from './budget-store.mjs';
@@ -9,12 +9,6 @@ function budgetReconciliationFlags(budget){
   const flags=[...(budget?.flags??['BUDGET_NOT_INITIALIZED'])];
   if(budget&&units(budget.deficit)>0n)flags.push('BUDGET_DEFICIT');
   return flags;
-}
-export function historyOutsideCashInterval(cash,ledger,now){
-  const start=cash.opening.time;
-  const outside=event=>event.time<start||event.time>now;
-  return start>now||cash.observation?.time>now||cash.flows.some(outside)||
-    ledger.executions.some(({execution})=>execution.source==='manual'&&outside(execution));
 }
 export function projectCashAudit({cash,ledger,budget,now,maxAgeMs}){
   const remaining=budget?.cycles.reduce((n,c)=>add(n,units(c.remainingReserve)),0n)??0n;
@@ -105,11 +99,12 @@ export class CashStore{
     const missing=[];
     const maxAgeMs=budget.state?.cashGuardMaxAgeMs;
     if(!cash.opening)missing.push('NO_CASH_OPENING');
-    else if(historyOutsideCashInterval(cash,ledger,at))missing.push('HISTORY_OUTSIDE_CASH_INTERVAL');
+    else if(historyOutsideCashInterval(cash,ledger.executions.map(row=>row.execution),at))missing.push('HISTORY_OUTSIDE_CASH_INTERVAL');
     if(budget.state&&maxAgeMs===undefined)missing.push('CASH_RECONCILIATION_POLICY_MISSING');
     const flags=missing.length||!budget.state
       ? [...budgetReconciliationFlags(summary),...missing]
       : projectCashAudit({cash,ledger,budget:summary,now:at,maxAgeMs}).flags;
-    return {budgetRevision:budget.state?.revision??null,reconciliation:{reconciled:flags.length===0,flags}};
+    return {budgetRevision:budget.state?.revision??null,ledgerRevision:ledger.revision,cashRevision:cash.revision,
+      reconciliation:{reconciled:flags.length===0,flags}};
   }
 }
