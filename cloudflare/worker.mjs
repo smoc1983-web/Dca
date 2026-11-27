@@ -4,11 +4,12 @@ import {queueDaily} from './daily.mjs';
 
 const marketBases=['https://data-api.binance.vision/api/v3/','https://api.binance.com/api/v3/','https://api-gcp.binance.com/api/v3/'];
 let marketBase=marketBases[0];
-async function market({endpoint,parameters}) {
+const defaultRequest=(url,options)=>fetch(url,options);
+async function market({endpoint,parameters},request=defaultRequest) {
   for(const base of new Set([marketBase,...marketBases])){
     const url=new URL(endpoint,base);
     url.search=new URLSearchParams(parameters);
-    const res=await fetch(url,{signal:AbortSignal.timeout(12000),redirect:'manual'});
+    const res=await request(url,{signal:AbortSignal.timeout(12000),redirect:'manual'});
     if(res.ok){marketBase=base;return res.json();}
     const reason=(await res.text()).replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim().slice(0,240);
     console.error('Market data',url.hostname,res.status,reason);
@@ -30,9 +31,9 @@ export async function advanceModel(entry,end,read=market) {
   return events;
 }
 
-async function processModel(db,row,control,now) {
+async function processModel(db,row,control,now,read) {
   const entry=JSON.parse(row.model);
-  const events=await advanceModel(entry,now);
+  const events=await advanceModel(entry,now,read);
   const guard='EXISTS(SELECT 1 FROM control WHERE id=1 AND epoch=? AND mode=?)';
   const writes=events.map(e=>db.prepare(
     'INSERT OR IGNORE INTO alerts(id,closed,body,status) SELECT ?,?,?,? FROM models WHERE key=? AND rev=? AND '+guard
@@ -42,7 +43,7 @@ async function processModel(db,row,control,now) {
   await db.batch(writes);
 }
 
-async function deliver(env,control) {
+async function deliver(env,control,request) {
   const db=env.DB;
   if(!env.BOT_TOKEN || !env.CHAT_ID) throw Error('Missing Telegram configuration');
   const ready=control.mode==='live'?'pending':'test_pending';
@@ -57,7 +58,7 @@ async function deliver(env,control) {
     const body=signalTime?`Пропущенный сигнал · ${signalTime} (Астрахань)\n${a.body}`:a.body;
     let status='uncertain',receipt=null,next=0;
     try {
-      const r=await fetch('https://api.telegram.org/bot'+env.BOT_TOKEN+'/sendMessage',{
+      const r=await request('https://api.telegram.org/bot'+env.BOT_TOKEN+'/sendMessage',{
         method:'POST',headers:{'Content-Type':'application/json'},redirect:'manual',signal:AbortSignal.timeout(12000),
         body:JSON.stringify({chat_id:env.CHAT_ID,text:body})
       });
@@ -72,27 +73,28 @@ async function deliver(env,control) {
   }
 }
 
-async function deliverLive(env,control,now){
+async function deliverLive(env,control,now,request){
   if(env.DAILY_SUMMARY==='on'){
     try{await queueDaily(env,control,now);}
     catch(error){console.error('Daily summary:',error.message);}
   }
-  await deliver(env,control);
+  await deliver(env,control,request);
 }
 
-export async function tick(env) {
+export async function tick(env,{request=defaultRequest}={}) {
+  const read=options=>market(options,request);
   const control=await env.DB.prepare('SELECT * FROM control WHERE id=1').first();
   if(!control) return;
-  if(control.mode==='shadow' && env.BOT_TOKEN && env.CHAT_ID) await deliver(env,control);
+  if(control.mode==='shadow' && env.BOT_TOKEN && env.CHAT_ID) await deliver(env,control,request);
   const now=Date.now(),minute=Math.floor(now/60000);
   const {results}=await env.DB.prepare('SELECT * FROM models WHERE next_close<=? ORDER BY next_close,key LIMIT 10').bind(now).all();
   let serverTime=null;
   if(results.length) {
     try {
-      ({serverTime}=await market({endpoint:'time',parameters:{}}));
+      ({serverTime}=await read({endpoint:'time',parameters:{}}));
       if(!Number.isSafeInteger(serverTime)||Math.abs(serverTime-Date.now())>120000) throw Error('Invalid Binance clock');
     } catch(error) {
-      if(control.mode==='live') await deliverLive(env,control,now);
+      if(control.mode==='live') await deliverLive(env,control,now,request);
       await env.DB.prepare('INSERT OR REPLACE INTO runs VALUES(?,?,?,?)').bind(minute,0,results.length,null).run();
       throw error;
     }
@@ -100,10 +102,10 @@ export async function tick(env) {
   const failures=[];
   for(const row of results) {
     if(row.next_close>serverTime) continue;
-    try {await processModel(env.DB,row,control,serverTime);}
+    try {await processModel(env.DB,row,control,serverTime,read);}
     catch(err) {failures.push(row.key);console.error(row.key,err.message);}
   }
-  if(control.mode==='live') await deliverLive(env,control,now);
+  if(control.mode==='live') await deliverLive(env,control,now,request);
   await env.DB.prepare('INSERT OR REPLACE INTO runs VALUES(?,?,?,?)').bind(minute,results.length,failures.length,serverTime).run();
   if(minute%60===0) await env.DB.batch([
     env.DB.prepare('DELETE FROM runs WHERE minute<?').bind(minute-1440),

@@ -1,0 +1,76 @@
+// Local synthetic Worker entry. Requires an isolated DB and a mock service binding.
+import {tick} from './worker.mjs';
+import {readHealth} from './health-read.mjs';
+import {HealthNotices} from './health-notices.mjs';
+import {SourceMetrics,observeSourceRequest} from './source-metrics.mjs';
+
+const mockBot='synthetic-fixture-token';
+const mockChat='synthetic-fixture-chat';
+const minute=60_000;
+const sourceHosts=new Map([
+ ['data-api.binance.vision','binance-vision'],['api.binance.com','binance-primary'],['api-gcp.binance.com','binance-gcp']
+]);
+const policy={maxTickAgeMs:2*minute,candleGraceMs:minute,pendingAgeMs:minute,dailyEnabled:false,dailyGraceMs:minute};
+const enabled=env=>env.DEV_WORKER_MODE==='synthetic';
+const authToken=/^[A-Za-z0-9_-]{43}$/;
+const encoder=new TextEncoder();
+const purpose=encoder.encode('dca800-development-diagnostics-v1');
+const reply=(data,status=200,extra={})=>Response.json(data,{status,headers:{'Cache-Control':'no-store',...extra}});
+
+async function authorized(request,secret){
+ const candidate=request.headers.get('Authorization')?.match(/^Bearer ([A-Za-z0-9_-]{43})$/i)?.[1];
+ if(!candidate)return false;
+ const key=(value,usage)=>crypto.subtle.importKey('raw',encoder.encode(value),
+  {name:'HMAC',hash:'SHA-256'},false,[usage]);
+ const [trusted,provided]=await Promise.all([key(secret,'verify'),key(candidate,'sign')]);
+ const proof=await crypto.subtle.sign('HMAC',provided,purpose);
+ return crypto.subtle.verify('HMAC',trusted,proof,purpose);
+}
+
+function observedRequest(env,metrics){
+ return async (input,options)=>{
+  const url=new URL(input);
+  const market=url.pathname.match(/^\/api\/v3\/(time|klines)$/)?.[1];
+  const source=market?sourceHosts.get(url.hostname):null;
+  const telegram=url.hostname==='api.telegram.org'&&url.pathname==='/bot'+mockBot+'/sendMessage'&&options?.method==='POST';
+  if(url.protocol!=='https:'||url.port||url.username||url.password||
+     !(market&&source&&!options?.method||telegram))throw Error('Unexpected synthetic outbound request');
+  const sample={synthetic:true,id:crypto.randomUUID(),source:telegram?'telegram':source,operation:telegram?'sendMessage':market};
+  const {response}=await observeSourceRequest(metrics,sample,()=>env.DEV_MOCK_NETWORK.fetch(url.href,options));
+  return response;
+ };
+}
+
+async function runSyntheticTick(env){
+ if(!env.DEV_DB||typeof env.DEV_MOCK_NETWORK?.fetch!=='function')throw Error('Missing isolated Worker bindings');
+ const metrics=new SourceMetrics(env.DEV_DB);
+ try{
+  await tick({DB:env.DEV_DB,BOT_TOKEN:mockBot,CHAT_ID:mockChat},{request:observedRequest(env,metrics)});
+ }finally{
+  const now=Date.now();
+  const health=await readHealth(env.DEV_DB,{...policy,now});
+  await new HealthNotices(env.DEV_DB).claim({synthetic:true,health,now,cooldownMs:minute});
+ }
+}
+
+export default {
+ scheduled(_event,env,ctx){
+  if(enabled(env))ctx.waitUntil(runSyntheticTick(env));
+ },
+ async fetch(request,env){
+  const url=new URL(request.url);
+  if(!enabled(env)||url.pathname!=='/diagnostics'||url.search||
+     typeof env.DEV_DIAGNOSTICS_TOKEN!=='string'||!authToken.test(env.DEV_DIAGNOSTICS_TOKEN))
+   return reply({status:'not-found'},404);
+  if(request.method!=='GET')return reply({status:'method-not-allowed'},405,{Allow:'GET'});
+  if(!await authorized(request,env.DEV_DIAGNOSTICS_TOKEN))
+   return reply({status:'unauthorized'},401,{'WWW-Authenticate':'Bearer'});
+  const now=Date.now();
+  const [health,sources,notice]=await Promise.all([
+   readHealth(env.DEV_DB,{...policy,now}),
+   new SourceMetrics(env.DEV_DB).read({now,windowMs:24*60*minute}),
+   new HealthNotices(env.DEV_DB).read()
+  ]);
+  return reply({observedAt:now,health,sources,notice},health.status==='unavailable'?503:200);
+ }
+};

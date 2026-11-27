@@ -3,6 +3,14 @@ import {healthTransition} from './health-read.mjs';
 
 export class HealthNotices{
  constructor(db){this.db=db;}
+ async read(){
+  try{
+   const {results:[latest]}=await this.db.prepare(`SELECT revision,kind,health_status AS healthStatus,
+    recorded_at AS recordedAt FROM dev_health_notices ORDER BY revision DESC LIMIT 1`).all();
+   return {status:latest?'available':'no-notices',latest:latest??null};
+  }catch{return {status:'unavailable',latest:null};}
+ }
+
  async claim({synthetic,health,now,cooldownMs}={}){
   const status=health?.status;
   if(synthetic!==true||!['healthy','degraded','unavailable'].includes(status)||
