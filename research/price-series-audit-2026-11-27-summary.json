@@ -1,0 +1,145 @@
+{
+  "version": "price-audit-v1",
+  "sourceCommit": "4ae26baad17010b07a9c6b4e7e780d08234b55ab",
+  "run": 45954482725,
+  "job": 140357672866,
+  "reports": [
+    {
+      "symbol": "ATOMUSDT",
+      "time": 1760131200000,
+      "utc": "2025-10-10T21:20:00.000Z",
+      "rows": {
+        "spot": {
+          "time": 1760131200000,
+          "closeTime": 1760131499999,
+          "open": 1.863,
+          "high": 2.283,
+          "low": 0.001,
+          "close": 2.003
+        },
+        "trade": {
+          "time": 1760131200000,
+          "closeTime": 1760131499999,
+          "open": 1.777,
+          "high": 2.025,
+          "low": 1.46,
+          "close": 2.017
+        },
+        "mark": {
+          "time": 1760131200000,
+          "closeTime": 1760131499999,
+          "open": 1.794,
+          "high": 2.02858567,
+          "low": 1.50447,
+          "close": 2.01244305
+        },
+        "index": {
+          "time": 1760131200000,
+          "closeTime": 1760131499999,
+          "open": 1.88297371,
+          "high": 2.02852,
+          "low": 1.55961143,
+          "close": 2.00696286
+        }
+      },
+      "spotToMarkLowRatio": 0.0006646859026766902,
+      "tradeToMarkLowRatio": 0.9704414179079676,
+      "liquidationPrice": null,
+      "recommendationAllowed": false,
+      "pinnedSha256": "8d0bb4e848d555073b93d7c30c6d7731708cbca6892e7ff1efb743541731b7c0",
+      "archives": [
+        {
+          "kind": "spot",
+          "url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2025-10-10.zip",
+          "sha256": "5ece92a7f5accfb86ed1fc9df5c98630957fd97120673018900c4f3af137730e"
+        },
+        {
+          "kind": "trade",
+          "url": "https://data.binance.vision/data/futures/um/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2025-10-10.zip",
+          "sha256": "248d96254921f3e544f186a66e2a3d1f4bfc7cfa496063ea361d5d842223ba05"
+        },
+        {
+          "kind": "mark",
+          "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-10-10.zip",
+          "sha256": "884ce93b4bf77b59bda8b9265eb6e9b7497498ccc521d6d2f3cd6566b2020b07"
+        },
+        {
+          "kind": "index",
+          "url": "https://data.binance.vision/data/futures/um/daily/indexPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-10-10.zip",
+          "sha256": "06a7a9350ccf1ad1c70ab7cc7d0f50870e691e404a705b3a2e238b04edb56f6f"
+        }
+      ]
+    },
+    {
+      "symbol": "ADAUSDT",
+      "time": 1738548300000,
+      "utc": "2025-02-03T02:05:00.000Z",
+      "rows": {
+        "spot": {
+          "time": 1738548300000,
+          "closeTime": 1738548599999,
+          "open": 0.6135,
+          "high": 0.6196,
+          "low": 0.506,
+          "close": 0.5724
+        },
+        "trade": {
+          "time": 1738548300000,
+          "closeTime": 1738548599999,
+          "open": 0.6137,
+          "high": 0.6199,
+          "low": 0.5092,
+          "close": 0.5734
+        },
+        "mark": {
+          "time": 1738548300000,
+          "closeTime": 1738548599999,
+          "open": 0.6142,
+          "high": 0.61871202,
+          "low": 0.5136,
+          "close": 0.56833847
+        },
+        "index": {
+          "time": 1738548300000,
+          "closeTime": 1738548599999,
+          "open": 0.61323239,
+          "high": 0.61773175,
+          "low": 0.51517333,
+          "close": 0.5673096
+        }
+      },
+      "spotToMarkLowRatio": 0.9852024922118381,
+      "tradeToMarkLowRatio": 0.9914330218068537,
+      "liquidationPrice": null,
+      "recommendationAllowed": false,
+      "pinnedSha256": "6815422724238b20dceee05c4fcc3d5c7978d0d68e130f8e3157703a2f8cfab5",
+      "archives": [
+        {
+          "kind": "spot",
+          "url": "https://data.binance.vision/data/spot/daily/klines/ADAUSDT/5m/ADAUSDT-5m-2025-02-03.zip",
+          "sha256": "7ec57e3509a523a320943bbe393aefa90bc5b103c5a5f257ace02e869f8bef77"
+        },
+        {
+          "kind": "trade",
+          "url": "https://data.binance.vision/data/futures/um/daily/klines/ADAUSDT/5m/ADAUSDT-5m-2025-02-03.zip",
+          "sha256": "a5701888980410c2bc0c75f18b399a5d1bc3058abb0e1eff4949ae2eaefd8ebc"
+        },
+        {
+          "kind": "mark",
+          "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-02-03.zip",
+          "sha256": "02a02a7d13ee5f7eb02f927a821ee70f36ab618fa0506d12d1c316408bf7c08f"
+        },
+        {
+          "kind": "index",
+          "url": "https://data.binance.vision/data/futures/um/daily/indexPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-02-03.zip",
+          "sha256": "473097ae08bb3770badd09f2bc809661c3181375f4bc2bb3f1a9007a40b8d6f2"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "5m OHLC not tick sequence",
+    "Binance not Walt",
+    "not liquidation replay"
+  ]
+}
