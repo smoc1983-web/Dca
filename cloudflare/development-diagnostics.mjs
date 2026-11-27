@@ -3,6 +3,7 @@ import {tick} from './worker.mjs';
 import {readHealth} from './health-read.mjs';
 import {HealthNotices} from './health-notices.mjs';
 import {SourceMetrics,observeSourceRequest} from './source-metrics.mjs';
+import {isSyntheticToken,matchesToken,readBearer} from './synthetic-bearer.mjs';
 
 const mockBot='synthetic-fixture-token';
 const mockChat='synthetic-fixture-chat';
@@ -33,20 +34,7 @@ export function developmentPolicy(overrides={}){
  return {...defaults,...overrides};
 }
 const enabled=env=>env.DEV_WORKER_MODE==='synthetic';
-const authToken=/^[A-Za-z0-9_-]{43}$/;
-const encoder=new TextEncoder();
-const purpose=encoder.encode('dca800-development-diagnostics-v1');
 const reply=(data,status=200,extra={})=>Response.json(data,{status,headers:{'Cache-Control':'no-store',...extra}});
-
-async function authorized(request,secret){
- const candidate=request.headers.get('Authorization')?.match(/^Bearer ([A-Za-z0-9_-]{43})$/i)?.[1];
- if(!candidate)return false;
- const key=(value,usage)=>crypto.subtle.importKey('raw',encoder.encode(value),
-  {name:'HMAC',hash:'SHA-256'},false,[usage]);
- const [trusted,provided]=await Promise.all([key(secret,'verify'),key(candidate,'sign')]);
- const proof=await crypto.subtle.sign('HMAC',provided,purpose);
- return crypto.subtle.verify('HMAC',trusted,proof,purpose);
-}
 
 function observedRequest(env,metrics){
  return async (input,options)=>{
@@ -83,10 +71,11 @@ export default {
  async fetch(request,env){
   const url=new URL(request.url);
   if(!enabled(env)||url.pathname!=='/diagnostics'||url.search||
-     typeof env.DEV_DIAGNOSTICS_TOKEN!=='string'||!authToken.test(env.DEV_DIAGNOSTICS_TOKEN))
+     !isSyntheticToken(env.DEV_DIAGNOSTICS_TOKEN))
    return reply({status:'not-found'},404);
   if(request.method!=='GET')return reply({status:'method-not-allowed'},405,{Allow:'GET'});
-  if(!await authorized(request,env.DEV_DIAGNOSTICS_TOKEN))
+  const candidate=readBearer(request);
+  if(!candidate||!await matchesToken(candidate,env.DEV_DIAGNOSTICS_TOKEN))
    return reply({status:'unauthorized'},401,{'WWW-Authenticate':'Bearer'});
   let policy;
   try{policy=developmentPolicy(env.DEV_MONITORING_POLICY);}
