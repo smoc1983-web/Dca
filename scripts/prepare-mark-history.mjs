@@ -35,7 +35,7 @@ export function parseMarkMonth(csv,start,end,{allowMissing=false}={}){
  });
 }
 const dayMs=86400000;
-function urlFor(symbol,period,daily=false){return 'https://data.binance.vision/data/futures/um/'+(daily?'daily':'monthly')+'/markPriceKlines/'+symbol+'/5m/'+symbol+'-5m-'+period+'.zip';}
+export function urlFor(symbol,period,daily=false){return 'https://data.binance.vision/data/futures/um/'+(daily?'daily':'monthly')+'/markPriceKlines/'+symbol+'/5m/'+symbol+'-5m-'+period+'.zip';}
 export function missingDays(rows,start,end){
  const seen=new Set(rows.map(r=>r.time)),days=[];
  for(let t=start;t<end;t+=dt)if(!seen.has(t)){
@@ -83,11 +83,12 @@ async function bytes(url){
  }
  throw error;
 }
-async function loadArchive(url,dir){
+export async function loadArchive(url,dir){
  const name=url.split('/').at(-1);
  const [zip,checksum]=await Promise.all([bytes(url),bytes(url+'.CHECKSUM')]);
- const sha256=createHash('sha256').update(zip).digest('hex'),expected=checksum.toString('utf8').trim().split(/\s+/)[0].toLowerCase();
- if(!/^[a-f0-9]{64}$/.test(expected)||expected!==sha256)throw Error('Mark ZIP checksum mismatch '+url);
+ const sha256=createHash('sha256').update(zip).digest('hex');
+ const entry=/^([a-fA-F0-9]{64})[ \t]+\*?([^\s]+)$/.exec(checksum.toString('utf8').trim());
+ if(!entry||entry[1].toLowerCase()!==sha256||entry[2]!==name)throw Error('Mark ZIP checksum mismatch '+url);
  const path=join(dir,name);writeFileSync(path,zip);
  const csvName=name.replace(/\.zip$/,'.csv'),entries=execFileSync('unzip',['-Z1',path],{encoding:'utf8'}).trim().split(/\r?\n/);
  if(entries.length!==1||entries[0]!==csvName)throw Error('Unexpected mark ZIP contents');

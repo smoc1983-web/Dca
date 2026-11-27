@@ -1,0 +1,15 @@
+{
+  "version": "dca800-oos-2026-12-v1",
+  "selectionCutoff": "2026-11-27T00:00:00Z",
+  "warmupStart": "2026-11-24T00:00:00Z",
+  "start": "2026-12-01T00:00:00Z",
+  "end": "2027-01-01T00:00:00Z",
+  "marketsSha256": "0e9c7e7ecf29783bb6b59ff7c00a63faf47aafab07b0f398fa1e4bebb34a0444",
+  "capital": 800,
+  "maxCycles": 5,
+  "slippageBps": [0, 2, 5, 10],
+  "protection": {"pool": 100, "cycleCap": 20, "fundingRate": 0.0001, "maintenanceRate": 0.005},
+  "leverage": [1, 2, 3],
+  "policies": ["fixed-notional", "scaled-notional"],
+  "responses": ["none", "next-close", "two-closes", "reject"]
+}

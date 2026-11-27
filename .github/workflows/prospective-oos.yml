@@ -1,0 +1,50 @@
+name: DCA800 prospective December OOS
+on:
+  push:
+    tags: ['dca-oos-2026-12-*']
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        symbol: [ADAUSDT, ATOMUSDT, BTCUSDT, DOGEUSDT, DOTUSDT, LDOUSDT, LINKUSDT, TRXUSDT, UNIUSDT, XRPUSDT, ZECUSDT]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/oos-evaluation.mjs prepare "${{ matrix.symbol }}" "${{ matrix.symbol }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oos-input-${{ matrix.symbol }}
+          path: ${{ matrix.symbol }}.json
+          if-no-files-found: error
+  evaluate:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: oos-input-*
+          merge-multiple: true
+          path: inputs
+      - run: node scripts/oos-evaluation.mjs evaluate inputs oos-december-2026.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oos-december-2026
+          path: oos-december-2026.json
+          if-no-files-found: error
