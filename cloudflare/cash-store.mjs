@@ -5,6 +5,14 @@ import {TradeLedgerStore} from './trade-store.mjs';
 import {BudgetStore} from './budget-store.mjs';
 import {readCashAudit} from './cash-audit-read.mjs';
 const txt=decimalString;
+export function projectCashAudit({cash,ledger,budget,now,maxAgeMs}){
+  const flags=[...(budget?.flags??['BUDGET_NOT_INITIALIZED'])];
+  if(budget&&units(budget.deficit)>0n)flags.push('BUDGET_DEFICIT');
+  const remaining=budget?.cycles.reduce((n,c)=>add(n,units(c.remainingReserve)),0n)??0n;
+  return reconcileCash({opening:cash.opening,flows:cash.flows,executions:ledger.executions.map(x=>x.execution),
+    observation:cash.observation?{...cash.observation,revisionsMatch:cash.observation.ledgerRevision===ledger.revision}:null,
+    now,maxAgeMs,remainingReserve:txt(remaining),budgetAvailable:budget?.available??'0',budgetFlags:flags});
+}
 function id(v,name){if(typeof v!=='string'||!v.trim()||v.length>128)throw Error('Invalid '+name);return v;}
 function canonical(raw){
   const opId=id(raw.opId,'opId'),actor=id(raw.actor,'actor'),recordedAt=timestamp(raw.recordedAt,'recordedAt');
@@ -72,12 +80,7 @@ export class CashStore{
         COALESCE((SELECT MAX(seq) FROM trade_ledger_audit),0) AS ledger,
         COALESCE((SELECT MAX(seq) FROM dev_budget_audit),0) AS budget`);
       if(rev.cash!==cash.revision||rev.ledger!==ledger.revision||rev.budget!==before.seq)continue;
-      const flags=[...(budget?.summary.flags??['BUDGET_NOT_INITIALIZED'])];
-      if(budget&&units(budget.summary.deficit)>0n)flags.push('BUDGET_DEFICIT');
-      const remaining=budget?.summary.cycles.reduce((n,c)=>add(n,units(c.remainingReserve)),0n)??0n;
-      return {...reconcileCash({opening:cash.opening,flows:cash.flows,executions:ledger.executions.map(x=>x.execution),
-        observation:cash.observation?{...cash.observation,revisionsMatch:cash.observation.ledgerRevision===ledger.revision}:null,
-        now,maxAgeMs,remainingReserve:txt(remaining),budgetAvailable:budget?.summary.available??'0',budgetFlags:flags}),
+      return {...projectCashAudit({cash,ledger,budget:budget?.summary,now,maxAgeMs}),
         cashRevision:cash.revision,ledgerRevision:ledger.revision,budgetRevision:before.seq};
     }
     throw Error('Concurrent reconciliation: retry');

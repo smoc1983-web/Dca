@@ -14,7 +14,7 @@ function json(v){return JSON.stringify(v,(_,x)=>{
   return x;
 });}
 function str(x,name){if(typeof x!=='string'||!x.trim()||x.length>128)throw Error('Invalid '+name);return x;}
-function projections(state,executions){
+export function summarizeBudget(state,executions){
   const details=[],flags=[];
   for(const e of executions)if(e.source==='manual'&&!state.reservations.some(r=>r.id===e.cycleId))flags.push('UNLINKED_MANUAL_EXECUTION');
   let held=0n;
@@ -45,7 +45,7 @@ export class BudgetStore{
   }
   async snapshot(){
     const {state}=await this.load(),ledger=await this.ledger.snapshot();
-    return state?{state,summary:projections(state,ledger.executions.map(x=>x.execution))}:null;
+    return state?{state,summary:summarizeBudget(state,ledger.executions.map(x=>x.execution))}:null;
   }
   async apply(raw){
     const opId=str(raw.opId,'opId'),actor=str(raw.actor,'actor');
@@ -73,7 +73,7 @@ export class BudgetStore{
           if(raw.confirmed!==true)throw Error('Budget change must be confirmed');
           next=changeBudget(s,raw.settings,s.revision);
         }else if(raw.kind==='reserve'){
-          const summary=projections(s,fills);
+          const summary=summarizeBudget(s,fills);
           if(summary.flags.length||units(summary.deficit)>0n)return {status:'rejected',reason:'RECONCILIATION_REQUIRED'};
           const tickSize=txt(units(raw.tickSize)),exitFeeRate=txt(units(raw.exitFeeRate));
           if(units(tickSize)<=0n||units(exitFeeRate)<0n||units(exitFeeRate)>=units(1))throw Error('Invalid price/fee parameters');
@@ -106,7 +106,7 @@ export class BudgetStore{
             }
             // A confirmed real fill may exceed the plan: record truth, then flag it.
             replayLedger([...fills,e]);next=patch({});
-            projectedFills=[...fills,e];projections(next,projectedFills);
+            projectedFills=[...fills,e];summarizeBudget(next,projectedFills);
           }else if(raw.kind==='correct'){
             if(raw.confirmed!==true||raw.execution?.source!=='manual'||raw.execution.confirmed!==true||raw.execution.cycleId!==r.id||raw.execution.symbol!==r.symbol)throw Error('Confirmed linked correction required');
             ledgerOp=normalizeLedgerOperation({kind:'correct',opId:'budget:'+opId,actor,recordedAt:raw.recordedAt,execution:raw.execution,expectedVersion:raw.expectedVersion,reason:raw.reason});
@@ -121,7 +121,7 @@ export class BudgetStore{
             replayLedger(projectedFills);
             // Conservative policy: even a still-closed released cycle is re-held until review.
             next=patch({status:'reserved',correctionPending:true,reopenedAfterCorrection:r.status==='released'||r.reopenedAfterCorrection===true});
-            projections(next,projectedFills);
+            summarizeBudget(next,projectedFills);
           }else if(raw.kind==='reviewCorrection'){
             if(raw.confirmed!==true||raw.ordersReviewed!==true||r.correctionPending!==true)throw Error('Confirm correction and outstanding orders review');
             // The user must acknowledge the exact effective journal revision.
@@ -139,7 +139,7 @@ export class BudgetStore{
             if(r.correctionPending)throw Error('Correction review required');
             if(raw.confirmed!==true||raw.step!==r.completedSteps.length)throw Error('Explicit sequential step confirmation required');
             if(replayLedger(own)[0]?.closedAt!=null)throw Error('Cycle already closed');
-            next=patch({completedSteps:[...r.completedSteps,raw.step]});projections(next,fills);
+            next=patch({completedSteps:[...r.completedSteps,raw.step]});summarizeBudget(next,fills);
           }else if(raw.kind==='release'){
             if(r.correctionPending)throw Error('Correction review required');
             if(raw.confirmed!==true||raw.ordersCancelled!==true)throw Error('Confirm cancellation of remaining orders');
@@ -164,7 +164,7 @@ export class BudgetStore{
           }else throw Error('Unknown budget operation');
         }
       }
-      projections(next,projectedFills);
+      summarizeBudget(next,projectedFills);
       const guard=cashRevision===null?'':' AND COALESCE((SELECT MAX(seq) FROM dev_cash_audit),0)=?';
       const args=[opId,request,JSON.stringify(next),ledgerOp?JSON.stringify(ledgerOp):null,cur.seq,ledger.revision];
       if(cashRevision!==null)args.push(cashRevision);

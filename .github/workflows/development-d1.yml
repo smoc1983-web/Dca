@@ -6,6 +6,7 @@ on:
       - 'cloudflare/**'
       - 'scripts/check-development-d1.mjs'
       - 'scripts/check-development-ledger-migration.mjs'
+      - 'scripts/read-legacy-reconciliation.mjs'
       - 'scripts/check-development-ledger-access.mjs'
       - 'scripts/check-development-ledger-pagination.mjs'
       - 'scripts/check-development-worker.mjs'

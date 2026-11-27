@@ -9,6 +9,7 @@ import {BudgetStore} from '../cloudflare/budget-store.mjs';
 import {CashStore} from '../cloudflare/cash-store.mjs';
 import {TradeLedgerStore} from '../cloudflare/trade-store.mjs';
 import {DEFAULTS,intervalMs,newState} from '../cloudflare/watchlist-engine.mjs';
+import {readLegacyReconciliation} from './read-legacy-reconciliation.mjs';
 
 const {Miniflare}=createRequire(import.meta.url)('miniflare');
 const dir=mkdtempSync(join(tmpdir(),'dca-ledger-upgrade-'));
@@ -81,6 +82,10 @@ try{
  assert.equal((await ledger.snapshot()).revision,0);
  assert.equal(await budget.snapshot(),null);
  assert.equal((await cash.load()).opening,null);
+ const emptyReview=await readLegacyReconciliation(db,{now:time,maxAgeMs:100});
+ assert.deepEqual(emptyReview.revisions,{ledger:0,budget:0,cash:0});
+ assert.deepEqual(emptyReview.flags,['MODEL_ORIGIN_MISSING','BUDGET_NOT_INITIALIZED','NO_CASH_OPENING']);
+ assert.deepEqual(emptyReview.manualCycles,[]);
  console.log('Ledger upgrade: failed D1 batch rolls back schemas; repeat upgrade preserves all legacy tables and imports no model as a fill');
 
  await model.register(modelId,tf,params);
@@ -132,6 +137,14 @@ try{
   cash:await cash.report({now:time,maxAgeMs:100}),ledger:await ledger.snapshot()
  });
  const beforeClose=await recent();
+ const dryRun=await readLegacyReconciliation(db,{now:time,maxAgeMs:100});
+ assert.equal(dryRun.status,'review-needed');
+ assert.deepEqual(dryRun.flags,['MODEL_ORIGIN_MISSING']);
+ assert.equal(dryRun.cash.expectedQuoteCash,'779.98');
+ assert.equal(dryRun.cash.reconciled,true);
+ assert.equal(dryRun.manualCycles[0].reservation,'reserved');
+ assert.deepEqual(await recent(),beforeClose);
+ assert.deepEqual(await snapshotLegacy(db),legacy);
  db=await restart();
  await apply(db,upgrades);
  ({model,budget,cash,ledger}=stores(db));
@@ -140,7 +153,9 @@ try{
  assert.equal((await budget.apply(fix)).status,'duplicate');
  assert.equal((await model.step(modelId,candle(20,95))).status,'duplicate');
  assert.deepEqual(await recent(),beforeClose);
+ assert.deepEqual(await readLegacyReconciliation(db,{now:time,maxAgeMs:100}),dryRun);
  console.log('Ledger upgrade: persistent D1 preserves model cursor, outbox, fills, revisions and cash across restart and repeated upgrade');
+ console.log('Legacy reconciliation: old model needs its origin reviewed; confirmed manual cycle and synthetic cash match before and after restart');
 }finally{
  try{if(mf)await mf.dispose();}
  finally{rmSync(dir,{recursive:true,force:true});}
