@@ -1,0 +1,23 @@
+name: Isolated development D1
+on:
+  push:
+    branches: ['dev/**']
+    paths:
+      - 'cloudflare/**'
+      - 'scripts/check-development-d1.mjs'
+      - '.github/workflows/development-d1.yml'
+permissions:
+  contents: read
+jobs:
+  local-d1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --prefix "$RUNNER_TEMP/dca-miniflare" --no-audit --no-fund --save-exact miniflare@4.20260730.0
+      - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-d1.mjs
