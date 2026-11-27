@@ -38,6 +38,27 @@ test('concurrent reservation commands cannot both commit stale revision',async t
   assert.equal(results.filter(x=>x.status==='fulfilled'&&x.value.status==='stored').length,1);
   assert.equal((await a.snapshot()).summary.active,1);
 });
+test('the same server-timestamped fill survives a commit between reading budget and ledger',async t=>{
+  const db=fixture(t),first=await setup(db),base=port(db);
+  let raced=false;
+  const interleaved={prepare(sql){
+    const statement=base.prepare(sql);
+    if(!sql.startsWith('SELECT seq,state FROM dev_budget_audit'))return statement;
+    return {...statement,async all(){
+      const previous=await statement.all();
+      if(!raced){raced=true;assert.equal((await first.apply(fill,{serverTimestamp:true})).status,'stored');}
+      return previous;
+    }};
+  }};
+  const after={...fill,recordedAt:2};
+  const second=await new BudgetStore(interleaved).apply(after,{serverTimestamp:true});
+  assert.equal(second.status,'duplicate');
+  assert.equal(second.state.revision,2);
+  assert.equal((await first.ledger.audit()).length,1);
+  assert.equal((await first.ledger.audit())[0].recordedAt,fill.recordedAt);
+  await assert.rejects(first.apply(after),/Conflicting budget operation ID/);
+  await assert.rejects(first.apply({...after,actor:'different'},{serverTimestamp:true}),/Conflicting budget operation ID/);
+});
 test('restart and duplicate command preserve state and single fill',async t=>{
   const dir=mkdtempSync(join(tmpdir(),'dca-budget-')),path=join(dir,'budget.sqlite');let db=new DatabaseSync(path);
   try{let s=await setup(db);await s.apply(fill);const before=await s.snapshot();db.close();db=new DatabaseSync(path);s=new BudgetStore(port(db));

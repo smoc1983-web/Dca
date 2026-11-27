@@ -1,6 +1,7 @@
 // HTTP entry for synthetic accounts. Never select a DB using request data.
 import {isSyntheticToken,matchesToken,readBearer} from './synthetic-bearer.mjs';
-import {LedgerWriteConflict,LedgerWriteValidation,TradeLedgerStore} from './trade-store.mjs';
+import {BudgetStore} from './budget-store.mjs';
+import {LedgerWriteConflict,LedgerWriteValidation,TradeLedgerStore,normalizeLedgerOperation} from './trade-store.mjs';
 
 const accountId=/^[A-Za-z0-9_-]{1,64}$/;
 const bindingName=/^DEV_LEDGER_DB_[A-Z0-9_]{1,24}$/;
@@ -14,6 +15,7 @@ function accountDirectory(accounts){
   if(typeof account?.id!=='string'||!accountId.test(account.id)||typeof account.binding!=='string'||
      !bindingName.test(account.binding)||!isSyntheticToken(account.token)||
      (account.canWrite!==undefined&&typeof account.canWrite!=='boolean')||
+     (account.budgeted!==undefined&&typeof account.budgeted!=='boolean')||
      ids.has(account.id)||bindings.has(account.binding)||tokens.has(account.token))return null;
   ids.add(account.id);
   bindings.add(account.binding);
@@ -22,7 +24,7 @@ function accountDirectory(accounts){
  return accounts;
 }
 
-const writeKeys=new Set(['kind','opId','execution','expectedVersion','reason']);
+const writeKeys=new Set(['kind','opId','execution','expectedVersion','reason','expectedBudgetRevision']);
 const maxBodyBytes=8192;
 
 async function manualCommand(request,account,now){
@@ -47,7 +49,15 @@ async function manualCommand(request,account,now){
      body.execution?.source!=='manual'||body.execution.confirmed!==true||
      !Number.isSafeInteger(body.execution.time)||body.execution.time>now)
    throw Error('Invalid manual request');
-  return {...body,opId:'http:'+body.opId,actor:account.id,recordedAt:now};
+  const {expectedBudgetRevision,...fields}=body;
+  const command={...fields,opId:'http:'+body.opId,actor:account.id,recordedAt:now};
+  if(account.budgeted===true){
+   if(!Number.isSafeInteger(expectedBudgetRevision)||expectedBudgetRevision<0)throw Error('Invalid budget revision');
+   const normalized=normalizeLedgerOperation(command);
+   return {...normalized,id:normalized.execution.cycleId,expectedRevision:expectedBudgetRevision,confirmed:true};
+  }
+  if(Object.hasOwn(body,'expectedBudgetRevision'))throw Error('Unexpected budget revision');
+  return command;
  }catch{throw new LedgerWriteValidation('Invalid manual request');}
  finally{reader.releaseLock();}
 }
@@ -81,12 +91,17 @@ export default {
    const db=env[account.binding];
    const marker=await db.prepare('SELECT account_id FROM dev_ledger_account WHERE singleton=1').first();
    if(marker?.account_id!==account.id)return unavailable();
-   const store=new TradeLedgerStore(db);
    if(request.method==='POST'){
     const command=await manualCommand(request,account,Date.now());
+    if(account.budgeted===true){
+     const {status,state}=await new BudgetStore(db).apply(command,{serverTimestamp:true});
+     return reply({status,budgetRevision:state.revision},status==='stored'?201:200);
+    }
+    const store=new TradeLedgerStore(db);
     const result=await store.write(command,{serverTimestamp:true});
     return reply(result,result.status==='stored'?201:200);
    }
+   const store=new TradeLedgerStore(db);
    if(paged){
     try{
      const page=await store.pageExecutions(executionPage(url.searchParams));

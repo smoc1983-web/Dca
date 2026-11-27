@@ -1,7 +1,7 @@
 // Test-only budget command log. No account access, trade placement or sender.
 import {createBudget,changeBudget,reserveCycle,releaseUnfilled} from './portfolio-budget.mjs';
 import {reconcileManualCycle} from './manual-cycle.mjs';
-import {TradeLedgerStore,normalizeLedgerOperation} from './trade-store.mjs';
+import {LedgerWriteConflict,TradeLedgerStore,normalizeLedgerOperation} from './trade-store.mjs';
 import {normalizeExecution,replayLedger} from './trade-ledger.mjs';
 import {units,decimalString,add} from './ledger-decimal.mjs';
 import {readCashAudit} from './cash-audit-read.mjs';
@@ -14,6 +14,9 @@ function json(v){return JSON.stringify(v,(_,x)=>{
   return x;
 });}
 function str(x,name){if(typeof x!=='string'||!x.trim()||x.length>128)throw Error('Invalid '+name);return x;}
+function validateExecutionHistory(executions){
+  try{replayLedger(executions);}catch(error){throw new LedgerWriteConflict(error.message);}
+}
 export function summarizeBudget(state,executions){
   const details=[],flags=[];
   for(const e of executions)if(e.source==='manual'&&!state.reservations.some(r=>r.id===e.cycleId))flags.push('UNLINKED_MANUAL_EXECUTION');
@@ -47,14 +50,23 @@ export class BudgetStore{
     const {state}=await this.load(),ledger=await this.ledger.snapshot();
     return state?{state,summary:summarizeBudget(state,ledger.executions.map(x=>x.execution))}:null;
   }
-  async apply(raw){
+  async apply(raw,{serverTimestamp=false}={}){
     const opId=str(raw.opId,'opId'),actor=str(raw.actor,'actor');
     if(!Number.isSafeInteger(raw.recordedAt)||raw.recordedAt<0)throw Error('Invalid recordedAt');
     const request=json(raw);
     for(let attempt=0;attempt<8;attempt++){
-      const [prior]=await this.rows('SELECT request FROM dev_budget_audit WHERE op_id=?',opId);
-      if(prior){if(prior.request!==request)throw Error('Conflicting budget operation ID');return {status:'duplicate',...(await this.snapshot())};}
       const cur=await this.load(),ledger=await this.ledger.snapshot(),fills=ledger.executions.map(x=>x.execution);
+      const [head]=await this.rows(`SELECT
+        COALESCE((SELECT MAX(seq) FROM dev_budget_audit),0) AS budget,
+        COALESCE((SELECT MAX(seq) FROM trade_ledger_audit),0) AS ledger,
+        (SELECT request FROM dev_budget_audit WHERE op_id=?) AS request`,opId);
+      // Observe the operation ID and heads together before rejecting a stale revision.
+      if(head.budget!==cur.seq||head.ledger!==ledger.revision)continue;
+      if(head.request!==null){
+        const prior=serverTimestamp?json({...JSON.parse(head.request),recordedAt:raw.recordedAt}):head.request;
+        if(prior!==request)throw new LedgerWriteConflict('Conflicting budget operation ID');
+        return {status:'duplicate',state:cur.state,summary:summarizeBudget(cur.state,fills)};
+      }
       let next,ledgerOp=null,cashRevision=null,projectedFills=fills;
       if(raw.kind==='init'){
         if(cur.state)throw Error('Budget already initialized');
@@ -66,9 +78,9 @@ export class BudgetStore{
           next.cashGuardMaxAgeMs=raw.cashGuardMaxAgeMs;
         }
       }else{
-        if(!cur.state)throw Error('Budget not initialized');
+        if(!cur.state)throw new LedgerWriteConflict('Budget not initialized');
         const s=cur.state;
-        if(raw.expectedRevision!==s.revision)throw Error('Stale budget revision');
+        if(raw.expectedRevision!==s.revision)throw new LedgerWriteConflict('Stale budget revision');
         if(raw.kind==='change'){
           if(raw.confirmed!==true)throw Error('Budget change must be confirmed');
           next=changeBudget(s,raw.settings,s.revision);
@@ -93,35 +105,34 @@ export class BudgetStore{
           next={...r.state,reservations:r.state.reservations.map(x=>x.id===raw.id?{...x,tickSize,exitFeeRate,completedSteps:[]}:x)};
         }else{
           const r=s.reservations.find(x=>x.id===raw.id);
-          if(!r||(r.status!=='reserved'&&!(r.status==='released'&&raw.kind==='correct')))throw Error('Unknown active reservation');
+          if(!r||(r.status!=='reserved'&&!(r.status==='released'&&raw.kind==='correct')))throw new LedgerWriteConflict('Unknown active reservation');
           const own=fills.filter(e=>e.source==='manual'&&e.cycleId===r.id);
           const patch=extra=>({...s,revision:s.revision+1,reservations:s.reservations.map(x=>x.id===r.id?{...x,...extra}:x)});
           if(raw.kind==='fill'){
-            if(raw.execution?.source!=='manual'||raw.execution.confirmed!==true||raw.execution.cycleId!==r.id||raw.execution.symbol!==r.symbol)throw Error('Confirmed linked manual fill required');
+            if(raw.execution?.source!=='manual'||raw.execution.confirmed!==true||raw.execution.cycleId!==r.id||raw.execution.symbol!==r.symbol)throw new LedgerWriteConflict('Confirmed linked manual fill required');
             ledgerOp=normalizeLedgerOperation({kind:'fill',opId:'budget:'+opId,actor,recordedAt:raw.recordedAt,execution:raw.execution});
             const e=ledgerOp.execution,existing=fills.find(x=>x.source==='manual'&&x.id===e.id);
             if(existing){
-              if(json(normalizeExecution(existing))!==json(normalizeExecution(e)))throw Error('Conflicting execution ID');
+              if(json(normalizeExecution(existing))!==json(normalizeExecution(e)))throw new LedgerWriteConflict('Conflicting execution ID');
               return {status:'duplicate',...(await this.snapshot())};
             }
             // A confirmed real fill may exceed the plan: record truth, then flag it.
-            replayLedger([...fills,e]);next=patch({});
-            projectedFills=[...fills,e];summarizeBudget(next,projectedFills);
+            projectedFills=[...fills,e];validateExecutionHistory(projectedFills);
+            next=patch({});
           }else if(raw.kind==='correct'){
-            if(raw.confirmed!==true||raw.execution?.source!=='manual'||raw.execution.confirmed!==true||raw.execution.cycleId!==r.id||raw.execution.symbol!==r.symbol)throw Error('Confirmed linked correction required');
+            if(raw.confirmed!==true||raw.execution?.source!=='manual'||raw.execution.confirmed!==true||raw.execution.cycleId!==r.id||raw.execution.symbol!==r.symbol)throw new LedgerWriteConflict('Confirmed linked correction required');
             ledgerOp=normalizeLedgerOperation({kind:'correct',opId:'budget:'+opId,actor,recordedAt:raw.recordedAt,execution:raw.execution,expectedVersion:raw.expectedVersion,reason:raw.reason});
             const e=ledgerOp.execution,previous=ledger.executions.find(x=>x.execution.source==='manual'&&x.execution.id===e.id);
-            if(!previous)throw Error('Unknown execution');
-            if(previous.version!==ledgerOp.expectedVersion)throw Error('Stale correction version');
+            if(!previous)throw new LedgerWriteConflict('Unknown execution');
+            if(previous.version!==ledgerOp.expectedVersion)throw new LedgerWriteConflict('Stale correction version');
             for(const f of ['cycleId','symbol','tf','baseAsset','quoteAsset','side','dca']){
-              if(previous.execution[f]!==e[f])throw Error('Correction cannot change '+f);
+              if(previous.execution[f]!==e[f])throw new LedgerWriteConflict('Correction cannot change '+f);
             }
             // Replace in original append order; never append a second financial execution.
             projectedFills=fills.map(x=>x.source==='manual'&&x.id===e.id?e:x);
-            replayLedger(projectedFills);
+            validateExecutionHistory(projectedFills);
             // Conservative policy: even a still-closed released cycle is re-held until review.
             next=patch({status:'reserved',correctionPending:true,reopenedAfterCorrection:r.status==='released'||r.reopenedAfterCorrection===true});
-            summarizeBudget(next,projectedFills);
           }else if(raw.kind==='reviewCorrection'){
             if(raw.confirmed!==true||raw.ordersReviewed!==true||r.correctionPending!==true)throw Error('Confirm correction and outstanding orders review');
             // The user must acknowledge the exact effective journal revision.

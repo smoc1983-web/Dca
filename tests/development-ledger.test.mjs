@@ -26,7 +26,7 @@ function envSafe(){return {...active,DEV_LEDGER_DB_A:forbiddenDb};}
 test('misconfigured accounts fail closed, including duplicate tokens, bindings and IDs',async()=>{
  const bob={id:'account-b',token:other,binding:'DEV_LEDGER_DB_B'};
  const bad=[[],[alice,{...bob,token}],[alice,{...bob,binding:alice.binding}],[alice,{...bob,id:alice.id}],
-  [{...alice,binding:'DB'}],[{...alice,token:token+'\n'}]];
+  [{...alice,binding:'DB'}],[{...alice,token:token+'\n'}],[{...alice,budgeted:'true'}]];
  for(const accounts of bad){
   const res=await worker.fetch(req(),{...envSafe(),DEV_LEDGER_ACCOUNTS:accounts});
   assert.equal(res.status,503);
