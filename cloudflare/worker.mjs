@@ -48,7 +48,7 @@ async function deliver(env,control) {
   const ready=control.mode==='live'?'pending':'test_pending';
   const {results}=await db.prepare("SELECT id,closed,body FROM alerts WHERE status=? AND next_try<=? ORDER BY closed,id LIMIT 2").bind(ready,Date.now()).all();
   for(const a of results) {
-    const claim=await db.prepare("UPDATE alerts SET status='sending' WHERE id=? AND status=? AND EXISTS(SELECT 1 FROM control WHERE mode=? AND epoch=?)").bind(a.id,ready,control.mode,control.epoch).run();
+    const claim=await db.prepare("UPDATE alerts SET status='sending' WHERE id=? AND status=? AND next_try<=? AND EXISTS(SELECT 1 FROM control WHERE mode=? AND epoch=?)").bind(a.id,ready,Date.now(),control.mode,control.epoch).run();
     if(!claim.meta.changes) continue;
     const delayed=control.mode==='live' && !a.id.startsWith('DAILY:') && Date.now()-a.closed>180000;
     const signalTime=delayed?new Date(a.closed+1).toLocaleString('ru-RU',{

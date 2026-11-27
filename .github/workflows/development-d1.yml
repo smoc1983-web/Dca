@@ -5,6 +5,8 @@ on:
     paths:
       - 'cloudflare/**'
       - 'scripts/check-development-d1.mjs'
+      - 'scripts/check-development-worker.mjs'
+      - 'tests/fixtures/worker-observation.sql'
       - '.github/workflows/development-d1.yml'
 permissions:
   contents: read
@@ -21,3 +23,4 @@ jobs:
           node-version: '22'
       - run: npm install --prefix "$RUNNER_TEMP/dca-miniflare" --no-audit --no-fund --save-exact miniflare@4.20260730.0
       - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-d1.mjs
+      - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-worker.mjs
