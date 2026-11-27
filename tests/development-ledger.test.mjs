@@ -16,6 +16,10 @@ test('only a valid token for the exact read-only synthetic route can reach an ac
   [req('/ledger/account-a'),env,404],
   [req('/ledger?account=account-b'),env,404],
   [req('/ledger?token='+token),env,404],
+  [req('/ledger/budget',null),env,401],
+  [req('/ledger/budget'),env,404],
+  [req('/ledger/budget?account=account-b'),env,404],
+  [req('/ledger/budget',token,'POST'),env,405],
   [req('/ledger',null),env,401],
   [req('/ledger',other),env,401],
   [req('/ledger',token,'POST'),env,403]

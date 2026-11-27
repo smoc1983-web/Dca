@@ -38,8 +38,9 @@ test('locked cash is not available; reserve is conservative and cap is separate'
 const schema=['trade-ledger-schema.sql','budget-store-schema.sql','cash-store-schema.sql'].map(f=>readFileSync(new URL('../cloudflare/'+f,import.meta.url),'utf8')).join('\n');
 function port(db){return {prepare(sql){let args=[];return {bind(...v){args=v;return this;},async all(){return {results:db.prepare(sql).all(...args)};},async run(){const r=db.prepare(sql).run(...args);return {meta:{changes:Number(r.changes),last_row_id:Number(r.lastInsertRowid)}};}};}};}
 const command=(kind,opId,expectedRevision,o={})=>({kind,opId,expectedRevision,actor:'test',recordedAt:10,confirmed:true,...o});
-async function fixture(t){const db=new DatabaseSync(':memory:');t.after(()=>db.close());db.exec(schema);const s=new CashStore(port(db));
- await s.budget.apply({kind:'init',opId:'budget-init',actor:'test',recordedAt:0,expectedRevision:null,settings:{policy:'equal-slots-v1',capital:'800',freeCash:'800',maxCycles:1,feeRate:'0.001'}});
+async function fixture(t,cashGuardMaxAgeMs){const db=new DatabaseSync(':memory:');t.after(()=>db.close());db.exec(schema);const s=new CashStore(port(db));
+ await s.budget.apply({kind:'init',opId:'budget-init',actor:'test',recordedAt:0,expectedRevision:null,
+  ...(cashGuardMaxAgeMs===undefined?{}:{cashGuardMaxAgeMs}),settings:{policy:'equal-slots-v1',capital:'800',freeCash:'800',maxCycles:1,feeRate:'0.001'}});
  await s.write(command('opening','open',0,opening));return {s,db};}
 test('persistent confirmed flows, duplicate and stale CAS',async t=>{
  const {s,db}=await fixture(t);const c=command('flow','deposit',1,{flow:flow()});
@@ -64,4 +65,34 @@ test('concurrent commands with same cash revision only one commits',async t=>{
  const a=await Promise.allSettled([s.write(command('flow','a',1,{flow:flow()})),b.write(command('flow','b',1,{flow:flow({id:'b'})}))]);
  assert.equal(a.filter(x=>x.status==='fulfilled'&&x.value.status==='stored').length,1);
  assert.equal((await s.load()).flows.length,1);
+});
+test('budget status distinguishes absent policy, stale observations and an uncovered history interval',async t=>{
+ const noPolicy=(await fixture(t)).s;
+ assert.deepEqual(await noPolicy.reconciliationStatus({now:10}),{budgetRevision:0,
+  reconciliation:{reconciled:false,flags:['CASH_RECONCILIATION_POLICY_MISSING']}});
+ const {s}=await fixture(t,3);
+ await s.write(command('observe','obs',1,{time:5,free:'800',locked:'0',completeHistory:true}));
+ assert.deepEqual(await s.reconciliationStatus({now:8}),{budgetRevision:0,reconciliation:{reconciled:true,flags:[]}});
+ assert.deepEqual((await s.reconciliationStatus({now:9})).reconciliation,{reconciled:false,flags:['STALE_OBSERVATION']});
+ await s.ledger.write({kind:'fill',opId:'trade',actor:'test',recordedAt:12,execution:fill({time:12})});
+ assert.deepEqual((await s.reconciliationStatus({now:10})).reconciliation,
+  {reconciled:false,flags:['UNLINKED_MANUAL_EXECUTION','HISTORY_OUTSIDE_CASH_INTERVAL']});
+});
+test('budget status retries if the revision changes after reading the budget row',async t=>{
+ const {s,db}=await fixture(t,10);
+ await s.write(command('observe','obs',1,{time:5,free:'800',locked:'0',completeHistory:true}));
+ const base=port(db);
+ let reads=0;
+ const concurrent={prepare(sql){
+  const statement=base.prepare(sql);
+  if(!sql.startsWith('SELECT seq,state FROM dev_budget_audit'))return statement;
+  return {...statement,async all(){
+   const result=await statement.all();
+   if(++reads===1)await s.budget.apply(command('change','budget-change',0,{settings:{capital:'900'}}));
+   return result;
+  }};
+ }};
+ assert.deepEqual(await new CashStore(concurrent).reconciliationStatus({now:10}),
+  {budgetRevision:1,reconciliation:{reconciled:true,flags:[]}});
+ assert.equal(reads,2);
 });

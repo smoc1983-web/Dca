@@ -2,16 +2,25 @@
 import {cashFlow,reconcileCash,nonnegative,timestamp} from './cash-reconcile.mjs';
 import {decimalString,units,add} from './ledger-decimal.mjs';
 import {TradeLedgerStore} from './trade-store.mjs';
-import {BudgetStore} from './budget-store.mjs';
+import {BudgetStore,summarizeBudget} from './budget-store.mjs';
 import {readCashAudit} from './cash-audit-read.mjs';
 const txt=decimalString;
-export function projectCashAudit({cash,ledger,budget,now,maxAgeMs}){
+function budgetReconciliationFlags(budget){
   const flags=[...(budget?.flags??['BUDGET_NOT_INITIALIZED'])];
   if(budget&&units(budget.deficit)>0n)flags.push('BUDGET_DEFICIT');
+  return flags;
+}
+export function historyOutsideCashInterval(cash,ledger,now){
+  const start=cash.opening.time;
+  const outside=event=>event.time<start||event.time>now;
+  return start>now||cash.observation?.time>now||cash.flows.some(outside)||
+    ledger.executions.some(({execution})=>execution.source==='manual'&&outside(execution));
+}
+export function projectCashAudit({cash,ledger,budget,now,maxAgeMs}){
   const remaining=budget?.cycles.reduce((n,c)=>add(n,units(c.remainingReserve)),0n)??0n;
   return reconcileCash({opening:cash.opening,flows:cash.flows,executions:ledger.executions.map(x=>x.execution),
     observation:cash.observation?{...cash.observation,revisionsMatch:cash.observation.ledgerRevision===ledger.revision}:null,
-    now,maxAgeMs,remainingReserve:txt(remaining),budgetAvailable:budget?.available??'0',budgetFlags:flags});
+    now,maxAgeMs,remainingReserve:txt(remaining),budgetAvailable:budget?.available??'0',budgetFlags:budgetReconciliationFlags(budget)});
 }
 function id(v,name){if(typeof v!=='string'||!v.trim()||v.length>128)throw Error('Invalid '+name);return v;}
 function canonical(raw){
@@ -70,19 +79,37 @@ export class CashStore{
     }
     throw Error('Cash contention: retry');
   }
-  async report({now,maxAgeMs}){
+  async reconciliationSnapshot(){
     // Verify revisions after reading all three append-only streams. No external balance API.
     for(let i=0;i<8;i++){
-      const cash=await this.load(),ledger=await this.ledger.snapshot(),before=await this.budget.load(),budget=await this.budget.snapshot();
-      if(!cash.opening)throw Error('Cash opening missing');
+      const cash=await this.load(),ledger=await this.ledger.snapshot(),budget=await this.budget.load();
       const [rev]=await this.rows(`SELECT
         COALESCE((SELECT MAX(seq) FROM dev_cash_audit),0) AS cash,
         COALESCE((SELECT MAX(seq) FROM trade_ledger_audit),0) AS ledger,
         COALESCE((SELECT MAX(seq) FROM dev_budget_audit),0) AS budget`);
-      if(rev.cash!==cash.revision||rev.ledger!==ledger.revision||rev.budget!==before.seq)continue;
-      return {...projectCashAudit({cash,ledger,budget:budget?.summary,now,maxAgeMs}),
-        cashRevision:cash.revision,ledgerRevision:ledger.revision,budgetRevision:before.seq};
+      if(rev.cash!==cash.revision||rev.ledger!==ledger.revision||rev.budget!==budget.seq)continue;
+      const summary=budget.state?summarizeBudget(budget.state,ledger.executions.map(x=>x.execution)):null;
+      return {cash,ledger,budget,summary};
     }
     throw Error('Concurrent reconciliation: retry');
+  }
+  async report({now,maxAgeMs}){
+    const {cash,ledger,budget,summary}=await this.reconciliationSnapshot();
+    if(!cash.opening)throw Error('Cash opening missing');
+    return {...projectCashAudit({cash,ledger,budget:summary,now,maxAgeMs}),
+      cashRevision:cash.revision,ledgerRevision:ledger.revision,budgetRevision:budget.seq};
+  }
+  async reconciliationStatus({now}={}){
+    const {cash,ledger,budget,summary}=await this.reconciliationSnapshot();
+    const at=timestamp(now??Date.now(),'now');
+    const missing=[];
+    const maxAgeMs=budget.state?.cashGuardMaxAgeMs;
+    if(!cash.opening)missing.push('NO_CASH_OPENING');
+    else if(historyOutsideCashInterval(cash,ledger,at))missing.push('HISTORY_OUTSIDE_CASH_INTERVAL');
+    if(budget.state&&maxAgeMs===undefined)missing.push('CASH_RECONCILIATION_POLICY_MISSING');
+    const flags=missing.length||!budget.state
+      ? [...budgetReconciliationFlags(summary),...missing]
+      : projectCashAudit({cash,ledger,budget:summary,now:at,maxAgeMs}).flags;
+    return {budgetRevision:budget.state?.revision??null,reconciliation:{reconciled:flags.length===0,flags}};
   }
 }

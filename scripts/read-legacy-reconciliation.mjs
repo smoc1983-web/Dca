@@ -1,7 +1,7 @@
 import {BudgetStore,summarizeBudget} from '../cloudflare/budget-store.mjs';
 import {readCashAudit} from '../cloudflare/cash-audit-read.mjs';
 import {timestamp} from '../cloudflare/cash-reconcile.mjs';
-import {projectCashAudit} from '../cloudflare/cash-store.mjs';
+import {historyOutsideCashInterval,projectCashAudit} from '../cloudflare/cash-store.mjs';
 import {units} from '../cloudflare/ledger-decimal.mjs';
 import {TradeLedgerStore} from '../cloudflare/trade-store.mjs';
 
@@ -65,8 +65,7 @@ export async function readLegacyReconciliation(db,{now,maxAgeMs}){
  }
  let cashReport=null;
  if(!cash.opening)flags.add('NO_CASH_OPENING');
- else if(cash.opening.time>now||cash.observation?.time>now||[...cash.flows,...executions.filter(e=>e.source==='manual')]
-  .some(e=>e.time<cash.opening.time||e.time>now))flags.add('HISTORY_OUTSIDE_CASH_INTERVAL');
+ else if(historyOutsideCashInterval(cash,ledger,now))flags.add('HISTORY_OUTSIDE_CASH_INTERVAL');
  else if(!mismatched){
   cashReport=projectCashAudit({cash,ledger,budget:summary,now,maxAgeMs});
   for(const flag of cashReport.flags)flags.add(flag);

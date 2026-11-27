@@ -1,6 +1,7 @@
 // HTTP entry for synthetic accounts. Never select a DB using request data.
 import {isSyntheticToken,matchesToken,readBearer} from './synthetic-bearer.mjs';
 import {BudgetStore} from './budget-store.mjs';
+import {CashStore} from './cash-store.mjs';
 import {LedgerWriteConflict,LedgerWriteValidation,TradeLedgerStore,normalizeLedgerOperation} from './trade-store.mjs';
 
 const accountId=/^[A-Za-z0-9_-]{1,64}$/;
@@ -75,11 +76,13 @@ function executionPage(params){
 export default {
  async fetch(request,env){
   const url=new URL(request.url);
+  const ledger=url.pathname==='/ledger';
   const paged=url.pathname==='/ledger/executions';
-  if(env.DEV_LEDGER_MODE!=='synthetic'||(!paged&&(url.pathname!=='/ledger'||url.search)))
+  const budget=url.pathname==='/ledger/budget';
+  if(env.DEV_LEDGER_MODE!=='synthetic'||(!ledger&&!paged&&!budget)||(!paged&&url.search))
    return reply({status:'not-found'},404);
-  if(request.method!=='GET'&&(paged||request.method!=='POST'))
-   return reply({status:'method-not-allowed'},405,{Allow:paged?'GET':'GET, POST'});
+  if(request.method!=='GET'&&(!ledger||request.method!=='POST'))
+   return reply({status:'method-not-allowed'},405,{Allow:ledger?'GET, POST':'GET'});
   const accounts=accountDirectory(env.DEV_LEDGER_ACCOUNTS);
   if(!accounts)return unavailable();
   const candidate=readBearer(request);
@@ -87,10 +90,15 @@ export default {
   const account=accounts[matches.indexOf(true)];
   if(!account)return reply({status:'unauthorized'},401,{'WWW-Authenticate':'Bearer'});
   if(request.method==='POST'&&account.canWrite!==true)return reply({status:'forbidden'},403);
+  if(budget&&account.budgeted!==true)return reply({status:'not-found'},404);
   try{
    const db=env[account.binding];
    const marker=await db.prepare('SELECT account_id FROM dev_ledger_account WHERE singleton=1').first();
    if(marker?.account_id!==account.id)return unavailable();
+   if(budget){
+    const status=await new CashStore(db).reconciliationStatus();
+    return reply({status:'available',accountId:account.id,...status});
+   }
    if(request.method==='POST'){
     const command=await manualCommand(request,account,Date.now());
     if(account.budgeted===true){

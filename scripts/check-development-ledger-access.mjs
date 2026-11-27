@@ -5,6 +5,7 @@ import {createRequire} from 'node:module';
 import {readFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {BudgetStore} from '../cloudflare/budget-store.mjs';
+import {CashStore} from '../cloudflare/cash-store.mjs';
 import {TradeLedgerStore} from '../cloudflare/trade-store.mjs';
 
 const {Miniflare}=createRequire(import.meta.url)('miniflare');
@@ -13,7 +14,9 @@ const [a,b,wrong,linked]=['A','B','WRONG','LINKED'].map(id=>({
  id:'account-'+id,token:randomBytes(32).toString('base64url'),binding:'DEV_LEDGER_DB_'+id
 }));
 a.canWrite=true;
+b.budgeted=true;
 wrong.canWrite=true;
+wrong.budgeted=true;
 linked.canWrite=true;
 linked.budgeted=true;
 let outbound=0;
@@ -30,11 +33,18 @@ const request=(account,path='/ledger',options={})=>mf.dispatchFetch('http://ledg
  {method:options.method,body:options.body,headers:{...(account?auth(account):{}),...options.headers}});
 
 const post=(account,body)=>request(account,'/ledger',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+const budgetPath='/ledger/budget';
+async function budgetView(account){
+ const response=await request(account,budgetPath);
+ assert.equal(response.status,200);
+ assert.equal(response.headers.get('Cache-Control'),'no-store');
+ return response.json();
+}
 
 async function prepareAccount(account,{bind=true}={}){
  const db=await mf.getD1Database(account.binding);
  const files=['trade-ledger-schema','development-ledger-account-schema'];
- if(account.budgeted)files.push('budget-store-schema');
+ if(account.budgeted)files.push('budget-store-schema','cash-store-schema');
  const schemas=files.flatMap(name=>
   readFileSync(new URL('../cloudflare/'+name+'.sql',import.meta.url),'utf8').split(/(?=^CREATE )/m)
    .filter(s=>s.startsWith('CREATE ')).map(s=>s.trim()));
@@ -127,17 +137,39 @@ try{
  console.log('Ledger access: separate accounts, immutable marker, write permission, audited fill and correction, idempotent retry and no outbound requests');
 
  const db=await prepareAccount(linked),budget=new BudgetStore(db);
+ const cash=new CashStore(db);
+ assert.equal((await request(null,budgetPath)).status,401);
+ assert.equal((await request(a,budgetPath)).status,404);
+ assert.equal((await request(wrong,budgetPath)).status,503);
+ assert.equal((await request(linked,budgetPath+'?account='+a.id)).status,404);
+ const disallowed=await request(linked,budgetPath,{method:'POST'});
+ assert.equal(disallowed.status,405);
+ assert.equal(disallowed.headers.get('Allow'),'GET');
+ const emptyBudget=await budgetView(b);
+ assert.deepEqual(emptyBudget,{status:'available',accountId:b.id,budgetRevision:null,
+  reconciliation:{reconciled:false,flags:['BUDGET_NOT_INITIALIZED','NO_CASH_OPENING']}});
  const budgetFill={kind:'fill',opId:'linked-fill',expectedBudgetRevision:1,
   execution:{...first.fill,id:'linked-receipt',cycleId:'linked-cycle'}};
  assert.equal((await post(linked,entered)).status,400);
  assert.equal((await post(linked,budgetFill)).status,409);
  assert.equal((await budget.ledger.snapshot()).revision,0);
- const command=(kind,expectedRevision,extra)=>({kind,opId:kind,expectedRevision,actor:'synthetic-fixture',recordedAt:10,...extra});
- await budget.apply(command('init',null,{settings:{policy:'equal-slots-v1',capital:'800',freeCash:'800',maxCycles:1,feeRate:'0.001'}}));
+ const command=(kind,expectedRevision,extra)=>({kind,opId:kind,expectedRevision,actor:'synthetic-fixture',recordedAt:Date.now(),confirmed:true,...extra});
+ await budget.apply(command('init',null,{cashGuardMaxAgeMs:3_600_000,
+  settings:{policy:'equal-slots-v1',capital:'800',freeCash:'800',maxCycles:1,feeRate:'0.001'}}));
+ assert.deepEqual(await budgetView(linked),{status:'available',accountId:linked.id,budgetRevision:0,
+  reconciliation:{reconciled:false,flags:['NO_CASH_OPENING']}});
+ await cash.write(command('opening',0,{time:0,cash:'800',noOpeningPositions:true}));
+ const observe=(revision,free)=>cash.write(command('observe',revision,
+  {opId:'observe-'+revision,time:Date.now(),free,locked:'0',completeHistory:true}));
+ await observe(1,'800');
  await budget.apply(command('reserve',0,{id:budgetFill.execution.cycleId,symbol:'ADAUSDT',tickSize:'0.01',exitFeeRate:'0.001'}));
  const heads=()=>db.prepare(`SELECT (SELECT MAX(seq) FROM dev_budget_audit) AS budget,
-  (SELECT COUNT(*) FROM trade_ledger_audit) AS executions`).first();
+  (SELECT COUNT(*) FROM trade_ledger_audit) AS executions,(SELECT MAX(seq) FROM dev_cash_audit) AS cash`).first();
  const before=await heads();
+ const ready=await budgetView(linked);
+ assert.deepEqual(ready,{status:'available',accountId:linked.id,budgetRevision:1,reconciliation:{reconciled:true,flags:[]}});
+ assert.deepEqual(await heads(),before);
+ budgetFill.expectedBudgetRevision=ready.budgetRevision;
  assert.equal((await post(linked,{...budgetFill,expectedBudgetRevision:0})).status,409);
  assert.equal((await post(linked,{...budgetFill,execution:{...budgetFill.execution,price:'invalid'}})).status,400);
  assert.equal((await post(linked,{...budgetFill,execution:{...budgetFill.execution,cycleId:'same-pair-wrong-id'}})).status,409);
@@ -152,10 +184,16 @@ try{
  const saved=await post(linked,budgetFill);
  assert.equal(saved.status,201);
  assert.deepEqual(await saved.json(),{status:'stored',budgetRevision:2});
- assert.deepEqual(await heads(),{budget:before.budget+1,executions:1});
+ assert.deepEqual(await heads(),{...before,budget:before.budget+1,executions:1});
  assert.equal((await budget.snapshot()).summary.cycles[0].cost,'20.02');
+ const changed=await budgetView(linked);
+ assert.equal(changed.budgetRevision,2);
+ assert.equal(changed.reconciliation.reconciled,false);
+ assert.ok(changed.reconciliation.flags.includes('HISTORY_CHANGED'));
+ await observe(2,'779.98');
+ assert.equal((await budgetView(linked)).reconciliation.reconciled,true);
 
- const budgetFix={kind:'correct',opId:'linked-fix',expectedBudgetRevision:2,expectedVersion:1,
+ const budgetFix={kind:'correct',opId:'linked-fix',expectedBudgetRevision:changed.budgetRevision,expectedVersion:1,
   reason:'Synthetic receipt correction',execution:{...budgetFill.execution,price:'105'}};
  const beforeFix=await heads();
  await db.prepare(`CREATE TRIGGER fail_http_fix BEFORE INSERT ON trade_ledger_audit
@@ -170,13 +208,20 @@ try{
  assert.equal((await post(linked,{...budgetFix,reason:'Conflicting reason'})).status,409);
  assert.equal((await post(linked,{...budgetFix,opId:'stale-correction',expectedBudgetRevision:3})).status,409);
  assert.equal((await post(linked,budgetFill)).status,200);
- assert.deepEqual(await heads(),{budget:before.budget+2,executions:2});
+ assert.deepEqual(await heads(),{...beforeFix,budget:beforeFix.budget+1,executions:2});
  const final=await budget.snapshot(),operations=await budget.ledger.audit();
  assert.equal(final.summary.cycles[0].cost,'21.02');
  assert.ok(final.summary.flags.includes('CORRECTION_RECONCILIATION_REQUIRED'));
  assert.ok(operations.every(op=>op.actor===linked.id));
  assert.equal((await first.store.snapshot()).revision,4);
  assert.equal((await second.store.snapshot()).revision,1);
+ await observe(3,'778.98');
+ const audited=await heads();
+ assert.deepEqual(await budgetView(linked),{status:'available',accountId:linked.id,budgetRevision:3,
+  reconciliation:{reconciled:false,flags:['CORRECTION_RECONCILIATION_REQUIRED']}});
+ assert.deepEqual(await budgetView(b),emptyBudget);
+ assert.deepEqual(await heads(),audited);
  assert.equal(outbound,0);
  console.log('Budgeted ledger: protected fill and correction commit both audits atomically; D1 rollback, parallel retry, stale revisions and account isolation passed');
+ console.log('Budget status: protected GET is read-only, returns current budget revision and changes with balance history and pending correction');
 }finally{await mf.dispose();}
