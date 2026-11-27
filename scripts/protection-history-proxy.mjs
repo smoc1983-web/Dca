@@ -4,14 +4,17 @@ import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {validateLongInput} from './prepare-long-target.mjs';
 const EPS=1e-7,FUNDING=8*3600000;
-export function replayProtectionProxy({datasets,report,leverage,policy,fundingRate,maintenanceRate=0.005,responseMode,markDatasets}){
+export function replayProtectionProxy({datasets,report,leverage,policy,fundingRate,maintenanceRate=0.005,responseMode,markDatasets,researchAllocation}){
  if(!['none','next-close','two-closes','reject'].includes(responseMode))throw Error('Explicit response mode required');
  if(![1,2,3].includes(leverage)||!['fixed-notional','scaled-notional'].includes(policy)||![0,0.0001].includes(fundingRate)||maintenanceRate!==0.005)throw Error('Invalid proxy settings');
  const {capital,maxCycles,cycleBudget,slippageBps}=report.settings;
  if(capital!==800||maxCycles!==5||cycleBudget!==160||slippageBps!==2)throw Error('Frozen baseline required');
  const factor=policy==='scaled-notional'?leverage:1,feeRate=.001;
  // Research assumptions only: identical base allocation in all paired arms.
- const baseSlot=140,pool=100,cycleCap=20,drop=.20,target=10;
+ const allocation=researchAllocation===undefined?{pool:100,cycleCap:20}:researchAllocation;
+ if(!allocation||Object.keys(allocation).length!==2||![50,100,150,200].includes(allocation.pool)||![10,20,30,40].includes(allocation.cycleCap))throw Error('Invalid research allocation');
+ const {pool,cycleCap}=allocation,baseSlot=(capital-pool)/maxCycles,drop=.20,target=10;
+ if(baseSlot*maxCycles+pool!==capital)throw Error('Capital allocation invariant');
  let pending=null,requested=0,confirmed=0,rejected=0,denied=0,cancelled=0,spent=0,peakHeld=0,peakPending=0;
  const entries=datasets.map(d=>({symbol:d.params.symbol,rows:d.candles,index:(d.window.start-d.window.warmupStart)/(d.candles[1].time-d.candles[0].time),p:null,mark:null}));
  const bySymbol=new Map(entries.map(e=>[e.symbol,e]));

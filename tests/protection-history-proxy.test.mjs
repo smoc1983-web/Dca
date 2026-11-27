@@ -17,3 +17,7 @@ test('actual delayed confirmation rescues reserve deficit in controlled scaled-x
  assert.equal(b.confirmed,1);assert.ok(Math.abs(b.cumulativeTopups-6.03)<1e-8);assert.equal(b.status,'completed-fixed-schedule');
  assert.equal(c.confirmed,0);assert.equal(c.firstRisk.time,a.firstRisk.time);assert.equal(c.pendingAmount,6.03);
 });
+
+test('explicit default research allocation preserves prior result',()=>{const f=fixture();const a=run(f,'next-close',3,'scaled-notional');const b=replay({...f,responseMode:'next-close',leverage:3,policy:'scaled-notional',fundingRate:0,researchAllocation:{pool:100,cycleCap:20}});assert.deepEqual(a,b);});
+test('allocation never adds capital or changes fixed fill size',()=>{const f=fixture();for(const pool of [50,100,150,200]){const r=replay({...f,responseMode:'none',leverage:1,policy:'fixed-notional',fundingRate:0,researchAllocation:{pool,cycleCap:10}});assert.equal(r.slotCollateral*5+r.protectionPool,800);assert.equal(r.plannedStartNotional,5);assert.equal(r.confirmed,0);assert.equal(r.peakProtectionHeld,0);assert.equal(r.recommendationAllowed,false);}});
+test('research allocation rejects unstated or unsupported values',()=>{const f=fixture();for(const researchAllocation of [null,{pool:100},{pool:999,cycleCap:20},{pool:100,cycleCap:99},{pool:100,cycleCap:20,capital:1000}])assert.throws(()=>replay({...f,responseMode:'none',leverage:1,policy:'fixed-notional',fundingRate:0,researchAllocation}),/Invalid research allocation/);});

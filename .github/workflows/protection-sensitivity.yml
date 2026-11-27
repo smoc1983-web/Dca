@@ -1,0 +1,55 @@
+name: Historical protection reserve sensitivity
+on:
+  push:
+    branches: ['dev/dca800-foundation']
+    paths:
+      - 'scripts/protection-sensitivity.mjs'
+      - 'scripts/protection-sensitivity-grid.mjs'
+      - '.github/workflows/protection-sensitivity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        pool: [50, 100, 150, 200]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45958961984
+          pattern: mark-data-*
+          merge-multiple: true
+          path: mark-data
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45875049345
+          pattern: long-data-*
+          merge-multiple: true
+          path: long-data
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45875049345
+          name: long-report-5-2
+          path: baseline
+      - run: node --max-old-space-size=5120 scripts/protection-sensitivity.mjs long-data mark-data baseline/report-5-2.json sensitivity-${{ matrix.pool }}.json ${{ matrix.pool }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: protection-sensitivity-${{ matrix.pool }}
+          path: sensitivity-${{ matrix.pool }}.json
+          retention-days: 30
+          if-no-files-found: error
