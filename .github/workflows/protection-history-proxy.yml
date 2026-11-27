@@ -1,0 +1,42 @@
+name: Historical bounded protection proxy
+on:
+  push:
+    branches: ['dev/dca800-foundation']
+    paths:
+      - 'scripts/protection-history-proxy.mjs'
+      - '.github/workflows/protection-history-proxy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  proxy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45875049345
+          pattern: long-data-*
+          merge-multiple: true
+          path: long-data
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45875049345
+          name: long-report-5-2
+          path: baseline
+      - run: node --max-old-space-size=5120 scripts/protection-history-proxy.mjs long-data baseline/report-5-2.json protection-proxy.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: historical-bounded-protection-proxy
+          path: protection-proxy.json
+          retention-days: 30
+          if-no-files-found: error
