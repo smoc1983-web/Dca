@@ -9,3 +9,11 @@ test('bounded funding consumes no extra wallet equity, respects finite caps',()=
 test('response cannot count on request candle or after risk stop',()=>{const f=fixture();const a=run(f,'none'),b=run(f,'reject');assert.equal(b.confirmed,0);assert.equal(b.cumulativeTopups,0);assert.equal(a.firstRisk?.reason,b.firstRisk?.reason);assert.equal(a.lastTime,b.lastTime);});
 test('positive topup and one-close delay after full ladder in research path',()=>{const f=fixture();const a=run(f,'next-close',3,'fixed-notional');assert.ok(a.peakProtectionHeld<=20);assert.ok(a.confirmed<=a.requested);assert.equal(a.status==='completed-fixed-schedule'||a.finalProxyEquity===null,true);});
 test('scaled notional separate from fixed notional; reject out-of-range leverage',()=>{const f=fixture();assert.equal(run(f,'none',3,'scaled-notional').plannedStartNotional,15);assert.equal(run(f,'none',3).plannedStartNotional,5);assert.throws(()=>run(f,'none',4),/Invalid proxy/);});
+
+test('actual delayed confirmation rescues reserve deficit in controlled scaled-x3 fixture',()=>{
+ const f=fixture();f.datasets[0].candles=[100,100,100,100,100,100,100,100,80,105].map((p,i)=>bar(i,p));
+ const a=run(f,'none',3,'scaled-notional'),b=run(f,'next-close',3,'scaled-notional'),c=run(f,'two-closes',3,'scaled-notional');
+ assert.equal(a.status,'stopped-at-proxy-risk');assert.equal(a.firstRisk.reason,'PROXY_RESERVE_DEFICIT');
+ assert.equal(b.confirmed,1);assert.ok(Math.abs(b.cumulativeTopups-6.03)<1e-8);assert.equal(b.status,'completed-fixed-schedule');
+ assert.equal(c.confirmed,0);assert.equal(c.firstRisk.time,a.firstRisk.time);assert.equal(c.pendingAmount,6.03);
+});

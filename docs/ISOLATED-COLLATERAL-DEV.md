@@ -18,3 +18,6 @@ compareProtectionPaths сравнивает один и тот же явно з�
 
 ## 2026-11-27 — DCA-20261127-04 — Исторический proxy защитной маржи
 - Предыдущий dev 4310a8e: CI https://github.com/smoc1983-web/Dca/actions/runs/45951089624 job 140346864523, 234/234, 0 fail/skip. Добавлены protection-history-proxy.mjs, 5 офлайн тестов, отдельный workflow и документация. 11 пар, 2025-02-01–2026-11-01 UTC exclusive, pinned 5m-агрегаты и baseline report 5 slots/2bps из CI 45875049345. 24 сценария: fixed/scaled ×1/2/3, none/next-close/two-closes/reject, funding 0.01% по условному календарю старой модели. Исследовательский split 800=5×140+100, cap 20 на цикл, шаг 0.01, min 1, adverse drop 20%, target 10 USDT; одинаковый base slot для парных сравнений. Не утверждены как реальные настройки. Проверка low/close до ответа, pending один на счёт, защита свободных слотов, закрытие освобождает залог, сумма пополнений накопительная. Стоп при maintenance/reserve deficit; это не ликвидация и не фьючерсный backtest. Нет lookahead по ценам. CI ожидается. Production не изменён.
+
+## Результаты исторического proxy
+См. [полный отчёт](../research/protection-history-2026-11-27.md). 24/24, 16 путей завершены, 8 остановлены по reserve deficit; защитная маржа не отложила остановки. Реальные правила и OOS не проверены. Добавлен один целевой тест подтверждения/задержки, CI ожидается.
