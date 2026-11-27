@@ -1,0 +1,4068 @@
+{
+  "version": "mark-risk-proxy-results-v1",
+  "sourceCommit": "1289a90306b18aeddc4a2f0460e71cc28c1aa2e7",
+  "sourceRun": 45958961984,
+  "sourceJob": 140372621716,
+  "baselineRun": 45875049345,
+  "baselineArtifact": 15144743521,
+  "period": {
+    "start": "2025-02-01T00:00:00Z",
+    "endExclusive": "2026-11-01T00:00:00Z"
+  },
+  "totalMonthly": 231,
+  "totalDaily": 11,
+  "totalMissing": 3168,
+  "provenance": [
+    {
+      "symbol": "BTCUSDT",
+      "tf": "5m",
+      "bars": 183744,
+      "dataSha256": "66e9b1785bc05eb28c5e8a09d21898d6167ce4469f72dc7d0bce51387c61b15a",
+      "archives": [
+        {
+          "month": "2025-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2025-02.zip",
+          "sha256": "2ae377c8d976ed316e15ddf22c7b871b09c7485bec6bf7a393d9daf425412212",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2025-03.zip",
+          "sha256": "8881a1d4fe8064d804a76fac7b8daa4c74585a5c6dc571f0aa0cd8091d726103",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2025-04.zip",
+          "sha256": "1aad080659abd851eafc5fca907a7439389aef934386a9ed6de1cefc52b24604",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2025-05.zip",
+          "sha256": "d4e3df625e651e5d9c172e14bfd65d2ea0e8034ab6eb2826225ef7fc4a958282",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2025-06.zip",
+          "sha256": "06175d7a395b12dcfd273cd6a3a9bc1ad0c6372f8865ab5ad8767421f4d34460",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2025-07.zip",
+          "sha256": "a2a7767cf9d5a15c4ede0f120e8e8ecf9a732d2875eaa72d08b700d4d8cf10a6",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2025-08.zip",
+          "sha256": "f2a26b31c8d5b24045758f712018fdb1c9846e2a4a2018735460981ef8f82e08",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2025-09.zip",
+          "sha256": "af347edb4fc9de1f6c1dde780848871589282ad3b5ef6548bc8dd7ed7b104c66",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2025-10.zip",
+          "sha256": "6ad408769d0829506395a73debe260a30336b524967710bbbf725b92185d0d2d",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-11",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2025-11.zip",
+          "sha256": "f4a73ec1949e36575d2d879f95b0d07a3539b219f9b17cea4f9967e29f980733",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-12",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2025-12.zip",
+          "sha256": "9ca4f9f8cbb8df53401f4cfd632203f8c170a27befaeb48e108f949852cbb006",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-01",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2026-01.zip",
+          "sha256": "c8ecb38b48badd12941be2d110d5effb104c460d4b110418f1476c7dc42baa6d",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2026-02.zip",
+          "sha256": "e65adc4af92074f9d76566119f921e5357cc88c3d41dff183ac3cb13541fe797",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2026-03.zip",
+          "sha256": "771f18260247dc7f2809adba097a7f3cb98914b87429d89d5a80cc4bd7915c64",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2026-04.zip",
+          "sha256": "042a7dbe721dfe5935072f156a302c957672cf1884ea3bf87dc6886e9fe7dbf9",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2026-05.zip",
+          "sha256": "64c96470917268a97237b9be899ce7346765b94f2009ce7a1f23ed8963cd7a9b",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2026-06.zip",
+          "sha256": "e02cf899d32a506fcb3165e795040dadea291989bdd12082bec1a83875d908fc",
+          "missingRows": 288,
+          "dailyRepairs": [
+            {
+              "day": "2026-06-29",
+              "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2026-06-29.zip",
+              "sha256": "eef21086c97542d63dcc88d311e9c3835d107f9d4b4497f6b488e32640e778c7"
+            }
+          ]
+        },
+        {
+          "month": "2026-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2026-07.zip",
+          "sha256": "dd6dad968f6e95915057748b734a749ae5f6751043706c33affeef173a31c840",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2026-08.zip",
+          "sha256": "132ad3a82af62c145d10b1e6b88db264f28767c1a6d1bc838313db91e12e4708",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2026-09.zip",
+          "sha256": "10946a50d42652e56209e551c93dc29cc3598b260ff7b3c5da04ad6b010c6919",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/5m/BTCUSDT-5m-2026-10.zip",
+          "sha256": "78c6c5d7e7891a0162f159d387708d4ec9add56aabf99baba32f6635a4f965c4",
+          "missingRows": 0,
+          "dailyRepairs": []
+        }
+      ]
+    },
+    {
+      "symbol": "UNIUSDT",
+      "tf": "15m",
+      "bars": 61248,
+      "dataSha256": "c33e37a73e8fb5e8c3396cbf6c155e58d54fbc6f856809b2200029087e57d6f8",
+      "archives": [
+        {
+          "month": "2025-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2025-02.zip",
+          "sha256": "05ae503ce30737825e6c757e9ce594d5b30a6a3f5d9d05886bdd04455607e8b9",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2025-03.zip",
+          "sha256": "365cca1a54b69fed599d8c4425a5401e8ed95e20f4ed6e360586df8c5efee41b",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2025-04.zip",
+          "sha256": "c188a5087ba32acd47c1585cb11ef1a190393bcf7756c227cd0ec10e3098b5de",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2025-05.zip",
+          "sha256": "eeb546d974652154f16d1784a2e36a22d52906d30bb8e8d0f12264a4f2d9979b",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2025-06.zip",
+          "sha256": "bfd4521008a8399c7a9682ae466a32a4f414dc58af578fd06776f29a515be23e",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2025-07.zip",
+          "sha256": "eeda6ee9617eb2506408fed42d8f0db3fb56afd346c72d88881adef50301a177",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2025-08.zip",
+          "sha256": "780cc5e05e40706340329326ccc75c353c0687eb525a4f48eecbd19e0affdeb5",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2025-09.zip",
+          "sha256": "f43a68aaa86677bac291266e575beeb35e368ebfdc8c2b6e84c2cb692c434889",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2025-10.zip",
+          "sha256": "e16d123e064ef9a44a8956526cf27a3708aabadd42216c6933ceae07c908696f",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-11",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2025-11.zip",
+          "sha256": "8880cdaceafca45c74a394639e9fce6af114b99d6555e96147a3e4d59b64a943",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-12",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2025-12.zip",
+          "sha256": "d944bca929faca9e3a0c2b365f36bd4e119f9f07c2107ecd8f8d035bc49af40d",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-01",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2026-01.zip",
+          "sha256": "b99d2f2186605a3a0706097638ac98a9f7d6091f729bc186f4739c52a2516577",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2026-02.zip",
+          "sha256": "4d867ae57eb8c9280587dfc1a404ef2e5e77620d4942330e36c27eb59764a1d9",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2026-03.zip",
+          "sha256": "d6ace9e37d5b91e98b17eb9102630b0d77c61bde8c06000663d8d4bffca93433",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2026-04.zip",
+          "sha256": "845e815fb03d2a8f1c09833948a93497bf6ca5e3ef1e06bc03c240e06d683289",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2026-05.zip",
+          "sha256": "4402ec9703c3af9fd3dee55ff1fcb4070ea22b9bbfa3889e140f969062ea23d8",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2026-06.zip",
+          "sha256": "8342ea739e41e112b0fff7eb018142ffb6cd560c3335f7f850b1c5076d807741",
+          "missingRows": 288,
+          "dailyRepairs": [
+            {
+              "day": "2026-06-29",
+              "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2026-06-29.zip",
+              "sha256": "ac8220986e9d793693c07f2449032d983a1d6cb039dced953fdd7e4c17b178b0"
+            }
+          ]
+        },
+        {
+          "month": "2026-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2026-07.zip",
+          "sha256": "d3e9031af0bd861290faa2d4b4bdbc24abeec9107c6c8736e317900e47f2fddc",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2026-08.zip",
+          "sha256": "f7d1a79b8fbf46e575835830faeff75c60eb8a64f1cd3771c53687baa89b9cf9",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2026-09.zip",
+          "sha256": "e98b30967c378787dc41e08ccc8ef1082c97d2e9880b393b47afa2abfff098b4",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/UNIUSDT/5m/UNIUSDT-5m-2026-10.zip",
+          "sha256": "617d612c8746ee26ed7083889f6dad5529a0c144fc05af5298423463ec03a0eb",
+          "missingRows": 0,
+          "dailyRepairs": []
+        }
+      ]
+    },
+    {
+      "symbol": "ZECUSDT",
+      "tf": "5m",
+      "bars": 183744,
+      "dataSha256": "07ae97a0c2551df900dd6bebca5ca993016f8f2cab26c947a6f470683f8983cc",
+      "archives": [
+        {
+          "month": "2025-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2025-02.zip",
+          "sha256": "a3fd53c6887c05cd06d4c9f8a8ee2a29b2738de04848ac47059e3a8b46c7430d",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2025-03.zip",
+          "sha256": "6b57c886a0006e685fdb1dbaccf61ee4f968cff4d7a7d3eaae7f2997967d756a",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2025-04.zip",
+          "sha256": "96689c8f6f2f03cc59b9f27b3ce24aff0f3c52b61b1df34443931b8224e33151",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2025-05.zip",
+          "sha256": "49aaee2792457fd3da506841684886296a872b15b2b57580b1aafc92f75e9a7c",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2025-06.zip",
+          "sha256": "d506ff6e963b5f96207cf64ea177d6751ed5026fd9b37e3cdad18134c4575c9a",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2025-07.zip",
+          "sha256": "154936c0e654c6b6a8d6d62009d4de122ad7c4299566b7b614d581d3e5d63a2e",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2025-08.zip",
+          "sha256": "40318b2f97aa12b632081acfe7c1559fc7e4a635707bf38152536472cd5f818f",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2025-09.zip",
+          "sha256": "6733d7fc95fa2589e07c80a99afc27e5b9070b2474d24858aace2b9f417ceb04",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2025-10.zip",
+          "sha256": "91db5701abfdf97cfac4ca1d22c02436423c976dede20b3648a1a0caacfe920a",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-11",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2025-11.zip",
+          "sha256": "e107f553f77a19816af55d731ff4ccbf0714cb95c9344d22e6a6aeaff39a7816",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-12",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2025-12.zip",
+          "sha256": "b9a585010cdc34fc903b0b5e207d2176117e7e141a7cbc724ce985c59e65dd65",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-01",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2026-01.zip",
+          "sha256": "79dfd0b5e5bc375c0f072d702b76301e38a9bec65361c8fdd12fbc44052d118a",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2026-02.zip",
+          "sha256": "b5f37d081211f2a525c8fdf36001372fff0957c5d4e00982c38e8c32c9cd2783",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2026-03.zip",
+          "sha256": "2bbf5971c72eeeaaf04079d981a221b3c0d6426135c986ce3b0640742f85faf8",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2026-04.zip",
+          "sha256": "c0eec87b37e349f7ce2df46627cbc1166e681cc89730a8476273edb772a8fa73",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2026-05.zip",
+          "sha256": "d3a175afe30f508fd6dd963ab9dbee577db42537f851f4f2a278ae2ab0ea58ba",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2026-06.zip",
+          "sha256": "24d65f5f9a579f42bbe5c45ffb2ddef5cc8cfe7b00754439c735b4fdb4ed2ab0",
+          "missingRows": 288,
+          "dailyRepairs": [
+            {
+              "day": "2026-06-29",
+              "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2026-06-29.zip",
+              "sha256": "ef8d538a42ee05761abc96bcc09530322e10f479d19155f77828bdb20127bcf9"
+            }
+          ]
+        },
+        {
+          "month": "2026-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2026-07.zip",
+          "sha256": "43fa35523d815b2004c5a0ff5f5a4554eb417329106f2af5ef76d7f8da682c71",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2026-08.zip",
+          "sha256": "51654ce7797af067ce39a448999ea6e7c7a26f757d26bc5af4054f09024f0a85",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2026-09.zip",
+          "sha256": "db90aa95c5800979eeefb262c8d5926f3a75dad2df43d9679bd0baa5baa4f125",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ZECUSDT/5m/ZECUSDT-5m-2026-10.zip",
+          "sha256": "be3350068cf4cccb5ae0072446d54d2b068fcb2fe33542a9332bc279436f03ef",
+          "missingRows": 0,
+          "dailyRepairs": []
+        }
+      ]
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "tf": "5m",
+      "bars": 183744,
+      "dataSha256": "e5ee0a4ee15ab191d285b5da22807f1eab053e08204c58787e0335150edf1d90",
+      "archives": [
+        {
+          "month": "2025-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-02.zip",
+          "sha256": "06db0a2ace45ba675ed6dc5e280e0cb73cf59edd95c8057f5fabe7183c3f7655",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-03.zip",
+          "sha256": "cb851060d7a2d9e407770ebf4290a9b7dcb3232ae9816ea6335b02ca4c67ad30",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-04.zip",
+          "sha256": "6ad2e9da39cb48134e9a91bfff385ba1964e1ba626062c9e491a50b3de9d2215",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-05.zip",
+          "sha256": "a7f4fda1e2b0b9e544a18d129536070baaad5b6e871a09dedce157c2605d80eb",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-06.zip",
+          "sha256": "daa860413c7a2c562ed999972cacff5aa6f0b66e9a946780d27648110dff1384",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-07.zip",
+          "sha256": "15a532a21d555b07b54ada0a94b308174a11af8884f3bde058a5fa8c9ac52641",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-08.zip",
+          "sha256": "01c5303e1d5b33b689906ae42f8bf66409d67ceb364c4ea52d5d528ff4d9ddeb",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-09.zip",
+          "sha256": "0be6406d62b18cc3b240ee123ad93b559f1624eb0589e9b4595974aea17f1086",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-10.zip",
+          "sha256": "5c0a68238b9a681a4edaad99958fe98b3d683ffdd9040bf9fa33f7e9446e1abf",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-11",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-11.zip",
+          "sha256": "e02a5e371b4a0b289908c67c094df4be79191a5ae7f95553deb8c06d3795a0b2",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-12",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2025-12.zip",
+          "sha256": "99ae4d58eab1df675739e955766fe1812c89528499f7032bd25de94ed5d3df34",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-01",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2026-01.zip",
+          "sha256": "04649fdc4f2fc65d1fd7ce6b10b4bea808d2104bdc27171d2b9e630be998918b",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2026-02.zip",
+          "sha256": "33b7c0b9f330dedd0a6da63ef40196de1178f1cef793bdcdee29cb33f0e02c39",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2026-03.zip",
+          "sha256": "31f9f8726f06bb86ada2ee3a759fe3caa3fc79fba5b657b69a85fb2d1586cd78",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2026-04.zip",
+          "sha256": "2d860c4b9a2dcff495cce21b2dc09243969a85971e84abff751575a94caa0575",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2026-05.zip",
+          "sha256": "ffe9ec790a394a62da43c40b93a7e960b18556f69de09af267c98f28cf401595",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2026-06.zip",
+          "sha256": "53216c5ff41c20a1d0ba2d290a9ac7b0b764dc9654a11132125f5f1692ad6c5b",
+          "missingRows": 288,
+          "dailyRepairs": [
+            {
+              "day": "2026-06-29",
+              "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2026-06-29.zip",
+              "sha256": "698e6948161c6008154aeee542aed53444f8f65b834e3bc9fbaaa8a48cce2c24"
+            }
+          ]
+        },
+        {
+          "month": "2026-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2026-07.zip",
+          "sha256": "3dbe586c00d3389bb8fb54977109511b9c924ba013c296f8f4e4b01b0ab71539",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2026-08.zip",
+          "sha256": "51f625fe8c452613bacbdba675aa4f96326e0db5facc7a99091695edc730df4c",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2026-09.zip",
+          "sha256": "7495cd4eae2916d0791e4ab713c71eaf6b79dc45f042bc059f1687e8d9073201",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ATOMUSDT/5m/ATOMUSDT-5m-2026-10.zip",
+          "sha256": "19eaf1ceaaeb4ffc8047c41c6a2ae9ede24bb91403cee3660c25ee050f4a0a63",
+          "missingRows": 0,
+          "dailyRepairs": []
+        }
+      ]
+    },
+    {
+      "symbol": "DOTUSDT",
+      "tf": "30m",
+      "bars": 30624,
+      "dataSha256": "976a41d408c8217ef2bd69f77bb3fd7413d01e27a4c9c3119fc5f80d407fb1c0",
+      "archives": [
+        {
+          "month": "2025-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2025-02.zip",
+          "sha256": "564b3e152cbea261d22f20e27aed70c22ebf880e50561820e29020999dbb81f2",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2025-03.zip",
+          "sha256": "a951edf56d1201b97f0e710a2c7a5cd9558fb5297d53ac5a8183180501493ecd",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2025-04.zip",
+          "sha256": "c201fed1885a72852df452b1ae0f3dad54d95dab5f643219e3b9bd926095e254",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2025-05.zip",
+          "sha256": "6259c2e34254571cac30c269fb734b823816b716cecc1fe9d0b98983d620eea7",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2025-06.zip",
+          "sha256": "48292e06acbee90398c1491164d1efd0d54e930bfd0192a7ed7d9dc711d03ef5",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2025-07.zip",
+          "sha256": "e02e7a91572c91265d56b2e71a95b687d8b82684c15f8abf3725e82769477da2",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2025-08.zip",
+          "sha256": "48c88452b140f4b1e6b08ec1783a401cf6942b74753c427dc5cb67faa38bfe70",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2025-09.zip",
+          "sha256": "ace7304a8f1873d7c94c961fdf84dc8e7b2e283fcc39114daeed6799b6ef01ee",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2025-10.zip",
+          "sha256": "1b8ebd4a3a37e48413738fd24983a74118ea25b7a8f2a5e3d8f36870dbb3d0ec",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-11",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2025-11.zip",
+          "sha256": "9d1ed497eaf1887c7a2fbfba060e44ed87b5b78ff85813ab3be83a0ea167ecd0",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-12",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2025-12.zip",
+          "sha256": "aa12e6b16c8d8d55780c7903b20f67017440421a27fe6cf8b8e3a8cef361ab78",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-01",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2026-01.zip",
+          "sha256": "82c8c482d330056b20d06d8e2b31e185074613658e7739283cc583cc74a72186",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2026-02.zip",
+          "sha256": "603652aab15475a3644414be09cb565281268582ba2533f236cef21a3b38b4dc",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2026-03.zip",
+          "sha256": "cec044a5fcae2726497f99c6fe913907a9e0590948c223d26d7c852d7bee6d22",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2026-04.zip",
+          "sha256": "d010b61641a4f6a932abc7a5d3e16000cb207eec6a2a03340b86ad6166678c6f",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2026-05.zip",
+          "sha256": "2ec9a63e8af91c5325de6b3f2e7adf46a3d5827634a43ba8fb0fefc56a3c3a3e",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2026-06.zip",
+          "sha256": "8a23562935b8dcbc87e67c90f62b6fdf4da9b7ae1e0f4eb6e2596515e2cfcc06",
+          "missingRows": 288,
+          "dailyRepairs": [
+            {
+              "day": "2026-06-29",
+              "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2026-06-29.zip",
+              "sha256": "4386269b27ac4e77c0a98cac5c9338f5f2250a2c08bf0b4829cd6f7f7a375c92"
+            }
+          ]
+        },
+        {
+          "month": "2026-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2026-07.zip",
+          "sha256": "68ac6673850f46afe31903a6a2135229bdba125b084f0867af77422c91154b65",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2026-08.zip",
+          "sha256": "66339ab449eae9079220290ba5343b2b9a59f96a1a8344f73c5d6d998184bd28",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2026-09.zip",
+          "sha256": "1206508b9216a3c34b9489399f69155df062fcc59b2b55be412a46d9c5e4af3b",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOTUSDT/5m/DOTUSDT-5m-2026-10.zip",
+          "sha256": "e02a2f4408424289af4d727c60d591767aebfeb88b3772ef34d57f0dc3691cb8",
+          "missingRows": 0,
+          "dailyRepairs": []
+        }
+      ]
+    },
+    {
+      "symbol": "ADAUSDT",
+      "tf": "5m",
+      "bars": 183744,
+      "dataSha256": "067918243781aa9db66c89128d2f4bb730c0570ff21cb8ef7e8a8e19d37ff0fb",
+      "archives": [
+        {
+          "month": "2025-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-02.zip",
+          "sha256": "241e543fde346f34c0d12470f0e02da4d0174ced109d3827e1020205b0584e01",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-03.zip",
+          "sha256": "2d3d3a147323c89840b927932f17b53dea81e9b1137c4f98baa1273585d74723",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-04.zip",
+          "sha256": "d658706d465cf7e8ac8a067fb1a077422daa701b4a14abf44ccafb86a987e630",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-05.zip",
+          "sha256": "23b8014b1a48bff52682a9baca2e4458baf7e054469eb30bd9d65a8c95abae00",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-06.zip",
+          "sha256": "b6a7892a2aecffa82cfc9af8d35e31f7c8c6b96d791d87522a75a54e0dd76056",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-07.zip",
+          "sha256": "62b76361040a344cf40354028c4b7481a7e6e0e77a2ce39026eeeaab377e0ed0",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-08.zip",
+          "sha256": "35d390079cc3ab25377bdb0b0669e211f0a02b472b163e91bf3208e2dd9e8563",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-09.zip",
+          "sha256": "e3cfc20bec1b60b13df080cd1d815402469438b769f7d46c86d457286b64a88a",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-10.zip",
+          "sha256": "bbba6da6d511db82870c4cda2ea60b3c4c3866f4e0b787de25f502ec04aa6eb1",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-11",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-11.zip",
+          "sha256": "4a00894d0611b4823be732c4e83aa8beeac9375ace0de030c901c77734abfbd1",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-12",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2025-12.zip",
+          "sha256": "76092cfadc7ed2b7cfcfc1e796d227a0617aa3b01c26f9885256a05d21adffc2",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-01",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2026-01.zip",
+          "sha256": "e202e71d22b94ffb264885bb888583b482848a0be0799949ff3a1fd7af37406b",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2026-02.zip",
+          "sha256": "8ec1a9039a731364a65a82776b844d1d047632ebfec13da23c4612ff1dde9676",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2026-03.zip",
+          "sha256": "e39701f4e7ce922052532317d6e201f48184ee9ecbed653ccb8f8fce2e335fe8",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2026-04.zip",
+          "sha256": "76266094c0dd767f8c4c5f8a691a332a08e20a85de2bb4988666d0ac164d8dee",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2026-05.zip",
+          "sha256": "4d05bdcfc01a31f20bdba0ac48c4b3a44aed082310a677f785a9103748abf160",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2026-06.zip",
+          "sha256": "abcc5bf92ed243696ad5206f6e190ce4e9967268417595e24939b3a39020dd25",
+          "missingRows": 288,
+          "dailyRepairs": [
+            {
+              "day": "2026-06-29",
+              "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2026-06-29.zip",
+              "sha256": "5feaa7231365768e540fbb7765d354279e72a930acfe2bdd01484b7fbafe951f"
+            }
+          ]
+        },
+        {
+          "month": "2026-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2026-07.zip",
+          "sha256": "47d5e833850fec78fac1f94da6c8d431a584895f5e6e5de5fd7dad86ccfdfb27",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2026-08.zip",
+          "sha256": "10434be33bb3058eaa52812306d0740df205bda108bb60c2df0a6ad0e54efdf5",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2026-09.zip",
+          "sha256": "9ffaa3e1e745f85c179f5b0f8c408bb9ff9bb927c6ecc2c55eb05d54f9540544",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/ADAUSDT/5m/ADAUSDT-5m-2026-10.zip",
+          "sha256": "d067002d95a6db145dc99932c486ddcab5b645c394209b364559756b8dda846a",
+          "missingRows": 0,
+          "dailyRepairs": []
+        }
+      ]
+    },
+    {
+      "symbol": "LDOUSDT",
+      "tf": "30m",
+      "bars": 30624,
+      "dataSha256": "270f7bcf939e7089507bb4e62390276edc8fe0f80cedfb669dac2db163313449",
+      "archives": [
+        {
+          "month": "2025-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2025-02.zip",
+          "sha256": "d56351eab6b825bd47552e256e3065266a2c712da639e37e4cced381cf060299",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2025-03.zip",
+          "sha256": "4d59804fcc2eb03422b674ec351e3c53f444df91754a2ee544d2731c28b7234a",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2025-04.zip",
+          "sha256": "b0fe83c9e4a377a8aa155037988ded9546d8923ad5bad53953d3dc4abb81eab1",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2025-05.zip",
+          "sha256": "61ac945d7c713527a4237d66bb0ff6cced74a9a4824516bd46379fe75eb88aaf",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2025-06.zip",
+          "sha256": "f64ddbdfd47b306d466a99ec82660329f36668c64b919cd39d499d82b1a07217",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2025-07.zip",
+          "sha256": "b0c4b0e488f9c3236f10390f54ac30d839ef58cf99a3a86a637c5226da6c8531",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2025-08.zip",
+          "sha256": "51baad9af541737969a6e3be33241dbdd319ca9b20db7f460b2a49ebd1f25fc6",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2025-09.zip",
+          "sha256": "10f475e4aa1a8398b2f3361be6b551baa87a2759ca8de456b9551e1070cd5a81",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2025-10.zip",
+          "sha256": "b92c7992f94866d8e7a7c4e3629c20e50a731fea1524310e49775d297094397a",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-11",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2025-11.zip",
+          "sha256": "8be034bbc6d37a5ab5c5ef86b16b405f53487f79b90cdd58810ac7a98b64ab69",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-12",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2025-12.zip",
+          "sha256": "56e47b9173d3975718c231804d7b1149d68911da0c8eb24e662b4513caf51008",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-01",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2026-01.zip",
+          "sha256": "049265f2862903c9e8af0cb9dac0fbf44b4b3311784e39a6db3b6aec2e198d00",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2026-02.zip",
+          "sha256": "1eef7cb2293f2528e9799b10116dff2a55e53412ad08c0bb32c9524117af9067",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2026-03.zip",
+          "sha256": "915f6696e4f595f271728a31dd35d90630eafcfa2bcff1af18e49cb6566da4d4",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2026-04.zip",
+          "sha256": "41f48fd1aea7e08a0a1bb5b85dbcc59efd4f2ff260bfc94ff1f424a5fd4dbed0",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2026-05.zip",
+          "sha256": "b9d80f3c6258af664b32fbbfaada628488f22aa7f84fa35270694f3d3ad65400",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2026-06.zip",
+          "sha256": "3af29da662b4006c01ca165fa4cd90b4b4aeee8ad9900c15bd5f617e0faa962e",
+          "missingRows": 288,
+          "dailyRepairs": [
+            {
+              "day": "2026-06-29",
+              "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2026-06-29.zip",
+              "sha256": "e9d7541f1386ca11162dadf1e55ebf3380f7858acba584c55ce656fc16d2756d"
+            }
+          ]
+        },
+        {
+          "month": "2026-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2026-07.zip",
+          "sha256": "9527d9c286f154a3ebde7cb2864b3d67baab6213f3eff4dca1f9373792122360",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2026-08.zip",
+          "sha256": "46edf90fb273b5c9f48e9bf791f56c750d84cee788bd7410d42f4b4e8b3eddba",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2026-09.zip",
+          "sha256": "366fb3ea3233fb5075c91591eeebefbae553b6bb91f506815e20e38777890ccb",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LDOUSDT/5m/LDOUSDT-5m-2026-10.zip",
+          "sha256": "522c7d413b2ac5c1a421a2e75f97e1331b825f599e1e17e57b0fcaa0554e2c78",
+          "missingRows": 0,
+          "dailyRepairs": []
+        }
+      ]
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "tf": "15m",
+      "bars": 61248,
+      "dataSha256": "6fadc31b2367c6901c12c24d2f6313e8fe1003e88b2c6a54954666228e6c0636",
+      "archives": [
+        {
+          "month": "2025-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2025-02.zip",
+          "sha256": "9ab93b3d0fa027357673ecfabaa064ca1ce0747fb07d437940890a4781278caf",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2025-03.zip",
+          "sha256": "96e08991e69c1bdc1c88bfe63498d7cad314aacb52a83fd97af0d5ebfc0ef2b7",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2025-04.zip",
+          "sha256": "d45a65f1e75924a6641e768485fde9892cdc815d5c29f976632e97558f924b09",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2025-05.zip",
+          "sha256": "af23731ebf5d595d89d4de8b9fe939591441966ddd157a094d9c63fe6c479612",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2025-06.zip",
+          "sha256": "888f1eed8dcdb4ce8bf839f45ace23ee7cea79645b62e5211895429c8086f52f",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2025-07.zip",
+          "sha256": "9af6585283a754a6657db31f9f2eba5e5f13bedb1e0e08921c9f52cd88a62598",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2025-08.zip",
+          "sha256": "1a5533af24e524d9818ad7b27435818bfb3b7a009151df47c2a9fba154d583a6",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2025-09.zip",
+          "sha256": "9ab85a19614e5dc40e0ba100cdb0750dae3ea43ffc64a1a99c0fdd70f44d8440",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2025-10.zip",
+          "sha256": "2e9c36641bfd9b5a52a86d84c1a594cc5f7feb6f397b38e0fab1dc08583f537d",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-11",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2025-11.zip",
+          "sha256": "209de341dfcb58ab9262cef6beb7a9a4a22791ce2e1c15262b4a5f2a87fe6fcb",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-12",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2025-12.zip",
+          "sha256": "a2e6fa08942281140f952c7f3add26b43978fe3e9391eff38832dedb1a3c3ad2",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-01",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2026-01.zip",
+          "sha256": "d1292278378555abf42fee2b19bf913db139f9c2f1966dccca062bde7da42590",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2026-02.zip",
+          "sha256": "673c7c2f7db7824d9e358a3d666ac463fdbf51998549db0b4cbd0a32008a6cdf",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2026-03.zip",
+          "sha256": "9a614a21c9a89ea2af7ec2e281ce47c47749808bf5769fbde707054e5945e259",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2026-04.zip",
+          "sha256": "b0e1c72c8901736c02d37e5b046475d1c886b359d9aaea3d21ae8603ff07d01a",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2026-05.zip",
+          "sha256": "2cfe0bdc1a8f82d133384f5c198a91120ffa5284857e8546480423ae0f53cfec",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2026-06.zip",
+          "sha256": "c5f96e4e5b852844a9a6f72b15a2d9d0cc03c0ec9cb14df5ef9886c6b23e940c",
+          "missingRows": 288,
+          "dailyRepairs": [
+            {
+              "day": "2026-06-29",
+              "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2026-06-29.zip",
+              "sha256": "db27443d6d9dcc3033da9fce73d115c0b5ffe4ef77cd5d85f6963c93df06ecbc"
+            }
+          ]
+        },
+        {
+          "month": "2026-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2026-07.zip",
+          "sha256": "a3d3ca1ecb27393fb5e830e9755dfb0ef29563162dd8f56656a5209c980982af",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2026-08.zip",
+          "sha256": "536d21f5de93a8b02e5a20749f73fde68349c4c5db1a23ec55f0c83e26ecb07f",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2026-09.zip",
+          "sha256": "dfd620cb9987afc3a887b3fbfb1b445a33dd9fc1a5cdb55595a67c74a702a460",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/DOGEUSDT/5m/DOGEUSDT-5m-2026-10.zip",
+          "sha256": "3d85d15c22bcf57f82343a34ad6a1392b67bd84735e5632afac632b427019ef3",
+          "missingRows": 0,
+          "dailyRepairs": []
+        }
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "tf": "45m",
+      "bars": 20416,
+      "dataSha256": "7e7d2e487a07e41601869c0fbea19ccd7da1715b9215d3b9b9ad6d1cea7d5b76",
+      "archives": [
+        {
+          "month": "2025-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2025-02.zip",
+          "sha256": "bfe10cc0feea9d70281ba26cf804896c1fa3e10a5bf158efc5f132cea2a366c8",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2025-03.zip",
+          "sha256": "904d70d2567f50145daff7353965bc836a655ad55c18246824912a815831b690",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2025-04.zip",
+          "sha256": "534685df5b4565f55894d1de94cd0b1bc18ef1af61e6df280e1546bf44e080e8",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2025-05.zip",
+          "sha256": "ea4064dd3a8c3800528af6d39aac7c6d71bd5e044296d452c3999c0d87e6eee4",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2025-06.zip",
+          "sha256": "a7520b3509ec7da266b84370493ac93253a8981b99caa66b520d4a14b010b12d",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2025-07.zip",
+          "sha256": "eaba1df707ded4ce7b9db909f35e7a8c3444a7bce7eef0781aa1d98458fd58b7",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2025-08.zip",
+          "sha256": "3163ab3bf7410789578cf3feb9dadffd6f02a16071cd2f0d2a5b692295f18d5f",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2025-09.zip",
+          "sha256": "36804fdba45edf3eebf859274b48de11d08476198c5e7ddfb11b547e014c7676",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2025-10.zip",
+          "sha256": "df4ab4ae67bdf5ae668d10da3a35dca03c0c88a81572f672601e8d8d09797864",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-11",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2025-11.zip",
+          "sha256": "c7990b0ebc7c67167d44689145892af0cbe4a5d8ec5e1795562c1bd1fe1409e9",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-12",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2025-12.zip",
+          "sha256": "237b103f83617661b5b8f31ba332f53aad2fb068faf64f5a6d2d241d42ef9e54",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-01",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2026-01.zip",
+          "sha256": "88a186a4b1f909c08fa8129f61c4d9ea7e210f6f70a12ef0de901b157bffbb1e",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2026-02.zip",
+          "sha256": "5cda1d63dda8981a998212e6d90f18a47d60e4dc4201bc7b0b6df0cbd8f142d4",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2026-03.zip",
+          "sha256": "ab70b1d9a494d1872b24c68cf602dc1aabdbc3808e497810252234344746221b",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2026-04.zip",
+          "sha256": "34949f70514ab19ba1af26d0c390261d10578641d858f121349b66adcc1ed702",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2026-05.zip",
+          "sha256": "ff11e471b944be6493c77f78a4ad66c781bfd9988be472118031d45f496fdee5",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2026-06.zip",
+          "sha256": "47c62563101585f9749763bca4b9b1813ac4ddfdcd1232dd074e54baa8244fcd",
+          "missingRows": 288,
+          "dailyRepairs": [
+            {
+              "day": "2026-06-29",
+              "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2026-06-29.zip",
+              "sha256": "dde8c6e6d338e9b2a05192d37b22a45c0064e1d292fa99997b4e87540b738e47"
+            }
+          ]
+        },
+        {
+          "month": "2026-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2026-07.zip",
+          "sha256": "a3e6b276e775fd59b291ddfab373a8a5be293219c2a4dc7ff01703a66c57e9ea",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2026-08.zip",
+          "sha256": "e5cc27f4ea93e2769cfe03d0dd6691d2b603155f27ef1003e26055592c954bb8",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2026-09.zip",
+          "sha256": "e0ec33604c40750070521b71c72dbabcc7d20b055395ae7783564bb309b10d2f",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/XRPUSDT/5m/XRPUSDT-5m-2026-10.zip",
+          "sha256": "4fba62fb520e3d48996c533d2ca5b7d0a47d6d168ea1e981903978b00e160b73",
+          "missingRows": 0,
+          "dailyRepairs": []
+        }
+      ]
+    },
+    {
+      "symbol": "TRXUSDT",
+      "tf": "15m",
+      "bars": 61248,
+      "dataSha256": "c79f488f9fe4e3c09b4f8b118f4d9171bea2cd10a2dce1dc7471710a03703792",
+      "archives": [
+        {
+          "month": "2025-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2025-02.zip",
+          "sha256": "fe5b996658d1cce86ce7699cf40799c49019c9b871aba0328641023784f5bf71",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2025-03.zip",
+          "sha256": "9b32d8cf8a845e64032b2b00b993ca1c0cd230918e09328e49a272ac4d472bc2",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2025-04.zip",
+          "sha256": "8f42cf0da2bebc862118dac935ae91808d222af74fa379abe52a37b45196cb5c",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2025-05.zip",
+          "sha256": "ace7c29ccffddaf8017904bbbab6580fd563227f5bab5e21510b6b1835a2a2a3",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2025-06.zip",
+          "sha256": "fb99c976d1dc921a960bfeee979cfdfa0005773e00baa90f3f0ea9442069d9c9",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2025-07.zip",
+          "sha256": "30d260d9206843793d6f33232761f5ec9b4305066ad413c58017e78064719e2f",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2025-08.zip",
+          "sha256": "e4a8b489e528a08dd383409cbd97a0443f68a5eec737f577c415f359e5067ea5",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2025-09.zip",
+          "sha256": "9a5366d3e888c81c797afe4b293ac256d3b8adc1f83837a9297a5709661d3ae9",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2025-10.zip",
+          "sha256": "1f537a9eb4d10340ea3c854299caf60c2246193f269ae31bebf49948968a761d",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-11",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2025-11.zip",
+          "sha256": "4800ce01525e3e489e7e461695b01bf14962541321a29d7478558496634fdfe7",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-12",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2025-12.zip",
+          "sha256": "34278c96cc9793e9918d7e6486966b5a8ff5f456e97796dbbca34595336c19d0",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-01",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2026-01.zip",
+          "sha256": "b964b1fd09676646a44f030f182187c9c1aedca69aba8f0ce35e9c020b40538e",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2026-02.zip",
+          "sha256": "5bbb9eb492c71b916ac187796e8f50474c16cdf53d149f90b0b410bb1ba4f550",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2026-03.zip",
+          "sha256": "cce270f19659429e780dc1cd95389adc93914585769ac2971fcfaef94ce42569",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2026-04.zip",
+          "sha256": "eb44f462cb0bc651869a24e2286e80db567606ce1c3094c8fbf309c40802a4a3",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2026-05.zip",
+          "sha256": "73539d674c95738226e8c5c2e9d231bc6efbf682d6989fd8f649ce475996af84",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2026-06.zip",
+          "sha256": "926e1f0ef7a330f52185896e7d2596025818bfb33ee5b06aab4ff50c90c20a92",
+          "missingRows": 288,
+          "dailyRepairs": [
+            {
+              "day": "2026-06-29",
+              "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2026-06-29.zip",
+              "sha256": "6973e9b56ec2236b6a4cc87096a67a860a6235072304817c14bb96630e438e29"
+            }
+          ]
+        },
+        {
+          "month": "2026-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2026-07.zip",
+          "sha256": "012a0cab5297c01e732fc7ea6a9effbfb9078d36d57cef470393db4d538006cd",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2026-08.zip",
+          "sha256": "b0b13e17cf9047276d7d72ba8a4a2ac3b1c63e8eb87f7cca1f817df653688d5d",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2026-09.zip",
+          "sha256": "dc023bbe37e5caa8eed88470bdce79d75fc06c7d6559ab71a74454ba3217d942",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/TRXUSDT/5m/TRXUSDT-5m-2026-10.zip",
+          "sha256": "c99cff33ea35e653088148af91adef4721b742ffab0a4bd9019903a6dd8b6438",
+          "missingRows": 0,
+          "dailyRepairs": []
+        }
+      ]
+    },
+    {
+      "symbol": "LINKUSDT",
+      "tf": "5m",
+      "bars": 183744,
+      "dataSha256": "3f2bde491af4e3bc240426e5aa472e924c2155aca273a22517245b23058f8482",
+      "archives": [
+        {
+          "month": "2025-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2025-02.zip",
+          "sha256": "00ab47c7c12ac19d8400157dc945895c9dfc9df89ea241f07fdebb2426d72650",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2025-03.zip",
+          "sha256": "b5a93fd0330fa416208e3666a35b823ee2db560299f6867116d592b0f6e101b6",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2025-04.zip",
+          "sha256": "588444a492d8149c9005e64c51fe3d2aa651cb84589d22117e53752308916b43",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2025-05.zip",
+          "sha256": "d01285012394400e6b6a1f943147d5701204239460e100c917628884f39f7487",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2025-06.zip",
+          "sha256": "046c76f3225fc7f64466249752d0e0678b74f169e1dc05d6be1c489bfe498654",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2025-07.zip",
+          "sha256": "63643bb7b5006eaf0cd21301badbf5f56fc0f43f1d13f22d22958e018f9ec8c7",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2025-08.zip",
+          "sha256": "f87090687c1ffb2075b567d9182e5249ea2387be706f084a0418766c99decd34",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2025-09.zip",
+          "sha256": "5dffe6e314275b218a90b3874425ac1135001ab2851c153e2fe1042ffb710738",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2025-10.zip",
+          "sha256": "4091880c4a55d3a6cc02b3c7379715503e4a9837a4d030daf490d2605d04f1b6",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-11",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2025-11.zip",
+          "sha256": "fc926f865b9228ae81f5351d523f7b6877cc6a9306fb860f68dc7fdadc1a2a53",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2025-12",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2025-12.zip",
+          "sha256": "ffcf507e9a06a95dbd84d3e9ff10201bd2d1023e3db2b6646e6659351b6c0e6b",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-01",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2026-01.zip",
+          "sha256": "7e7df90a3a3ece1c55d704793927c512e8514c78dbdb7f2be4aad603e09ad40e",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-02",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2026-02.zip",
+          "sha256": "967f5a6c185b9f3c0dc26ceaef9036f21e5946daddc20cbe6c53a4ffe1b3b562",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-03",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2026-03.zip",
+          "sha256": "e725065050019588fa8d4168491d079d69000bedcbe4bd691d3a063e86a7aaae",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-04",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2026-04.zip",
+          "sha256": "bd348a1c3a10b9f33a96091819969e489847a1de398c920f2cc1512eceb206f3",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-05",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2026-05.zip",
+          "sha256": "dbfdc8d89a3ee77b07e1999cdfb6217d8749b6d76652612d5c302f092a6d426e",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-06",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2026-06.zip",
+          "sha256": "a34b12388d5ee18a55d06aa623d1cc35c6eb02d9db73466afd4b6e3804e84e7e",
+          "missingRows": 288,
+          "dailyRepairs": [
+            {
+              "day": "2026-06-29",
+              "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2026-06-29.zip",
+              "sha256": "06f345afac6503eab29230612edfccfb5c60851570cb34c5524b23bb897f58c5"
+            }
+          ]
+        },
+        {
+          "month": "2026-07",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2026-07.zip",
+          "sha256": "fb2cfea5392fc280028ccff75a7b086a3d937893ddb87c4c0ea4f32d6ca2e0fc",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-08",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2026-08.zip",
+          "sha256": "6d6da5c03be1d1a206bca6ad26e8ec6fe7436eac1b8d680a7f7b5ec7d6643cab",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-09",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2026-09.zip",
+          "sha256": "fd8a61aaf571882b56def60e70b86a6705dcefaeb5f199b0f6f85c1ae711353e",
+          "missingRows": 0,
+          "dailyRepairs": []
+        },
+        {
+          "month": "2026-10",
+          "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/LINKUSDT/5m/LINKUSDT-5m-2026-10.zip",
+          "sha256": "158127bae598625a164c683d5d947cde6a98a2819006cb2ab7f07f5957851e42",
+          "missingRows": 0,
+          "dailyRepairs": []
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 1,
+      "policy": "fixed-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "none",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 33.1440723116805,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 1,
+      "policy": "fixed-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "next-close",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 33.1440723116805,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 1,
+      "policy": "fixed-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "two-closes",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 33.1440723116805,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 1,
+      "policy": "fixed-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "reject",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 33.1440723116805,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 2,
+      "policy": "fixed-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "none",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 64.26887034955273,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 2,
+      "policy": "fixed-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "next-close",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 64.26887034955273,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 2,
+      "policy": "fixed-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "two-closes",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 64.26887034955273,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 2,
+      "policy": "fixed-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "reject",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 64.26887034955273,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 3,
+      "policy": "fixed-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "none",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 73.7703739064694,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 3,
+      "policy": "fixed-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "next-close",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 73.7703739064694,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 3,
+      "policy": "fixed-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "two-closes",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 73.7703739064694,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 3,
+      "policy": "fixed-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "reject",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 73.7703739064694,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 1,
+      "policy": "scaled-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "none",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 33.1440723116805,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 1,
+      "policy": "scaled-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "next-close",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 33.1440723116805,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 1,
+      "policy": "scaled-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "two-closes",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 33.1440723116805,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 1,
+      "policy": "scaled-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "reject",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 1,
+      "plannedStartNotional": 5,
+      "plannedLadderNotional": 103.90625,
+      "status": "completed-fixed-schedule",
+      "firstRisk": null,
+      "lastTime": 1793491199999,
+      "processedEvents": 1443,
+      "totalEvents": 1443,
+      "closedCycles": 508,
+      "minMaintenanceHeadroom": 92.71614841359523,
+      "minReserveHeadroom": 33.1440723116805,
+      "minFreeCollateral": 99.99999999999977,
+      "fees": 15.138314658432641,
+      "funding": 24.888666973096097,
+      "realizedGrossPnl": 261.4653946048703,
+      "openPnl": -12.339535510545602,
+      "observedCloseDrawdownPercent": 8.55785612191255,
+      "peakNotional": 373.040663797995,
+      "finalProxyEquity": 1009.0988774627966,
+      "finalProxyReturnPercent": 26.13735968284958,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.00028000000000000003,
+          "entryNotional": 22.310793066360002,
+          "collateral": 139.87167865485708,
+          "mark": 77531.36618333,
+          "pnl": -0.602010535027599
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 0,
+          "quantity": 25,
+          "entryNotional": 4.840967999999999,
+          "collateral": 139.993710032,
+          "mark": 0.1928,
+          "pnl": -0.020967999999998987
+        },
+        {
+          "symbol": "DOGEUSDT",
+          "step": 3,
+          "quantity": 491.952,
+          "entryNotional": 40.624838433018,
+          "collateral": 139.72381945173356,
+          "mark": 0.07559463,
+          "pnl": -3.435909015257998
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 5.409,
+          "entryNotional": 65.9032370118,
+          "collateral": 139.61732511213083,
+          "mark": 11.6571161,
+          "pnl": -2.849896026900005
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 3,
+          "quantity": 23.516000000000002,
+          "entryNotional": 40.622687913,
+          "collateral": 139.79652035591582,
+          "mark": 1.49651029,
+          "pnl": -5.43075193336
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 2,
+      "policy": "scaled-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "none",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 2,
+      "plannedStartNotional": 10,
+      "plannedLadderNotional": 207.8125,
+      "status": "stopped-at-proxy-risk",
+      "firstRisk": {
+        "reason": "PROXY_RESERVE_DEFICIT",
+        "symbol": "UNIUSDT",
+        "time": 1760131799999,
+        "phase": "pre-fill-candle-low",
+        "mark": 2.2981619,
+        "headroom": -11.46225930089425,
+        "step": 4
+      },
+      "lastTime": 1760131799999,
+      "processedEvents": 752,
+      "totalEvents": 1443,
+      "closedCycles": 264,
+      "minMaintenanceHeadroom": 45.43229682719076,
+      "minReserveHeadroom": -11.46225930089425,
+      "minFreeCollateral": 99.99999999999989,
+      "fees": 14.92760851035296,
+      "funding": 12.839314294232748,
+      "realizedGrossPnl": 240.96252306388408,
+      "openPnl": -116.31418443465998,
+      "observedCloseDrawdownPercent": 16.19323165500507,
+      "peakNotional": 746.08132759599,
+      "finalProxyEquity": null,
+      "finalProxyReturnPercent": null,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.0004000000000000001,
+          "entryNotional": 44.85665593728,
+          "collateral": 139.93948642139222,
+          "mark": 109260.5733913,
+          "pnl": -1.1524265807599932
+        },
+        {
+          "symbol": "UNIUSDT",
+          "step": 4,
+          "quantity": 16.57,
+          "entryNotional": 131.8168621008,
+          "collateral": 139.39709950108875,
+          "mark": 4.21228957,
+          "pnl": -62.01922392589999
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 4,
+          "quantity": 256,
+          "entryNotional": 127.28885267999999,
+          "collateral": 139.85877940611797,
+          "mark": 0.42351471,
+          "pnl": -18.869086919999987
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 4,
+          "quantity": 49.144,
+          "entryNotional": 131.8608528972,
+          "collateral": 139.83290272759396,
+          "mark": 2.01244305,
+          "pnl": -32.96135164800002
+        },
+        {
+          "symbol": "TRXUSDT",
+          "step": 1,
+          "quantity": 72,
+          "entryNotional": 24.391677359999996,
+          "collateral": 139.82988789765596,
+          "mark": 0.32054975,
+          "pnl": -1.3120953599999936
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 2,
+      "policy": "scaled-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "next-close",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 8,
+      "confirmed": 8,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 8,
+      "peakProtectionHeld": 8,
+      "peakPending": 1,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 2,
+      "plannedStartNotional": 10,
+      "plannedLadderNotional": 207.8125,
+      "status": "stopped-at-proxy-risk",
+      "firstRisk": {
+        "reason": "PROXY_RESERVE_DEFICIT",
+        "symbol": "UNIUSDT",
+        "time": 1760131799999,
+        "phase": "pre-fill-candle-low",
+        "mark": 2.2981619,
+        "headroom": -11.46225930089425,
+        "step": 4
+      },
+      "lastTime": 1760131799999,
+      "processedEvents": 752,
+      "totalEvents": 1443,
+      "closedCycles": 264,
+      "minMaintenanceHeadroom": 45.43229682719076,
+      "minReserveHeadroom": -11.46225930089425,
+      "minFreeCollateral": 99.99999999999989,
+      "fees": 14.92760851035296,
+      "funding": 12.839314294232748,
+      "realizedGrossPnl": 240.96252306388408,
+      "openPnl": -116.31418443465998,
+      "observedCloseDrawdownPercent": 16.19323165500507,
+      "peakNotional": 746.08132759599,
+      "finalProxyEquity": null,
+      "finalProxyReturnPercent": null,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.0004000000000000001,
+          "entryNotional": 44.85665593728,
+          "collateral": 139.93948642139222,
+          "mark": 109260.5733913,
+          "pnl": -1.1524265807599932
+        },
+        {
+          "symbol": "UNIUSDT",
+          "step": 4,
+          "quantity": 16.57,
+          "entryNotional": 131.8168621008,
+          "collateral": 139.39709950108875,
+          "mark": 4.21228957,
+          "pnl": -62.01922392589999
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 4,
+          "quantity": 256,
+          "entryNotional": 127.28885267999999,
+          "collateral": 139.85877940611797,
+          "mark": 0.42351471,
+          "pnl": -18.869086919999987
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 4,
+          "quantity": 49.144,
+          "entryNotional": 131.8608528972,
+          "collateral": 139.83290272759396,
+          "mark": 2.01244305,
+          "pnl": -32.96135164800002
+        },
+        {
+          "symbol": "TRXUSDT",
+          "step": 1,
+          "quantity": 72,
+          "entryNotional": 24.391677359999996,
+          "collateral": 139.82988789765596,
+          "mark": 0.32054975,
+          "pnl": -1.3120953599999936
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 2,
+      "policy": "scaled-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "two-closes",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 7,
+      "confirmed": 7,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 7,
+      "peakProtectionHeld": 7,
+      "peakPending": 1,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 2,
+      "plannedStartNotional": 10,
+      "plannedLadderNotional": 207.8125,
+      "status": "stopped-at-proxy-risk",
+      "firstRisk": {
+        "reason": "PROXY_RESERVE_DEFICIT",
+        "symbol": "UNIUSDT",
+        "time": 1760131799999,
+        "phase": "pre-fill-candle-low",
+        "mark": 2.2981619,
+        "headroom": -11.46225930089425,
+        "step": 4
+      },
+      "lastTime": 1760131799999,
+      "processedEvents": 752,
+      "totalEvents": 1443,
+      "closedCycles": 264,
+      "minMaintenanceHeadroom": 45.43229682719076,
+      "minReserveHeadroom": -11.46225930089425,
+      "minFreeCollateral": 99.99999999999989,
+      "fees": 14.92760851035296,
+      "funding": 12.839314294232748,
+      "realizedGrossPnl": 240.96252306388408,
+      "openPnl": -116.31418443465998,
+      "observedCloseDrawdownPercent": 16.19323165500507,
+      "peakNotional": 746.08132759599,
+      "finalProxyEquity": null,
+      "finalProxyReturnPercent": null,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.0004000000000000001,
+          "entryNotional": 44.85665593728,
+          "collateral": 139.93948642139222,
+          "mark": 109260.5733913,
+          "pnl": -1.1524265807599932
+        },
+        {
+          "symbol": "UNIUSDT",
+          "step": 4,
+          "quantity": 16.57,
+          "entryNotional": 131.8168621008,
+          "collateral": 139.39709950108875,
+          "mark": 4.21228957,
+          "pnl": -62.01922392589999
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 4,
+          "quantity": 256,
+          "entryNotional": 127.28885267999999,
+          "collateral": 139.85877940611797,
+          "mark": 0.42351471,
+          "pnl": -18.869086919999987
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 4,
+          "quantity": 49.144,
+          "entryNotional": 131.8608528972,
+          "collateral": 139.83290272759396,
+          "mark": 2.01244305,
+          "pnl": -32.96135164800002
+        },
+        {
+          "symbol": "TRXUSDT",
+          "step": 1,
+          "quantity": 72,
+          "entryNotional": 24.391677359999996,
+          "collateral": 139.82988789765596,
+          "mark": 0.32054975,
+          "pnl": -1.3120953599999936
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 2,
+      "policy": "scaled-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "reject",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 259,
+      "confirmed": 0,
+      "rejected": 259,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 6.91,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 2,
+      "plannedStartNotional": 10,
+      "plannedLadderNotional": 207.8125,
+      "status": "stopped-at-proxy-risk",
+      "firstRisk": {
+        "reason": "PROXY_RESERVE_DEFICIT",
+        "symbol": "UNIUSDT",
+        "time": 1760131799999,
+        "phase": "pre-fill-candle-low",
+        "mark": 2.2981619,
+        "headroom": -11.46225930089425,
+        "step": 4
+      },
+      "lastTime": 1760131799999,
+      "processedEvents": 752,
+      "totalEvents": 1443,
+      "closedCycles": 264,
+      "minMaintenanceHeadroom": 45.43229682719076,
+      "minReserveHeadroom": -11.46225930089425,
+      "minFreeCollateral": 99.99999999999989,
+      "fees": 14.92760851035296,
+      "funding": 12.839314294232748,
+      "realizedGrossPnl": 240.96252306388408,
+      "openPnl": -116.31418443465998,
+      "observedCloseDrawdownPercent": 16.19323165500507,
+      "peakNotional": 746.08132759599,
+      "finalProxyEquity": null,
+      "finalProxyReturnPercent": null,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 2,
+          "quantity": 0.0004000000000000001,
+          "entryNotional": 44.85665593728,
+          "collateral": 139.93948642139222,
+          "mark": 109260.5733913,
+          "pnl": -1.1524265807599932
+        },
+        {
+          "symbol": "UNIUSDT",
+          "step": 4,
+          "quantity": 16.57,
+          "entryNotional": 131.8168621008,
+          "collateral": 139.39709950108875,
+          "mark": 4.21228957,
+          "pnl": -62.01922392589999
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 4,
+          "quantity": 256,
+          "entryNotional": 127.28885267999999,
+          "collateral": 139.85877940611797,
+          "mark": 0.42351471,
+          "pnl": -18.869086919999987
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 4,
+          "quantity": 49.144,
+          "entryNotional": 131.8608528972,
+          "collateral": 139.83290272759396,
+          "mark": 2.01244305,
+          "pnl": -32.96135164800002
+        },
+        {
+          "symbol": "TRXUSDT",
+          "step": 1,
+          "quantity": 72,
+          "entryNotional": 24.391677359999996,
+          "collateral": 139.82988789765596,
+          "mark": 0.32054975,
+          "pnl": -1.3120953599999936
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 3,
+      "policy": "scaled-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "none",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 0,
+      "confirmed": 0,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 0,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 3,
+      "plannedStartNotional": 15,
+      "plannedLadderNotional": 311.71875,
+      "status": "stopped-at-proxy-risk",
+      "firstRisk": {
+        "reason": "PROXY_RESERVE_DEFICIT",
+        "symbol": "ADAUSDT",
+        "time": 1738548599999,
+        "phase": "pre-fill-candle-low",
+        "mark": 0.5136,
+        "headroom": -2.2245264088959544,
+        "step": 4
+      },
+      "lastTime": 1738548599999,
+      "processedEvents": 23,
+      "totalEvents": 1443,
+      "closedCycles": 0,
+      "minMaintenanceHeadroom": 78.85928984110406,
+      "minReserveHeadroom": -2.2245264088959544,
+      "minFreeCollateral": 99.99999999999989,
+      "fees": 0.93085287344802,
+      "funding": 0.11689335939922686,
+      "realizedGrossPnl": 0,
+      "openPnl": -166.269424339902,
+      "observedCloseDrawdownPercent": 20.92549543810697,
+      "peakNotional": 775.7713620384479,
+      "finalProxyEquity": null,
+      "finalProxyReturnPercent": null,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 1,
+          "quantity": 0.00033,
+          "entryNotional": 32.643355465620004,
+          "collateral": 139.9580895430503,
+          "mark": 92936.538999,
+          "pnl": -1.9742975959500058
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 4,
+          "quantity": 255,
+          "entryNotional": 191.11241483999999,
+          "collateral": 139.78951268110404,
+          "mark": 0.56833847,
+          "pnl": -46.18610498999996
+        },
+        {
+          "symbol": "ZECUSDT",
+          "step": 4,
+          "quantity": 5.760300000000001,
+          "entryNotional": 197.79444797940002,
+          "collateral": 139.77128058007548,
+          "mark": 27.07438916,
+          "pnl": -41.83784410105201
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 9.597,
+          "entryNotional": 197.65003210199995,
+          "collateral": 139.77112894988903,
+          "mark": 17.05237183,
+          "pnl": -33.99841964948999
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 5,
+          "quantity": 66.77699999999999,
+          "entryNotional": 311.652623061,
+          "collateral": 139.6622420130339,
+          "mark": 4.03402167,
+          "pnl": -42.27275800341005
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 3,
+      "policy": "scaled-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "next-close",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 7,
+      "confirmed": 6,
+      "rejected": 0,
+      "denied": 1,
+      "cancelled": 0,
+      "cumulativeTopups": 15.309999999999999,
+      "peakProtectionHeld": 15.309999999999999,
+      "peakPending": 9.54,
+      "finalProtectionHeld": 15.309999999999999,
+      "pendingAmount": 6.28,
+      "quantityScale": 3,
+      "plannedStartNotional": 15,
+      "plannedLadderNotional": 311.71875,
+      "status": "stopped-at-proxy-risk",
+      "firstRisk": {
+        "reason": "PROXY_RESERVE_DEFICIT",
+        "symbol": "ADAUSDT",
+        "time": 1738548599999,
+        "phase": "pre-fill-candle-low",
+        "mark": 0.5136,
+        "headroom": -2.2245264088959544,
+        "step": 4
+      },
+      "lastTime": 1738548599999,
+      "processedEvents": 23,
+      "totalEvents": 1443,
+      "closedCycles": 0,
+      "minMaintenanceHeadroom": 78.85928984110406,
+      "minReserveHeadroom": -2.2245264088959544,
+      "minFreeCollateral": 84.68999999999994,
+      "fees": 0.93085287344802,
+      "funding": 0.11689335939922686,
+      "realizedGrossPnl": 0,
+      "openPnl": -166.269424339902,
+      "observedCloseDrawdownPercent": 20.92549543810697,
+      "peakNotional": 775.7713620384479,
+      "finalProxyEquity": null,
+      "finalProxyReturnPercent": null,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 1,
+          "quantity": 0.00033,
+          "entryNotional": 32.643355465620004,
+          "collateral": 139.9580895430503,
+          "mark": 92936.538999,
+          "pnl": -1.9742975959500058
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 4,
+          "quantity": 255,
+          "entryNotional": 191.11241483999999,
+          "collateral": 139.78951268110404,
+          "mark": 0.56833847,
+          "pnl": -46.18610498999996
+        },
+        {
+          "symbol": "ZECUSDT",
+          "step": 4,
+          "quantity": 5.760300000000001,
+          "entryNotional": 197.79444797940002,
+          "collateral": 150.31128058007548,
+          "mark": 27.07438916,
+          "pnl": -41.83784410105201
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 9.597,
+          "entryNotional": 197.65003210199995,
+          "collateral": 139.77112894988903,
+          "mark": 17.05237183,
+          "pnl": -33.99841964948999
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 5,
+          "quantity": 66.77699999999999,
+          "entryNotional": 311.652623061,
+          "collateral": 144.4322420130339,
+          "mark": 4.03402167,
+          "pnl": -42.27275800341005
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 3,
+      "policy": "scaled-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "two-closes",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 5,
+      "confirmed": 5,
+      "rejected": 0,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 14,
+      "peakProtectionHeld": 14,
+      "peakPending": 9.54,
+      "finalProtectionHeld": 14,
+      "pendingAmount": 0,
+      "quantityScale": 3,
+      "plannedStartNotional": 15,
+      "plannedLadderNotional": 311.71875,
+      "status": "stopped-at-proxy-risk",
+      "firstRisk": {
+        "reason": "PROXY_RESERVE_DEFICIT",
+        "symbol": "ADAUSDT",
+        "time": 1738548599999,
+        "phase": "pre-fill-candle-low",
+        "mark": 0.5136,
+        "headroom": -2.2245264088959544,
+        "step": 4
+      },
+      "lastTime": 1738548599999,
+      "processedEvents": 23,
+      "totalEvents": 1443,
+      "closedCycles": 0,
+      "minMaintenanceHeadroom": 78.85928984110406,
+      "minReserveHeadroom": -2.2245264088959544,
+      "minFreeCollateral": 86,
+      "fees": 0.93085287344802,
+      "funding": 0.11689335939922686,
+      "realizedGrossPnl": 0,
+      "openPnl": -166.269424339902,
+      "observedCloseDrawdownPercent": 20.92549543810697,
+      "peakNotional": 775.7713620384479,
+      "finalProxyEquity": null,
+      "finalProxyReturnPercent": null,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 1,
+          "quantity": 0.00033,
+          "entryNotional": 32.643355465620004,
+          "collateral": 139.9580895430503,
+          "mark": 92936.538999,
+          "pnl": -1.9742975959500058
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 4,
+          "quantity": 255,
+          "entryNotional": 191.11241483999999,
+          "collateral": 139.78951268110404,
+          "mark": 0.56833847,
+          "pnl": -46.18610498999996
+        },
+        {
+          "symbol": "ZECUSDT",
+          "step": 4,
+          "quantity": 5.760300000000001,
+          "entryNotional": 197.79444797940002,
+          "collateral": 150.31128058007548,
+          "mark": 27.07438916,
+          "pnl": -41.83784410105201
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 9.597,
+          "entryNotional": 197.65003210199995,
+          "collateral": 139.77112894988903,
+          "mark": 17.05237183,
+          "pnl": -33.99841964948999
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 5,
+          "quantity": 66.77699999999999,
+          "entryNotional": 311.652623061,
+          "collateral": 143.1222420130339,
+          "mark": 4.03402167,
+          "pnl": -42.27275800341005
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    },
+    {
+      "riskPriceSource": "binance-um-mark",
+      "leverage": 3,
+      "policy": "scaled-notional",
+      "fundingRate": 0.0001,
+      "maintenanceRate": 0.005,
+      "slotCollateral": 140,
+      "responseMode": "reject",
+      "protectionPool": 100,
+      "cycleProtectionCap": 20,
+      "targetHeadroom": 10,
+      "adverseDropFraction": 0.2,
+      "requested": 9,
+      "confirmed": 0,
+      "rejected": 9,
+      "denied": 0,
+      "cancelled": 0,
+      "cumulativeTopups": 0,
+      "peakProtectionHeld": 0,
+      "peakPending": 12.06,
+      "finalProtectionHeld": 0,
+      "pendingAmount": 0,
+      "quantityScale": 3,
+      "plannedStartNotional": 15,
+      "plannedLadderNotional": 311.71875,
+      "status": "stopped-at-proxy-risk",
+      "firstRisk": {
+        "reason": "PROXY_RESERVE_DEFICIT",
+        "symbol": "ADAUSDT",
+        "time": 1738548599999,
+        "phase": "pre-fill-candle-low",
+        "mark": 0.5136,
+        "headroom": -2.2245264088959544,
+        "step": 4
+      },
+      "lastTime": 1738548599999,
+      "processedEvents": 23,
+      "totalEvents": 1443,
+      "closedCycles": 0,
+      "minMaintenanceHeadroom": 78.85928984110406,
+      "minReserveHeadroom": -2.2245264088959544,
+      "minFreeCollateral": 99.99999999999989,
+      "fees": 0.93085287344802,
+      "funding": 0.11689335939922686,
+      "realizedGrossPnl": 0,
+      "openPnl": -166.269424339902,
+      "observedCloseDrawdownPercent": 20.92549543810697,
+      "peakNotional": 775.7713620384479,
+      "finalProxyEquity": null,
+      "finalProxyReturnPercent": null,
+      "openPositions": [
+        {
+          "symbol": "BTCUSDT",
+          "step": 1,
+          "quantity": 0.00033,
+          "entryNotional": 32.643355465620004,
+          "collateral": 139.9580895430503,
+          "mark": 92936.538999,
+          "pnl": -1.9742975959500058
+        },
+        {
+          "symbol": "ADAUSDT",
+          "step": 4,
+          "quantity": 255,
+          "entryNotional": 191.11241483999999,
+          "collateral": 139.78951268110404,
+          "mark": 0.56833847,
+          "pnl": -46.18610498999996
+        },
+        {
+          "symbol": "ZECUSDT",
+          "step": 4,
+          "quantity": 5.760300000000001,
+          "entryNotional": 197.79444797940002,
+          "collateral": 139.77128058007548,
+          "mark": 27.07438916,
+          "pnl": -41.83784410105201
+        },
+        {
+          "symbol": "LINKUSDT",
+          "step": 4,
+          "quantity": 9.597,
+          "entryNotional": 197.65003210199995,
+          "collateral": 139.77112894988903,
+          "mark": 17.05237183,
+          "pnl": -33.99841964948999
+        },
+        {
+          "symbol": "ATOMUSDT",
+          "step": 5,
+          "quantity": 66.77699999999999,
+          "entryNotional": 311.652623061,
+          "collateral": 139.6622420130339,
+          "mark": 4.03402167,
+          "pnl": -42.27275800341005
+        }
+      ],
+      "recommendationAllowed": false,
+      "liquidationPrice": null
+    }
+  ],
+  "limitations": [
+    "fixed spot fills, not futures execution",
+    "5m mark aggregated to signal TF",
+    "synthetic funding, fees, collateral, maintenance, response",
+    "not exchange liquidation, not Walt, not OOS"
+  ]
+}
