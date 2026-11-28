@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {buildRatingSnapshot,ratingView,formatRatingPreview,VERIFIED,DRAFT_MAX_AGE_MS} from '../scripts/market-rating-view.mjs';
+const read=p=>JSON.parse(readFileSync(new URL(p,import.meta.url),'utf8'));
+const fixture=()=>({archive:read('../research/market-rating-2026-11-28-summary.json'),markets:read('../strategy/markets.json').map(({symbol,tf,enabled})=>({symbol,tf,enabled}))});
+const now=VERIFIED.verifiedAt;
+test('verified rating snapshot reproducible and preserves exact ties',()=>{const f=fixture(),a=buildRatingSnapshot(f),b=buildRatingSnapshot({...f,markets:[...f.markets].reverse()});assert.deepEqual(a,b);assert.match(a.snapshotId,/^[a-f0-9]{64}$/);assert.equal(a.rows[2].rank,3);assert.equal(a.rows[3].rank,3);});
+test('active/excluded/all filters preserve original ranks and disabled flags',()=>{const s=buildRatingSnapshot(fixture()),a=ratingView(s,{now}),b=ratingView(s,{now,scope:'excluded'}),c=ratingView(s,{now,scope:'all',limit:5});assert.equal(a.available,11);assert.equal(b.available,8);assert.equal(b.rows[0].rank,12);assert.ok(b.rows.every(r=>!r.enabled));assert.equal(c.returned,5);assert.equal(c.available,19);assert.equal(c.recommendationAllowed,false);});
+test('freshness measured from last market window, not latest CI time',()=>{const s=buildRatingSnapshot(fixture()),v=ratingView(s,{now});assert.equal(v.freshness,'stale');assert.equal(v.ageMs,now-s.window.end);assert.ok(v.ageMs>DRAFT_MAX_AGE_MS);assert.throws(()=>ratingView(s,{now:now-1}),/request/);assert.equal(ratingView(s,{now,maxAgeMs:v.ageMs}).freshness,'within-draft-window');});
+test('modified registry or archived metrics blocked rather than silently reranked',()=>{const f=fixture();f.markets[0].tf='1h';assert.throws(()=>buildRatingSnapshot(f),/identity/);const g=fixture();g.archive.correctedRows[0].score=100;assert.throws(()=>buildRatingSnapshot(g),/mismatch/);});
+test('tampered snapshot and unsupported view options rejected',()=>{const s=buildRatingSnapshot(fixture());assert.throws(()=>ratingView(s,{now,scope:'unknown'}),/request/);assert.throws(()=>ratingView(s,{now,limit:0}),/request/);s.rows[0].score=0;assert.throws(()=>ratingView(s,{now}),/checksum/);});
+test('Russian preview displays stale warning and original ranks without sending',()=>{const s=buildRatingSnapshot(fixture()),a=formatRatingPreview(ratingView(s,{now,scope:'all'}));assert.match(a,/Данные устарели/);assert.match(a,/3\. ATOMUSDT/);assert.match(a,/3\. DOGEUSDT/);assert.match(a,/19\. SUIUSDT.*отключена/);assert.ok(a.length<4096);});

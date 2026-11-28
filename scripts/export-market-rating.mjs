@@ -1,0 +1,10 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {buildRatingSnapshot,ratingView,formatRatingPreview} from './market-rating-view.mjs';
+const read=p=>JSON.parse(readFileSync(new URL(p,import.meta.url),'utf8'));
+const [output,nowArg]=process.argv.slice(2);
+if(!output||!nowArg)throw Error('Usage: node scripts/export-market-rating.mjs output.json ISO-time');
+const archive=read('../research/market-rating-2026-11-28-summary.json'),markets=read('../strategy/markets.json').map(({symbol,tf,enabled})=>({symbol,tf,enabled}));
+const snapshot=buildRatingSnapshot({archive,markets});
+const views=Object.fromEntries(['active','excluded','all'].map(scope=>[scope,ratingView(snapshot,{now:Date.parse(nowArg),scope})]));
+writeFileSync(output,JSON.stringify({snapshot,views,telegramPreview:formatRatingPreview(views.active)},null,2)+'\n');
+console.log(formatRatingPreview(views.active));
