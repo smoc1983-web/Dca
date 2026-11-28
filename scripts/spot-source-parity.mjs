@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 const STEP=300000,DAY=86400000;
 const registry=JSON.parse(readFileSync(new URL('../strategy/markets.json',import.meta.url),'utf8'));
-const symbols=registry.filter(m=>m.enabled).map(m=>m.symbol).sort();
+const symbols=registry.map(m=>m.symbol).sort();
 const digest=v=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 const fields=['time','closeTime','open','high','low','close'];
 export function compareSpotSources({start,end,reference,candidate,now}={}){
@@ -34,5 +34,5 @@ export function compareSpotSources({start,end,reference,candidate,now}={}){
   rows.push({symbol,compared:count,mismatches,firstMismatch,referenceSha256:digest(x),candidateSha256:digest(y)});
  }
  const mismatchCount=rows.reduce((n,r)=>n+r.mismatches,0);
- return {version:'spot-source-parity-active11-v2',start,end,interval:'5m',venue:'BINANCE',market:'SPOT',symbols:rows.length,compared:count*rows.length,mismatchCount,status:mismatchCount?'mismatch':'exact-match-in-sample',rows,authorizationVerified:false,liveFreshnessVerified:false,productionAllowed:false};
+ return {version:'spot-source-parity-v1',start,end,interval:'5m',venue:'BINANCE',market:'SPOT',symbols:rows.length,compared:count*rows.length,mismatchCount,status:mismatchCount?'mismatch':'exact-match-in-sample',rows,authorizationVerified:false,liveFreshnessVerified:false,productionAllowed:false};
 }

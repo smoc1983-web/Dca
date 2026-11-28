@@ -4,6 +4,20 @@ import {tick} from '../cloudflare/worker.mjs';
 import {queueDaily} from '../cloudflare/daily.mjs';
 import {DEFAULTS,newState} from '../cloudflare/watchlist-engine.mjs';
 const markets=JSON.parse(readFileSync(new URL('../strategy/markets.json',import.meta.url),'utf8'));
+test('legacy daily is held while active11 daily can be delivered',async t=>{
+ const {db,port}=fixture(t), now=Date.now();
+ db.exec("UPDATE control SET mode='live'");
+ const add=db.prepare("INSERT INTO alerts(id,closed,body,status) VALUES(?,?,?,'pending')");
+ add.run('DAILY:2026-11-27',now,'old 19');
+ add.run('DAILY:2026-11-28:ACTIVE11',now,'new 11');
+ const sent=[];
+ await tick({DB:port,BOT_TOKEN:'test',CHAT_ID:'test'},{request:async(_url,options)=>{
+  sent.push(JSON.parse(options.body).text);
+  return Response.json({ok:true,result:{message_id:1}});
+ }});
+ assert.deepEqual(sent,['new 11']);
+ assert.equal(db.prepare("SELECT status FROM alerts WHERE id='DAILY:2026-11-27'").get().status,'pending');
+});
 function fixture(t){
  const db=new DatabaseSync(':memory:');t.after(()=>db.close());
  db.exec(readFileSync(new URL('../cloudflare/schema.sql',import.meta.url),'utf8'));db.exec("INSERT INTO control VALUES(1,'shadow','fixture')");
@@ -14,4 +28,4 @@ function fixture(t){
 test('frozen 11 runtime keys and 8 exclusions equal historical registry flags',()=>{assert.deepEqual([...ACTIVE_KEYS].sort(),markets.filter(m=>m.enabled).map(m=>m.symbol+':'+m.tf).sort());assert.deepEqual([...EXCLUDED_SYMBOLS].sort(),markets.filter(m=>!m.enabled).map(m=>m.symbol).sort());});
 test('active row identity cannot substitute excluded symbol, timeframe or parameter identity',()=>{const valid={key:'ADAUSDT:5m',model:JSON.stringify({symbol:'ADAUSDT',tf:'5m',params:{symbol:'ADAUSDT'}})};assert.equal(validateActiveModel(valid).symbol,'ADAUSDT');for(const x of [{symbol:'BCHUSDT'},{tf:'15m'},{params:{symbol:'BCHUSDT'}},{retired:true}])assert.throws(()=>validateActiveModel({...valid,model:JSON.stringify({...JSON.parse(valid.model),...x})}),/identity/);});
 test('excluded due rows cause no network call and retain full model and revision',async t=>{const {db,port,model}=fixture(t),time=Date.now()-3600000;const body=model('BCHUSDT','30m',time);db.prepare('INSERT INTO models(key,model,next_close,rev) VALUES(?,?,?,?)').run('BCHUSDT:30m',body,time,7);await tick({DB:port},{request:()=>assert.fail('excluded model contacted market')});assert.deepEqual({...db.prepare('SELECT model,rev FROM models').get()},{model:body,rev:7});assert.equal(db.prepare('SELECT COUNT(*) n FROM alerts').get().n,0);assert.equal(db.prepare('SELECT checked FROM runs').get().checked,0);});
-test('daily summary contains active models only and does not delete old records',async t=>{const {db,port,model}=fixture(t),now=Date.UTC(2026,10,28,2);db.exec("UPDATE control SET mode='live'");for(const [symbol,tf] of [['ADAUSDT','5m'],['BCHUSDT','30m']])db.prepare('INSERT INTO models(key,model,next_close) VALUES(?,?,?)').run(symbol+':'+tf,model(symbol,tf,now-1800000),now);await queueDaily({DB:port},{mode:'live',epoch:'fixture'},now);const a=db.prepare("SELECT body FROM alerts WHERE id='DAILY:2026-11-28'").get();assert.match(a.body,/1 пар/);assert.match(a.body,/ADA/);assert.doesNotMatch(a.body,/BCH/);assert.equal(db.prepare('SELECT COUNT(*) n FROM models').get().n,2);});
+test('daily summary contains active models only and does not delete old records',async t=>{const {db,port,model}=fixture(t),now=Date.UTC(2026,10,28,2);db.exec("UPDATE control SET mode='live'");for(const [symbol,tf] of [['ADAUSDT','5m'],['BCHUSDT','30m']])db.prepare('INSERT INTO models(key,model,next_close) VALUES(?,?,?)').run(symbol+':'+tf,model(symbol,tf,now-1800000),now);await queueDaily({DB:port},{mode:'live',epoch:'fixture'},now);const a=db.prepare("SELECT body FROM alerts WHERE id='DAILY:2026-11-28:ACTIVE11'").get();assert.match(a.body,/1 пар/);assert.match(a.body,/ADA/);assert.doesNotMatch(a.body,/BCH/);assert.equal(db.prepare('SELECT COUNT(*) n FROM models').get().n,2);});

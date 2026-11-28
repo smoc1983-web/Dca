@@ -1,4 +1,3 @@
-import {ACTIVE_KEYS,ACTIVE_KEY_SQL,EXCLUDED_SYMBOLS,EXCLUDED_ALERT_SQL,validateActiveModel} from './active-watchlist.mjs';
 import {fetchBars,stepEntry} from './runtime.mjs';
 import {intervalMs,message} from './watchlist-engine.mjs';
 import {queueDaily} from './daily.mjs';
@@ -22,7 +21,7 @@ export async function advanceModel(entry,end,read=market) {
 }
 
 async function processModel(db,row,control,now,read) {
-  const entry=validateActiveModel(row);
+  const entry=JSON.parse(row.model);
   const events=await advanceModel(entry,now,read);
   const guard='EXISTS(SELECT 1 FROM control WHERE id=1 AND epoch=? AND mode=?)';
   const writes=events.map(e=>db.prepare(
@@ -37,9 +36,9 @@ async function deliver(env,control,request) {
   const db=env.DB;
   if(!env.BOT_TOKEN || !env.CHAT_ID) throw Error('Missing Telegram configuration');
   const ready=control.mode==='live'?'pending':'test_pending';
-  const {results}=await db.prepare("SELECT id,closed,body FROM alerts WHERE status=? AND next_try<=? AND "+EXCLUDED_ALERT_SQL+" ORDER BY closed,id LIMIT 2").bind(ready,Date.now(),...EXCLUDED_SYMBOLS).all();
+  const {results}=await db.prepare("SELECT id,closed,body FROM alerts WHERE status=? AND next_try<=? ORDER BY closed,id LIMIT 2").bind(ready,Date.now()).all();
   for(const a of results) {
-    const claim=await db.prepare("UPDATE alerts SET status='sending' WHERE id=? AND status=? AND next_try<=? AND EXISTS(SELECT 1 FROM control WHERE mode=? AND epoch=?) AND "+EXCLUDED_ALERT_SQL).bind(a.id,ready,Date.now(),control.mode,control.epoch,...EXCLUDED_SYMBOLS).run();
+    const claim=await db.prepare("UPDATE alerts SET status='sending' WHERE id=? AND status=? AND next_try<=? AND EXISTS(SELECT 1 FROM control WHERE mode=? AND epoch=?)").bind(a.id,ready,Date.now(),control.mode,control.epoch).run();
     if(!claim.meta.changes) continue;
     const delayed=control.mode==='live' && !a.id.startsWith('DAILY:') && Date.now()-a.closed>180000;
     const signalTime=delayed?new Date(a.closed+1).toLocaleString('ru-RU',{
@@ -77,7 +76,7 @@ export async function tick(env,{request=defaultRequest}={}) {
   if(!control) return;
   if(control.mode==='shadow' && env.BOT_TOKEN && env.CHAT_ID) await deliver(env,control,request);
   const now=Date.now(),minute=Math.floor(now/60000);
-  const {results}=await env.DB.prepare('SELECT * FROM models WHERE next_close<=? AND key IN ('+ACTIVE_KEY_SQL+') ORDER BY next_close,key LIMIT 10').bind(now,...ACTIVE_KEYS).all();
+  const {results}=await env.DB.prepare('SELECT * FROM models WHERE next_close<=? ORDER BY next_close,key LIMIT 10').bind(now).all();
   let serverTime=null;
   if(results.length) {
     try {

@@ -1,4 +1,4 @@
-import {ACTIVE_KEYS,ACTIVE_KEY_SQL,validateActiveModel} from './active-watchlist.mjs';
+import {ACTIVE_KEYS,ACTIVE_KEY_SQL,ACTIVE_DAILY_SUFFIX,validateActiveModel} from './active-watchlist.mjs';
 import {intervalMs} from './watchlist-engine.mjs';
 
 const dayMs=86400000;
@@ -46,8 +46,10 @@ export function dailyText(rows,events,now){
 export async function queueDaily(env,control,now){
   const stamp=localIso(now),day=stamp.slice(0,10);
   if(stamp.slice(11,13)<'06' && env.FIRST_SUMMARY_DAY!==day)return;
-  const id='DAILY:'+day;
-  if(await env.DB.prepare('SELECT 1 AS found FROM alerts WHERE id=?').bind(id).first())return;
+  const legacyId='DAILY:'+day;
+  const id=legacyId+ACTIVE_DAILY_SUFFIX;
+  // Preserve a single summary per day across the transition and keep old rows for review.
+  if(await env.DB.prepare('SELECT 1 AS found FROM alerts WHERE id IN (?,?)').bind(id,legacyId).first())return;
   const [models,events]=await env.DB.batch([
     env.DB.prepare('SELECT key,model FROM models WHERE key IN ('+ACTIVE_KEY_SQL+') ORDER BY key').bind(...ACTIVE_KEYS),
     env.DB.prepare("SELECT id,closed FROM alerts WHERE closed>=? AND closed<? ORDER BY closed,id").bind(now-dayMs,now)
@@ -55,6 +57,6 @@ export async function queueDaily(env,control,now){
   if(!models.results.length)return;
   models.results.forEach(validateActiveModel);
   const body=dailyText(models.results,events.results,now);
-  await env.DB.prepare("INSERT OR IGNORE INTO alerts(id,closed,body,status) SELECT ?,?,?,'pending' FROM control WHERE id=1 AND mode='live' AND epoch=?")
-    .bind(id,now,body,control.epoch).run();
+  await env.DB.prepare("INSERT OR IGNORE INTO alerts(id,closed,body,status) SELECT ?,?,?,'pending' FROM control WHERE id=1 AND mode='live' AND epoch=? AND NOT EXISTS(SELECT 1 FROM alerts WHERE id=?)")
+    .bind(id,now,body,control.epoch,legacyId).run();
 }

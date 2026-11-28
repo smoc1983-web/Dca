@@ -6,6 +6,21 @@ import {readHealth,healthTransition} from '../cloudflare/health-read.mjs';
 
 const now=Date.parse('2026-11-27T02:02:00Z'),minute=now/60_000;
 const policy={now,maxTickAgeMs:120_000,candleGraceMs:30_000,pendingAgeMs:60_000,dailyEnabled:true,dailyGraceMs:60_000};
+test('active health distinguishes held alerts and frozen models from live failures',async t=>{
+ const {port,model,alert}=fixture(t);
+ model('BCHUSDT',now-3_600_000);
+ alert('BCHUSDT:30m:0:START','pending',now-3_600_000);
+ alert('DAILY:2026-11-27','pending',now-3_600_000);
+ alert('DAILY:2026-11-27:ACTIVE11','delivered',now-60_000);
+ const health=await readHealth(port,{...policy,activeOnly:true});
+ assert.equal(health.heldCount,2);
+ assert.equal(health.models.frozenCount,1);
+ assert.equal(health.models.missing.length,11);
+ assert.equal(health.models.delayed.length,0);
+ assert.equal(health.queue.pending.count,0);
+ assert.equal(health.daily.status,'delivered');
+ assert.ok(health.checks.includes('held-alerts-need-review'));
+});
 function fixture(t,mode='live'){
  const db=new DatabaseSync(':memory:');
  t.after(()=>db.close());

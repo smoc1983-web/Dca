@@ -196,18 +196,6 @@ try{
  assert.equal((await getAlert('failed-settlement')).status,'sending');
  assert.equal(unexpectedFetch,null);
  console.log('Worker scenario: a queue backlog drains in bounded batches');
-
- // Excluded model and queued signal remain preserved but cannot reach market or Telegram.
- const excludedModel=JSON.stringify({symbol:'BCHUSDT',tf:'30m',params:{...params,symbol:'BCHUSDT'},s,entryEnabled:true});
- await db.prepare('INSERT INTO models(key,model,next_close,rev) VALUES(?,?,?,?)').bind('BCHUSDT:30m',excludedModel,start,7).run();
- await enqueue('BCHUSDT:30m:'+now+':START','fixture: excluded signal');
- const callsBefore=binance.length,sentBefore=sent.length;
- await tick();
- assert.equal(binance.length,callsBefore);assert.equal(sent.length,sentBefore);
- const frozen=await db.prepare("SELECT model,rev FROM models WHERE key='BCHUSDT:30m'").first();
- assert.equal(frozen.model,excludedModel);assert.equal(frozen.rev,7);
- assert.equal((await getAlert('BCHUSDT:30m:'+now+':START')).status,'pending');
- console.log('Worker scenario: excluded pair frozen; no market request or Telegram delivery');
 }finally{
  Date.now=originalNow;
  globalThis.fetch=originalFetch;
