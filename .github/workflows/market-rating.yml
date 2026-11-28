@@ -1,0 +1,37 @@
+name: Historical informational market rating
+on:
+  push:
+    branches: ['dev/dca800-foundation']
+    paths:
+      - 'scripts/market-rating.mjs'
+      - 'scripts/run-market-rating.mjs'
+      - '.github/workflows/market-rating.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  rating:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 45875049345
+          pattern: long-data-*
+          merge-multiple: true
+          path: long-data
+      - run: node --max-old-space-size=5120 scripts/run-market-rating.mjs long-data market-rating.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: informational-market-rating
+          path: market-rating.json
+          retention-days: 30
+          if-no-files-found: error
