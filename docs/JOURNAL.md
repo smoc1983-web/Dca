@@ -515,3 +515,6 @@
 
 ## 2026-11-28 — DCA-20261128-21 — Read-only проверка очереди перед active11
 - Владелец предоставил результат SELECT status, COUNT(*) FROM alerts WHERE status IN ('pending','sending','uncertain','test_pending') GROUP BY status: no data. На момент запроса ни одной записи с перечисленными статусами. Это не гарантия отсутствия новых событий до cutover. Следом сверить key/TF и model identity 11 активных моделей; затем повторить проверку очереди непосредственно перед согласованным переключением, сохранить snapshot/bookmark и текущий bundle. Production не изменён.
+
+## 2026-11-28 — DCA-20261128-22 — Сверка ключей production
+- Владелец предоставил read-only SELECT key FROM models ORDER BY key: все 19 ключей присутствуют, 11 активных symbol:TF точно совпадают с dev active-watchlist.mjs, 8 excluded присутствуют. Ранее владелец сообщил, что все циклы открыты; предыдущая проверка очереди не вернула строк. Совпадение ключей не доказывает внутреннюю identity model JSON и deployed bundle. Следом получить D1 bookmark командой /bookmark, сохранить локально владельцем, не публиковать идентификатор в Git. До cutover сверить JSON identity, состояние очереди, текущий deployment и rollback, отдельно согласовать production и ручное сопровождение реальных позиций. Production не изменён.
