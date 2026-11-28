@@ -1,5 +1,5 @@
 // Pure informational ranking. No market selection, orders, or production access.
-export const POLICY=Object.freeze({version:'draft-rank-v1',minimumDays:365,minimumClosedCycles:20,baseBps:2,costBps:Object.freeze([0,2,5,10]),weights:Object.freeze({netReturn:35,drawdown:30,costPenalty:20,cyclesPer30d:10,longestExposureDays:5})});
+export const POLICY=Object.freeze({version:'draft-rank-v1.1',minimumDays:365,minimumClosedCycles:20,baseBps:2,costBps:Object.freeze([0,2,5,10]),weights:Object.freeze({netReturn:35,drawdown:30,costPenalty:20,cyclesPer30d:10,longestExposureDays:5})});
 const DAY=86400000;
 const metrics=Object.keys(POLICY.weights);
 const directions={netReturn:1,drawdown:-1,costPenalty:-1,cyclesPer30d:1,longestExposureDays:-1};
@@ -39,18 +39,21 @@ export function rankMarkets({markets,observations,window,calculatedAt}){
   rows.push({symbol:m.symbol,tf:m.tf,enabled:m.enabled,dataSha256:o.dataSha256,status:days<POLICY.minimumDays||minCycles<POLICY.minimumClosedCycles?'insufficient-sample':'rated',values,worstCostReturn:worst,minCycles,costs,flags,score:null,rank:null,components:null});
  }
  for(const m of expected.values())if(!seen.has(m.symbol))rows.push({symbol:m.symbol,tf:m.tf,enabled:m.enabled,status:'missing-data',flags:['MISSING_DATA'],score:null,rank:null,components:null});
- const eligible=rows.filter(r=>r.status==='rated');
+ const eligible=rows.filter(r=>r.status==='rated'),exactScores=new Map();
+ const denominator=eligible.length>1?2*(eligible.length-1):2;
  for(const r of eligible){
-  r.components={};
+  r.components={};let numerator=0;
   for(const k of metrics){
    const v=r.values[k]*directions[k],worse=eligible.filter(x=>x.values[k]*directions[k]<v).length,tied=eligible.filter(x=>x.values[k]*directions[k]===v).length;
-   const percentile=eligible.length===1?50:100*(worse+(tied-1)/2)/(eligible.length-1);
-   r.components[k]={percentile:round(percentile),points:round(percentile*POLICY.weights[k]/100)};
+   const units=eligible.length===1?1:2*worse+tied-1;
+   const pointsNumerator=units*POLICY.weights[k];
+   numerator+=pointsNumerator;
+   r.components[k]={percentile:round(100*units/denominator),points:round(pointsNumerator/denominator)};
   }
-  r.score=round(metrics.reduce((s,k)=>s+r.components[k].points,0));
+  exactScores.set(r.symbol,numerator);r.score=round(numerator/denominator);
  }
- eligible.sort((a,b)=>b.score-a.score||lex(a.symbol,b.symbol));
- for(let i=0;i<eligible.length;i++)eligible[i].rank=i&&eligible[i].score===eligible[i-1].score?eligible[i-1].rank:i+1;
+ eligible.sort((a,b)=>exactScores.get(b.symbol)-exactScores.get(a.symbol)||lex(a.symbol,b.symbol));
+ for(let i=0;i<eligible.length;i++)eligible[i].rank=i&&exactScores.get(eligible[i].symbol)===exactScores.get(eligible[i-1].symbol)?eligible[i-1].rank:i+1;
  const unranked=rows.filter(r=>r.status!=='rated').sort((a,b)=>lex(a.symbol,b.symbol));
  return {version:'informational-market-rating-v1',policy:POLICY,calculatedAt,window:{start:window.start,end:window.end},days,universe:markets.length,rated:eligible.length,rows:[...eligible,...unranked],recommendationAllowed:false,changesMarketSelection:false,limitations:['DRAFT_WEIGHTS_NOT_APPROVED','SELECTION_OVERLAP_NOT_OOS','INDEPENDENT_SPOT_800_PER_PAIR_NOT_PORTFOLIO','CLOSE_DRAWDOWN_NOT_LIQUIDATION','NO_REAL_EXECUTIONS']};
 }

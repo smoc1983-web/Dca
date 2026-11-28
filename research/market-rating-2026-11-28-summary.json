@@ -1,0 +1,4867 @@
+{
+  "version": "market-rating-verified-input-v1",
+  "sourceCommit": "f8743de1f66c217222a3a9a669f0a9138cc65b91",
+  "sourceRun": 46136832610,
+  "sourceJob": 140953898207,
+  "policyVersionOriginal": "draft-rank-v1",
+  "originalRows": [
+    {
+      "symbol": "ZECUSDT",
+      "tf": "5m",
+      "enabled": true,
+      "dataSha256": "805e4cc8e1646b8f50950edf3b6099701b220e0111d207a4528081f77c8bfdd4",
+      "status": "rated",
+      "values": {
+        "netReturn": 67.72779654894384,
+        "drawdown": 15.997936674969493,
+        "costPenalty": 1.0725382493045856,
+        "cyclesPer30d": 12.695924764890282,
+        "longestExposureDays": 31.11111111111111
+      },
+      "worstCostReturn": 66.65525829963926,
+      "minCycles": 267,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 67.90383871425038,
+          "drawdown": 15.96868883437011,
+          "cycles": 272,
+          "stops": 0,
+          "longestExposureDays": 28.67013888888889,
+          "realizedPnl": 543.4356531780029,
+          "openExitPnl": -0.20494346399982533,
+          "fees": 34.186308170000004,
+          "open": true,
+          "paramsSha256": "fed87382b393458431195349640aa1696ab35e1eea104e34ff0e2c2e4934c2d9"
+        },
+        {
+          "bps": 2,
+          "netReturn": 67.72779654894384,
+          "drawdown": 15.997936674969493,
+          "cycles": 270,
+          "stops": 0,
+          "longestExposureDays": 31.11111111111111,
+          "realizedPnl": 542.0372581793972,
+          "openExitPnl": -0.2148857878464696,
+          "fees": 34.08468375487444,
+          "open": true,
+          "paramsSha256": "b4885bd9ee7d24fc556cf5a4e597f5d868b7b8390716dc88d0025cb9a2bb9980"
+        },
+        {
+          "bps": 5,
+          "netReturn": 66.65525829963926,
+          "drawdown": 16.07990564863623,
+          "cycles": 269,
+          "stops": 0,
+          "longestExposureDays": 32.06944444444444,
+          "realizedPnl": 533.47186567073,
+          "openExitPnl": -0.2297992736159813,
+          "fees": 33.55390873994599,
+          "open": true,
+          "paramsSha256": "97763a0a344080e4c44c55b9c9292813b37f68cc6ece06cec55ac14485afbc81"
+        },
+        {
+          "bps": 10,
+          "netReturn": 66.79345058628101,
+          "drawdown": 16.697383998074155,
+          "cycles": 267,
+          "stops": 0,
+          "longestExposureDays": 32.06944444444444,
+          "realizedPnl": 534.9694318215472,
+          "openExitPnl": -0.6218271312991419,
+          "fees": 33.68113539304603,
+          "open": true,
+          "paramsSha256": "f9461350e32b96187266419d13438991a463babc464f3a382e251718f9ee53bb"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 78.333333,
+      "rank": 1,
+      "components": {
+        "netReturn": {
+          "percentile": 100,
+          "points": 35
+        },
+        "drawdown": {
+          "percentile": 61.111111,
+          "points": 18.333333
+        },
+        "costPenalty": {
+          "percentile": 50,
+          "points": 10
+        },
+        "cyclesPer30d": {
+          "percentile": 100,
+          "points": 10
+        },
+        "longestExposureDays": {
+          "percentile": 100,
+          "points": 5
+        }
+      }
+    },
+    {
+      "symbol": "LINKUSDT",
+      "tf": "5m",
+      "enabled": true,
+      "dataSha256": "b637202516f9cd13267591d5490965aa050df665105c6061fb167543947d6e94",
+      "status": "rated",
+      "values": {
+        "netReturn": 32.843702856084406,
+        "drawdown": 14.252924230985975,
+        "costPenalty": 0.49650835442895414,
+        "cyclesPer30d": 5.12539184952978,
+        "longestExposureDays": 114.27777777777777
+      },
+      "worstCostReturn": 32.34719450165545,
+      "minCycles": 106,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 33.11816188375025,
+          "drawdown": 14.164390023111967,
+          "cycles": 113,
+          "stops": 0,
+          "longestExposureDays": 113.08333333333333,
+          "realizedPnl": 279.442116860002,
+          "openExitPnl": -14.496821790000013,
+          "fees": 17.45283872999999,
+          "open": true,
+          "paramsSha256": "34d5d45b9d6923920ce37258daf11954a633ecd497c08d39a295afa0e9a0c901"
+        },
+        {
+          "bps": 2,
+          "netReturn": 32.843702856084406,
+          "drawdown": 14.252924230985975,
+          "cycles": 109,
+          "stops": 0,
+          "longestExposureDays": 114.27777777777777,
+          "realizedPnl": 277.3739119250515,
+          "openExitPnl": -14.624289076376272,
+          "fees": 17.274098626230202,
+          "open": true,
+          "paramsSha256": "37b1089c8d669a65202110859487233cda8524b8894a4fe3352a40a26bd5f941"
+        },
+        {
+          "bps": 5,
+          "netReturn": 32.39331957004936,
+          "drawdown": 14.81841298336832,
+          "cycles": 108,
+          "stops": 0,
+          "longestExposureDays": 114.29513888888889,
+          "realizedPnl": 273.96032106293137,
+          "openExitPnl": -14.813764502536515,
+          "fees": 17.22062471385202,
+          "open": true,
+          "paramsSha256": "c95d80875d5446ba6db8af483a5a4fe1285c0c7b53c40997ff0685549c0d7540"
+        },
+        {
+          "bps": 10,
+          "netReturn": 32.34719450165545,
+          "drawdown": 14.808045457670788,
+          "cycles": 106,
+          "stops": 0,
+          "longestExposureDays": 114.29513888888889,
+          "realizedPnl": 273.9059444719935,
+          "openExitPnl": -15.128388458749896,
+          "fees": 17.411524084538996,
+          "open": true,
+          "paramsSha256": "d669b1ea8a1bc75a1d092480db1ee1d199ed1f632bc1201d261880e7ca73c05b"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 74.444445,
+      "rank": 2,
+      "components": {
+        "netReturn": {
+          "percentile": 77.777778,
+          "points": 27.222222
+        },
+        "drawdown": {
+          "percentile": 66.666667,
+          "points": 20
+        },
+        "costPenalty": {
+          "percentile": 77.777778,
+          "points": 15.555556
+        },
+        "cyclesPer30d": {
+          "percentile": 88.888889,
+          "points": 8.888889
+        },
+        "longestExposureDays": {
+          "percentile": 55.555556,
+          "points": 2.777778
+        }
+      }
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "tf": "15m",
+      "enabled": true,
+      "dataSha256": "91298c20ded3ab4e707eaa79d3f8ae21551aad2749a9b09f0bae3f9d2cd6f29a",
+      "status": "rated",
+      "values": {
+        "netReturn": 29.471560690017842,
+        "drawdown": 10.929782033645559,
+        "costPenalty": 1.0242926627696,
+        "cyclesPer30d": 4.184952978056426,
+        "longestExposureDays": 98.625
+      },
+      "worstCostReturn": 28.447268027248242,
+      "minCycles": 85,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 29.208863073850072,
+          "drawdown": 10.940722335680286,
+          "cycles": 87,
+          "stops": 0,
+          "longestExposureDays": 98.625,
+          "realizedPnl": 251.08046736526057,
+          "openExitPnl": -17.409562774460028,
+          "fees": 14.723381808709998,
+          "open": true,
+          "paramsSha256": "3104bc08d66d50c2e8be7f6fb680aa787026f5f3e0b0d3dfa86ad171ccbf9512"
+        },
+        {
+          "bps": 2,
+          "netReturn": 29.471560690017842,
+          "drawdown": 10.929782033645559,
+          "cycles": 89,
+          "stops": 0,
+          "longestExposureDays": 98.625,
+          "realizedPnl": 253.29143359428372,
+          "openExitPnl": -17.518948074141008,
+          "fees": 14.994616011799879,
+          "open": true,
+          "paramsSha256": "1f47194965a3a69226d04bcae320050f0af19c0b6d563de578bcbe70adebae5c"
+        },
+        {
+          "bps": 5,
+          "netReturn": 29.0924641102456,
+          "drawdown": 11.048452484084093,
+          "cycles": 88,
+          "stops": 0,
+          "longestExposureDays": 98.625,
+          "realizedPnl": 250.3701164752274,
+          "openExitPnl": -17.6304035932626,
+          "fees": 14.941642376166712,
+          "open": true,
+          "paramsSha256": "ea3e1e86e2c7d86a0704b666a3f746664fd6babf894680b2adae5f26d3f134f5"
+        },
+        {
+          "bps": 10,
+          "netReturn": 28.447268027248242,
+          "drawdown": 11.114360470965254,
+          "cycles": 85,
+          "stops": 0,
+          "longestExposureDays": 98.625,
+          "realizedPnl": 245.02421992067275,
+          "openExitPnl": -17.446075702686812,
+          "fees": 14.89875321832354,
+          "open": true,
+          "paramsSha256": "4a1135877779de4465240c93c32872dce6d67a3ed557e977b98f32677527614b"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 67.777778,
+      "rank": 3,
+      "components": {
+        "netReturn": {
+          "percentile": 61.111111,
+          "points": 21.388889
+        },
+        "drawdown": {
+          "percentile": 83.333333,
+          "points": 25
+        },
+        "costPenalty": {
+          "percentile": 61.111111,
+          "points": 12.222222
+        },
+        "cyclesPer30d": {
+          "percentile": 55.555556,
+          "points": 5.555556
+        },
+        "longestExposureDays": {
+          "percentile": 72.222222,
+          "points": 3.611111
+        }
+      }
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "tf": "5m",
+      "enabled": true,
+      "dataSha256": "8d0bb4e848d555073b93d7c30c6d7731708cbca6892e7ff1efb743541731b7c0",
+      "status": "rated",
+      "values": {
+        "netReturn": 30.697052895874663,
+        "drawdown": 19.012928225190546,
+        "costPenalty": 0.47500230700686075,
+        "cyclesPer30d": 4.655172413793103,
+        "longestExposureDays": 62.517361111111114
+      },
+      "worstCostReturn": 30.222050588867802,
+      "minCycles": 98,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 30.601729585625066,
+          "drawdown": 19.063961635443825,
+          "cycles": 98,
+          "stops": 0,
+          "longestExposureDays": 62.517361111111114,
+          "realizedPnl": 272.3704880760006,
+          "openExitPnl": -27.55665139100006,
+          "fees": 17.148058910999985,
+          "open": true,
+          "paramsSha256": "b525509a3417ac89b5f73365e4ee4e77e2b14a79a05fd8bd4eac61f184aba301"
+        },
+        {
+          "bps": 2,
+          "netReturn": 30.697052895874663,
+          "drawdown": 19.012928225190546,
+          "cycles": 99,
+          "stops": 0,
+          "longestExposureDays": 62.517361111111114,
+          "realizedPnl": 273.203201724594,
+          "openExitPnl": -27.626778557596708,
+          "fees": 17.442919176098012,
+          "open": true,
+          "paramsSha256": "616a12e75063f70599c48c7618a96a8ef23d3ca5b0a6ccec092040263e988d71"
+        },
+        {
+          "bps": 5,
+          "netReturn": 30.222050588867802,
+          "drawdown": 19.05420298358592,
+          "cycles": 98,
+          "stops": 0,
+          "longestExposureDays": 62.53819444444444,
+          "realizedPnl": 269.50847815031375,
+          "openExitPnl": -27.732073439371334,
+          "fees": 17.389171019599498,
+          "open": true,
+          "paramsSha256": "fdefd8ff39fc41c82dda514cb19a0c60f46703dd21e457cde57dac3b6dc89d3e"
+        },
+        {
+          "bps": 10,
+          "netReturn": 33.564735011810455,
+          "drawdown": 18.879453713213355,
+          "cycles": 106,
+          "stops": 0,
+          "longestExposureDays": 62.53819444444444,
+          "realizedPnl": 279.55290588814546,
+          "openExitPnl": -11.035025793661816,
+          "fees": 18.325208335991007,
+          "open": true,
+          "paramsSha256": "88ff00ed35df50501b93070c346424e6d1c105f211e77eccf83f34d5f3378340"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 67.777777,
+      "rank": 4,
+      "components": {
+        "netReturn": {
+          "percentile": 66.666667,
+          "points": 23.333333
+        },
+        "drawdown": {
+          "percentile": 50,
+          "points": 15
+        },
+        "costPenalty": {
+          "percentile": 88.888889,
+          "points": 17.777778
+        },
+        "cyclesPer30d": {
+          "percentile": 72.222222,
+          "points": 7.222222
+        },
+        "longestExposureDays": {
+          "percentile": 88.888889,
+          "points": 4.444444
+        }
+      }
+    },
+    {
+      "symbol": "XRPUSDT",
+      "tf": "45m",
+      "enabled": true,
+      "dataSha256": "a7dd514ec9a51b34a7955cde10db1b34dcc0b92e6a5dcae9e823d2b40d55cea4",
+      "status": "rated",
+      "values": {
+        "netReturn": 21.870197032837595,
+        "drawdown": 11.156601992366886,
+        "costPenalty": 0,
+        "cyclesPer30d": 2.774294670846395,
+        "longestExposureDays": 46.53125
+      },
+      "worstCostReturn": 21.870197032837595,
+      "minCycles": 58,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 22.35251990000009,
+          "drawdown": 11.107581919543263,
+          "cycles": 59,
+          "stops": 0,
+          "longestExposureDays": 46.53125,
+          "realizedPnl": 189.35578170000053,
+          "openExitPnl": -10.535622499999818,
+          "fees": 8.936152000000002,
+          "open": true,
+          "paramsSha256": "cf1ad9bc472555cd29c601fb93930f8ddcd435dfe19343d8d3575089dce4b13a"
+        },
+        {
+          "bps": 2,
+          "netReturn": 21.870197032837595,
+          "drawdown": 11.156601992366886,
+          "cycles": 59,
+          "stops": 0,
+          "longestExposureDays": 46.53125,
+          "realizedPnl": 185.57534529168072,
+          "openExitPnl": -10.61376902897996,
+          "fees": 8.936346175060002,
+          "open": true,
+          "paramsSha256": "88111f4ae4fb08b04fe3ecf802251b1e55d38adae0f0f0f7ed44a7f41b483298"
+        },
+        {
+          "bps": 5,
+          "netReturn": 22.0382989488001,
+          "drawdown": 11.15021567738086,
+          "cycles": 58,
+          "stops": 0,
+          "longestExposureDays": 46.53125,
+          "realizedPnl": 187.0373804128509,
+          "openExitPnl": -10.730988822450058,
+          "fees": 9.059380254000004,
+          "open": true,
+          "paramsSha256": "1fd4443e346ad676a8ba4bbcf1b3b8bbe358fa00ac70b72ff861e2a64ccecb65"
+        },
+        {
+          "bps": 10,
+          "netReturn": 24.056735976712687,
+          "drawdown": 10.966292411403247,
+          "cycles": 59,
+          "stops": 0,
+          "longestExposureDays": 46.53125,
+          "realizedPnl": 203.38024295860146,
+          "openExitPnl": -10.926355144899958,
+          "fees": 9.189701975099998,
+          "open": true,
+          "paramsSha256": "0e6a5b6e143a94f104562d75b963c5a0016e7ccff7d9ccdde8a7477afc6776a4"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 65.277778,
+      "rank": 5,
+      "components": {
+        "netReturn": {
+          "percentile": 44.444444,
+          "points": 15.555556
+        },
+        "drawdown": {
+          "percentile": 77.777778,
+          "points": 23.333333
+        },
+        "costPenalty": {
+          "percentile": 100,
+          "points": 20
+        },
+        "cyclesPer30d": {
+          "percentile": 16.666667,
+          "points": 1.666667
+        },
+        "longestExposureDays": {
+          "percentile": 94.444444,
+          "points": 4.722222
+        }
+      }
+    },
+    {
+      "symbol": "DOTUSDT",
+      "tf": "30m",
+      "enabled": true,
+      "dataSha256": "bb61c9c9b5f7b4d65a77ef29c886ca781efba2b4e9dc0ed11afd3f39d1db5bf5",
+      "status": "rated",
+      "values": {
+        "netReturn": 23.786015881348476,
+        "drawdown": 13.551691765760982,
+        "costPenalty": 0.4945170293456158,
+        "cyclesPer30d": 3.4326018808777428,
+        "longestExposureDays": 85.45833333333333
+      },
+      "worstCostReturn": 23.29149885200286,
+      "minCycles": 73,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 24.016891926500108,
+          "drawdown": 13.532076637137811,
+          "cycles": 73,
+          "stops": 0,
+          "longestExposureDays": 85.45833333333333,
+          "realizedPnl": 196.0137073630009,
+          "openExitPnl": -3.8785719510000263,
+          "fees": 12.071615473000001,
+          "open": true,
+          "paramsSha256": "3d2a6c731adf9da51f3a7a0628c9928fe8c6cf46ae95aa5c75dc4e2f077655b8"
+        },
+        {
+          "bps": 2,
+          "netReturn": 23.786015881348476,
+          "drawdown": 13.551691765760982,
+          "cycles": 73,
+          "stops": 0,
+          "longestExposureDays": 85.45833333333333,
+          "realizedPnl": 194.21265245917948,
+          "openExitPnl": -3.9245254083916734,
+          "fees": 12.069774923090607,
+          "open": true,
+          "paramsSha256": "e5db11de71fecc1af88d7d0dd74de2f6be3428df789d55feb346c471d789fc6f"
+        },
+        {
+          "bps": 5,
+          "netReturn": 23.73869902563484,
+          "drawdown": 13.546396802158611,
+          "cycles": 74,
+          "stops": 0,
+          "longestExposureDays": 85.45833333333333,
+          "realizedPnl": 193.90320542358268,
+          "openExitPnl": -3.993613218503924,
+          "fees": 12.082018390570004,
+          "open": true,
+          "paramsSha256": "ed4842e4c19f86a91e270efd1f4fdc463758e750317449eee3f7da92f6722885"
+        },
+        {
+          "bps": 10,
+          "netReturn": 23.29149885200286,
+          "drawdown": 14.868052090763923,
+          "cycles": 75,
+          "stops": 0,
+          "longestExposureDays": 85.52083333333333,
+          "realizedPnl": 190.4403646171529,
+          "openExitPnl": -4.108373801130028,
+          "fees": 12.091035734452998,
+          "open": true,
+          "paramsSha256": "5a99f0b61d5eec97c56998d96e35fc86973ad1425094c39a6581ffbcfbe92c99"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 65.000001,
+      "rank": 6,
+      "components": {
+        "netReturn": {
+          "percentile": 50,
+          "points": 17.5
+        },
+        "drawdown": {
+          "percentile": 72.222222,
+          "points": 21.666667
+        },
+        "costPenalty": {
+          "percentile": 83.333333,
+          "points": 16.666667
+        },
+        "cyclesPer30d": {
+          "percentile": 50,
+          "points": 5
+        },
+        "longestExposureDays": {
+          "percentile": 83.333333,
+          "points": 4.166667
+        }
+      }
+    },
+    {
+      "symbol": "ADAUSDT",
+      "tf": "5m",
+      "enabled": true,
+      "dataSha256": "6815422724238b20dceee05c4fcc3d5c7978d0d68e130f8e3157703a2f8cfab5",
+      "status": "rated",
+      "values": {
+        "netReturn": 37.55035450551773,
+        "drawdown": 17.080816169534025,
+        "costPenalty": 32.42152697536753,
+        "cyclesPer30d": 4.702194357366771,
+        "longestExposureDays": 102.50694444444444
+      },
+      "worstCostReturn": 5.128827530150204,
+      "minCycles": 64,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 37.60048056250017,
+          "drawdown": 17.091941685870275,
+          "cycles": 100,
+          "stops": 0,
+          "longestExposureDays": 102.50694444444444,
+          "realizedPnl": 324.0105062000014,
+          "openExitPnl": -23.20666170000004,
+          "fees": 17.500586500000008,
+          "open": true,
+          "paramsSha256": "88491251e69ad57ebe578ffd1d33611ccfef106d62df3a5e6318fb80c4b14a35"
+        },
+        {
+          "bps": 2,
+          "netReturn": 37.55035450551773,
+          "drawdown": 17.080816169534025,
+          "cycles": 100,
+          "stops": 0,
+          "longestExposureDays": 102.50694444444444,
+          "realizedPnl": 323.68609464888164,
+          "openExitPnl": -23.283258604739785,
+          "fees": 17.501509589659996,
+          "open": true,
+          "paramsSha256": "0748428f3f734074a0d75893c798fc8d29732a7609d79375db4902ec3ded4def"
+        },
+        {
+          "bps": 5,
+          "netReturn": 36.416873160431464,
+          "drawdown": 17.329340514514065,
+          "cycles": 98,
+          "stops": 0,
+          "longestExposureDays": 102.50694444444444,
+          "realizedPnl": 314.7247485414016,
+          "openExitPnl": -23.38976325794988,
+          "fees": 17.50810410454999,
+          "open": true,
+          "paramsSha256": "0f672f194231814ee219a7f2b5568b3d1f173466ca005daa3d98b9a198169901"
+        },
+        {
+          "bps": 10,
+          "netReturn": 5.128827530150204,
+          "drawdown": 28.379155631792248,
+          "cycles": 64,
+          "stops": 0,
+          "longestExposureDays": 290.52777777777777,
+          "realizedPnl": 231.1017768153015,
+          "openExitPnl": -190.07115657409986,
+          "fees": 12.275556788799996,
+          "open": true,
+          "paramsSha256": "5e31b8364ea6ebcd2f3abf73cbd6099de99bc9463040e3c26be4aa6b7ce326d9"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 60.277778,
+      "rank": 7,
+      "components": {
+        "netReturn": {
+          "percentile": 88.888889,
+          "points": 31.111111
+        },
+        "drawdown": {
+          "percentile": 55.555556,
+          "points": 16.666667
+        },
+        "costPenalty": {
+          "percentile": 5.555556,
+          "points": 1.111111
+        },
+        "cyclesPer30d": {
+          "percentile": 80.555556,
+          "points": 8.055556
+        },
+        "longestExposureDays": {
+          "percentile": 66.666667,
+          "points": 3.333333
+        }
+      }
+    },
+    {
+      "symbol": "TRXUSDT",
+      "tf": "15m",
+      "enabled": true,
+      "dataSha256": "a27144ffb1408247790f53a743569f82d73b21e7662e1012dbd8d60b2503fae7",
+      "status": "rated",
+      "values": {
+        "netReturn": 7.592781632857594,
+        "drawdown": 3.080416561175972,
+        "costPenalty": 0.4699288713199792,
+        "cyclesPer30d": 2.0219435736677114,
+        "longestExposureDays": 155.32291666666666
+      },
+      "worstCostReturn": 7.122852761537615,
+      "minCycles": 42,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 7.676216175000121,
+          "drawdown": 3.075620237985252,
+          "cycles": 43,
+          "stops": 0,
+          "longestExposureDays": 155.32291666666666,
+          "realizedPnl": 63.63122630000089,
+          "openExitPnl": -2.22149689999992,
+          "fees": 4.249422,
+          "open": true,
+          "paramsSha256": "9a54a4221d8c3a41efb708d6076e8407b8f02b387ef6ae7f0f23ed0c62c637d7"
+        },
+        {
+          "bps": 2,
+          "netReturn": 7.592781632857594,
+          "drawdown": 3.080416561175972,
+          "cycles": 43,
+          "stops": 0,
+          "longestExposureDays": 155.32291666666666,
+          "realizedPnl": 62.98810976280072,
+          "openExitPnl": -2.2458566999399636,
+          "fees": 4.250200286860002,
+          "open": true,
+          "paramsSha256": "8b9dd71d7b2fee8f6b73ddb451a5cd4c6ee2555b2da02e0bbfe28ef46a71741a"
+        },
+        {
+          "bps": 5,
+          "netReturn": 7.469265425999964,
+          "drawdown": 3.087622788811625,
+          "cycles": 43,
+          "stops": 0,
+          "longestExposureDays": 155.32291666666666,
+          "realizedPnl": 62.036519807849686,
+          "openExitPnl": -2.282396399849972,
+          "fees": 4.2480880163000005,
+          "open": true,
+          "paramsSha256": "8150290c304d209e8c4db8f7ad8ec3b6c0e79be0ede1cae704da7824ec41c7e4"
+        },
+        {
+          "bps": 10,
+          "netReturn": 7.122852761537615,
+          "drawdown": 3.1257081509487303,
+          "cycles": 42,
+          "stops": 0,
+          "longestExposureDays": 155.32291666666666,
+          "realizedPnl": 59.32611799200083,
+          "openExitPnl": -2.3432958996999105,
+          "fees": 4.194917456300001,
+          "open": true,
+          "paramsSha256": "70b4d37ada430b9fcd0f0dae14f86598cf97ce16fbf9959715e5f9f6a97f12fd"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 53.333333,
+      "rank": 8,
+      "components": {
+        "netReturn": {
+          "percentile": 5.555556,
+          "points": 1.944444
+        },
+        "drawdown": {
+          "percentile": 100,
+          "points": 30
+        },
+        "costPenalty": {
+          "percentile": 94.444444,
+          "points": 18.888889
+        },
+        "cyclesPer30d": {
+          "percentile": 5.555556,
+          "points": 0.555556
+        },
+        "longestExposureDays": {
+          "percentile": 38.888889,
+          "points": 1.944444
+        }
+      }
+    },
+    {
+      "symbol": "LDOUSDT",
+      "tf": "30m",
+      "enabled": true,
+      "dataSha256": "578a8623050292b1d14c832337313fbf12dc56c86bfd9a634afe8c85cceaee02",
+      "status": "rated",
+      "values": {
+        "netReturn": 31.29507445238505,
+        "drawdown": 20.01198622854169,
+        "costPenalty": 1.7946361483738578,
+        "cyclesPer30d": 4.420062695924765,
+        "longestExposureDays": 91.6875
+      },
+      "worstCostReturn": 29.500438304011194,
+      "minCycles": 84,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 30.920670974712547,
+          "drawdown": 20.081896605966207,
+          "cycles": 94,
+          "stops": 0,
+          "longestExposureDays": 91.6875,
+          "realizedPnl": 254.87404500070033,
+          "openExitPnl": -7.508677202999934,
+          "fees": 14.819434829099992,
+          "open": true,
+          "paramsSha256": "7dbe7a00ab2610a00750c35e5a87258475679e05a7490f90ff2fb28d5c7b4b62"
+        },
+        {
+          "bps": 2,
+          "netReturn": 31.29507445238505,
+          "drawdown": 20.01198622854169,
+          "cycles": 94,
+          "stops": 0,
+          "longestExposureDays": 91.6875,
+          "realizedPnl": 257.950185600085,
+          "openExitPnl": -7.589589981004565,
+          "fees": 14.991438145617545,
+          "open": true,
+          "paramsSha256": "7e9e049e43f5ae8a2c914707a847e5592551dde9ac4f77bf66afefed881386ba"
+        },
+        {
+          "bps": 5,
+          "netReturn": 30.796275861947432,
+          "drawdown": 20.071928113943848,
+          "cycles": 91,
+          "stops": 0,
+          "longestExposureDays": 91.6875,
+          "realizedPnl": 254.02652597133556,
+          "openExitPnl": -7.656319075756073,
+          "fees": 15.015664348239298,
+          "open": true,
+          "paramsSha256": "238027a3553abb04682e6182d07e5d9fe1f03a416dbab1b01a89f0f4f02bb5d8"
+        },
+        {
+          "bps": 10,
+          "netReturn": 29.500438304011194,
+          "drawdown": 20.245337075223997,
+          "cycles": 84,
+          "stops": 0,
+          "longestExposureDays": 91.6875,
+          "realizedPnl": 243.77099360946067,
+          "openExitPnl": -7.767487177371095,
+          "fees": 14.772345965068594,
+          "open": true,
+          "paramsSha256": "d1cfd7e232de2240d048e8529049d1474939c3f1119ada44278d3fedc17850da"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 53.055557,
+      "rank": 9,
+      "components": {
+        "netReturn": {
+          "percentile": 72.222222,
+          "points": 25.277778
+        },
+        "drawdown": {
+          "percentile": 38.888889,
+          "points": 11.666667
+        },
+        "costPenalty": {
+          "percentile": 27.777778,
+          "points": 5.555556
+        },
+        "cyclesPer30d": {
+          "percentile": 66.666667,
+          "points": 6.666667
+        },
+        "longestExposureDays": {
+          "percentile": 77.777778,
+          "points": 3.888889
+        }
+      }
+    },
+    {
+      "symbol": "BTCUSDT",
+      "tf": "5m",
+      "enabled": true,
+      "dataSha256": "2cb05afcfc3320b37ae67d440db7630d0915b95497923866792deb44162b6550",
+      "status": "rated",
+      "values": {
+        "netReturn": 12.439733899038943,
+        "drawdown": 9.40639977019884,
+        "costPenalty": 1.0636054064985956,
+        "cyclesPer30d": 2.2100313479623823,
+        "longestExposureDays": 105.70138888888889
+      },
+      "worstCostReturn": 11.376128492540348,
+      "minCycles": 45,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 12.577957186075139,
+          "drawdown": 9.401043711512438,
+          "cycles": 47,
+          "stops": 0,
+          "longestExposureDays": 105.70138888888889,
+          "realizedPnl": 104.10049201560105,
+          "openExitPnl": -3.4768345269999372,
+          "fees": 6.901402121800005,
+          "open": true,
+          "paramsSha256": "8e5167e84e831448061a4cb0272b395d7ef8c970169d617a26653f3859ff9ae9"
+        },
+        {
+          "bps": 2,
+          "netReturn": 12.439733899038943,
+          "drawdown": 9.40639977019884,
+          "cycles": 47,
+          "stops": 0,
+          "longestExposureDays": 105.70138888888889,
+          "realizedPnl": 103.041283713501,
+          "openExitPnl": -3.5234125211894707,
+          "fees": 6.900600983206962,
+          "open": true,
+          "paramsSha256": "e9af7a4d8c284cec745c2cf2c6c7ee869b4dbf934c9698b07cfa0786e2d78999"
+        },
+        {
+          "bps": 5,
+          "netReturn": 12.224659704011898,
+          "drawdown": 9.429411713870113,
+          "cycles": 47,
+          "stops": 0,
+          "longestExposureDays": 105.70138888888889,
+          "realizedPnl": 101.39055714456913,
+          "openExitPnl": -3.5932795124739414,
+          "fees": 6.901224946150748,
+          "open": true,
+          "paramsSha256": "508ec575f6a4ed23dd91437d7d9c4a17194c8408e149f1bf92066b727dfa271d"
+        },
+        {
+          "bps": 10,
+          "netReturn": 11.376128492540348,
+          "drawdown": 9.512578677323583,
+          "cycles": 45,
+          "stops": 0,
+          "longestExposureDays": 105.70833333333333,
+          "realizedPnl": 94.80469175943813,
+          "openExitPnl": -3.7956638191153615,
+          "fees": 6.759487882867999,
+          "open": true,
+          "paramsSha256": "7b267ace7ded076e9c0f943f3803efca2e933b93f2aa62e7f44ed94de08458bc"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 49.444444,
+      "rank": 10,
+      "components": {
+        "netReturn": {
+          "percentile": 16.666667,
+          "points": 5.833333
+        },
+        "drawdown": {
+          "percentile": 94.444444,
+          "points": 28.333333
+        },
+        "costPenalty": {
+          "percentile": 55.555556,
+          "points": 11.111111
+        },
+        "cyclesPer30d": {
+          "percentile": 11.111111,
+          "points": 1.111111
+        },
+        "longestExposureDays": {
+          "percentile": 61.111111,
+          "points": 3.055556
+        }
+      }
+    },
+    {
+      "symbol": "UNIUSDT",
+      "tf": "15m",
+      "enabled": true,
+      "dataSha256": "55e78f93ed55299418de5399467c9875d0129470d30af6647b5158d8b92c78ff",
+      "status": "rated",
+      "values": {
+        "netReturn": 27.504375507550748,
+        "drawdown": 24.68282014846714,
+        "costPenalty": 0.8846070992213093,
+        "cyclesPer30d": 4.3730407523510975,
+        "longestExposureDays": 204.29166666666666
+      },
+      "worstCostReturn": 26.61976840832944,
+      "minCycles": 89,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 27.517037375125057,
+          "drawdown": 24.693757108814204,
+          "cycles": 93,
+          "stops": 0,
+          "longestExposureDays": 204.29166666666666,
+          "realizedPnl": 229.44658256300045,
+          "openExitPnl": -9.310283561999995,
+          "fees": 13.996515017000009,
+          "open": true,
+          "paramsSha256": "3bba956d52e0b50e2e8a81e8e34304c940482495eb714fec6b1b14e7c51cc483"
+        },
+        {
+          "bps": 2,
+          "netReturn": 27.504375507550748,
+          "drawdown": 24.68282014846714,
+          "cycles": 93,
+          "stops": 0,
+          "longestExposureDays": 204.29166666666666,
+          "realizedPnl": 229.47305338108208,
+          "openExitPnl": -9.4380493206761,
+          "fees": 13.9966230106064,
+          "open": true,
+          "paramsSha256": "d0507bd6514e42bb79dcbee16a7a08231f66fd51c870292e062fd9275a680877"
+        },
+        {
+          "bps": 5,
+          "netReturn": 27.314955319282035,
+          "drawdown": 24.725739854652957,
+          "cycles": 91,
+          "stops": 0,
+          "longestExposureDays": 204.29166666666666,
+          "realizedPnl": 228.1506859815097,
+          "openExitPnl": -9.631043427253417,
+          "fees": 14.007847773552504,
+          "open": true,
+          "paramsSha256": "5c8b3d4ee7cd6a71804b06d4edb9b03e1f3de83c39951619d404aa731af29355"
+        },
+        {
+          "bps": 10,
+          "netReturn": 26.61976840832944,
+          "drawdown": 24.81226892841276,
+          "cycles": 89,
+          "stops": 0,
+          "longestExposureDays": 204.29166666666666,
+          "realizedPnl": 222.90826165872454,
+          "openExitPnl": -9.950114392089063,
+          "fees": 13.883764221507,
+          "open": true,
+          "paramsSha256": "f8aa293101a6356b435b028e71ac1d115d1da5f329dde5e90768c120a52b0aea"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 48.333333,
+      "rank": 11,
+      "components": {
+        "netReturn": {
+          "percentile": 55.555556,
+          "points": 19.444444
+        },
+        "drawdown": {
+          "percentile": 22.222222,
+          "points": 6.666667
+        },
+        "costPenalty": {
+          "percentile": 72.222222,
+          "points": 14.444444
+        },
+        "cyclesPer30d": {
+          "percentile": 61.111111,
+          "points": 6.111111
+        },
+        "longestExposureDays": {
+          "percentile": 33.333333,
+          "points": 1.666667
+        }
+      }
+    },
+    {
+      "symbol": "AAVEUSDT",
+      "tf": "5m",
+      "enabled": false,
+      "dataSha256": "3baba8dd3eb1029ae0a81014038ec86331f90913f72d47407ad4957261e6bd31",
+      "status": "rated",
+      "values": {
+        "netReturn": 36.448804335188356,
+        "drawdown": 27.961615262430506,
+        "costPenalty": 2.3800063737817823,
+        "cyclesPer30d": 5.6426332288401255,
+        "longestExposureDays": 221.09027777777777
+      },
+      "worstCostReturn": 34.068797961406574,
+      "minCycles": 116,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 37.00885663750023,
+          "drawdown": 27.850608770707307,
+          "cycles": 121,
+          "stops": 0,
+          "longestExposureDays": 221.09027777777777,
+          "realizedPnl": 297.499071430002,
+          "openExitPnl": -1.4282183300001634,
+          "fees": 18.58458452999999,
+          "open": true,
+          "paramsSha256": "065b0bed62f991d1e0a3c13f3413f8480ffcb9ad82e59a4cd577ec0894230922"
+        },
+        {
+          "bps": 2,
+          "netReturn": 36.448804335188356,
+          "drawdown": 27.961615262430506,
+          "cycles": 120,
+          "stops": 0,
+          "longestExposureDays": 221.09027777777777,
+          "realizedPnl": 293.0878338039429,
+          "openExitPnl": -1.4973991224360361,
+          "fees": 18.529274170185996,
+          "open": true,
+          "paramsSha256": "0dc95d4d08e59484373c80306b49efe2c8f91a677a78efc42de212557318aa93"
+        },
+        {
+          "bps": 5,
+          "netReturn": 35.938214534916,
+          "drawdown": 28.08363183817327,
+          "cycles": 118,
+          "stops": 0,
+          "longestExposureDays": 221.09027777777777,
+          "realizedPnl": 289.12442043541796,
+          "openExitPnl": -1.6187041560899615,
+          "fees": 18.573668909905003,
+          "open": true,
+          "paramsSha256": "95a32fceb146ed91313be85d3e4af3150608b5e827908de30d90bef7774b926b"
+        },
+        {
+          "bps": 10,
+          "netReturn": 34.068797961406574,
+          "drawdown": 28.423208524658893,
+          "cycles": 116,
+          "stops": 0,
+          "longestExposureDays": 221.09027777777777,
+          "realizedPnl": 275.0320997456224,
+          "openExitPnl": -2.4817160543698265,
+          "fees": 18.45948030766,
+          "open": true,
+          "paramsSha256": "dfb754c3d362411c5b2e51d26fe2c5432fda2d5c238e99a573e2b519b17c0b5a"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 46.388888,
+      "rank": 12,
+      "components": {
+        "netReturn": {
+          "percentile": 83.333333,
+          "points": 29.166667
+        },
+        "drawdown": {
+          "percentile": 11.111111,
+          "points": 3.333333
+        },
+        "costPenalty": {
+          "percentile": 16.666667,
+          "points": 3.333333
+        },
+        "cyclesPer30d": {
+          "percentile": 94.444444,
+          "points": 9.444444
+        },
+        "longestExposureDays": {
+          "percentile": 22.222222,
+          "points": 1.111111
+        }
+      }
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "tf": "5m",
+      "enabled": false,
+      "dataSha256": "93dd10252944917e4c4c8ecdaa118311950785cf6dd273ecba82497c13c2b504",
+      "status": "rated",
+      "values": {
+        "netReturn": 43.310250340935454,
+        "drawdown": 28.209766570349665,
+        "costPenalty": 41.14822483881042,
+        "cyclesPer30d": 3.29153605015674,
+        "longestExposureDays": 249.17708333333334
+      },
+      "worstCostReturn": 2.162025502125033,
+      "minCycles": 49,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 2.162025502125033,
+          "drawdown": 32.702484226370814,
+          "cycles": 49,
+          "stops": 0,
+          "longestExposureDays": 382.90277777777777,
+          "realizedPnl": 281.5710636800002,
+          "openExitPnl": -264.2748596629999,
+          "fees": 7.84534736,
+          "open": true,
+          "paramsSha256": "9a50269b1fc5487a605f44ad4810adcf3502221c17c5144a0b79e2f4e084ed52"
+        },
+        {
+          "bps": 2,
+          "netReturn": 43.310250340935454,
+          "drawdown": 28.209766570349665,
+          "cycles": 70,
+          "stops": 0,
+          "longestExposureDays": 249.17708333333334,
+          "realizedPnl": 352.99715274329265,
+          "openExitPnl": -6.515150015809013,
+          "fees": 12.535843092780402,
+          "open": true,
+          "paramsSha256": "f3ca3ca2b75fcb1c7a63619dd9749e7df275daec6112d7dd1cea1927fd2d2b68"
+        },
+        {
+          "bps": 5,
+          "netReturn": 42.69099446906645,
+          "drawdown": 28.215239256211504,
+          "cycles": 69,
+          "stops": 0,
+          "longestExposureDays": 249.17708333333334,
+          "realizedPnl": 349.65021658729506,
+          "openExitPnl": -8.122260834763438,
+          "fees": 12.482626054017,
+          "open": true,
+          "paramsSha256": "4a44ab75ad2d0ca1d178bb392c101790d1d54cf535b727274448cb179977809f"
+        },
+        {
+          "bps": 10,
+          "netReturn": 41.573075573282495,
+          "drawdown": 28.19272851013765,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 249.17708333333334,
+          "realizedPnl": 340.94635569953175,
+          "openExitPnl": -8.361751113271794,
+          "fees": 12.198508604992,
+          "open": true,
+          "paramsSha256": "90c3dd2d2c1cb633971e6b667f0e32249150a618a062582c7bf71ace15e6eb0a"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 39.722223,
+      "rank": 13,
+      "components": {
+        "netReturn": {
+          "percentile": 94.444444,
+          "points": 33.055556
+        },
+        "drawdown": {
+          "percentile": 5.555556,
+          "points": 1.666667
+        },
+        "costPenalty": {
+          "percentile": 0,
+          "points": 0
+        },
+        "cyclesPer30d": {
+          "percentile": 44.444444,
+          "points": 4.444444
+        },
+        "longestExposureDays": {
+          "percentile": 11.111111,
+          "points": 0.555556
+        }
+      }
+    },
+    {
+      "symbol": "BCHUSDT",
+      "tf": "30m",
+      "enabled": false,
+      "dataSha256": "967925c1e8a4cf287da4e25e5193dba4dbcac77d27dce14d4a05775840570c4d",
+      "status": "rated",
+      "values": {
+        "netReturn": 19.287999703456634,
+        "drawdown": 24.981413268357766,
+        "costPenalty": 1.001372896232823,
+        "cyclesPer30d": 3.103448275862069,
+        "longestExposureDays": 138.1875
+      },
+      "worstCostReturn": 18.28662680722381,
+      "minCycles": 66,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 19.480704990000035,
+          "drawdown": 24.944810889441495,
+          "cycles": 66,
+          "stops": 0,
+          "longestExposureDays": 138.1875,
+          "realizedPnl": 155.84563992000028,
+          "openExitPnl": 0,
+          "fees": 8.630300079999996,
+          "open": false,
+          "paramsSha256": "3e82982c14d5b34323445d9a0c13ef35e60a8b3b39f0cbbb620f7e2ffb517dcf"
+        },
+        {
+          "bps": 2,
+          "netReturn": 19.287999703456634,
+          "drawdown": 24.981413268357766,
+          "cycles": 66,
+          "stops": 0,
+          "longestExposureDays": 138.1875,
+          "realizedPnl": 154.30399762765308,
+          "openExitPnl": 0,
+          "fees": 8.628546488348,
+          "open": false,
+          "paramsSha256": "f1ce24b290aeafa6972d533156a8582a8908d66ac11b624a9631fdea842fb9cf"
+        },
+        {
+          "bps": 5,
+          "netReturn": 18.835964903017555,
+          "drawdown": 25.75036528913342,
+          "cycles": 67,
+          "stops": 0,
+          "longestExposureDays": 138.39583333333334,
+          "realizedPnl": 150.68771922414044,
+          "openExitPnl": 0,
+          "fees": 8.787013205860008,
+          "open": false,
+          "paramsSha256": "61788856a1677e54ed4a1afd9a551450d78ca9b0a288b7c1fb3a99cfff8a4718"
+        },
+        {
+          "bps": 10,
+          "netReturn": 18.28662680722381,
+          "drawdown": 25.85045371312184,
+          "cycles": 66,
+          "stops": 0,
+          "longestExposureDays": 138.39583333333334,
+          "realizedPnl": 146.2930144577905,
+          "openExitPnl": 0,
+          "fees": 8.732305892209999,
+          "open": false,
+          "paramsSha256": "308e0df977bcfe0f98411e8dc5c4cc55ebf12dbbb5ead2437c6f88167e67431b"
+        }
+      ],
+      "flags": [],
+      "score": 38.055555,
+      "rank": 14,
+      "components": {
+        "netReturn": {
+          "percentile": 38.888889,
+          "points": 13.611111
+        },
+        "drawdown": {
+          "percentile": 16.666667,
+          "points": 5
+        },
+        "costPenalty": {
+          "percentile": 66.666667,
+          "points": 13.333333
+        },
+        "cyclesPer30d": {
+          "percentile": 38.888889,
+          "points": 3.888889
+        },
+        "longestExposureDays": {
+          "percentile": 44.444444,
+          "points": 2.222222
+        }
+      }
+    },
+    {
+      "symbol": "BNBUSDT",
+      "tf": "15m",
+      "enabled": false,
+      "dataSha256": "69700b35de8e27ac2595eb2aed84d1e1f0837f6e213ff7050ff3077127f96fb6",
+      "status": "rated",
+      "values": {
+        "netReturn": 11.616368878512787,
+        "drawdown": 10.10338126998976,
+        "costPenalty": 19.44948002226272,
+        "cyclesPer30d": 1.974921630094044,
+        "longestExposureDays": 136.20833333333334
+      },
+      "worstCostReturn": -7.833111143749932,
+      "minCycles": 34,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": -7.833111143749932,
+          "drawdown": 24.71148006796383,
+          "cycles": 34,
+          "stops": 0,
+          "longestExposureDays": 382.7916666666667,
+          "realizedPnl": 52.40390898000055,
+          "openExitPnl": -115.06879813,
+          "fees": 3.9047797499999994,
+          "open": true,
+          "paramsSha256": "1c9f0e9d1c4cabebeb36ca61a022559decde0478dce322f4d9b2b9fdba2719c7"
+        },
+        {
+          "bps": 2,
+          "netReturn": 11.616368878512787,
+          "drawdown": 10.10338126998976,
+          "cycles": 42,
+          "stops": 0,
+          "longestExposureDays": 136.20833333333334,
+          "realizedPnl": 95.64456912716435,
+          "openExitPnl": -2.713618099062046,
+          "fees": 6.3432415526679975,
+          "open": true,
+          "paramsSha256": "83363dfe9dd89b81d171f5e680ba01ad3e2b729ccd875264172a917b0c1942f5"
+        },
+        {
+          "bps": 5,
+          "netReturn": 11.533567150968793,
+          "drawdown": 10.092251396441364,
+          "cycles": 42,
+          "stops": 0,
+          "longestExposureDays": 136.20833333333334,
+          "realizedPnl": 95.05173294040526,
+          "openExitPnl": -2.7831957326549173,
+          "fees": 6.343271724174998,
+          "open": true,
+          "paramsSha256": "9ffe7b7c1e0f00f81a782cdb28e8539c0ba275f3f6c373e4802c67b8b65e8af0"
+        },
+        {
+          "bps": 10,
+          "netReturn": 11.161649175177573,
+          "drawdown": 10.066500469475672,
+          "cycles": 42,
+          "stops": 0,
+          "longestExposureDays": 136.22916666666666,
+          "realizedPnl": 92.19235185673062,
+          "openExitPnl": -2.899158455310044,
+          "fees": 6.339433092430003,
+          "open": true,
+          "paramsSha256": "59ddfcc51ca716661baed1e6c614cf2fa73285f31f9ae25e8b31924426c8b344"
+        }
+      ],
+      "flags": [
+        "NEGATIVE_COST_SCENARIO",
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 35.277778,
+      "rank": 15,
+      "components": {
+        "netReturn": {
+          "percentile": 11.111111,
+          "points": 3.888889
+        },
+        "drawdown": {
+          "percentile": 88.888889,
+          "points": 26.666667
+        },
+        "costPenalty": {
+          "percentile": 11.111111,
+          "points": 2.222222
+        },
+        "cyclesPer30d": {
+          "percentile": 0,
+          "points": 0
+        },
+        "longestExposureDays": {
+          "percentile": 50,
+          "points": 2.5
+        }
+      }
+    },
+    {
+      "symbol": "ETHUSDT",
+      "tf": "5m",
+      "enabled": false,
+      "dataSha256": "02f72fe1409cbed33f74b1555f44e4a2591dcdb4b8c8795566e11432333df28d",
+      "status": "rated",
+      "values": {
+        "netReturn": 17.115707557342162,
+        "drawdown": 21.529527684123664,
+        "costPenalty": 1.2603355619716723,
+        "cyclesPer30d": 2.9623824451410656,
+        "longestExposureDays": 219.48611111111111
+      },
+      "worstCostReturn": 15.85537199537049,
+      "minCycles": 60,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 17.701671324000046,
+          "drawdown": 21.555647821981218,
+          "cycles": 63,
+          "stops": 0,
+          "longestExposureDays": 219.47916666666666,
+          "realizedPnl": 155.2567516510004,
+          "openExitPnl": -13.643381059000035,
+          "fees": 10.170937968000004,
+          "open": true,
+          "paramsSha256": "d9a1d1d8d017b12c14546657ef7286bb18f8e819f76f752e73961ebfa730a530"
+        },
+        {
+          "bps": 2,
+          "netReturn": 17.115707557342162,
+          "drawdown": 21.529527684123664,
+          "cycles": 63,
+          "stops": 0,
+          "longestExposureDays": 219.48611111111111,
+          "realizedPnl": 150.64748457977305,
+          "openExitPnl": -13.721824121035752,
+          "fees": 10.165577927750999,
+          "open": true,
+          "paramsSha256": "9034fb1423b4dafb18a1df4cb31b3093160b6b9d5ca65a2b53fa9955489beaf6"
+        },
+        {
+          "bps": 5,
+          "netReturn": 16.49478261197082,
+          "drawdown": 21.640991122673924,
+          "cycles": 62,
+          "stops": 0,
+          "longestExposureDays": 219.48611111111111,
+          "realizedPnl": 145.84683446719941,
+          "openExitPnl": -13.888573571432858,
+          "fees": 10.108999586171999,
+          "open": true,
+          "paramsSha256": "094bf65655ff667dc80692eeb57890cb86b400e0d8ff2bd718972c94a3fe9f2c"
+        },
+        {
+          "bps": 10,
+          "netReturn": 15.85537199537049,
+          "drawdown": 21.727780078620714,
+          "cycles": 60,
+          "stops": 0,
+          "longestExposureDays": 219.48611111111111,
+          "realizedPnl": 140.9386328109839,
+          "openExitPnl": -14.095656848019985,
+          "fees": 10.042859740910004,
+          "open": true,
+          "paramsSha256": "be6a9b26983851bd792b955bc950c17c3a24c0e6adb99e0c1b08cdd2a738010e"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 32.222222,
+      "rank": 16,
+      "components": {
+        "netReturn": {
+          "percentile": 27.777778,
+          "points": 9.722222
+        },
+        "drawdown": {
+          "percentile": 33.333333,
+          "points": 10
+        },
+        "costPenalty": {
+          "percentile": 44.444444,
+          "points": 8.888889
+        },
+        "cyclesPer30d": {
+          "percentile": 22.222222,
+          "points": 2.222222
+        },
+        "longestExposureDays": {
+          "percentile": 27.777778,
+          "points": 1.388889
+        }
+      }
+    },
+    {
+      "symbol": "SOLUSDT",
+      "tf": "30m",
+      "enabled": false,
+      "dataSha256": "1cb8e71caaaff56c4d80a0b6ada0db4ef7af041cee9998c3f8bdddd9befb977c",
+      "status": "rated",
+      "values": {
+        "netReturn": 17.12142155256838,
+        "drawdown": 23.68752181549139,
+        "costPenalty": 1.4473325606444831,
+        "cyclesPer30d": 3.0564263322884013,
+        "longestExposureDays": 221.64583333333334
+      },
+      "worstCostReturn": 15.674088991923895,
+      "minCycles": 60,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 17.266447996250065,
+          "drawdown": 23.661269861986202,
+          "cycles": 66,
+          "stops": 0,
+          "longestExposureDays": 221.64583333333334,
+          "realizedPnl": 149.1109430300005,
+          "openExitPnl": -10.979359059999979,
+          "fees": 8.850568469999994,
+          "open": true,
+          "paramsSha256": "ecd818e2a10095d725443f0eb65b5ffd6220c1570e1afe275771ddad6295f655"
+        },
+        {
+          "bps": 2,
+          "netReturn": 17.12142155256838,
+          "drawdown": 23.68752181549139,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 221.64583333333334,
+          "realizedPnl": 148.02323049206495,
+          "openExitPnl": -11.051858071517927,
+          "fees": 8.800509501857999,
+          "open": true,
+          "paramsSha256": "b52d5f38f4a0d0a11cfd0cdcf2b5ef80d9325f3782e58cd92612dc300fc72af3"
+        },
+        {
+          "bps": 5,
+          "netReturn": 16.554499786237557,
+          "drawdown": 23.839522405504617,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 221.64583333333334,
+          "realizedPnl": 143.60642602369546,
+          "openExitPnl": -11.170427733795009,
+          "fees": 8.796950961110005,
+          "open": true,
+          "paramsSha256": "9a1943485cdae7523a59335017e67796fd5fa63b948a8f9ba7cd6b113ce7bff8"
+        },
+        {
+          "bps": 10,
+          "netReturn": 15.674088991923895,
+          "drawdown": 24.021502189657447,
+          "cycles": 60,
+          "stops": 0,
+          "longestExposureDays": 221.64583333333334,
+          "realizedPnl": 136.74012177315115,
+          "openExitPnl": -11.347409837759983,
+          "fees": 8.52932880555,
+          "open": true,
+          "paramsSha256": "95f1c5283b70bd23d92aadf10d1d3f977c60c722fd6153b446e173bd4528280c"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 30.555556,
+      "rank": 17,
+      "components": {
+        "netReturn": {
+          "percentile": 33.333333,
+          "points": 11.666667
+        },
+        "drawdown": {
+          "percentile": 27.777778,
+          "points": 8.333333
+        },
+        "costPenalty": {
+          "percentile": 33.333333,
+          "points": 6.666667
+        },
+        "cyclesPer30d": {
+          "percentile": 30.555556,
+          "points": 3.055556
+        },
+        "longestExposureDays": {
+          "percentile": 16.666667,
+          "points": 0.833333
+        }
+      }
+    },
+    {
+      "symbol": "LTCUSDT",
+      "tf": "15m",
+      "enabled": false,
+      "dataSha256": "95d754200991c1a5712b46a185d5e8565ccb47d817d68e7dc60f5bb5ad9c11cb",
+      "status": "rated",
+      "values": {
+        "netReturn": 15.420123400889993,
+        "drawdown": 19.792999981753546,
+        "costPenalty": 1.8301202350524637,
+        "cyclesPer30d": 3.0564263322884013,
+        "longestExposureDays": 256.9166666666667
+      },
+      "worstCostReturn": 13.59000316583753,
+      "minCycles": 64,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 15.133689437500095,
+          "drawdown": 19.846529256835105,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 256.9166666666667,
+          "realizedPnl": 139.25765120000085,
+          "openExitPnl": -18.18813570000009,
+          "fees": 8.459868299999997,
+          "open": true,
+          "paramsSha256": "c08edfa09816b88a128a302a26441cd7a2d94bdc64ebe3d686b56993579136bc"
+        },
+        {
+          "bps": 2,
+          "netReturn": 15.420123400889993,
+          "drawdown": 19.792999981753546,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 256.9166666666667,
+          "realizedPnl": 141.62609360778004,
+          "openExitPnl": -18.265106400660102,
+          "fees": 8.712026696119999,
+          "open": true,
+          "paramsSha256": "9010c96d875a0eac816351a0b79b1de7539691b41243db5c26a2e5283f10376e"
+        },
+        {
+          "bps": 5,
+          "netReturn": 15.020411801925079,
+          "drawdown": 19.8541834556193,
+          "cycles": 64,
+          "stops": 0,
+          "longestExposureDays": 256.9166666666667,
+          "realizedPnl": 138.54385686705064,
+          "openExitPnl": -18.380562451650007,
+          "fees": 8.661557042700007,
+          "open": true,
+          "paramsSha256": "20135b53ca2f31381869bf7b9ebb5aa6157446e0655f44325100a21a56fc358d"
+        },
+        {
+          "bps": 10,
+          "netReturn": 13.59000316583753,
+          "drawdown": 19.9912519938969,
+          "cycles": 64,
+          "stops": 0,
+          "longestExposureDays": 256.9270833333333,
+          "realizedPnl": 127.53046196920025,
+          "openExitPnl": -18.810436642500008,
+          "fees": 8.820498531700004,
+          "open": true,
+          "paramsSha256": "89e0eb1918f3f5c53681a27bc8c485602d295a648579152fa58376e20e6662d0"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 28.888889,
+      "rank": 18,
+      "components": {
+        "netReturn": {
+          "percentile": 22.222222,
+          "points": 7.777778
+        },
+        "drawdown": {
+          "percentile": 44.444444,
+          "points": 13.333333
+        },
+        "costPenalty": {
+          "percentile": 22.222222,
+          "points": 4.444444
+        },
+        "cyclesPer30d": {
+          "percentile": 30.555556,
+          "points": 3.055556
+        },
+        "longestExposureDays": {
+          "percentile": 5.555556,
+          "points": 0.277778
+        }
+      }
+    },
+    {
+      "symbol": "SUIUSDT",
+      "tf": "5m",
+      "enabled": false,
+      "dataSha256": "22754ead97372dd23322d2240e85371b9e4dc5660959b7d4e2d8a1d2520b8c05",
+      "status": "rated",
+      "values": {
+        "netReturn": -2.8630253983874923,
+        "drawdown": 33.7016028200682,
+        "costPenalty": 1.2895914526019112,
+        "cyclesPer30d": 4.702194357366771,
+        "longestExposureDays": 369.68055555555554
+      },
+      "worstCostReturn": -4.1526168509894035,
+      "minCycles": 96,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 43.4338641060626,
+          "drawdown": 17.605778906119273,
+          "cycles": 138,
+          "stops": 0,
+          "longestExposureDays": 112.83680555555556,
+          "realizedPnl": 375.4514818133007,
+          "openExitPnl": -27.980568964799886,
+          "fees": 21.585070043299996,
+          "open": true,
+          "paramsSha256": "f8dc40be6d6631be83b3cd1bac32e1d5f69774e6496dca9547b78f5fcd8bac15"
+        },
+        {
+          "bps": 2,
+          "netReturn": -2.8630253983874923,
+          "drawdown": 33.7016028200682,
+          "cycles": 100,
+          "stops": 0,
+          "longestExposureDays": 369.68055555555554,
+          "realizedPnl": 259.8418288886553,
+          "openExitPnl": -282.74603207575524,
+          "fees": 14.54438000398284,
+          "open": true,
+          "paramsSha256": "4256bf41287ea4d5a457de47abf519c80a19f75c620503e23fb6a0b1c1bb5c4e"
+        },
+        {
+          "bps": 5,
+          "netReturn": -3.2519073176253244,
+          "drawdown": 33.79788453638318,
+          "cycles": 96,
+          "stops": 0,
+          "longestExposureDays": 369.68055555555554,
+          "realizedPnl": 257.11437333424215,
+          "openExitPnl": -283.12963187524474,
+          "fees": 14.341482738861648,
+          "open": true,
+          "paramsSha256": "66498fb3d85035820e4e363664875587550abdb03105cbdb10d26126c752877a"
+        },
+        {
+          "bps": 10,
+          "netReturn": -4.1526168509894035,
+          "drawdown": 34.01758522046408,
+          "cycles": 96,
+          "stops": 0,
+          "longestExposureDays": 369.68055555555554,
+          "realizedPnl": 250.14495852158507,
+          "openExitPnl": -283.3658933295003,
+          "fees": 14.334497250310292,
+          "open": true,
+          "paramsSha256": "3338fa7629c4e25811757f6717442497f86d325c9255739e95a3b86615fbc453"
+        }
+      ],
+      "flags": [
+        "NEGATIVE_BASE_RETURN",
+        "NEGATIVE_COST_SCENARIO",
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 15.833334,
+      "rank": 19,
+      "components": {
+        "netReturn": {
+          "percentile": 0,
+          "points": 0
+        },
+        "drawdown": {
+          "percentile": 0,
+          "points": 0
+        },
+        "costPenalty": {
+          "percentile": 38.888889,
+          "points": 7.777778
+        },
+        "cyclesPer30d": {
+          "percentile": 80.555556,
+          "points": 8.055556
+        },
+        "longestExposureDays": {
+          "percentile": 0,
+          "points": 0
+        }
+      }
+    }
+  ],
+  "observations": [
+    {
+      "symbol": "BTCUSDT",
+      "tf": "5m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "2cb05afcfc3320b37ae67d440db7630d0915b95497923866792deb44162b6550",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 12.577957186075139,
+          "drawdown": 9.401043711512438,
+          "cycles": 47,
+          "stops": 0,
+          "longestExposureDays": 105.70138888888889,
+          "realizedPnl": 104.10049201560105,
+          "openExitPnl": -3.4768345269999372,
+          "fees": 6.901402121800005,
+          "open": true,
+          "paramsSha256": "8e5167e84e831448061a4cb0272b395d7ef8c970169d617a26653f3859ff9ae9"
+        },
+        {
+          "bps": 2,
+          "netReturn": 12.439733899038943,
+          "drawdown": 9.40639977019884,
+          "cycles": 47,
+          "stops": 0,
+          "longestExposureDays": 105.70138888888889,
+          "realizedPnl": 103.041283713501,
+          "openExitPnl": -3.5234125211894707,
+          "fees": 6.900600983206962,
+          "open": true,
+          "paramsSha256": "e9af7a4d8c284cec745c2cf2c6c7ee869b4dbf934c9698b07cfa0786e2d78999"
+        },
+        {
+          "bps": 5,
+          "netReturn": 12.224659704011898,
+          "drawdown": 9.429411713870113,
+          "cycles": 47,
+          "stops": 0,
+          "longestExposureDays": 105.70138888888889,
+          "realizedPnl": 101.39055714456913,
+          "openExitPnl": -3.5932795124739414,
+          "fees": 6.901224946150748,
+          "open": true,
+          "paramsSha256": "508ec575f6a4ed23dd91437d7d9c4a17194c8408e149f1bf92066b727dfa271d"
+        },
+        {
+          "bps": 10,
+          "netReturn": 11.376128492540348,
+          "drawdown": 9.512578677323583,
+          "cycles": 45,
+          "stops": 0,
+          "longestExposureDays": 105.70833333333333,
+          "realizedPnl": 94.80469175943813,
+          "openExitPnl": -3.7956638191153615,
+          "fees": 6.759487882867999,
+          "open": true,
+          "paramsSha256": "7b267ace7ded076e9c0f943f3803efca2e933b93f2aa62e7f44ed94de08458bc"
+        }
+      ]
+    },
+    {
+      "symbol": "SOLUSDT",
+      "tf": "30m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "1cb8e71caaaff56c4d80a0b6ada0db4ef7af041cee9998c3f8bdddd9befb977c",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 17.266447996250065,
+          "drawdown": 23.661269861986202,
+          "cycles": 66,
+          "stops": 0,
+          "longestExposureDays": 221.64583333333334,
+          "realizedPnl": 149.1109430300005,
+          "openExitPnl": -10.979359059999979,
+          "fees": 8.850568469999994,
+          "open": true,
+          "paramsSha256": "ecd818e2a10095d725443f0eb65b5ffd6220c1570e1afe275771ddad6295f655"
+        },
+        {
+          "bps": 2,
+          "netReturn": 17.12142155256838,
+          "drawdown": 23.68752181549139,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 221.64583333333334,
+          "realizedPnl": 148.02323049206495,
+          "openExitPnl": -11.051858071517927,
+          "fees": 8.800509501857999,
+          "open": true,
+          "paramsSha256": "b52d5f38f4a0d0a11cfd0cdcf2b5ef80d9325f3782e58cd92612dc300fc72af3"
+        },
+        {
+          "bps": 5,
+          "netReturn": 16.554499786237557,
+          "drawdown": 23.839522405504617,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 221.64583333333334,
+          "realizedPnl": 143.60642602369546,
+          "openExitPnl": -11.170427733795009,
+          "fees": 8.796950961110005,
+          "open": true,
+          "paramsSha256": "9a1943485cdae7523a59335017e67796fd5fa63b948a8f9ba7cd6b113ce7bff8"
+        },
+        {
+          "bps": 10,
+          "netReturn": 15.674088991923895,
+          "drawdown": 24.021502189657447,
+          "cycles": 60,
+          "stops": 0,
+          "longestExposureDays": 221.64583333333334,
+          "realizedPnl": 136.74012177315115,
+          "openExitPnl": -11.347409837759983,
+          "fees": 8.52932880555,
+          "open": true,
+          "paramsSha256": "95f1c5283b70bd23d92aadf10d1d3f977c60c722fd6153b446e173bd4528280c"
+        }
+      ]
+    },
+    {
+      "symbol": "UNIUSDT",
+      "tf": "15m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "55e78f93ed55299418de5399467c9875d0129470d30af6647b5158d8b92c78ff",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 27.517037375125057,
+          "drawdown": 24.693757108814204,
+          "cycles": 93,
+          "stops": 0,
+          "longestExposureDays": 204.29166666666666,
+          "realizedPnl": 229.44658256300045,
+          "openExitPnl": -9.310283561999995,
+          "fees": 13.996515017000009,
+          "open": true,
+          "paramsSha256": "3bba956d52e0b50e2e8a81e8e34304c940482495eb714fec6b1b14e7c51cc483"
+        },
+        {
+          "bps": 2,
+          "netReturn": 27.504375507550748,
+          "drawdown": 24.68282014846714,
+          "cycles": 93,
+          "stops": 0,
+          "longestExposureDays": 204.29166666666666,
+          "realizedPnl": 229.47305338108208,
+          "openExitPnl": -9.4380493206761,
+          "fees": 13.9966230106064,
+          "open": true,
+          "paramsSha256": "d0507bd6514e42bb79dcbee16a7a08231f66fd51c870292e062fd9275a680877"
+        },
+        {
+          "bps": 5,
+          "netReturn": 27.314955319282035,
+          "drawdown": 24.725739854652957,
+          "cycles": 91,
+          "stops": 0,
+          "longestExposureDays": 204.29166666666666,
+          "realizedPnl": 228.1506859815097,
+          "openExitPnl": -9.631043427253417,
+          "fees": 14.007847773552504,
+          "open": true,
+          "paramsSha256": "5c8b3d4ee7cd6a71804b06d4edb9b03e1f3de83c39951619d404aa731af29355"
+        },
+        {
+          "bps": 10,
+          "netReturn": 26.61976840832944,
+          "drawdown": 24.81226892841276,
+          "cycles": 89,
+          "stops": 0,
+          "longestExposureDays": 204.29166666666666,
+          "realizedPnl": 222.90826165872454,
+          "openExitPnl": -9.950114392089063,
+          "fees": 13.883764221507,
+          "open": true,
+          "paramsSha256": "f8aa293101a6356b435b028e71ac1d115d1da5f329dde5e90768c120a52b0aea"
+        }
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "tf": "5m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "02f72fe1409cbed33f74b1555f44e4a2591dcdb4b8c8795566e11432333df28d",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 17.701671324000046,
+          "drawdown": 21.555647821981218,
+          "cycles": 63,
+          "stops": 0,
+          "longestExposureDays": 219.47916666666666,
+          "realizedPnl": 155.2567516510004,
+          "openExitPnl": -13.643381059000035,
+          "fees": 10.170937968000004,
+          "open": true,
+          "paramsSha256": "d9a1d1d8d017b12c14546657ef7286bb18f8e819f76f752e73961ebfa730a530"
+        },
+        {
+          "bps": 2,
+          "netReturn": 17.115707557342162,
+          "drawdown": 21.529527684123664,
+          "cycles": 63,
+          "stops": 0,
+          "longestExposureDays": 219.48611111111111,
+          "realizedPnl": 150.64748457977305,
+          "openExitPnl": -13.721824121035752,
+          "fees": 10.165577927750999,
+          "open": true,
+          "paramsSha256": "9034fb1423b4dafb18a1df4cb31b3093160b6b9d5ca65a2b53fa9955489beaf6"
+        },
+        {
+          "bps": 5,
+          "netReturn": 16.49478261197082,
+          "drawdown": 21.640991122673924,
+          "cycles": 62,
+          "stops": 0,
+          "longestExposureDays": 219.48611111111111,
+          "realizedPnl": 145.84683446719941,
+          "openExitPnl": -13.888573571432858,
+          "fees": 10.108999586171999,
+          "open": true,
+          "paramsSha256": "094bf65655ff667dc80692eeb57890cb86b400e0d8ff2bd718972c94a3fe9f2c"
+        },
+        {
+          "bps": 10,
+          "netReturn": 15.85537199537049,
+          "drawdown": 21.727780078620714,
+          "cycles": 60,
+          "stops": 0,
+          "longestExposureDays": 219.48611111111111,
+          "realizedPnl": 140.9386328109839,
+          "openExitPnl": -14.095656848019985,
+          "fees": 10.042859740910004,
+          "open": true,
+          "paramsSha256": "be6a9b26983851bd792b955bc950c17c3a24c0e6adb99e0c1b08cdd2a738010e"
+        }
+      ]
+    },
+    {
+      "symbol": "XRPUSDT",
+      "tf": "45m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "a7dd514ec9a51b34a7955cde10db1b34dcc0b92e6a5dcae9e823d2b40d55cea4",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 22.35251990000009,
+          "drawdown": 11.107581919543263,
+          "cycles": 59,
+          "stops": 0,
+          "longestExposureDays": 46.53125,
+          "realizedPnl": 189.35578170000053,
+          "openExitPnl": -10.535622499999818,
+          "fees": 8.936152000000002,
+          "open": true,
+          "paramsSha256": "cf1ad9bc472555cd29c601fb93930f8ddcd435dfe19343d8d3575089dce4b13a"
+        },
+        {
+          "bps": 2,
+          "netReturn": 21.870197032837595,
+          "drawdown": 11.156601992366886,
+          "cycles": 59,
+          "stops": 0,
+          "longestExposureDays": 46.53125,
+          "realizedPnl": 185.57534529168072,
+          "openExitPnl": -10.61376902897996,
+          "fees": 8.936346175060002,
+          "open": true,
+          "paramsSha256": "88111f4ae4fb08b04fe3ecf802251b1e55d38adae0f0f0f7ed44a7f41b483298"
+        },
+        {
+          "bps": 5,
+          "netReturn": 22.0382989488001,
+          "drawdown": 11.15021567738086,
+          "cycles": 58,
+          "stops": 0,
+          "longestExposureDays": 46.53125,
+          "realizedPnl": 187.0373804128509,
+          "openExitPnl": -10.730988822450058,
+          "fees": 9.059380254000004,
+          "open": true,
+          "paramsSha256": "1fd4443e346ad676a8ba4bbcf1b3b8bbe358fa00ac70b72ff861e2a64ccecb65"
+        },
+        {
+          "bps": 10,
+          "netReturn": 24.056735976712687,
+          "drawdown": 10.966292411403247,
+          "cycles": 59,
+          "stops": 0,
+          "longestExposureDays": 46.53125,
+          "realizedPnl": 203.38024295860146,
+          "openExitPnl": -10.926355144899958,
+          "fees": 9.189701975099998,
+          "open": true,
+          "paramsSha256": "0e6a5b6e143a94f104562d75b963c5a0016e7ccff7d9ccdde8a7477afc6776a4"
+        }
+      ]
+    },
+    {
+      "symbol": "ADAUSDT",
+      "tf": "5m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "6815422724238b20dceee05c4fcc3d5c7978d0d68e130f8e3157703a2f8cfab5",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 37.60048056250017,
+          "drawdown": 17.091941685870275,
+          "cycles": 100,
+          "stops": 0,
+          "longestExposureDays": 102.50694444444444,
+          "realizedPnl": 324.0105062000014,
+          "openExitPnl": -23.20666170000004,
+          "fees": 17.500586500000008,
+          "open": true,
+          "paramsSha256": "88491251e69ad57ebe578ffd1d33611ccfef106d62df3a5e6318fb80c4b14a35"
+        },
+        {
+          "bps": 2,
+          "netReturn": 37.55035450551773,
+          "drawdown": 17.080816169534025,
+          "cycles": 100,
+          "stops": 0,
+          "longestExposureDays": 102.50694444444444,
+          "realizedPnl": 323.68609464888164,
+          "openExitPnl": -23.283258604739785,
+          "fees": 17.501509589659996,
+          "open": true,
+          "paramsSha256": "0748428f3f734074a0d75893c798fc8d29732a7609d79375db4902ec3ded4def"
+        },
+        {
+          "bps": 5,
+          "netReturn": 36.416873160431464,
+          "drawdown": 17.329340514514065,
+          "cycles": 98,
+          "stops": 0,
+          "longestExposureDays": 102.50694444444444,
+          "realizedPnl": 314.7247485414016,
+          "openExitPnl": -23.38976325794988,
+          "fees": 17.50810410454999,
+          "open": true,
+          "paramsSha256": "0f672f194231814ee219a7f2b5568b3d1f173466ca005daa3d98b9a198169901"
+        },
+        {
+          "bps": 10,
+          "netReturn": 5.128827530150204,
+          "drawdown": 28.379155631792248,
+          "cycles": 64,
+          "stops": 0,
+          "longestExposureDays": 290.52777777777777,
+          "realizedPnl": 231.1017768153015,
+          "openExitPnl": -190.07115657409986,
+          "fees": 12.275556788799996,
+          "open": true,
+          "paramsSha256": "5e31b8364ea6ebcd2f3abf73cbd6099de99bc9463040e3c26be4aa6b7ce326d9"
+        }
+      ]
+    },
+    {
+      "symbol": "ZECUSDT",
+      "tf": "5m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "805e4cc8e1646b8f50950edf3b6099701b220e0111d207a4528081f77c8bfdd4",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 67.90383871425038,
+          "drawdown": 15.96868883437011,
+          "cycles": 272,
+          "stops": 0,
+          "longestExposureDays": 28.67013888888889,
+          "realizedPnl": 543.4356531780029,
+          "openExitPnl": -0.20494346399982533,
+          "fees": 34.186308170000004,
+          "open": true,
+          "paramsSha256": "fed87382b393458431195349640aa1696ab35e1eea104e34ff0e2c2e4934c2d9"
+        },
+        {
+          "bps": 2,
+          "netReturn": 67.72779654894384,
+          "drawdown": 15.997936674969493,
+          "cycles": 270,
+          "stops": 0,
+          "longestExposureDays": 31.11111111111111,
+          "realizedPnl": 542.0372581793972,
+          "openExitPnl": -0.2148857878464696,
+          "fees": 34.08468375487444,
+          "open": true,
+          "paramsSha256": "b4885bd9ee7d24fc556cf5a4e597f5d868b7b8390716dc88d0025cb9a2bb9980"
+        },
+        {
+          "bps": 5,
+          "netReturn": 66.65525829963926,
+          "drawdown": 16.07990564863623,
+          "cycles": 269,
+          "stops": 0,
+          "longestExposureDays": 32.06944444444444,
+          "realizedPnl": 533.47186567073,
+          "openExitPnl": -0.2297992736159813,
+          "fees": 33.55390873994599,
+          "open": true,
+          "paramsSha256": "97763a0a344080e4c44c55b9c9292813b37f68cc6ece06cec55ac14485afbc81"
+        },
+        {
+          "bps": 10,
+          "netReturn": 66.79345058628101,
+          "drawdown": 16.697383998074155,
+          "cycles": 267,
+          "stops": 0,
+          "longestExposureDays": 32.06944444444444,
+          "realizedPnl": 534.9694318215472,
+          "openExitPnl": -0.6218271312991419,
+          "fees": 33.68113539304603,
+          "open": true,
+          "paramsSha256": "f9461350e32b96187266419d13438991a463babc464f3a382e251718f9ee53bb"
+        }
+      ]
+    },
+    {
+      "symbol": "LTCUSDT",
+      "tf": "15m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "95d754200991c1a5712b46a185d5e8565ccb47d817d68e7dc60f5bb5ad9c11cb",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 15.133689437500095,
+          "drawdown": 19.846529256835105,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 256.9166666666667,
+          "realizedPnl": 139.25765120000085,
+          "openExitPnl": -18.18813570000009,
+          "fees": 8.459868299999997,
+          "open": true,
+          "paramsSha256": "c08edfa09816b88a128a302a26441cd7a2d94bdc64ebe3d686b56993579136bc"
+        },
+        {
+          "bps": 2,
+          "netReturn": 15.420123400889993,
+          "drawdown": 19.792999981753546,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 256.9166666666667,
+          "realizedPnl": 141.62609360778004,
+          "openExitPnl": -18.265106400660102,
+          "fees": 8.712026696119999,
+          "open": true,
+          "paramsSha256": "9010c96d875a0eac816351a0b79b1de7539691b41243db5c26a2e5283f10376e"
+        },
+        {
+          "bps": 5,
+          "netReturn": 15.020411801925079,
+          "drawdown": 19.8541834556193,
+          "cycles": 64,
+          "stops": 0,
+          "longestExposureDays": 256.9166666666667,
+          "realizedPnl": 138.54385686705064,
+          "openExitPnl": -18.380562451650007,
+          "fees": 8.661557042700007,
+          "open": true,
+          "paramsSha256": "20135b53ca2f31381869bf7b9ebb5aa6157446e0655f44325100a21a56fc358d"
+        },
+        {
+          "bps": 10,
+          "netReturn": 13.59000316583753,
+          "drawdown": 19.9912519938969,
+          "cycles": 64,
+          "stops": 0,
+          "longestExposureDays": 256.9270833333333,
+          "realizedPnl": 127.53046196920025,
+          "openExitPnl": -18.810436642500008,
+          "fees": 8.820498531700004,
+          "open": true,
+          "paramsSha256": "89e0eb1918f3f5c53681a27bc8c485602d295a648579152fa58376e20e6662d0"
+        }
+      ]
+    },
+    {
+      "symbol": "LDOUSDT",
+      "tf": "30m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "578a8623050292b1d14c832337313fbf12dc56c86bfd9a634afe8c85cceaee02",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 30.920670974712547,
+          "drawdown": 20.081896605966207,
+          "cycles": 94,
+          "stops": 0,
+          "longestExposureDays": 91.6875,
+          "realizedPnl": 254.87404500070033,
+          "openExitPnl": -7.508677202999934,
+          "fees": 14.819434829099992,
+          "open": true,
+          "paramsSha256": "7dbe7a00ab2610a00750c35e5a87258475679e05a7490f90ff2fb28d5c7b4b62"
+        },
+        {
+          "bps": 2,
+          "netReturn": 31.29507445238505,
+          "drawdown": 20.01198622854169,
+          "cycles": 94,
+          "stops": 0,
+          "longestExposureDays": 91.6875,
+          "realizedPnl": 257.950185600085,
+          "openExitPnl": -7.589589981004565,
+          "fees": 14.991438145617545,
+          "open": true,
+          "paramsSha256": "7e9e049e43f5ae8a2c914707a847e5592551dde9ac4f77bf66afefed881386ba"
+        },
+        {
+          "bps": 5,
+          "netReturn": 30.796275861947432,
+          "drawdown": 20.071928113943848,
+          "cycles": 91,
+          "stops": 0,
+          "longestExposureDays": 91.6875,
+          "realizedPnl": 254.02652597133556,
+          "openExitPnl": -7.656319075756073,
+          "fees": 15.015664348239298,
+          "open": true,
+          "paramsSha256": "238027a3553abb04682e6182d07e5d9fe1f03a416dbab1b01a89f0f4f02bb5d8"
+        },
+        {
+          "bps": 10,
+          "netReturn": 29.500438304011194,
+          "drawdown": 20.245337075223997,
+          "cycles": 84,
+          "stops": 0,
+          "longestExposureDays": 91.6875,
+          "realizedPnl": 243.77099360946067,
+          "openExitPnl": -7.767487177371095,
+          "fees": 14.772345965068594,
+          "open": true,
+          "paramsSha256": "d1cfd7e232de2240d048e8529049d1474939c3f1119ada44278d3fedc17850da"
+        }
+      ]
+    },
+    {
+      "symbol": "BNBUSDT",
+      "tf": "15m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "69700b35de8e27ac2595eb2aed84d1e1f0837f6e213ff7050ff3077127f96fb6",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": -7.833111143749932,
+          "drawdown": 24.71148006796383,
+          "cycles": 34,
+          "stops": 0,
+          "longestExposureDays": 382.7916666666667,
+          "realizedPnl": 52.40390898000055,
+          "openExitPnl": -115.06879813,
+          "fees": 3.9047797499999994,
+          "open": true,
+          "paramsSha256": "1c9f0e9d1c4cabebeb36ca61a022559decde0478dce322f4d9b2b9fdba2719c7"
+        },
+        {
+          "bps": 2,
+          "netReturn": 11.616368878512787,
+          "drawdown": 10.10338126998976,
+          "cycles": 42,
+          "stops": 0,
+          "longestExposureDays": 136.20833333333334,
+          "realizedPnl": 95.64456912716435,
+          "openExitPnl": -2.713618099062046,
+          "fees": 6.3432415526679975,
+          "open": true,
+          "paramsSha256": "83363dfe9dd89b81d171f5e680ba01ad3e2b729ccd875264172a917b0c1942f5"
+        },
+        {
+          "bps": 5,
+          "netReturn": 11.533567150968793,
+          "drawdown": 10.092251396441364,
+          "cycles": 42,
+          "stops": 0,
+          "longestExposureDays": 136.20833333333334,
+          "realizedPnl": 95.05173294040526,
+          "openExitPnl": -2.7831957326549173,
+          "fees": 6.343271724174998,
+          "open": true,
+          "paramsSha256": "9ffe7b7c1e0f00f81a782cdb28e8539c0ba275f3f6c373e4802c67b8b65e8af0"
+        },
+        {
+          "bps": 10,
+          "netReturn": 11.161649175177573,
+          "drawdown": 10.066500469475672,
+          "cycles": 42,
+          "stops": 0,
+          "longestExposureDays": 136.22916666666666,
+          "realizedPnl": 92.19235185673062,
+          "openExitPnl": -2.899158455310044,
+          "fees": 6.339433092430003,
+          "open": true,
+          "paramsSha256": "59ddfcc51ca716661baed1e6c614cf2fa73285f31f9ae25e8b31924426c8b344"
+        }
+      ]
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "tf": "15m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "91298c20ded3ab4e707eaa79d3f8ae21551aad2749a9b09f0bae3f9d2cd6f29a",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 29.208863073850072,
+          "drawdown": 10.940722335680286,
+          "cycles": 87,
+          "stops": 0,
+          "longestExposureDays": 98.625,
+          "realizedPnl": 251.08046736526057,
+          "openExitPnl": -17.409562774460028,
+          "fees": 14.723381808709998,
+          "open": true,
+          "paramsSha256": "3104bc08d66d50c2e8be7f6fb680aa787026f5f3e0b0d3dfa86ad171ccbf9512"
+        },
+        {
+          "bps": 2,
+          "netReturn": 29.471560690017842,
+          "drawdown": 10.929782033645559,
+          "cycles": 89,
+          "stops": 0,
+          "longestExposureDays": 98.625,
+          "realizedPnl": 253.29143359428372,
+          "openExitPnl": -17.518948074141008,
+          "fees": 14.994616011799879,
+          "open": true,
+          "paramsSha256": "1f47194965a3a69226d04bcae320050f0af19c0b6d563de578bcbe70adebae5c"
+        },
+        {
+          "bps": 5,
+          "netReturn": 29.0924641102456,
+          "drawdown": 11.048452484084093,
+          "cycles": 88,
+          "stops": 0,
+          "longestExposureDays": 98.625,
+          "realizedPnl": 250.3701164752274,
+          "openExitPnl": -17.6304035932626,
+          "fees": 14.941642376166712,
+          "open": true,
+          "paramsSha256": "ea3e1e86e2c7d86a0704b666a3f746664fd6babf894680b2adae5f26d3f134f5"
+        },
+        {
+          "bps": 10,
+          "netReturn": 28.447268027248242,
+          "drawdown": 11.114360470965254,
+          "cycles": 85,
+          "stops": 0,
+          "longestExposureDays": 98.625,
+          "realizedPnl": 245.02421992067275,
+          "openExitPnl": -17.446075702686812,
+          "fees": 14.89875321832354,
+          "open": true,
+          "paramsSha256": "4a1135877779de4465240c93c32872dce6d67a3ed557e977b98f32677527614b"
+        }
+      ]
+    },
+    {
+      "symbol": "LINKUSDT",
+      "tf": "5m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "b637202516f9cd13267591d5490965aa050df665105c6061fb167543947d6e94",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 33.11816188375025,
+          "drawdown": 14.164390023111967,
+          "cycles": 113,
+          "stops": 0,
+          "longestExposureDays": 113.08333333333333,
+          "realizedPnl": 279.442116860002,
+          "openExitPnl": -14.496821790000013,
+          "fees": 17.45283872999999,
+          "open": true,
+          "paramsSha256": "34d5d45b9d6923920ce37258daf11954a633ecd497c08d39a295afa0e9a0c901"
+        },
+        {
+          "bps": 2,
+          "netReturn": 32.843702856084406,
+          "drawdown": 14.252924230985975,
+          "cycles": 109,
+          "stops": 0,
+          "longestExposureDays": 114.27777777777777,
+          "realizedPnl": 277.3739119250515,
+          "openExitPnl": -14.624289076376272,
+          "fees": 17.274098626230202,
+          "open": true,
+          "paramsSha256": "37b1089c8d669a65202110859487233cda8524b8894a4fe3352a40a26bd5f941"
+        },
+        {
+          "bps": 5,
+          "netReturn": 32.39331957004936,
+          "drawdown": 14.81841298336832,
+          "cycles": 108,
+          "stops": 0,
+          "longestExposureDays": 114.29513888888889,
+          "realizedPnl": 273.96032106293137,
+          "openExitPnl": -14.813764502536515,
+          "fees": 17.22062471385202,
+          "open": true,
+          "paramsSha256": "c95d80875d5446ba6db8af483a5a4fe1285c0c7b53c40997ff0685549c0d7540"
+        },
+        {
+          "bps": 10,
+          "netReturn": 32.34719450165545,
+          "drawdown": 14.808045457670788,
+          "cycles": 106,
+          "stops": 0,
+          "longestExposureDays": 114.29513888888889,
+          "realizedPnl": 273.9059444719935,
+          "openExitPnl": -15.128388458749896,
+          "fees": 17.411524084538996,
+          "open": true,
+          "paramsSha256": "d669b1ea8a1bc75a1d092480db1ee1d199ed1f632bc1201d261880e7ca73c05b"
+        }
+      ]
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "tf": "5m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "93dd10252944917e4c4c8ecdaa118311950785cf6dd273ecba82497c13c2b504",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 2.162025502125033,
+          "drawdown": 32.702484226370814,
+          "cycles": 49,
+          "stops": 0,
+          "longestExposureDays": 382.90277777777777,
+          "realizedPnl": 281.5710636800002,
+          "openExitPnl": -264.2748596629999,
+          "fees": 7.84534736,
+          "open": true,
+          "paramsSha256": "9a50269b1fc5487a605f44ad4810adcf3502221c17c5144a0b79e2f4e084ed52"
+        },
+        {
+          "bps": 2,
+          "netReturn": 43.310250340935454,
+          "drawdown": 28.209766570349665,
+          "cycles": 70,
+          "stops": 0,
+          "longestExposureDays": 249.17708333333334,
+          "realizedPnl": 352.99715274329265,
+          "openExitPnl": -6.515150015809013,
+          "fees": 12.535843092780402,
+          "open": true,
+          "paramsSha256": "f3ca3ca2b75fcb1c7a63619dd9749e7df275daec6112d7dd1cea1927fd2d2b68"
+        },
+        {
+          "bps": 5,
+          "netReturn": 42.69099446906645,
+          "drawdown": 28.215239256211504,
+          "cycles": 69,
+          "stops": 0,
+          "longestExposureDays": 249.17708333333334,
+          "realizedPnl": 349.65021658729506,
+          "openExitPnl": -8.122260834763438,
+          "fees": 12.482626054017,
+          "open": true,
+          "paramsSha256": "4a44ab75ad2d0ca1d178bb392c101790d1d54cf535b727274448cb179977809f"
+        },
+        {
+          "bps": 10,
+          "netReturn": 41.573075573282495,
+          "drawdown": 28.19272851013765,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 249.17708333333334,
+          "realizedPnl": 340.94635569953175,
+          "openExitPnl": -8.361751113271794,
+          "fees": 12.198508604992,
+          "open": true,
+          "paramsSha256": "90c3dd2d2c1cb633971e6b667f0e32249150a618a062582c7bf71ace15e6eb0a"
+        }
+      ]
+    },
+    {
+      "symbol": "DOTUSDT",
+      "tf": "30m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "bb61c9c9b5f7b4d65a77ef29c886ca781efba2b4e9dc0ed11afd3f39d1db5bf5",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 24.016891926500108,
+          "drawdown": 13.532076637137811,
+          "cycles": 73,
+          "stops": 0,
+          "longestExposureDays": 85.45833333333333,
+          "realizedPnl": 196.0137073630009,
+          "openExitPnl": -3.8785719510000263,
+          "fees": 12.071615473000001,
+          "open": true,
+          "paramsSha256": "3d2a6c731adf9da51f3a7a0628c9928fe8c6cf46ae95aa5c75dc4e2f077655b8"
+        },
+        {
+          "bps": 2,
+          "netReturn": 23.786015881348476,
+          "drawdown": 13.551691765760982,
+          "cycles": 73,
+          "stops": 0,
+          "longestExposureDays": 85.45833333333333,
+          "realizedPnl": 194.21265245917948,
+          "openExitPnl": -3.9245254083916734,
+          "fees": 12.069774923090607,
+          "open": true,
+          "paramsSha256": "e5db11de71fecc1af88d7d0dd74de2f6be3428df789d55feb346c471d789fc6f"
+        },
+        {
+          "bps": 5,
+          "netReturn": 23.73869902563484,
+          "drawdown": 13.546396802158611,
+          "cycles": 74,
+          "stops": 0,
+          "longestExposureDays": 85.45833333333333,
+          "realizedPnl": 193.90320542358268,
+          "openExitPnl": -3.993613218503924,
+          "fees": 12.082018390570004,
+          "open": true,
+          "paramsSha256": "ed4842e4c19f86a91e270efd1f4fdc463758e750317449eee3f7da92f6722885"
+        },
+        {
+          "bps": 10,
+          "netReturn": 23.29149885200286,
+          "drawdown": 14.868052090763923,
+          "cycles": 75,
+          "stops": 0,
+          "longestExposureDays": 85.52083333333333,
+          "realizedPnl": 190.4403646171529,
+          "openExitPnl": -4.108373801130028,
+          "fees": 12.091035734452998,
+          "open": true,
+          "paramsSha256": "5a99f0b61d5eec97c56998d96e35fc86973ad1425094c39a6581ffbcfbe92c99"
+        }
+      ]
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "tf": "5m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "8d0bb4e848d555073b93d7c30c6d7731708cbca6892e7ff1efb743541731b7c0",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 30.601729585625066,
+          "drawdown": 19.063961635443825,
+          "cycles": 98,
+          "stops": 0,
+          "longestExposureDays": 62.517361111111114,
+          "realizedPnl": 272.3704880760006,
+          "openExitPnl": -27.55665139100006,
+          "fees": 17.148058910999985,
+          "open": true,
+          "paramsSha256": "b525509a3417ac89b5f73365e4ee4e77e2b14a79a05fd8bd4eac61f184aba301"
+        },
+        {
+          "bps": 2,
+          "netReturn": 30.697052895874663,
+          "drawdown": 19.012928225190546,
+          "cycles": 99,
+          "stops": 0,
+          "longestExposureDays": 62.517361111111114,
+          "realizedPnl": 273.203201724594,
+          "openExitPnl": -27.626778557596708,
+          "fees": 17.442919176098012,
+          "open": true,
+          "paramsSha256": "616a12e75063f70599c48c7618a96a8ef23d3ca5b0a6ccec092040263e988d71"
+        },
+        {
+          "bps": 5,
+          "netReturn": 30.222050588867802,
+          "drawdown": 19.05420298358592,
+          "cycles": 98,
+          "stops": 0,
+          "longestExposureDays": 62.53819444444444,
+          "realizedPnl": 269.50847815031375,
+          "openExitPnl": -27.732073439371334,
+          "fees": 17.389171019599498,
+          "open": true,
+          "paramsSha256": "fdefd8ff39fc41c82dda514cb19a0c60f46703dd21e457cde57dac3b6dc89d3e"
+        },
+        {
+          "bps": 10,
+          "netReturn": 33.564735011810455,
+          "drawdown": 18.879453713213355,
+          "cycles": 106,
+          "stops": 0,
+          "longestExposureDays": 62.53819444444444,
+          "realizedPnl": 279.55290588814546,
+          "openExitPnl": -11.035025793661816,
+          "fees": 18.325208335991007,
+          "open": true,
+          "paramsSha256": "88ff00ed35df50501b93070c346424e6d1c105f211e77eccf83f34d5f3378340"
+        }
+      ]
+    },
+    {
+      "symbol": "TRXUSDT",
+      "tf": "15m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "a27144ffb1408247790f53a743569f82d73b21e7662e1012dbd8d60b2503fae7",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 7.676216175000121,
+          "drawdown": 3.075620237985252,
+          "cycles": 43,
+          "stops": 0,
+          "longestExposureDays": 155.32291666666666,
+          "realizedPnl": 63.63122630000089,
+          "openExitPnl": -2.22149689999992,
+          "fees": 4.249422,
+          "open": true,
+          "paramsSha256": "9a54a4221d8c3a41efb708d6076e8407b8f02b387ef6ae7f0f23ed0c62c637d7"
+        },
+        {
+          "bps": 2,
+          "netReturn": 7.592781632857594,
+          "drawdown": 3.080416561175972,
+          "cycles": 43,
+          "stops": 0,
+          "longestExposureDays": 155.32291666666666,
+          "realizedPnl": 62.98810976280072,
+          "openExitPnl": -2.2458566999399636,
+          "fees": 4.250200286860002,
+          "open": true,
+          "paramsSha256": "8b9dd71d7b2fee8f6b73ddb451a5cd4c6ee2555b2da02e0bbfe28ef46a71741a"
+        },
+        {
+          "bps": 5,
+          "netReturn": 7.469265425999964,
+          "drawdown": 3.087622788811625,
+          "cycles": 43,
+          "stops": 0,
+          "longestExposureDays": 155.32291666666666,
+          "realizedPnl": 62.036519807849686,
+          "openExitPnl": -2.282396399849972,
+          "fees": 4.2480880163000005,
+          "open": true,
+          "paramsSha256": "8150290c304d209e8c4db8f7ad8ec3b6c0e79be0ede1cae704da7824ec41c7e4"
+        },
+        {
+          "bps": 10,
+          "netReturn": 7.122852761537615,
+          "drawdown": 3.1257081509487303,
+          "cycles": 42,
+          "stops": 0,
+          "longestExposureDays": 155.32291666666666,
+          "realizedPnl": 59.32611799200083,
+          "openExitPnl": -2.3432958996999105,
+          "fees": 4.194917456300001,
+          "open": true,
+          "paramsSha256": "70b4d37ada430b9fcd0f0dae14f86598cf97ce16fbf9959715e5f9f6a97f12fd"
+        }
+      ]
+    },
+    {
+      "symbol": "BCHUSDT",
+      "tf": "30m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "967925c1e8a4cf287da4e25e5193dba4dbcac77d27dce14d4a05775840570c4d",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 19.480704990000035,
+          "drawdown": 24.944810889441495,
+          "cycles": 66,
+          "stops": 0,
+          "longestExposureDays": 138.1875,
+          "realizedPnl": 155.84563992000028,
+          "openExitPnl": 0,
+          "fees": 8.630300079999996,
+          "open": false,
+          "paramsSha256": "3e82982c14d5b34323445d9a0c13ef35e60a8b3b39f0cbbb620f7e2ffb517dcf"
+        },
+        {
+          "bps": 2,
+          "netReturn": 19.287999703456634,
+          "drawdown": 24.981413268357766,
+          "cycles": 66,
+          "stops": 0,
+          "longestExposureDays": 138.1875,
+          "realizedPnl": 154.30399762765308,
+          "openExitPnl": 0,
+          "fees": 8.628546488348,
+          "open": false,
+          "paramsSha256": "f1ce24b290aeafa6972d533156a8582a8908d66ac11b624a9631fdea842fb9cf"
+        },
+        {
+          "bps": 5,
+          "netReturn": 18.835964903017555,
+          "drawdown": 25.75036528913342,
+          "cycles": 67,
+          "stops": 0,
+          "longestExposureDays": 138.39583333333334,
+          "realizedPnl": 150.68771922414044,
+          "openExitPnl": 0,
+          "fees": 8.787013205860008,
+          "open": false,
+          "paramsSha256": "61788856a1677e54ed4a1afd9a551450d78ca9b0a288b7c1fb3a99cfff8a4718"
+        },
+        {
+          "bps": 10,
+          "netReturn": 18.28662680722381,
+          "drawdown": 25.85045371312184,
+          "cycles": 66,
+          "stops": 0,
+          "longestExposureDays": 138.39583333333334,
+          "realizedPnl": 146.2930144577905,
+          "openExitPnl": 0,
+          "fees": 8.732305892209999,
+          "open": false,
+          "paramsSha256": "308e0df977bcfe0f98411e8dc5c4cc55ebf12dbbb5ead2437c6f88167e67431b"
+        }
+      ]
+    },
+    {
+      "symbol": "AAVEUSDT",
+      "tf": "5m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "3baba8dd3eb1029ae0a81014038ec86331f90913f72d47407ad4957261e6bd31",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 37.00885663750023,
+          "drawdown": 27.850608770707307,
+          "cycles": 121,
+          "stops": 0,
+          "longestExposureDays": 221.09027777777777,
+          "realizedPnl": 297.499071430002,
+          "openExitPnl": -1.4282183300001634,
+          "fees": 18.58458452999999,
+          "open": true,
+          "paramsSha256": "065b0bed62f991d1e0a3c13f3413f8480ffcb9ad82e59a4cd577ec0894230922"
+        },
+        {
+          "bps": 2,
+          "netReturn": 36.448804335188356,
+          "drawdown": 27.961615262430506,
+          "cycles": 120,
+          "stops": 0,
+          "longestExposureDays": 221.09027777777777,
+          "realizedPnl": 293.0878338039429,
+          "openExitPnl": -1.4973991224360361,
+          "fees": 18.529274170185996,
+          "open": true,
+          "paramsSha256": "0dc95d4d08e59484373c80306b49efe2c8f91a677a78efc42de212557318aa93"
+        },
+        {
+          "bps": 5,
+          "netReturn": 35.938214534916,
+          "drawdown": 28.08363183817327,
+          "cycles": 118,
+          "stops": 0,
+          "longestExposureDays": 221.09027777777777,
+          "realizedPnl": 289.12442043541796,
+          "openExitPnl": -1.6187041560899615,
+          "fees": 18.573668909905003,
+          "open": true,
+          "paramsSha256": "95a32fceb146ed91313be85d3e4af3150608b5e827908de30d90bef7774b926b"
+        },
+        {
+          "bps": 10,
+          "netReturn": 34.068797961406574,
+          "drawdown": 28.423208524658893,
+          "cycles": 116,
+          "stops": 0,
+          "longestExposureDays": 221.09027777777777,
+          "realizedPnl": 275.0320997456224,
+          "openExitPnl": -2.4817160543698265,
+          "fees": 18.45948030766,
+          "open": true,
+          "paramsSha256": "dfb754c3d362411c5b2e51d26fe2c5432fda2d5c238e99a573e2b519b17c0b5a"
+        }
+      ]
+    },
+    {
+      "symbol": "SUIUSDT",
+      "tf": "5m",
+      "start": 1738368000000,
+      "end": 1793491200000,
+      "dataSha256": "22754ead97372dd23322d2240e85371b9e4dc5660959b7d4e2d8a1d2520b8c05",
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 43.4338641060626,
+          "drawdown": 17.605778906119273,
+          "cycles": 138,
+          "stops": 0,
+          "longestExposureDays": 112.83680555555556,
+          "realizedPnl": 375.4514818133007,
+          "openExitPnl": -27.980568964799886,
+          "fees": 21.585070043299996,
+          "open": true,
+          "paramsSha256": "f8dc40be6d6631be83b3cd1bac32e1d5f69774e6496dca9547b78f5fcd8bac15"
+        },
+        {
+          "bps": 2,
+          "netReturn": -2.8630253983874923,
+          "drawdown": 33.7016028200682,
+          "cycles": 100,
+          "stops": 0,
+          "longestExposureDays": 369.68055555555554,
+          "realizedPnl": 259.8418288886553,
+          "openExitPnl": -282.74603207575524,
+          "fees": 14.54438000398284,
+          "open": true,
+          "paramsSha256": "4256bf41287ea4d5a457de47abf519c80a19f75c620503e23fb6a0b1c1bb5c4e"
+        },
+        {
+          "bps": 5,
+          "netReturn": -3.2519073176253244,
+          "drawdown": 33.79788453638318,
+          "cycles": 96,
+          "stops": 0,
+          "longestExposureDays": 369.68055555555554,
+          "realizedPnl": 257.11437333424215,
+          "openExitPnl": -283.12963187524474,
+          "fees": 14.341482738861648,
+          "open": true,
+          "paramsSha256": "66498fb3d85035820e4e363664875587550abdb03105cbdb10d26126c752877a"
+        },
+        {
+          "bps": 10,
+          "netReturn": -4.1526168509894035,
+          "drawdown": 34.01758522046408,
+          "cycles": 96,
+          "stops": 0,
+          "longestExposureDays": 369.68055555555554,
+          "realizedPnl": 250.14495852158507,
+          "openExitPnl": -283.3658933295003,
+          "fees": 14.334497250310292,
+          "open": true,
+          "paramsSha256": "3338fa7629c4e25811757f6717442497f86d325c9255739e95a3b86615fbc453"
+        }
+      ]
+    }
+  ],
+  "correctedPolicyVersion": "draft-rank-v1.1",
+  "correctedRows": [
+    {
+      "symbol": "ZECUSDT",
+      "tf": "5m",
+      "enabled": true,
+      "dataSha256": "805e4cc8e1646b8f50950edf3b6099701b220e0111d207a4528081f77c8bfdd4",
+      "status": "rated",
+      "values": {
+        "netReturn": 67.72779654894384,
+        "drawdown": 15.997936674969493,
+        "costPenalty": 1.0725382493045856,
+        "cyclesPer30d": 12.695924764890282,
+        "longestExposureDays": 31.11111111111111
+      },
+      "worstCostReturn": 66.65525829963926,
+      "minCycles": 267,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 67.90383871425038,
+          "drawdown": 15.96868883437011,
+          "cycles": 272,
+          "stops": 0,
+          "longestExposureDays": 28.67013888888889,
+          "realizedPnl": 543.4356531780029,
+          "openExitPnl": -0.20494346399982533,
+          "fees": 34.186308170000004,
+          "open": true,
+          "paramsSha256": "fed87382b393458431195349640aa1696ab35e1eea104e34ff0e2c2e4934c2d9"
+        },
+        {
+          "bps": 2,
+          "netReturn": 67.72779654894384,
+          "drawdown": 15.997936674969493,
+          "cycles": 270,
+          "stops": 0,
+          "longestExposureDays": 31.11111111111111,
+          "realizedPnl": 542.0372581793972,
+          "openExitPnl": -0.2148857878464696,
+          "fees": 34.08468375487444,
+          "open": true,
+          "paramsSha256": "b4885bd9ee7d24fc556cf5a4e597f5d868b7b8390716dc88d0025cb9a2bb9980"
+        },
+        {
+          "bps": 5,
+          "netReturn": 66.65525829963926,
+          "drawdown": 16.07990564863623,
+          "cycles": 269,
+          "stops": 0,
+          "longestExposureDays": 32.06944444444444,
+          "realizedPnl": 533.47186567073,
+          "openExitPnl": -0.2297992736159813,
+          "fees": 33.55390873994599,
+          "open": true,
+          "paramsSha256": "97763a0a344080e4c44c55b9c9292813b37f68cc6ece06cec55ac14485afbc81"
+        },
+        {
+          "bps": 10,
+          "netReturn": 66.79345058628101,
+          "drawdown": 16.697383998074155,
+          "cycles": 267,
+          "stops": 0,
+          "longestExposureDays": 32.06944444444444,
+          "realizedPnl": 534.9694318215472,
+          "openExitPnl": -0.6218271312991419,
+          "fees": 33.68113539304603,
+          "open": true,
+          "paramsSha256": "f9461350e32b96187266419d13438991a463babc464f3a382e251718f9ee53bb"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 78.333333,
+      "rank": 1,
+      "components": {
+        "netReturn": {
+          "percentile": 100,
+          "points": 35
+        },
+        "drawdown": {
+          "percentile": 61.111111,
+          "points": 18.333333
+        },
+        "costPenalty": {
+          "percentile": 50,
+          "points": 10
+        },
+        "cyclesPer30d": {
+          "percentile": 100,
+          "points": 10
+        },
+        "longestExposureDays": {
+          "percentile": 100,
+          "points": 5
+        }
+      }
+    },
+    {
+      "symbol": "LINKUSDT",
+      "tf": "5m",
+      "enabled": true,
+      "dataSha256": "b637202516f9cd13267591d5490965aa050df665105c6061fb167543947d6e94",
+      "status": "rated",
+      "values": {
+        "netReturn": 32.843702856084406,
+        "drawdown": 14.252924230985975,
+        "costPenalty": 0.49650835442895414,
+        "cyclesPer30d": 5.12539184952978,
+        "longestExposureDays": 114.27777777777777
+      },
+      "worstCostReturn": 32.34719450165545,
+      "minCycles": 106,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 33.11816188375025,
+          "drawdown": 14.164390023111967,
+          "cycles": 113,
+          "stops": 0,
+          "longestExposureDays": 113.08333333333333,
+          "realizedPnl": 279.442116860002,
+          "openExitPnl": -14.496821790000013,
+          "fees": 17.45283872999999,
+          "open": true,
+          "paramsSha256": "34d5d45b9d6923920ce37258daf11954a633ecd497c08d39a295afa0e9a0c901"
+        },
+        {
+          "bps": 2,
+          "netReturn": 32.843702856084406,
+          "drawdown": 14.252924230985975,
+          "cycles": 109,
+          "stops": 0,
+          "longestExposureDays": 114.27777777777777,
+          "realizedPnl": 277.3739119250515,
+          "openExitPnl": -14.624289076376272,
+          "fees": 17.274098626230202,
+          "open": true,
+          "paramsSha256": "37b1089c8d669a65202110859487233cda8524b8894a4fe3352a40a26bd5f941"
+        },
+        {
+          "bps": 5,
+          "netReturn": 32.39331957004936,
+          "drawdown": 14.81841298336832,
+          "cycles": 108,
+          "stops": 0,
+          "longestExposureDays": 114.29513888888889,
+          "realizedPnl": 273.96032106293137,
+          "openExitPnl": -14.813764502536515,
+          "fees": 17.22062471385202,
+          "open": true,
+          "paramsSha256": "c95d80875d5446ba6db8af483a5a4fe1285c0c7b53c40997ff0685549c0d7540"
+        },
+        {
+          "bps": 10,
+          "netReturn": 32.34719450165545,
+          "drawdown": 14.808045457670788,
+          "cycles": 106,
+          "stops": 0,
+          "longestExposureDays": 114.29513888888889,
+          "realizedPnl": 273.9059444719935,
+          "openExitPnl": -15.128388458749896,
+          "fees": 17.411524084538996,
+          "open": true,
+          "paramsSha256": "d669b1ea8a1bc75a1d092480db1ee1d199ed1f632bc1201d261880e7ca73c05b"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 74.444444,
+      "rank": 2,
+      "components": {
+        "netReturn": {
+          "percentile": 77.777778,
+          "points": 27.222222
+        },
+        "drawdown": {
+          "percentile": 66.666667,
+          "points": 20
+        },
+        "costPenalty": {
+          "percentile": 77.777778,
+          "points": 15.555556
+        },
+        "cyclesPer30d": {
+          "percentile": 88.888889,
+          "points": 8.888889
+        },
+        "longestExposureDays": {
+          "percentile": 55.555556,
+          "points": 2.777778
+        }
+      }
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "tf": "5m",
+      "enabled": true,
+      "dataSha256": "8d0bb4e848d555073b93d7c30c6d7731708cbca6892e7ff1efb743541731b7c0",
+      "status": "rated",
+      "values": {
+        "netReturn": 30.697052895874663,
+        "drawdown": 19.012928225190546,
+        "costPenalty": 0.47500230700686075,
+        "cyclesPer30d": 4.655172413793103,
+        "longestExposureDays": 62.517361111111114
+      },
+      "worstCostReturn": 30.222050588867802,
+      "minCycles": 98,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 30.601729585625066,
+          "drawdown": 19.063961635443825,
+          "cycles": 98,
+          "stops": 0,
+          "longestExposureDays": 62.517361111111114,
+          "realizedPnl": 272.3704880760006,
+          "openExitPnl": -27.55665139100006,
+          "fees": 17.148058910999985,
+          "open": true,
+          "paramsSha256": "b525509a3417ac89b5f73365e4ee4e77e2b14a79a05fd8bd4eac61f184aba301"
+        },
+        {
+          "bps": 2,
+          "netReturn": 30.697052895874663,
+          "drawdown": 19.012928225190546,
+          "cycles": 99,
+          "stops": 0,
+          "longestExposureDays": 62.517361111111114,
+          "realizedPnl": 273.203201724594,
+          "openExitPnl": -27.626778557596708,
+          "fees": 17.442919176098012,
+          "open": true,
+          "paramsSha256": "616a12e75063f70599c48c7618a96a8ef23d3ca5b0a6ccec092040263e988d71"
+        },
+        {
+          "bps": 5,
+          "netReturn": 30.222050588867802,
+          "drawdown": 19.05420298358592,
+          "cycles": 98,
+          "stops": 0,
+          "longestExposureDays": 62.53819444444444,
+          "realizedPnl": 269.50847815031375,
+          "openExitPnl": -27.732073439371334,
+          "fees": 17.389171019599498,
+          "open": true,
+          "paramsSha256": "fdefd8ff39fc41c82dda514cb19a0c60f46703dd21e457cde57dac3b6dc89d3e"
+        },
+        {
+          "bps": 10,
+          "netReturn": 33.564735011810455,
+          "drawdown": 18.879453713213355,
+          "cycles": 106,
+          "stops": 0,
+          "longestExposureDays": 62.53819444444444,
+          "realizedPnl": 279.55290588814546,
+          "openExitPnl": -11.035025793661816,
+          "fees": 18.325208335991007,
+          "open": true,
+          "paramsSha256": "88ff00ed35df50501b93070c346424e6d1c105f211e77eccf83f34d5f3378340"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 67.777778,
+      "rank": 3,
+      "components": {
+        "netReturn": {
+          "percentile": 66.666667,
+          "points": 23.333333
+        },
+        "drawdown": {
+          "percentile": 50,
+          "points": 15
+        },
+        "costPenalty": {
+          "percentile": 88.888889,
+          "points": 17.777778
+        },
+        "cyclesPer30d": {
+          "percentile": 72.222222,
+          "points": 7.222222
+        },
+        "longestExposureDays": {
+          "percentile": 88.888889,
+          "points": 4.444444
+        }
+      }
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "tf": "15m",
+      "enabled": true,
+      "dataSha256": "91298c20ded3ab4e707eaa79d3f8ae21551aad2749a9b09f0bae3f9d2cd6f29a",
+      "status": "rated",
+      "values": {
+        "netReturn": 29.471560690017842,
+        "drawdown": 10.929782033645559,
+        "costPenalty": 1.0242926627696,
+        "cyclesPer30d": 4.184952978056426,
+        "longestExposureDays": 98.625
+      },
+      "worstCostReturn": 28.447268027248242,
+      "minCycles": 85,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 29.208863073850072,
+          "drawdown": 10.940722335680286,
+          "cycles": 87,
+          "stops": 0,
+          "longestExposureDays": 98.625,
+          "realizedPnl": 251.08046736526057,
+          "openExitPnl": -17.409562774460028,
+          "fees": 14.723381808709998,
+          "open": true,
+          "paramsSha256": "3104bc08d66d50c2e8be7f6fb680aa787026f5f3e0b0d3dfa86ad171ccbf9512"
+        },
+        {
+          "bps": 2,
+          "netReturn": 29.471560690017842,
+          "drawdown": 10.929782033645559,
+          "cycles": 89,
+          "stops": 0,
+          "longestExposureDays": 98.625,
+          "realizedPnl": 253.29143359428372,
+          "openExitPnl": -17.518948074141008,
+          "fees": 14.994616011799879,
+          "open": true,
+          "paramsSha256": "1f47194965a3a69226d04bcae320050f0af19c0b6d563de578bcbe70adebae5c"
+        },
+        {
+          "bps": 5,
+          "netReturn": 29.0924641102456,
+          "drawdown": 11.048452484084093,
+          "cycles": 88,
+          "stops": 0,
+          "longestExposureDays": 98.625,
+          "realizedPnl": 250.3701164752274,
+          "openExitPnl": -17.6304035932626,
+          "fees": 14.941642376166712,
+          "open": true,
+          "paramsSha256": "ea3e1e86e2c7d86a0704b666a3f746664fd6babf894680b2adae5f26d3f134f5"
+        },
+        {
+          "bps": 10,
+          "netReturn": 28.447268027248242,
+          "drawdown": 11.114360470965254,
+          "cycles": 85,
+          "stops": 0,
+          "longestExposureDays": 98.625,
+          "realizedPnl": 245.02421992067275,
+          "openExitPnl": -17.446075702686812,
+          "fees": 14.89875321832354,
+          "open": true,
+          "paramsSha256": "4a1135877779de4465240c93c32872dce6d67a3ed557e977b98f32677527614b"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 67.777778,
+      "rank": 3,
+      "components": {
+        "netReturn": {
+          "percentile": 61.111111,
+          "points": 21.388889
+        },
+        "drawdown": {
+          "percentile": 83.333333,
+          "points": 25
+        },
+        "costPenalty": {
+          "percentile": 61.111111,
+          "points": 12.222222
+        },
+        "cyclesPer30d": {
+          "percentile": 55.555556,
+          "points": 5.555556
+        },
+        "longestExposureDays": {
+          "percentile": 72.222222,
+          "points": 3.611111
+        }
+      }
+    },
+    {
+      "symbol": "XRPUSDT",
+      "tf": "45m",
+      "enabled": true,
+      "dataSha256": "a7dd514ec9a51b34a7955cde10db1b34dcc0b92e6a5dcae9e823d2b40d55cea4",
+      "status": "rated",
+      "values": {
+        "netReturn": 21.870197032837595,
+        "drawdown": 11.156601992366886,
+        "costPenalty": 0,
+        "cyclesPer30d": 2.774294670846395,
+        "longestExposureDays": 46.53125
+      },
+      "worstCostReturn": 21.870197032837595,
+      "minCycles": 58,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 22.35251990000009,
+          "drawdown": 11.107581919543263,
+          "cycles": 59,
+          "stops": 0,
+          "longestExposureDays": 46.53125,
+          "realizedPnl": 189.35578170000053,
+          "openExitPnl": -10.535622499999818,
+          "fees": 8.936152000000002,
+          "open": true,
+          "paramsSha256": "cf1ad9bc472555cd29c601fb93930f8ddcd435dfe19343d8d3575089dce4b13a"
+        },
+        {
+          "bps": 2,
+          "netReturn": 21.870197032837595,
+          "drawdown": 11.156601992366886,
+          "cycles": 59,
+          "stops": 0,
+          "longestExposureDays": 46.53125,
+          "realizedPnl": 185.57534529168072,
+          "openExitPnl": -10.61376902897996,
+          "fees": 8.936346175060002,
+          "open": true,
+          "paramsSha256": "88111f4ae4fb08b04fe3ecf802251b1e55d38adae0f0f0f7ed44a7f41b483298"
+        },
+        {
+          "bps": 5,
+          "netReturn": 22.0382989488001,
+          "drawdown": 11.15021567738086,
+          "cycles": 58,
+          "stops": 0,
+          "longestExposureDays": 46.53125,
+          "realizedPnl": 187.0373804128509,
+          "openExitPnl": -10.730988822450058,
+          "fees": 9.059380254000004,
+          "open": true,
+          "paramsSha256": "1fd4443e346ad676a8ba4bbcf1b3b8bbe358fa00ac70b72ff861e2a64ccecb65"
+        },
+        {
+          "bps": 10,
+          "netReturn": 24.056735976712687,
+          "drawdown": 10.966292411403247,
+          "cycles": 59,
+          "stops": 0,
+          "longestExposureDays": 46.53125,
+          "realizedPnl": 203.38024295860146,
+          "openExitPnl": -10.926355144899958,
+          "fees": 9.189701975099998,
+          "open": true,
+          "paramsSha256": "0e6a5b6e143a94f104562d75b963c5a0016e7ccff7d9ccdde8a7477afc6776a4"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 65.277778,
+      "rank": 5,
+      "components": {
+        "netReturn": {
+          "percentile": 44.444444,
+          "points": 15.555556
+        },
+        "drawdown": {
+          "percentile": 77.777778,
+          "points": 23.333333
+        },
+        "costPenalty": {
+          "percentile": 100,
+          "points": 20
+        },
+        "cyclesPer30d": {
+          "percentile": 16.666667,
+          "points": 1.666667
+        },
+        "longestExposureDays": {
+          "percentile": 94.444444,
+          "points": 4.722222
+        }
+      }
+    },
+    {
+      "symbol": "DOTUSDT",
+      "tf": "30m",
+      "enabled": true,
+      "dataSha256": "bb61c9c9b5f7b4d65a77ef29c886ca781efba2b4e9dc0ed11afd3f39d1db5bf5",
+      "status": "rated",
+      "values": {
+        "netReturn": 23.786015881348476,
+        "drawdown": 13.551691765760982,
+        "costPenalty": 0.4945170293456158,
+        "cyclesPer30d": 3.4326018808777428,
+        "longestExposureDays": 85.45833333333333
+      },
+      "worstCostReturn": 23.29149885200286,
+      "minCycles": 73,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 24.016891926500108,
+          "drawdown": 13.532076637137811,
+          "cycles": 73,
+          "stops": 0,
+          "longestExposureDays": 85.45833333333333,
+          "realizedPnl": 196.0137073630009,
+          "openExitPnl": -3.8785719510000263,
+          "fees": 12.071615473000001,
+          "open": true,
+          "paramsSha256": "3d2a6c731adf9da51f3a7a0628c9928fe8c6cf46ae95aa5c75dc4e2f077655b8"
+        },
+        {
+          "bps": 2,
+          "netReturn": 23.786015881348476,
+          "drawdown": 13.551691765760982,
+          "cycles": 73,
+          "stops": 0,
+          "longestExposureDays": 85.45833333333333,
+          "realizedPnl": 194.21265245917948,
+          "openExitPnl": -3.9245254083916734,
+          "fees": 12.069774923090607,
+          "open": true,
+          "paramsSha256": "e5db11de71fecc1af88d7d0dd74de2f6be3428df789d55feb346c471d789fc6f"
+        },
+        {
+          "bps": 5,
+          "netReturn": 23.73869902563484,
+          "drawdown": 13.546396802158611,
+          "cycles": 74,
+          "stops": 0,
+          "longestExposureDays": 85.45833333333333,
+          "realizedPnl": 193.90320542358268,
+          "openExitPnl": -3.993613218503924,
+          "fees": 12.082018390570004,
+          "open": true,
+          "paramsSha256": "ed4842e4c19f86a91e270efd1f4fdc463758e750317449eee3f7da92f6722885"
+        },
+        {
+          "bps": 10,
+          "netReturn": 23.29149885200286,
+          "drawdown": 14.868052090763923,
+          "cycles": 75,
+          "stops": 0,
+          "longestExposureDays": 85.52083333333333,
+          "realizedPnl": 190.4403646171529,
+          "openExitPnl": -4.108373801130028,
+          "fees": 12.091035734452998,
+          "open": true,
+          "paramsSha256": "5a99f0b61d5eec97c56998d96e35fc86973ad1425094c39a6581ffbcfbe92c99"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 65,
+      "rank": 6,
+      "components": {
+        "netReturn": {
+          "percentile": 50,
+          "points": 17.5
+        },
+        "drawdown": {
+          "percentile": 72.222222,
+          "points": 21.666667
+        },
+        "costPenalty": {
+          "percentile": 83.333333,
+          "points": 16.666667
+        },
+        "cyclesPer30d": {
+          "percentile": 50,
+          "points": 5
+        },
+        "longestExposureDays": {
+          "percentile": 83.333333,
+          "points": 4.166667
+        }
+      }
+    },
+    {
+      "symbol": "ADAUSDT",
+      "tf": "5m",
+      "enabled": true,
+      "dataSha256": "6815422724238b20dceee05c4fcc3d5c7978d0d68e130f8e3157703a2f8cfab5",
+      "status": "rated",
+      "values": {
+        "netReturn": 37.55035450551773,
+        "drawdown": 17.080816169534025,
+        "costPenalty": 32.42152697536753,
+        "cyclesPer30d": 4.702194357366771,
+        "longestExposureDays": 102.50694444444444
+      },
+      "worstCostReturn": 5.128827530150204,
+      "minCycles": 64,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 37.60048056250017,
+          "drawdown": 17.091941685870275,
+          "cycles": 100,
+          "stops": 0,
+          "longestExposureDays": 102.50694444444444,
+          "realizedPnl": 324.0105062000014,
+          "openExitPnl": -23.20666170000004,
+          "fees": 17.500586500000008,
+          "open": true,
+          "paramsSha256": "88491251e69ad57ebe578ffd1d33611ccfef106d62df3a5e6318fb80c4b14a35"
+        },
+        {
+          "bps": 2,
+          "netReturn": 37.55035450551773,
+          "drawdown": 17.080816169534025,
+          "cycles": 100,
+          "stops": 0,
+          "longestExposureDays": 102.50694444444444,
+          "realizedPnl": 323.68609464888164,
+          "openExitPnl": -23.283258604739785,
+          "fees": 17.501509589659996,
+          "open": true,
+          "paramsSha256": "0748428f3f734074a0d75893c798fc8d29732a7609d79375db4902ec3ded4def"
+        },
+        {
+          "bps": 5,
+          "netReturn": 36.416873160431464,
+          "drawdown": 17.329340514514065,
+          "cycles": 98,
+          "stops": 0,
+          "longestExposureDays": 102.50694444444444,
+          "realizedPnl": 314.7247485414016,
+          "openExitPnl": -23.38976325794988,
+          "fees": 17.50810410454999,
+          "open": true,
+          "paramsSha256": "0f672f194231814ee219a7f2b5568b3d1f173466ca005daa3d98b9a198169901"
+        },
+        {
+          "bps": 10,
+          "netReturn": 5.128827530150204,
+          "drawdown": 28.379155631792248,
+          "cycles": 64,
+          "stops": 0,
+          "longestExposureDays": 290.52777777777777,
+          "realizedPnl": 231.1017768153015,
+          "openExitPnl": -190.07115657409986,
+          "fees": 12.275556788799996,
+          "open": true,
+          "paramsSha256": "5e31b8364ea6ebcd2f3abf73cbd6099de99bc9463040e3c26be4aa6b7ce326d9"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 60.277778,
+      "rank": 7,
+      "components": {
+        "netReturn": {
+          "percentile": 88.888889,
+          "points": 31.111111
+        },
+        "drawdown": {
+          "percentile": 55.555556,
+          "points": 16.666667
+        },
+        "costPenalty": {
+          "percentile": 5.555556,
+          "points": 1.111111
+        },
+        "cyclesPer30d": {
+          "percentile": 80.555556,
+          "points": 8.055556
+        },
+        "longestExposureDays": {
+          "percentile": 66.666667,
+          "points": 3.333333
+        }
+      }
+    },
+    {
+      "symbol": "TRXUSDT",
+      "tf": "15m",
+      "enabled": true,
+      "dataSha256": "a27144ffb1408247790f53a743569f82d73b21e7662e1012dbd8d60b2503fae7",
+      "status": "rated",
+      "values": {
+        "netReturn": 7.592781632857594,
+        "drawdown": 3.080416561175972,
+        "costPenalty": 0.4699288713199792,
+        "cyclesPer30d": 2.0219435736677114,
+        "longestExposureDays": 155.32291666666666
+      },
+      "worstCostReturn": 7.122852761537615,
+      "minCycles": 42,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 7.676216175000121,
+          "drawdown": 3.075620237985252,
+          "cycles": 43,
+          "stops": 0,
+          "longestExposureDays": 155.32291666666666,
+          "realizedPnl": 63.63122630000089,
+          "openExitPnl": -2.22149689999992,
+          "fees": 4.249422,
+          "open": true,
+          "paramsSha256": "9a54a4221d8c3a41efb708d6076e8407b8f02b387ef6ae7f0f23ed0c62c637d7"
+        },
+        {
+          "bps": 2,
+          "netReturn": 7.592781632857594,
+          "drawdown": 3.080416561175972,
+          "cycles": 43,
+          "stops": 0,
+          "longestExposureDays": 155.32291666666666,
+          "realizedPnl": 62.98810976280072,
+          "openExitPnl": -2.2458566999399636,
+          "fees": 4.250200286860002,
+          "open": true,
+          "paramsSha256": "8b9dd71d7b2fee8f6b73ddb451a5cd4c6ee2555b2da02e0bbfe28ef46a71741a"
+        },
+        {
+          "bps": 5,
+          "netReturn": 7.469265425999964,
+          "drawdown": 3.087622788811625,
+          "cycles": 43,
+          "stops": 0,
+          "longestExposureDays": 155.32291666666666,
+          "realizedPnl": 62.036519807849686,
+          "openExitPnl": -2.282396399849972,
+          "fees": 4.2480880163000005,
+          "open": true,
+          "paramsSha256": "8150290c304d209e8c4db8f7ad8ec3b6c0e79be0ede1cae704da7824ec41c7e4"
+        },
+        {
+          "bps": 10,
+          "netReturn": 7.122852761537615,
+          "drawdown": 3.1257081509487303,
+          "cycles": 42,
+          "stops": 0,
+          "longestExposureDays": 155.32291666666666,
+          "realizedPnl": 59.32611799200083,
+          "openExitPnl": -2.3432958996999105,
+          "fees": 4.194917456300001,
+          "open": true,
+          "paramsSha256": "70b4d37ada430b9fcd0f0dae14f86598cf97ce16fbf9959715e5f9f6a97f12fd"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 53.333333,
+      "rank": 8,
+      "components": {
+        "netReturn": {
+          "percentile": 5.555556,
+          "points": 1.944444
+        },
+        "drawdown": {
+          "percentile": 100,
+          "points": 30
+        },
+        "costPenalty": {
+          "percentile": 94.444444,
+          "points": 18.888889
+        },
+        "cyclesPer30d": {
+          "percentile": 5.555556,
+          "points": 0.555556
+        },
+        "longestExposureDays": {
+          "percentile": 38.888889,
+          "points": 1.944444
+        }
+      }
+    },
+    {
+      "symbol": "LDOUSDT",
+      "tf": "30m",
+      "enabled": true,
+      "dataSha256": "578a8623050292b1d14c832337313fbf12dc56c86bfd9a634afe8c85cceaee02",
+      "status": "rated",
+      "values": {
+        "netReturn": 31.29507445238505,
+        "drawdown": 20.01198622854169,
+        "costPenalty": 1.7946361483738578,
+        "cyclesPer30d": 4.420062695924765,
+        "longestExposureDays": 91.6875
+      },
+      "worstCostReturn": 29.500438304011194,
+      "minCycles": 84,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 30.920670974712547,
+          "drawdown": 20.081896605966207,
+          "cycles": 94,
+          "stops": 0,
+          "longestExposureDays": 91.6875,
+          "realizedPnl": 254.87404500070033,
+          "openExitPnl": -7.508677202999934,
+          "fees": 14.819434829099992,
+          "open": true,
+          "paramsSha256": "7dbe7a00ab2610a00750c35e5a87258475679e05a7490f90ff2fb28d5c7b4b62"
+        },
+        {
+          "bps": 2,
+          "netReturn": 31.29507445238505,
+          "drawdown": 20.01198622854169,
+          "cycles": 94,
+          "stops": 0,
+          "longestExposureDays": 91.6875,
+          "realizedPnl": 257.950185600085,
+          "openExitPnl": -7.589589981004565,
+          "fees": 14.991438145617545,
+          "open": true,
+          "paramsSha256": "7e9e049e43f5ae8a2c914707a847e5592551dde9ac4f77bf66afefed881386ba"
+        },
+        {
+          "bps": 5,
+          "netReturn": 30.796275861947432,
+          "drawdown": 20.071928113943848,
+          "cycles": 91,
+          "stops": 0,
+          "longestExposureDays": 91.6875,
+          "realizedPnl": 254.02652597133556,
+          "openExitPnl": -7.656319075756073,
+          "fees": 15.015664348239298,
+          "open": true,
+          "paramsSha256": "238027a3553abb04682e6182d07e5d9fe1f03a416dbab1b01a89f0f4f02bb5d8"
+        },
+        {
+          "bps": 10,
+          "netReturn": 29.500438304011194,
+          "drawdown": 20.245337075223997,
+          "cycles": 84,
+          "stops": 0,
+          "longestExposureDays": 91.6875,
+          "realizedPnl": 243.77099360946067,
+          "openExitPnl": -7.767487177371095,
+          "fees": 14.772345965068594,
+          "open": true,
+          "paramsSha256": "d1cfd7e232de2240d048e8529049d1474939c3f1119ada44278d3fedc17850da"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 53.055556,
+      "rank": 9,
+      "components": {
+        "netReturn": {
+          "percentile": 72.222222,
+          "points": 25.277778
+        },
+        "drawdown": {
+          "percentile": 38.888889,
+          "points": 11.666667
+        },
+        "costPenalty": {
+          "percentile": 27.777778,
+          "points": 5.555556
+        },
+        "cyclesPer30d": {
+          "percentile": 66.666667,
+          "points": 6.666667
+        },
+        "longestExposureDays": {
+          "percentile": 77.777778,
+          "points": 3.888889
+        }
+      }
+    },
+    {
+      "symbol": "BTCUSDT",
+      "tf": "5m",
+      "enabled": true,
+      "dataSha256": "2cb05afcfc3320b37ae67d440db7630d0915b95497923866792deb44162b6550",
+      "status": "rated",
+      "values": {
+        "netReturn": 12.439733899038943,
+        "drawdown": 9.40639977019884,
+        "costPenalty": 1.0636054064985956,
+        "cyclesPer30d": 2.2100313479623823,
+        "longestExposureDays": 105.70138888888889
+      },
+      "worstCostReturn": 11.376128492540348,
+      "minCycles": 45,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 12.577957186075139,
+          "drawdown": 9.401043711512438,
+          "cycles": 47,
+          "stops": 0,
+          "longestExposureDays": 105.70138888888889,
+          "realizedPnl": 104.10049201560105,
+          "openExitPnl": -3.4768345269999372,
+          "fees": 6.901402121800005,
+          "open": true,
+          "paramsSha256": "8e5167e84e831448061a4cb0272b395d7ef8c970169d617a26653f3859ff9ae9"
+        },
+        {
+          "bps": 2,
+          "netReturn": 12.439733899038943,
+          "drawdown": 9.40639977019884,
+          "cycles": 47,
+          "stops": 0,
+          "longestExposureDays": 105.70138888888889,
+          "realizedPnl": 103.041283713501,
+          "openExitPnl": -3.5234125211894707,
+          "fees": 6.900600983206962,
+          "open": true,
+          "paramsSha256": "e9af7a4d8c284cec745c2cf2c6c7ee869b4dbf934c9698b07cfa0786e2d78999"
+        },
+        {
+          "bps": 5,
+          "netReturn": 12.224659704011898,
+          "drawdown": 9.429411713870113,
+          "cycles": 47,
+          "stops": 0,
+          "longestExposureDays": 105.70138888888889,
+          "realizedPnl": 101.39055714456913,
+          "openExitPnl": -3.5932795124739414,
+          "fees": 6.901224946150748,
+          "open": true,
+          "paramsSha256": "508ec575f6a4ed23dd91437d7d9c4a17194c8408e149f1bf92066b727dfa271d"
+        },
+        {
+          "bps": 10,
+          "netReturn": 11.376128492540348,
+          "drawdown": 9.512578677323583,
+          "cycles": 45,
+          "stops": 0,
+          "longestExposureDays": 105.70833333333333,
+          "realizedPnl": 94.80469175943813,
+          "openExitPnl": -3.7956638191153615,
+          "fees": 6.759487882867999,
+          "open": true,
+          "paramsSha256": "7b267ace7ded076e9c0f943f3803efca2e933b93f2aa62e7f44ed94de08458bc"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 49.444444,
+      "rank": 10,
+      "components": {
+        "netReturn": {
+          "percentile": 16.666667,
+          "points": 5.833333
+        },
+        "drawdown": {
+          "percentile": 94.444444,
+          "points": 28.333333
+        },
+        "costPenalty": {
+          "percentile": 55.555556,
+          "points": 11.111111
+        },
+        "cyclesPer30d": {
+          "percentile": 11.111111,
+          "points": 1.111111
+        },
+        "longestExposureDays": {
+          "percentile": 61.111111,
+          "points": 3.055556
+        }
+      }
+    },
+    {
+      "symbol": "UNIUSDT",
+      "tf": "15m",
+      "enabled": true,
+      "dataSha256": "55e78f93ed55299418de5399467c9875d0129470d30af6647b5158d8b92c78ff",
+      "status": "rated",
+      "values": {
+        "netReturn": 27.504375507550748,
+        "drawdown": 24.68282014846714,
+        "costPenalty": 0.8846070992213093,
+        "cyclesPer30d": 4.3730407523510975,
+        "longestExposureDays": 204.29166666666666
+      },
+      "worstCostReturn": 26.61976840832944,
+      "minCycles": 89,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 27.517037375125057,
+          "drawdown": 24.693757108814204,
+          "cycles": 93,
+          "stops": 0,
+          "longestExposureDays": 204.29166666666666,
+          "realizedPnl": 229.44658256300045,
+          "openExitPnl": -9.310283561999995,
+          "fees": 13.996515017000009,
+          "open": true,
+          "paramsSha256": "3bba956d52e0b50e2e8a81e8e34304c940482495eb714fec6b1b14e7c51cc483"
+        },
+        {
+          "bps": 2,
+          "netReturn": 27.504375507550748,
+          "drawdown": 24.68282014846714,
+          "cycles": 93,
+          "stops": 0,
+          "longestExposureDays": 204.29166666666666,
+          "realizedPnl": 229.47305338108208,
+          "openExitPnl": -9.4380493206761,
+          "fees": 13.9966230106064,
+          "open": true,
+          "paramsSha256": "d0507bd6514e42bb79dcbee16a7a08231f66fd51c870292e062fd9275a680877"
+        },
+        {
+          "bps": 5,
+          "netReturn": 27.314955319282035,
+          "drawdown": 24.725739854652957,
+          "cycles": 91,
+          "stops": 0,
+          "longestExposureDays": 204.29166666666666,
+          "realizedPnl": 228.1506859815097,
+          "openExitPnl": -9.631043427253417,
+          "fees": 14.007847773552504,
+          "open": true,
+          "paramsSha256": "5c8b3d4ee7cd6a71804b06d4edb9b03e1f3de83c39951619d404aa731af29355"
+        },
+        {
+          "bps": 10,
+          "netReturn": 26.61976840832944,
+          "drawdown": 24.81226892841276,
+          "cycles": 89,
+          "stops": 0,
+          "longestExposureDays": 204.29166666666666,
+          "realizedPnl": 222.90826165872454,
+          "openExitPnl": -9.950114392089063,
+          "fees": 13.883764221507,
+          "open": true,
+          "paramsSha256": "f8aa293101a6356b435b028e71ac1d115d1da5f329dde5e90768c120a52b0aea"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 48.333333,
+      "rank": 11,
+      "components": {
+        "netReturn": {
+          "percentile": 55.555556,
+          "points": 19.444444
+        },
+        "drawdown": {
+          "percentile": 22.222222,
+          "points": 6.666667
+        },
+        "costPenalty": {
+          "percentile": 72.222222,
+          "points": 14.444444
+        },
+        "cyclesPer30d": {
+          "percentile": 61.111111,
+          "points": 6.111111
+        },
+        "longestExposureDays": {
+          "percentile": 33.333333,
+          "points": 1.666667
+        }
+      }
+    },
+    {
+      "symbol": "AAVEUSDT",
+      "tf": "5m",
+      "enabled": false,
+      "dataSha256": "3baba8dd3eb1029ae0a81014038ec86331f90913f72d47407ad4957261e6bd31",
+      "status": "rated",
+      "values": {
+        "netReturn": 36.448804335188356,
+        "drawdown": 27.961615262430506,
+        "costPenalty": 2.3800063737817823,
+        "cyclesPer30d": 5.6426332288401255,
+        "longestExposureDays": 221.09027777777777
+      },
+      "worstCostReturn": 34.068797961406574,
+      "minCycles": 116,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 37.00885663750023,
+          "drawdown": 27.850608770707307,
+          "cycles": 121,
+          "stops": 0,
+          "longestExposureDays": 221.09027777777777,
+          "realizedPnl": 297.499071430002,
+          "openExitPnl": -1.4282183300001634,
+          "fees": 18.58458452999999,
+          "open": true,
+          "paramsSha256": "065b0bed62f991d1e0a3c13f3413f8480ffcb9ad82e59a4cd577ec0894230922"
+        },
+        {
+          "bps": 2,
+          "netReturn": 36.448804335188356,
+          "drawdown": 27.961615262430506,
+          "cycles": 120,
+          "stops": 0,
+          "longestExposureDays": 221.09027777777777,
+          "realizedPnl": 293.0878338039429,
+          "openExitPnl": -1.4973991224360361,
+          "fees": 18.529274170185996,
+          "open": true,
+          "paramsSha256": "0dc95d4d08e59484373c80306b49efe2c8f91a677a78efc42de212557318aa93"
+        },
+        {
+          "bps": 5,
+          "netReturn": 35.938214534916,
+          "drawdown": 28.08363183817327,
+          "cycles": 118,
+          "stops": 0,
+          "longestExposureDays": 221.09027777777777,
+          "realizedPnl": 289.12442043541796,
+          "openExitPnl": -1.6187041560899615,
+          "fees": 18.573668909905003,
+          "open": true,
+          "paramsSha256": "95a32fceb146ed91313be85d3e4af3150608b5e827908de30d90bef7774b926b"
+        },
+        {
+          "bps": 10,
+          "netReturn": 34.068797961406574,
+          "drawdown": 28.423208524658893,
+          "cycles": 116,
+          "stops": 0,
+          "longestExposureDays": 221.09027777777777,
+          "realizedPnl": 275.0320997456224,
+          "openExitPnl": -2.4817160543698265,
+          "fees": 18.45948030766,
+          "open": true,
+          "paramsSha256": "dfb754c3d362411c5b2e51d26fe2c5432fda2d5c238e99a573e2b519b17c0b5a"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 46.388889,
+      "rank": 12,
+      "components": {
+        "netReturn": {
+          "percentile": 83.333333,
+          "points": 29.166667
+        },
+        "drawdown": {
+          "percentile": 11.111111,
+          "points": 3.333333
+        },
+        "costPenalty": {
+          "percentile": 16.666667,
+          "points": 3.333333
+        },
+        "cyclesPer30d": {
+          "percentile": 94.444444,
+          "points": 9.444444
+        },
+        "longestExposureDays": {
+          "percentile": 22.222222,
+          "points": 1.111111
+        }
+      }
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "tf": "5m",
+      "enabled": false,
+      "dataSha256": "93dd10252944917e4c4c8ecdaa118311950785cf6dd273ecba82497c13c2b504",
+      "status": "rated",
+      "values": {
+        "netReturn": 43.310250340935454,
+        "drawdown": 28.209766570349665,
+        "costPenalty": 41.14822483881042,
+        "cyclesPer30d": 3.29153605015674,
+        "longestExposureDays": 249.17708333333334
+      },
+      "worstCostReturn": 2.162025502125033,
+      "minCycles": 49,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 2.162025502125033,
+          "drawdown": 32.702484226370814,
+          "cycles": 49,
+          "stops": 0,
+          "longestExposureDays": 382.90277777777777,
+          "realizedPnl": 281.5710636800002,
+          "openExitPnl": -264.2748596629999,
+          "fees": 7.84534736,
+          "open": true,
+          "paramsSha256": "9a50269b1fc5487a605f44ad4810adcf3502221c17c5144a0b79e2f4e084ed52"
+        },
+        {
+          "bps": 2,
+          "netReturn": 43.310250340935454,
+          "drawdown": 28.209766570349665,
+          "cycles": 70,
+          "stops": 0,
+          "longestExposureDays": 249.17708333333334,
+          "realizedPnl": 352.99715274329265,
+          "openExitPnl": -6.515150015809013,
+          "fees": 12.535843092780402,
+          "open": true,
+          "paramsSha256": "f3ca3ca2b75fcb1c7a63619dd9749e7df275daec6112d7dd1cea1927fd2d2b68"
+        },
+        {
+          "bps": 5,
+          "netReturn": 42.69099446906645,
+          "drawdown": 28.215239256211504,
+          "cycles": 69,
+          "stops": 0,
+          "longestExposureDays": 249.17708333333334,
+          "realizedPnl": 349.65021658729506,
+          "openExitPnl": -8.122260834763438,
+          "fees": 12.482626054017,
+          "open": true,
+          "paramsSha256": "4a44ab75ad2d0ca1d178bb392c101790d1d54cf535b727274448cb179977809f"
+        },
+        {
+          "bps": 10,
+          "netReturn": 41.573075573282495,
+          "drawdown": 28.19272851013765,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 249.17708333333334,
+          "realizedPnl": 340.94635569953175,
+          "openExitPnl": -8.361751113271794,
+          "fees": 12.198508604992,
+          "open": true,
+          "paramsSha256": "90c3dd2d2c1cb633971e6b667f0e32249150a618a062582c7bf71ace15e6eb0a"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 39.722222,
+      "rank": 13,
+      "components": {
+        "netReturn": {
+          "percentile": 94.444444,
+          "points": 33.055556
+        },
+        "drawdown": {
+          "percentile": 5.555556,
+          "points": 1.666667
+        },
+        "costPenalty": {
+          "percentile": 0,
+          "points": 0
+        },
+        "cyclesPer30d": {
+          "percentile": 44.444444,
+          "points": 4.444444
+        },
+        "longestExposureDays": {
+          "percentile": 11.111111,
+          "points": 0.555556
+        }
+      }
+    },
+    {
+      "symbol": "BCHUSDT",
+      "tf": "30m",
+      "enabled": false,
+      "dataSha256": "967925c1e8a4cf287da4e25e5193dba4dbcac77d27dce14d4a05775840570c4d",
+      "status": "rated",
+      "values": {
+        "netReturn": 19.287999703456634,
+        "drawdown": 24.981413268357766,
+        "costPenalty": 1.001372896232823,
+        "cyclesPer30d": 3.103448275862069,
+        "longestExposureDays": 138.1875
+      },
+      "worstCostReturn": 18.28662680722381,
+      "minCycles": 66,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 19.480704990000035,
+          "drawdown": 24.944810889441495,
+          "cycles": 66,
+          "stops": 0,
+          "longestExposureDays": 138.1875,
+          "realizedPnl": 155.84563992000028,
+          "openExitPnl": 0,
+          "fees": 8.630300079999996,
+          "open": false,
+          "paramsSha256": "3e82982c14d5b34323445d9a0c13ef35e60a8b3b39f0cbbb620f7e2ffb517dcf"
+        },
+        {
+          "bps": 2,
+          "netReturn": 19.287999703456634,
+          "drawdown": 24.981413268357766,
+          "cycles": 66,
+          "stops": 0,
+          "longestExposureDays": 138.1875,
+          "realizedPnl": 154.30399762765308,
+          "openExitPnl": 0,
+          "fees": 8.628546488348,
+          "open": false,
+          "paramsSha256": "f1ce24b290aeafa6972d533156a8582a8908d66ac11b624a9631fdea842fb9cf"
+        },
+        {
+          "bps": 5,
+          "netReturn": 18.835964903017555,
+          "drawdown": 25.75036528913342,
+          "cycles": 67,
+          "stops": 0,
+          "longestExposureDays": 138.39583333333334,
+          "realizedPnl": 150.68771922414044,
+          "openExitPnl": 0,
+          "fees": 8.787013205860008,
+          "open": false,
+          "paramsSha256": "61788856a1677e54ed4a1afd9a551450d78ca9b0a288b7c1fb3a99cfff8a4718"
+        },
+        {
+          "bps": 10,
+          "netReturn": 18.28662680722381,
+          "drawdown": 25.85045371312184,
+          "cycles": 66,
+          "stops": 0,
+          "longestExposureDays": 138.39583333333334,
+          "realizedPnl": 146.2930144577905,
+          "openExitPnl": 0,
+          "fees": 8.732305892209999,
+          "open": false,
+          "paramsSha256": "308e0df977bcfe0f98411e8dc5c4cc55ebf12dbbb5ead2437c6f88167e67431b"
+        }
+      ],
+      "flags": [],
+      "score": 38.055556,
+      "rank": 14,
+      "components": {
+        "netReturn": {
+          "percentile": 38.888889,
+          "points": 13.611111
+        },
+        "drawdown": {
+          "percentile": 16.666667,
+          "points": 5
+        },
+        "costPenalty": {
+          "percentile": 66.666667,
+          "points": 13.333333
+        },
+        "cyclesPer30d": {
+          "percentile": 38.888889,
+          "points": 3.888889
+        },
+        "longestExposureDays": {
+          "percentile": 44.444444,
+          "points": 2.222222
+        }
+      }
+    },
+    {
+      "symbol": "BNBUSDT",
+      "tf": "15m",
+      "enabled": false,
+      "dataSha256": "69700b35de8e27ac2595eb2aed84d1e1f0837f6e213ff7050ff3077127f96fb6",
+      "status": "rated",
+      "values": {
+        "netReturn": 11.616368878512787,
+        "drawdown": 10.10338126998976,
+        "costPenalty": 19.44948002226272,
+        "cyclesPer30d": 1.974921630094044,
+        "longestExposureDays": 136.20833333333334
+      },
+      "worstCostReturn": -7.833111143749932,
+      "minCycles": 34,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": -7.833111143749932,
+          "drawdown": 24.71148006796383,
+          "cycles": 34,
+          "stops": 0,
+          "longestExposureDays": 382.7916666666667,
+          "realizedPnl": 52.40390898000055,
+          "openExitPnl": -115.06879813,
+          "fees": 3.9047797499999994,
+          "open": true,
+          "paramsSha256": "1c9f0e9d1c4cabebeb36ca61a022559decde0478dce322f4d9b2b9fdba2719c7"
+        },
+        {
+          "bps": 2,
+          "netReturn": 11.616368878512787,
+          "drawdown": 10.10338126998976,
+          "cycles": 42,
+          "stops": 0,
+          "longestExposureDays": 136.20833333333334,
+          "realizedPnl": 95.64456912716435,
+          "openExitPnl": -2.713618099062046,
+          "fees": 6.3432415526679975,
+          "open": true,
+          "paramsSha256": "83363dfe9dd89b81d171f5e680ba01ad3e2b729ccd875264172a917b0c1942f5"
+        },
+        {
+          "bps": 5,
+          "netReturn": 11.533567150968793,
+          "drawdown": 10.092251396441364,
+          "cycles": 42,
+          "stops": 0,
+          "longestExposureDays": 136.20833333333334,
+          "realizedPnl": 95.05173294040526,
+          "openExitPnl": -2.7831957326549173,
+          "fees": 6.343271724174998,
+          "open": true,
+          "paramsSha256": "9ffe7b7c1e0f00f81a782cdb28e8539c0ba275f3f6c373e4802c67b8b65e8af0"
+        },
+        {
+          "bps": 10,
+          "netReturn": 11.161649175177573,
+          "drawdown": 10.066500469475672,
+          "cycles": 42,
+          "stops": 0,
+          "longestExposureDays": 136.22916666666666,
+          "realizedPnl": 92.19235185673062,
+          "openExitPnl": -2.899158455310044,
+          "fees": 6.339433092430003,
+          "open": true,
+          "paramsSha256": "59ddfcc51ca716661baed1e6c614cf2fa73285f31f9ae25e8b31924426c8b344"
+        }
+      ],
+      "flags": [
+        "NEGATIVE_COST_SCENARIO",
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 35.277778,
+      "rank": 15,
+      "components": {
+        "netReturn": {
+          "percentile": 11.111111,
+          "points": 3.888889
+        },
+        "drawdown": {
+          "percentile": 88.888889,
+          "points": 26.666667
+        },
+        "costPenalty": {
+          "percentile": 11.111111,
+          "points": 2.222222
+        },
+        "cyclesPer30d": {
+          "percentile": 0,
+          "points": 0
+        },
+        "longestExposureDays": {
+          "percentile": 50,
+          "points": 2.5
+        }
+      }
+    },
+    {
+      "symbol": "ETHUSDT",
+      "tf": "5m",
+      "enabled": false,
+      "dataSha256": "02f72fe1409cbed33f74b1555f44e4a2591dcdb4b8c8795566e11432333df28d",
+      "status": "rated",
+      "values": {
+        "netReturn": 17.115707557342162,
+        "drawdown": 21.529527684123664,
+        "costPenalty": 1.2603355619716723,
+        "cyclesPer30d": 2.9623824451410656,
+        "longestExposureDays": 219.48611111111111
+      },
+      "worstCostReturn": 15.85537199537049,
+      "minCycles": 60,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 17.701671324000046,
+          "drawdown": 21.555647821981218,
+          "cycles": 63,
+          "stops": 0,
+          "longestExposureDays": 219.47916666666666,
+          "realizedPnl": 155.2567516510004,
+          "openExitPnl": -13.643381059000035,
+          "fees": 10.170937968000004,
+          "open": true,
+          "paramsSha256": "d9a1d1d8d017b12c14546657ef7286bb18f8e819f76f752e73961ebfa730a530"
+        },
+        {
+          "bps": 2,
+          "netReturn": 17.115707557342162,
+          "drawdown": 21.529527684123664,
+          "cycles": 63,
+          "stops": 0,
+          "longestExposureDays": 219.48611111111111,
+          "realizedPnl": 150.64748457977305,
+          "openExitPnl": -13.721824121035752,
+          "fees": 10.165577927750999,
+          "open": true,
+          "paramsSha256": "9034fb1423b4dafb18a1df4cb31b3093160b6b9d5ca65a2b53fa9955489beaf6"
+        },
+        {
+          "bps": 5,
+          "netReturn": 16.49478261197082,
+          "drawdown": 21.640991122673924,
+          "cycles": 62,
+          "stops": 0,
+          "longestExposureDays": 219.48611111111111,
+          "realizedPnl": 145.84683446719941,
+          "openExitPnl": -13.888573571432858,
+          "fees": 10.108999586171999,
+          "open": true,
+          "paramsSha256": "094bf65655ff667dc80692eeb57890cb86b400e0d8ff2bd718972c94a3fe9f2c"
+        },
+        {
+          "bps": 10,
+          "netReturn": 15.85537199537049,
+          "drawdown": 21.727780078620714,
+          "cycles": 60,
+          "stops": 0,
+          "longestExposureDays": 219.48611111111111,
+          "realizedPnl": 140.9386328109839,
+          "openExitPnl": -14.095656848019985,
+          "fees": 10.042859740910004,
+          "open": true,
+          "paramsSha256": "be6a9b26983851bd792b955bc950c17c3a24c0e6adb99e0c1b08cdd2a738010e"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 32.222222,
+      "rank": 16,
+      "components": {
+        "netReturn": {
+          "percentile": 27.777778,
+          "points": 9.722222
+        },
+        "drawdown": {
+          "percentile": 33.333333,
+          "points": 10
+        },
+        "costPenalty": {
+          "percentile": 44.444444,
+          "points": 8.888889
+        },
+        "cyclesPer30d": {
+          "percentile": 22.222222,
+          "points": 2.222222
+        },
+        "longestExposureDays": {
+          "percentile": 27.777778,
+          "points": 1.388889
+        }
+      }
+    },
+    {
+      "symbol": "SOLUSDT",
+      "tf": "30m",
+      "enabled": false,
+      "dataSha256": "1cb8e71caaaff56c4d80a0b6ada0db4ef7af041cee9998c3f8bdddd9befb977c",
+      "status": "rated",
+      "values": {
+        "netReturn": 17.12142155256838,
+        "drawdown": 23.68752181549139,
+        "costPenalty": 1.4473325606444831,
+        "cyclesPer30d": 3.0564263322884013,
+        "longestExposureDays": 221.64583333333334
+      },
+      "worstCostReturn": 15.674088991923895,
+      "minCycles": 60,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 17.266447996250065,
+          "drawdown": 23.661269861986202,
+          "cycles": 66,
+          "stops": 0,
+          "longestExposureDays": 221.64583333333334,
+          "realizedPnl": 149.1109430300005,
+          "openExitPnl": -10.979359059999979,
+          "fees": 8.850568469999994,
+          "open": true,
+          "paramsSha256": "ecd818e2a10095d725443f0eb65b5ffd6220c1570e1afe275771ddad6295f655"
+        },
+        {
+          "bps": 2,
+          "netReturn": 17.12142155256838,
+          "drawdown": 23.68752181549139,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 221.64583333333334,
+          "realizedPnl": 148.02323049206495,
+          "openExitPnl": -11.051858071517927,
+          "fees": 8.800509501857999,
+          "open": true,
+          "paramsSha256": "b52d5f38f4a0d0a11cfd0cdcf2b5ef80d9325f3782e58cd92612dc300fc72af3"
+        },
+        {
+          "bps": 5,
+          "netReturn": 16.554499786237557,
+          "drawdown": 23.839522405504617,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 221.64583333333334,
+          "realizedPnl": 143.60642602369546,
+          "openExitPnl": -11.170427733795009,
+          "fees": 8.796950961110005,
+          "open": true,
+          "paramsSha256": "9a1943485cdae7523a59335017e67796fd5fa63b948a8f9ba7cd6b113ce7bff8"
+        },
+        {
+          "bps": 10,
+          "netReturn": 15.674088991923895,
+          "drawdown": 24.021502189657447,
+          "cycles": 60,
+          "stops": 0,
+          "longestExposureDays": 221.64583333333334,
+          "realizedPnl": 136.74012177315115,
+          "openExitPnl": -11.347409837759983,
+          "fees": 8.52932880555,
+          "open": true,
+          "paramsSha256": "95f1c5283b70bd23d92aadf10d1d3f977c60c722fd6153b446e173bd4528280c"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 30.555556,
+      "rank": 17,
+      "components": {
+        "netReturn": {
+          "percentile": 33.333333,
+          "points": 11.666667
+        },
+        "drawdown": {
+          "percentile": 27.777778,
+          "points": 8.333333
+        },
+        "costPenalty": {
+          "percentile": 33.333333,
+          "points": 6.666667
+        },
+        "cyclesPer30d": {
+          "percentile": 30.555556,
+          "points": 3.055556
+        },
+        "longestExposureDays": {
+          "percentile": 16.666667,
+          "points": 0.833333
+        }
+      }
+    },
+    {
+      "symbol": "LTCUSDT",
+      "tf": "15m",
+      "enabled": false,
+      "dataSha256": "95d754200991c1a5712b46a185d5e8565ccb47d817d68e7dc60f5bb5ad9c11cb",
+      "status": "rated",
+      "values": {
+        "netReturn": 15.420123400889993,
+        "drawdown": 19.792999981753546,
+        "costPenalty": 1.8301202350524637,
+        "cyclesPer30d": 3.0564263322884013,
+        "longestExposureDays": 256.9166666666667
+      },
+      "worstCostReturn": 13.59000316583753,
+      "minCycles": 64,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 15.133689437500095,
+          "drawdown": 19.846529256835105,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 256.9166666666667,
+          "realizedPnl": 139.25765120000085,
+          "openExitPnl": -18.18813570000009,
+          "fees": 8.459868299999997,
+          "open": true,
+          "paramsSha256": "c08edfa09816b88a128a302a26441cd7a2d94bdc64ebe3d686b56993579136bc"
+        },
+        {
+          "bps": 2,
+          "netReturn": 15.420123400889993,
+          "drawdown": 19.792999981753546,
+          "cycles": 65,
+          "stops": 0,
+          "longestExposureDays": 256.9166666666667,
+          "realizedPnl": 141.62609360778004,
+          "openExitPnl": -18.265106400660102,
+          "fees": 8.712026696119999,
+          "open": true,
+          "paramsSha256": "9010c96d875a0eac816351a0b79b1de7539691b41243db5c26a2e5283f10376e"
+        },
+        {
+          "bps": 5,
+          "netReturn": 15.020411801925079,
+          "drawdown": 19.8541834556193,
+          "cycles": 64,
+          "stops": 0,
+          "longestExposureDays": 256.9166666666667,
+          "realizedPnl": 138.54385686705064,
+          "openExitPnl": -18.380562451650007,
+          "fees": 8.661557042700007,
+          "open": true,
+          "paramsSha256": "20135b53ca2f31381869bf7b9ebb5aa6157446e0655f44325100a21a56fc358d"
+        },
+        {
+          "bps": 10,
+          "netReturn": 13.59000316583753,
+          "drawdown": 19.9912519938969,
+          "cycles": 64,
+          "stops": 0,
+          "longestExposureDays": 256.9270833333333,
+          "realizedPnl": 127.53046196920025,
+          "openExitPnl": -18.810436642500008,
+          "fees": 8.820498531700004,
+          "open": true,
+          "paramsSha256": "89e0eb1918f3f5c53681a27bc8c485602d295a648579152fa58376e20e6662d0"
+        }
+      ],
+      "flags": [
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 28.888889,
+      "rank": 18,
+      "components": {
+        "netReturn": {
+          "percentile": 22.222222,
+          "points": 7.777778
+        },
+        "drawdown": {
+          "percentile": 44.444444,
+          "points": 13.333333
+        },
+        "costPenalty": {
+          "percentile": 22.222222,
+          "points": 4.444444
+        },
+        "cyclesPer30d": {
+          "percentile": 30.555556,
+          "points": 3.055556
+        },
+        "longestExposureDays": {
+          "percentile": 5.555556,
+          "points": 0.277778
+        }
+      }
+    },
+    {
+      "symbol": "SUIUSDT",
+      "tf": "5m",
+      "enabled": false,
+      "dataSha256": "22754ead97372dd23322d2240e85371b9e4dc5660959b7d4e2d8a1d2520b8c05",
+      "status": "rated",
+      "values": {
+        "netReturn": -2.8630253983874923,
+        "drawdown": 33.7016028200682,
+        "costPenalty": 1.2895914526019112,
+        "cyclesPer30d": 4.702194357366771,
+        "longestExposureDays": 369.68055555555554
+      },
+      "worstCostReturn": -4.1526168509894035,
+      "minCycles": 96,
+      "costs": [
+        {
+          "bps": 0,
+          "netReturn": 43.4338641060626,
+          "drawdown": 17.605778906119273,
+          "cycles": 138,
+          "stops": 0,
+          "longestExposureDays": 112.83680555555556,
+          "realizedPnl": 375.4514818133007,
+          "openExitPnl": -27.980568964799886,
+          "fees": 21.585070043299996,
+          "open": true,
+          "paramsSha256": "f8dc40be6d6631be83b3cd1bac32e1d5f69774e6496dca9547b78f5fcd8bac15"
+        },
+        {
+          "bps": 2,
+          "netReturn": -2.8630253983874923,
+          "drawdown": 33.7016028200682,
+          "cycles": 100,
+          "stops": 0,
+          "longestExposureDays": 369.68055555555554,
+          "realizedPnl": 259.8418288886553,
+          "openExitPnl": -282.74603207575524,
+          "fees": 14.54438000398284,
+          "open": true,
+          "paramsSha256": "4256bf41287ea4d5a457de47abf519c80a19f75c620503e23fb6a0b1c1bb5c4e"
+        },
+        {
+          "bps": 5,
+          "netReturn": -3.2519073176253244,
+          "drawdown": 33.79788453638318,
+          "cycles": 96,
+          "stops": 0,
+          "longestExposureDays": 369.68055555555554,
+          "realizedPnl": 257.11437333424215,
+          "openExitPnl": -283.12963187524474,
+          "fees": 14.341482738861648,
+          "open": true,
+          "paramsSha256": "66498fb3d85035820e4e363664875587550abdb03105cbdb10d26126c752877a"
+        },
+        {
+          "bps": 10,
+          "netReturn": -4.1526168509894035,
+          "drawdown": 34.01758522046408,
+          "cycles": 96,
+          "stops": 0,
+          "longestExposureDays": 369.68055555555554,
+          "realizedPnl": 250.14495852158507,
+          "openExitPnl": -283.3658933295003,
+          "fees": 14.334497250310292,
+          "open": true,
+          "paramsSha256": "3338fa7629c4e25811757f6717442497f86d325c9255739e95a3b86615fbc453"
+        }
+      ],
+      "flags": [
+        "NEGATIVE_BASE_RETURN",
+        "NEGATIVE_COST_SCENARIO",
+        "OPEN_CYCLE_AT_END"
+      ],
+      "score": 15.833333,
+      "rank": 19,
+      "components": {
+        "netReturn": {
+          "percentile": 0,
+          "points": 0
+        },
+        "drawdown": {
+          "percentile": 0,
+          "points": 0
+        },
+        "costPenalty": {
+          "percentile": 38.888889,
+          "points": 7.777778
+        },
+        "cyclesPer30d": {
+          "percentile": 80.555556,
+          "points": 8.055556
+        },
+        "longestExposureDays": {
+          "percentile": 0,
+          "points": 0
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "historical in-sample",
+    "independent spot models, not portfolio",
+    "draft weights",
+    "corrected rank from logged metrics, fresh CI pending"
+  ]
+}

@@ -13,3 +13,14 @@ test('all cost scenarios required; sample floor applies to weakest scenario',()=
 test('reject duplicates, wrong TF, mismatched period, future calculation and inconsistent return',()=>{const o=obs('AAAUSDT'),ms=[m(o.symbol)];assert.throws(()=>run(ms,[o,o]),/identity/);assert.throws(()=>run(ms,[{...o,tf:'15m'}]),/identity/);assert.throws(()=>run(ms,[{...o,end:end-1}]),/identity/);assert.throws(()=>run(ms,[o],{calculatedAt:end-1}),/window/);o.costs[0].netReturn=99;assert.throws(()=>run(ms,[o]),/Inconsistent return/);});
 test('short period never ranked even with sufficient closed cycles',()=>{const e=start+90*86400000,o={...obs('AAAUSDT'),end:e};const r=run([m(o.symbol)],[o],{window:{start,end:e}});assert.equal(r.rated,0);assert.ok(r.rows[0].flags.includes('SHORT_WINDOW'));});
 test('open position valuation and duration not discarded',()=>{const o=obs('AAAUSDT');for(const c of o.costs){c.open=true;c.openExitPnl=-8;c.realizedPnl+=8;c.longestExposureDays=40;}const r=run([m(o.symbol)],[o]).rows[0];assert.ok(r.flags.includes('OPEN_CYCLE_AT_END'));assert.equal(r.values.longestExposureDays,40);assert.equal(r.costs[1].openExitPnl,-8);});
+
+test('exact weighted midranks preserve real-world equal scores without rounding bias',async()=>{
+ const {readFileSync}=await import('node:fs');
+ const d=JSON.parse(readFileSync(new URL('../research/market-rating-2026-11-28-summary.json',import.meta.url),'utf8'));
+ const markets=d.originalRows.map(({symbol,tf,enabled})=>({symbol,tf,enabled}));
+ const window={start:d.observations[0].start,end:d.observations[0].end};
+ const r=rankMarkets({markets,observations:d.observations,window,calculatedAt:window.end});
+ assert.deepEqual(r.rows,d.correctedRows);
+ const a=r.rows.find(x=>x.symbol==='ATOMUSDT'),b=r.rows.find(x=>x.symbol==='DOGEUSDT');
+ assert.equal(a.score,b.score);assert.equal(a.rank,3);assert.equal(b.rank,3);
+});
