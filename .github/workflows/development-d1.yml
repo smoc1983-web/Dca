@@ -10,6 +10,7 @@ on:
       - 'scripts/check-development-ledger-access.mjs'
       - 'scripts/check-development-ledger-pagination.mjs'
       - 'scripts/check-development-trade-cycle.mjs'
+      - 'scripts/run-trade-cycle-acceptance.mjs'
       - 'scripts/check-development-worker.mjs'
       - 'scripts/check-development-diagnostics.mjs'
       - 'scripts/check-monitoring-stand.mjs'
