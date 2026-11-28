@@ -9,6 +9,7 @@ on:
       - 'scripts/read-legacy-reconciliation.mjs'
       - 'scripts/check-development-ledger-access.mjs'
       - 'scripts/check-development-ledger-pagination.mjs'
+      - 'scripts/check-development-trade-cycle.mjs'
       - 'scripts/check-development-worker.mjs'
       - 'scripts/check-development-diagnostics.mjs'
       - 'scripts/check-monitoring-stand.mjs'
@@ -37,3 +38,4 @@ jobs:
       - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-ledger-migration.mjs
       - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-ledger-access.mjs
       - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-ledger-pagination.mjs
+      - run: NODE_PATH="$RUNNER_TEMP/dca-miniflare/node_modules" node scripts/check-development-trade-cycle.mjs
