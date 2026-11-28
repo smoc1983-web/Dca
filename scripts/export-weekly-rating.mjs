@@ -1,0 +1,10 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {buildWeeklySnapshot,appendWeeklySnapshot,weeklyHistoryView,FIRST_WEEKLY_VERIFICATION} from './weekly-rating-history.mjs';
+const read=p=>JSON.parse(readFileSync(new URL(p,import.meta.url),'utf8'));
+const [output,nowArg]=process.argv.slice(2);
+if(!output||!nowArg)throw Error('Usage: node scripts/export-weekly-rating.mjs output.json ISO-time');
+const snapshot=buildWeeklySnapshot({archive:read('../research/weekly-rating-2026-11-23-observations.json'),summary:read('../research/weekly-rating-2026-11-23-summary.json'),verified:FIRST_WEEKLY_VERIFICATION});
+const history=appendWeeklySnapshot([],snapshot);
+const report=weeklyHistoryView(history,{now:Date.parse(nowArg)});
+writeFileSync(output,JSON.stringify({history,report},null,2)+'\n',{flag:'wx'});
+console.log(report.telegramPreview);

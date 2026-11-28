@@ -9,7 +9,7 @@ function canonical(v){
  if(v!==null&&typeof v==='object')return Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])]));
  return v;
 }
-const digest=v=>createHash('sha256').update(JSON.stringify(canonical(v))).digest('hex');
+export const digest=v=>createHash('sha256').update(JSON.stringify(canonical(v))).digest('hex');
 export function buildRatingSnapshot({archive,markets}){
  if(archive?.version!=='market-rating-verified-input-v1'||archive.sourceRun!==46136832610||archive.sourceCommit!=='f8743de1f66c217222a3a9a669f0a9138cc65b91'||archive.correctedPolicyVersion!==POLICY.version||!Array.isArray(archive.observations)||archive.observations.length!==19||!Array.isArray(markets)||markets.length!==19||markets.filter(m=>m.enabled).length!==11)throw Error('Invalid verified rating archive');
  const window={start:archive.observations[0].start,end:archive.observations[0].end};
@@ -27,14 +27,14 @@ export function ratingView(snapshot,{now,scope='active',limit=19,maxAgeMs=DRAFT_
  const ageMs=now-snapshot.window.end;
  if(ageMs<0)throw Error('Future rating window');
  const selected=snapshot.rows.filter(r=>scope==='all'||r.enabled===(scope==='active'));
- return {version:'rating-view-v1',snapshotId,policyVersion:snapshot.policy.version,window:snapshot.window,verified:snapshot.verified,scope,available:selected.length,returned:Math.min(limit,selected.length),ageMs,maxAgeMs,freshness:ageMs>maxAgeMs?'stale':'within-draft-window',historical:true,recommendationAllowed:false,changesMarketSelection:false,limitations:snapshot.limitations,rows:selected.slice(0,limit).map(r=>({symbol:r.symbol,tf:r.tf,enabled:r.enabled,rank:r.rank,score:r.score,status:r.status,netReturn:r.values?.netReturn??null,drawdown:r.values?.drawdown??null,worstCostReturn:r.worstCostReturn??null,cycles:r.costs?.find(c=>c.bps===2)?.cycles??null,longestExposureDays:r.values?.longestExposureDays??null,flags:[...r.flags]}))};
+ return {version:'rating-view-v1',snapshotId,policyVersion:snapshot.policy.version,profile:snapshot.profile??'fixed-21-month-history',window:snapshot.window,verified:snapshot.verified,scope,available:selected.length,returned:Math.min(limit,selected.length),ageMs,maxAgeMs,freshness:ageMs>maxAgeMs?'stale':'within-draft-window',historical:true,recommendationAllowed:false,changesMarketSelection:false,limitations:snapshot.limitations,rows:selected.slice(0,limit).map(r=>({symbol:r.symbol,tf:r.tf,enabled:r.enabled,rank:r.rank,score:r.score,status:r.status,netReturn:r.values?.netReturn??null,drawdown:r.values?.drawdown??null,worstCostReturn:r.worstCostReturn??null,cycles:r.costs?.find(c=>c.bps===2)?.cycles??null,longestExposureDays:r.values?.longestExposureDays??null,flags:[...r.flags]}))};
 }
 const date=t=>new Date(t).toISOString().slice(0,10);
 export function formatRatingPreview(view){
  if(view?.version!=='rating-view-v1'||!Array.isArray(view.rows)||view.recommendationAllowed!==false)throw Error('Invalid rating preview');
  const pct=x=>x===null?'—':x.toFixed(2).replace('.',',')+'%';
  const scope={active:'Активные',excluded:'Исключённые',all:'Все пары'}[view.scope];
- const lines=['DCA800 — исторический рейтинг','Период UTC: '+date(view.window.start)+' — '+date(view.window.end-1),'Проверено: '+date(view.verified.verifiedAt)+' UTC',view.freshness==='stale'?'Данные устарели — новый период не проверен.':'Данные в пределах проектного срока.',scope+': '+view.returned+'/'+view.available];
+ const lines=[view.profile==='rolling-year-weekly-draft-v1'?'DCA800 — годовой рейтинг':'DCA800 — исторический рейтинг','Период UTC: '+date(view.window.start)+' — '+date(view.window.end-1),'Проверено: '+date(view.verified.verifiedAt)+' UTC',view.freshness==='stale'?'Данные устарели — новый период не проверен.':'Данные в пределах проектного срока.',scope+': '+view.returned+'/'+view.available];
  for(const r of view.rows)lines.push((r.rank??'—')+'. '+r.symbol+' '+r.tf+' | '+(r.score===null?'—':r.score.toFixed(2).replace('.',','))+' балла | '+pct(r.netReturn)+' | DD '+pct(r.drawdown)+(r.enabled?'':' | отключена'));
  lines.push('Исследовательский рейтинг, не торговый сигнал. Состав стратегии не меняется.');
  const text=lines.join('\n');
