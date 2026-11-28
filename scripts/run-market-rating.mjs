@@ -10,6 +10,10 @@ const markets=read('../strategy/markets.json');
 const DAY=86400000;
 export function rateDataset(d){
  const {market,verified}=validateLongInput(d);
+ return rateVerifiedDataset(d,market,verified);
+}
+// Caller must validate full provenance before invoking this calculation.
+export function rateVerifiedDataset(d,market,verified){
  if(d.params.initialCapital!==800||d.params.fee!==.001)throw Error('Unexpected capital/fee');
  const costs=POLICY.costBps.map(bps=>{
   const r=backtestSpot({...d,params:{...d.params,slippageBps:bps}});

@@ -1,0 +1,81 @@
+name: Weekly informational rating rehearsal
+on:
+  push:
+    branches: ['dev/dca800-foundation']
+    paths:
+      - 'scripts/weekly-market-rating.mjs'
+      - '.github/workflows/weekly-market-rating.yml'
+  workflow_dispatch:
+    inputs:
+      end:
+        description: 'Monday UTC ISO date, or latest (two-day buffer)'
+        required: true
+        default: 'latest'
+permissions:
+  contents: read
+jobs:
+  window:
+    runs-on: ubuntu-latest
+    outputs:
+      end: ${{ steps.cutoff.outputs.end }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: cutoff
+        env:
+          REQUESTED_END: ${{ inputs.end || '2026-11-23' }}
+        run: |
+          node --input-type=module -e 'import {latestWeeklyEnd,weeklyWindow} from "./scripts/weekly-market-rating.mjs"; const now=Date.now(),end=process.env.REQUESTED_END==="latest"?latestWeeklyEnd(now):Date.parse(process.env.REQUESTED_END); weeklyWindow(end,now); console.log("end="+new Date(end).toISOString())' >> "$GITHUB_OUTPUT"
+  prepare:
+    needs: window
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        symbol: [ADAUSDT, AAVEUSDT, ATOMUSDT, AVAXUSDT, BCHUSDT, BNBUSDT, BTCUSDT, DOGEUSDT, DOTUSDT, ETHUSDT, LDOUSDT, LINKUSDT, LTCUSDT, SOLUSDT, SUIUSDT, TRXUSDT, UNIUSDT, XRPUSDT, ZECUSDT]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: node --max-old-space-size=4096 scripts/weekly-market-rating.mjs prepare ${{ matrix.symbol }} ${{ matrix.symbol }}.json ${{ needs.window.outputs.end }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: weekly-rating-${{ matrix.symbol }}
+          path: ${{ matrix.symbol }}.json
+          retention-days: 30
+          if-no-files-found: error
+  combine:
+    needs: [window, prepare]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: weekly-rating-*
+          merge-multiple: true
+          path: observations
+      - run: node scripts/weekly-market-rating.mjs combine observations weekly-report.json ${{ needs.window.outputs.end }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: weekly-informational-report
+          path: weekly-report.json
+          retention-days: 30
+          if-no-files-found: error
