@@ -1,3 +1,4 @@
+import {ACTIVE_KEYS,ACTIVE_KEY_SQL,validateActiveModel} from './active-watchlist.mjs';
 import {intervalMs} from './watchlist-engine.mjs';
 
 const dayMs=86400000;
@@ -48,10 +49,11 @@ export async function queueDaily(env,control,now){
   const id='DAILY:'+day;
   if(await env.DB.prepare('SELECT 1 AS found FROM alerts WHERE id=?').bind(id).first())return;
   const [models,events]=await env.DB.batch([
-    env.DB.prepare('SELECT model FROM models ORDER BY key'),
+    env.DB.prepare('SELECT key,model FROM models WHERE key IN ('+ACTIVE_KEY_SQL+') ORDER BY key').bind(...ACTIVE_KEYS),
     env.DB.prepare("SELECT id,closed FROM alerts WHERE closed>=? AND closed<? ORDER BY closed,id").bind(now-dayMs,now)
   ]);
   if(!models.results.length)return;
+  models.results.forEach(validateActiveModel);
   const body=dailyText(models.results,events.results,now);
   await env.DB.prepare("INSERT OR IGNORE INTO alerts(id,closed,body,status) SELECT ?,?,?,'pending' FROM control WHERE id=1 AND mode='live' AND epoch=?")
     .bind(id,now,body,control.epoch).run();

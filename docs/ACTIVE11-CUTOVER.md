@@ -1,0 +1,13 @@
+# Переход на 11 пар — только план, production не изменён
+Владелец 28.11.2026 требует полного исключения восьми пар из регулярной стратегии. В dev candidate worker due query выбирает точные 11 ключей; daily — те же ключи; pending сигнал с префиксом одной из исключённых пар не отправляется и сохраняется со старым статусом. Старые модели не изменяются, это замороженные исторические циклы, не закрытые сделки. Реальные позиции не известны и не закрываются автоматически.
+Перед cutover выполнить только read-only:
+```sql
+SELECT key, rev, next_close, json_extract(model,'$.s.qty')>0 AS open_model
+FROM models ORDER BY key;
+```
+```sql
+SELECT substr(id,1,instr(id,':')-1) AS pair,status,COUNT(*) AS n
+FROM alerts WHERE status IN ('pending','sending','uncertain','test_pending')
+GROUP BY pair,status;
+```
+Не публиковать реальные объёмы, токены или сообщения. Сверить ровно 11 активных ключей с active-watchlist.mjs; если TF отличается, отдельно согласовать миграцию, не сбрасывать. Согласовать владельцем сопровождение оставшихся реальных позиций, архивирование frozen models и review всех недоставленных сигналов (в том числе DAILY). Ни один pending/sending/uncertain не отмечать delivered без подтверждения. Health пока показывает весь старый backlog и все строки models; перед production требуется отдельный учёт frozen rows/hold, не скрывать проблемы. Сохранить D1 bookmark/snapshot и deployed bundle, остановка конкурирующих запусков только по отдельному разрешению, проверить cutover и rollback на изолированном стенде. Старый Worker и cron не изменялись. Не запускать параллельного отправителя.

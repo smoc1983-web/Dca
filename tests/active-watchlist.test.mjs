@@ -1,0 +1,17 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {DatabaseSync} from 'node:sqlite';
+import {ACTIVE_KEYS,EXCLUDED_SYMBOLS,validateActiveModel} from '../cloudflare/active-watchlist.mjs';
+import {tick} from '../cloudflare/worker.mjs';
+import {queueDaily} from '../cloudflare/daily.mjs';
+import {DEFAULTS,newState} from '../cloudflare/watchlist-engine.mjs';
+const markets=JSON.parse(readFileSync(new URL('../strategy/markets.json',import.meta.url),'utf8'));
+function fixture(t){
+ const db=new DatabaseSync(':memory:');t.after(()=>db.close());
+ db.exec(readFileSync(new URL('../cloudflare/schema.sql',import.meta.url),'utf8'));db.exec("INSERT INTO control VALUES(1,'shadow','fixture')");
+ const port={prepare(sql){let args=[];return {bind(...v){args=v;return this;},async first(){return db.prepare(sql).get(...args);},async all(){return {results:db.prepare(sql).all(...args)};},async run(){return {meta:{changes:Number(db.prepare(sql).run(...args).changes)}};}};},async batch(statements){return Promise.all(statements.map(s=>s.all()));}};
+ const model=(symbol,tf,time)=>{const params={...DEFAULTS,symbol},s=newState(params);Object.assign(s,{lastTime:time,qty:.25,average:100,invested:25,lastEntry:100,cash:774.975,cycleEquity:800,cycleStart:100});return JSON.stringify({symbol,tf,params,s,entryEnabled:true});};
+ return {db,port,model};
+}
+test('frozen 11 runtime keys and 8 exclusions equal historical registry flags',()=>{assert.deepEqual([...ACTIVE_KEYS].sort(),markets.filter(m=>m.enabled).map(m=>m.symbol+':'+m.tf).sort());assert.deepEqual([...EXCLUDED_SYMBOLS].sort(),markets.filter(m=>!m.enabled).map(m=>m.symbol).sort());});
+test('active row identity cannot substitute excluded symbol, timeframe or parameter identity',()=>{const valid={key:'ADAUSDT:5m',model:JSON.stringify({symbol:'ADAUSDT',tf:'5m',params:{symbol:'ADAUSDT'}})};assert.equal(validateActiveModel(valid).symbol,'ADAUSDT');for(const x of [{symbol:'BCHUSDT'},{tf:'15m'},{params:{symbol:'BCHUSDT'}},{retired:true}])assert.throws(()=>validateActiveModel({...valid,model:JSON.stringify({...JSON.parse(valid.model),...x})}),/identity/);});
+test('excluded due rows cause no network call and retain full model and revision',async t=>{const {db,port,model}=fixture(t),time=Date.now()-3600000;const body=model('BCHUSDT','30m',time);db.prepare('INSERT INTO models(key,model,next_close,rev) VALUES(?,?,?,?)').run('BCHUSDT:30m',body,time,7);await tick({DB:port},{request:()=>assert.fail('excluded model contacted market')});assert.deepEqual({...db.prepare('SELECT model,rev FROM models').get()},{model:body,rev:7});assert.equal(db.prepare('SELECT COUNT(*) n FROM alerts').get().n,0);assert.equal(db.prepare('SELECT checked FROM runs').get().checked,0);});
+test('daily summary contains active models only and does not delete old records',async t=>{const {db,port,model}=fixture(t),now=Date.UTC(2026,10,28,2);db.exec("UPDATE control SET mode='live'");for(const [symbol,tf] of [['ADAUSDT','5m'],['BCHUSDT','30m']])db.prepare('INSERT INTO models(key,model,next_close) VALUES(?,?,?)').run(symbol+':'+tf,model(symbol,tf,now-1800000),now);await queueDaily({DB:port},{mode:'live',epoch:'fixture'},now);const a=db.prepare("SELECT body FROM alerts WHERE id='DAILY:2026-11-28'").get();assert.match(a.body,/1 пар/);assert.match(a.body,/ADA/);assert.doesNotMatch(a.body,/BCH/);assert.equal(db.prepare('SELECT COUNT(*) n FROM models').get().n,2);});
