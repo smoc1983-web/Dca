@@ -1,11 +1,10 @@
 // Offline plan only. A shared transactional quota ledger is required before any live request.
 const MINUTE=60000,DAY=1440*MINUTE;
-export const CROSSCHECK_POLICY=Object.freeze({version:'spot-crosscheck-draft-v1',providerDaily:1000,providerMinute:10,localDaily:950,localMinute:8,scheduledDaily:720,extraDaily:230,unallocatedDaily:50});
+export const CROSSCHECK_POLICY=Object.freeze({version:'spot-crosscheck-active11-draft-v2',providerDaily:1000,providerMinute:10,localDaily:950,localMinute:8,scheduledDaily:528,extraDaily:422,unallocatedDaily:50});
 export function crosscheckSchedule(markets){
  if(!Array.isArray(markets)||markets.length!==19||markets.filter(m=>m.enabled===true).length!==11||markets.some(m=>typeof m.enabled!=='boolean'||! /^[A-Z0-9]+USDT$/.test(m.symbol))||new Set(markets.map(m=>m.symbol)).size!==19)throw Error('Unexpected crosscheck universe');
  const sorted=[...markets].sort((a,b)=>a.symbol<b.symbol?-1:1),jobs=[];
  for(const [i,m] of sorted.filter(m=>m.enabled).entries())jobs.push({symbol:m.symbol,enabled:true,everyMinutes:30,offsetMinute:i+2});
- for(const [i,m] of sorted.filter(m=>!m.enabled).entries())jobs.push({symbol:m.symbol,enabled:false,everyMinutes:60,offsetMinute:i+13});
  return jobs;
 }
 export function dueCrosschecks(markets,now){
