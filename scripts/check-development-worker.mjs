@@ -94,7 +94,7 @@ try{
  };
  await enqueue('previous-pending','fixture: originally queued');
  send=()=>{throw new DOMException('fixture: received but acknowledgement timed out','TimeoutError');};
- await assert.rejects(tick(),/HTTP 451/);
+ await assert.rejects(tick(),error=>error?.name==='MarketDataError'&&error.code==='REGION_RESTRICTED'&&error.status===451&&error.endpoint==='time'&&error.host==='data-api.binance.vision');
  assert.deepEqual(binance,[{source:'binance-vision',operation:'time'}]);
  assert.equal((await getModel()).state.lastTime,s.lastTime);
  assert.equal((await getAlert('previous-pending')).status,'uncertain');
