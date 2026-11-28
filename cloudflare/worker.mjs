@@ -2,21 +2,10 @@ import {fetchBars,stepEntry} from './runtime.mjs';
 import {intervalMs,message} from './watchlist-engine.mjs';
 import {queueDaily} from './daily.mjs';
 
-const marketBases=['https://data-api.binance.vision/api/v3/','https://api.binance.com/api/v3/','https://api-gcp.binance.com/api/v3/'];
-let marketBase=marketBases[0];
+import {createMarketReader,readMarketClock} from './market-reader.mjs';
+
 const defaultRequest=(url,options)=>fetch(url,options);
-async function market({endpoint,parameters},request=defaultRequest) {
-  for(const base of new Set([marketBase,...marketBases])){
-    const url=new URL(endpoint,base);
-    url.search=new URLSearchParams(parameters);
-    const res=await request(url,{signal:AbortSignal.timeout(12000),redirect:'manual'});
-    if(res.ok){marketBase=base;return res.json();}
-    const reason=(await res.text()).replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim().slice(0,240);
-    console.error('Market data',url.hostname,res.status,reason);
-    if(res.status===451||/restricted location|block access from your country/i.test(reason)||![403,502,503,504].includes(res.status)) throw Error('Binance HTTP '+res.status);
-  }
-  throw Error('Binance public market endpoints unavailable');
-}
+const market=createMarketReader();
 
 export async function advanceModel(entry,end,read=market) {
   const step=intervalMs(entry.tf), key=entry.symbol+':'+entry.tf;
@@ -91,8 +80,7 @@ export async function tick(env,{request=defaultRequest}={}) {
   let serverTime=null;
   if(results.length) {
     try {
-      ({serverTime}=await read({endpoint:'time',parameters:{}}));
-      if(!Number.isSafeInteger(serverTime)||Math.abs(serverTime-Date.now())>120000) throw Error('Invalid Binance clock');
+      serverTime=await readMarketClock(read);
     } catch(error) {
       if(control.mode==='live') await deliverLive(env,control,now,request);
       await env.DB.prepare('INSERT OR REPLACE INTO runs VALUES(?,?,?,?)').bind(minute,0,results.length,null).run();
